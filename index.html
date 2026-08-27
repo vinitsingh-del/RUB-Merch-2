@@ -131,6 +131,11 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 .promo-bar b{font-weight:700;}
 .promo-bar span{opacity:.55; margin:0 10px;}
 .promo-bar a{border-bottom:1px solid rgba(255,255,255,.4);}
+@media (max-width:640px){
+  .promo-bar{padding:10px var(--gutter);}
+  .promo-bar__full{display:none;}
+  .promo-bar__core{opacity:1;}
+}
 
 .site-header{
   position:sticky; top:0; z-index:60;
@@ -148,7 +153,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 .site-header__nav a:hover{border-color:var(--ink);}
 .site-header__nav a.is-active{border-color:var(--ink);}
 .site-header__icons{display:flex; align-items:center; gap:18px; flex:none;}
-.site-header__icons button{background:none; border:0; padding:4px; color:var(--ink);}
+.site-header__icons button{background:none; border:0; padding:11px; margin:-11px; color:var(--ink); display:flex; align-items:center; justify-content:center;}
 .site-header__icons svg{width:19px; height:19px; display:block;}
 .site-header__menu-btn{display:none; background:none; border:0; padding:4px;}
 @media (max-width:960px){
@@ -330,7 +335,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 }
 .edit__pills button{
   background:none; border:1px solid var(--line-strong); border-radius:20px;
-  padding:8px 18px; font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  padding:13px 18px; font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
   color:var(--ink-soft); transition:all .3s var(--ease);
 }
 .edit__pills button.is-active, .edit__pills button:hover{background:var(--ink); border-color:var(--ink); color:var(--white);}
@@ -359,7 +364,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
   scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
 }
 .edit__row::-webkit-scrollbar{height:0;}
-.edit__card{
+.edit__row .edit__card{
   flex:none; width:250px; scroll-snap-align:start;
 }
 .edit__card__frame{
@@ -373,7 +378,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 .edit__card .price-row s{color:var(--ink-faint); font-weight:400;}
 .edit__card .other-retailers{display:block; font-size:11.5px; color:var(--ink-faint); margin-top:2px;}
 @media (max-width:640px){
-  .edit__card{width:62vw;}
+  .edit__row .edit__card{width:62vw;}
 }
 
 /* ============================================================
@@ -391,14 +396,20 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 }
 .room__slide img{width:100%; height:100%; object-fit:cover;}
 .room__marker{
-  position:absolute; width:26px; height:26px; border-radius:50%;
+  position:absolute; width:44px; height:44px; margin:-22px 0 0 -22px;
+  background:none; border:0; padding:0; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.room__marker__dot{
+  position:relative; width:26px; height:26px; border-radius:50%;
   background:rgba(255,255,255,.92); border:1px solid var(--ink);
   display:flex; align-items:center; justify-content:center;
-  cursor:pointer; transition:transform .3s var(--ease);
+  transition:transform .3s var(--ease);
 }
-.room__marker::after{content:'+'; font-size:16px; line-height:1; color:var(--ink); transition:transform .3s var(--ease);}
-.room__marker.is-open::after{transform:rotate(45deg);}
-.room__marker::before{
+.room__marker:hover .room__marker__dot{transform:scale(1.08);}
+.room__marker__dot::after{content:'+'; font-size:16px; line-height:1; color:var(--ink); transition:transform .3s var(--ease);}
+.room__marker.is-open .room__marker__dot::after{transform:rotate(45deg);}
+.room__marker__dot::before{
   content:''; position:absolute; inset:-8px; border-radius:50%; border:1px solid rgba(255,255,255,.5);
   animation:pulse 2.4s ease-out infinite;
 }
@@ -510,11 +521,11 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 
 <!-- ================= PROMO BAR ================= -->
 <div class="promo-bar">
-  <b>Thoughtfully Made, Fairly Priced</b> — FableRoom is now a certified B Corp&trade;
-  <span>|</span>
-  EXTRA 10% OFF: <b>CODE SUMMER10</b>
-  <span>|</span>
-  <a href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">on Trustpilot</a>
+  <span class="promo-bar__full"><b>Thoughtfully Made, Fairly Priced</b> — FableRoom is now a certified B Corp&trade;</span>
+  <span class="promo-bar__full promo-bar__sep">|</span>
+  <span class="promo-bar__core">EXTRA 10% OFF: <b>CODE SUMMER10</b></span>
+  <span class="promo-bar__full promo-bar__sep">|</span>
+  <a class="promo-bar__full" href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">on Trustpilot</a>
 </div>
 
 <!-- ================= HEADER ================= -->
@@ -865,7 +876,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
     <div class="room__slides reveal">
       <div class="room__slide" data-room>
         <img src="assets/hero-meadow-room-v2.webp" alt="A hand-knotted rug centred beneath a beige living room seating arrangement, viewed from above" loading="lazy">
-        <button class="room__marker" style="top:50%; left:50%;" aria-label="View rug details"></button>
+        <button class="room__marker" style="top:50%; left:50%;" aria-label="View rug details"><span class="room__marker__dot"></span></button>
         <div class="room__card" style="top:56%; left:56%;">
           <b>Amber Oasis Hand-Knotted Wool Rug</b>
           <span>200x290 cm · £298</span>
@@ -874,7 +885,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
       </div>
       <div class="room__slide" data-room>
         <img src="assets/hero-ruby.webp" alt="A richly patterned hand-knotted rug beneath a living room seating arrangement, viewed from above" loading="lazy">
-        <button class="room__marker" style="top:52%; left:48%;" aria-label="View rug details"></button>
+        <button class="room__marker" style="top:52%; left:48%;" aria-label="View rug details"><span class="room__marker__dot"></span></button>
         <div class="room__card" style="top:58%; left:52%;">
           <b>Rovira Hand-Knotted Wool &amp; Bamboo Silk Rug</b>
           <span>244x305 cm · £355</span>
@@ -883,7 +894,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
       </div>
       <div class="room__slide" data-room>
         <img src="assets/mobile-bedroom-rug-v1.webp" alt="A hand-tufted rug placed beside a bed in a warm, neutral bedroom" loading="lazy">
-        <button class="room__marker" style="top:70%; left:38%;" aria-label="View rug details"></button>
+        <button class="room__marker" style="top:70%; left:38%;" aria-label="View rug details"><span class="room__marker__dot"></span></button>
         <div class="room__card" style="top:74%; left:20%;">
           <b>Rewa Hand-Tufted Wool Rug</b>
           <span>170x240 cm · £199</span>
