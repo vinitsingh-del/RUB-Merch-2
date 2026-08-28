@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#ffffff" />
-<title>Rugs — Crafted by Hand. Priced Honestly. | FABLEROOM</title>
-<meta name="description" content="Over 300 handmade rug designs, hand-knotted, hand-tufted, hand-woven and washable, sold direct from the makers. No middlemen, no inflated markups." />
+<title>Handmade Rugs &amp; Carpets | Wool, Jute &amp; Washable | FABLEROOM</title>
+<meta name="description" content="Shop handmade area rugs and designer carpets online in the UK for living rooms, bedrooms, dining rooms and hallways. Explore wool, jute and washable rugs." />
 
 <style>
 /* ============================================================
@@ -867,37 +867,64 @@ body > section + section{margin-top:10px;}
   overflow:hidden;
   display:flex;
   align-items:flex-end;
-  --hero-roll-y:-8%;
-  --hero-roll-opacity:0;
-}
-.hero__stage::after{
-  content:"";
-  position:absolute;
-  z-index:7;
-  left:0;
-  right:0;
-  top:var(--hero-roll-y);
-  height:clamp(18px,3.2vw,44px);
-  transform:translateY(-50%);
-  opacity:var(--hero-roll-opacity);
-  pointer-events:none;
-  background:linear-gradient(180deg,transparent 0%,rgba(255,255,255,.2) 40%,rgba(18,14,9,.2) 62%,transparent 100%);
-  box-shadow:0 16px 28px rgba(18,14,9,.2),0 -8px 18px rgba(255,255,255,.08);
-  will-change:top,opacity;
 }
 .hero__scene{
   opacity:1;
   z-index:0;
-  --hero-unfold:0%;
-  clip-path:inset(0 0 calc(100% - var(--hero-unfold)) 0);
+  --hero-scene-opacity:0;
+  --rug-reveal:0%;
+  --rug-layer-opacity:0;
+  --rug-roll-opacity:0;
+  --rug-shape:polygon(38% 56%,100% 56%,100% 100%,24% 100%,24% 84%);
+  --hero-image:none;
+  clip-path:none;
   transition:none;
-  will-change:clip-path;
+  isolation:isolate;
   backface-visibility:hidden;
 }
-.hero__scene:first-child{--hero-unfold:100%;}
-.hero__scene:nth-child(1){z-index:1;}
-.hero__scene:nth-child(2){z-index:2;}
-.hero__scene:nth-child(3){z-index:3;}
+.hero__scene picture{
+  z-index:0;
+  opacity:var(--hero-scene-opacity);
+  will-change:opacity;
+}
+.hero__scene::before,
+.hero__scene::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  clip-path:var(--rug-shape);
+}
+.hero__scene::before{
+  z-index:1;
+  opacity:var(--rug-layer-opacity);
+  background-image:var(--hero-image);
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  filter:brightness(1.14) contrast(1.035);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 var(--rug-reveal),transparent calc(var(--rug-reveal) + .2%));
+  mask-image:linear-gradient(to bottom,#000 0,#000 var(--rug-reveal),transparent calc(var(--rug-reveal) + .2%));
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+  will-change:opacity,-webkit-mask-image,mask-image;
+}
+.hero__scene::after{
+  z-index:2;
+  opacity:var(--rug-roll-opacity);
+  background:linear-gradient(to bottom,
+    transparent 0,
+    transparent calc(var(--rug-reveal) - 3%),
+    rgba(255,255,255,.18) calc(var(--rug-reveal) - 1%),
+    rgba(20,15,9,.26) var(--rug-reveal),
+    transparent calc(var(--rug-reveal) + 3%),
+    transparent 100%);
+  filter:drop-shadow(0 12px 12px rgba(18,14,9,.18));
+  will-change:opacity,background;
+}
+.hero__scene:nth-child(1){z-index:1; --hero-scene-opacity:1; --hero-image:url('assets/hero-spotlight-01-desktop.webp');}
+.hero__scene:nth-child(2){z-index:2; --hero-image:url('assets/hero-spotlight-02-desktop.webp'); --rug-shape:polygon(42% 57%,100% 58%,100% 100%,25% 100%,25% 86%);}
+.hero__scene:nth-child(3){z-index:3; --hero-image:url('assets/hero-spotlight-03-desktop.webp'); --rug-shape:polygon(48% 51%,100% 61%,100% 100%,25% 100%,25% 84%);}
 .hero__scene.is-active{opacity:1;}
 .hero__scrim{z-index:8;}
 .hero__content{z-index:9;}
@@ -908,6 +935,9 @@ body > section + section{margin-top:10px;}
 
 /* Mobile trust badges: all three remain visible in one horizontal row. */
 @media (max-width:760px){
+  .hero__scene:nth-child(1){--hero-image:url('assets/hero-spotlight-01-mobile.webp');}
+  .hero__scene:nth-child(2){--hero-image:url('assets/hero-spotlight-02-mobile.webp'); --rug-shape:polygon(58% 47%,100% 48%,100% 94%,0 87%,0 65%);}
+  .hero__scene:nth-child(3){--hero-image:url('assets/hero-spotlight-03-mobile.webp'); --rug-shape:polygon(28% 50%,100% 55%,100% 95%,0 92%,0 61%);}
   .trust__badges{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
@@ -1083,26 +1113,26 @@ body > section + section{margin-top:10px;}
     <div class="hero__scene is-active" aria-hidden="false">
       <picture>
         <source media="(max-width:760px)" srcset="assets/hero-spotlight-01-mobile.webp" />
-        <img src="assets/hero-spotlight-01-desktop.webp" alt="A hand-knotted rug centred beneath a living room seating arrangement, photographed from above" fetchpriority="high" decoding="async" />
+        <img src="assets/hero-spotlight-01-desktop.webp" alt="A cream hand-knotted wool rug being unrolled in a warm living room" fetchpriority="high" decoding="async" />
       </picture>
     </div>
     <div class="hero__scene" aria-hidden="true">
       <picture>
         <source media="(max-width:760px)" srcset="assets/hero-spotlight-02-mobile.webp" />
-        <img src="assets/hero-spotlight-02-desktop.webp" alt="A hand-knotted rug in a heritage sand colourway, shown flat" decoding="async" />
+        <img src="assets/hero-spotlight-02-desktop.webp" alt="A pale Persian-style area rug being placed in a living room" decoding="async" />
       </picture>
     </div>
     <div class="hero__scene" aria-hidden="true">
       <picture>
         <source media="(max-width:760px)" srcset="assets/hero-spotlight-03-mobile.webp" />
-        <img src="assets/hero-spotlight-03-desktop.webp" alt="A hand-knotted rug in a meadow blue colourway, shown flat" decoding="async" />
+        <img src="assets/hero-spotlight-03-desktop.webp" alt="A blue patterned living room rug beside a neutral sofa" decoding="async" />
       </picture>
     </div>
     <div class="hero__scrim"></div>
     <div class="hero__content reveal">
-      <div class="hero__eyebrow">Over 300 handmade designs</div>
+      <div class="hero__eyebrow">Over 300 handmade rugs &amp; carpets</div>
       <h1>Handmade Rugs.<br>Honest Prices.</h1>
-      <p>Made by skilled hands. Sourced directly. Designed to last.</p>
+      <p>Handmade wool, jute and washable rugs for every room.</p>
       <div class="hero__rooms">
         <a href="https://fableroom.com/collections/living-room-rugs">Living Room</a>
         <a href="https://fableroom.com/collections/bedroom-rugs">Bedroom</a>
@@ -1150,30 +1180,30 @@ body > section + section{margin-top:10px;}
   <div class="container">
     <div class="section-head reveal">
       <div>
-        <div class="eyebrow" style="margin-bottom:10px;">Crafted by hand, priced honestly</div>
-        <h2>The proof is in the detail.</h2>
+        <div class="eyebrow" style="margin-bottom:10px;">Handmade rug &amp; carpet craft</div>
+        <h2>Four ways to make a rug.</h2>
       </div>
     </div>
     <div class="proof__grid reveal-stagger">
       <div class="proof__card">
         <div class="proof__frame"><img src="assets/hero-bidjar-red.webp" alt="Close detail of a hand-knotted wool rug showing dense, tightly tied knots" loading="lazy"></div>
-        <h3>Hand-Knotted</h3>
-        <p>Each knot tied by hand, row by row. Dense, durable, built for rooms that see daily footfall.</p>
+        <h3>Hand-Knotted Rugs</h3>
+        <p>Hand-knotted wool rugs, tied row by row for dense detail and lasting character in high-traffic rooms.</p>
       </div>
       <div class="proof__card">
         <div class="proof__frame"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="A hand-tufted wool rug with a soft, even pile" loading="lazy"></div>
-        <h3>Hand-Tufted</h3>
-        <p>A tufting gun and a skilled hand. Softer underfoot, quicker to make, kinder on the price.</p>
+        <h3>Hand-Tufted Rugs</h3>
+        <p>Hand-tufted wool rugs with a softer pile underfoot, made for bedrooms, lounges and everyday comfort.</p>
       </div>
       <div class="proof__card">
         <div class="proof__frame"><img src="assets/arcadia-heritage-hand-woven-wool-rug.webp" alt="A flat hand-woven wool rug with a geometric pattern" loading="lazy"></div>
-        <h3>Hand-Woven</h3>
-        <p>Loomed flat with no pile. Lighter to handle, and the design shows through on both sides.</p>
+        <h3>Hand-Woven Rugs</h3>
+        <p>Flatweave wool and jute rugs, loomed without pile for dining rooms, kitchens and hallway spaces.</p>
       </div>
       <div class="proof__card">
         <div class="proof__frame"><img src="assets/elm-washable-rug.webp" alt="A washable rug styled in a living room, shown underfoot near a sofa" loading="lazy"></div>
-        <h3>Washable</h3>
-        <p>Tightly woven for easier care. Built for households where the rug earns its keep every day.</p>
+        <h3>Washable Rugs</h3>
+        <p>Easy-care washable rugs for living rooms, kitchens, family homes and everyday spills.</p>
       </div>
     </div>
   </div>
@@ -1266,9 +1296,9 @@ body > section + section{margin-top:10px;}
 <section class="shop-paths section" aria-labelledby="shop-paths-title">
   <div class="container">
     <div class="shop-paths__intro reveal">
-      <div class="eyebrow">Shop Rugs Your Way</div>
-      <h2 id="shop-paths-title">Start with what matters most.</h2>
-      <p>Room, look, colour or craft—choose your way in.</p>
+      <div class="eyebrow">Find Your Rug or Carpet</div>
+      <h2 id="shop-paths-title">Shop by room, style or craft.</h2>
+      <p>Explore area rugs by size, colour, material, technique and budget.</p>
     </div>
     <div class="shop-paths__directory reveal" data-shop-paths>
       <div class="shop-paths__tabs" role="tablist" aria-label="Ways to shop rugs">
@@ -1283,8 +1313,8 @@ body > section + section{margin-top:10px;}
         <div class="shop-paths__image"><img src="assets/ai-story-08-room-meadow.webp" alt="Rug styled in a living room" data-path-image></div>
         <div class="shop-paths__body">
           <span class="shop-paths__count" data-path-count>01</span>
-          <h3 data-path-title>Begin with the room.</h3>
-          <p data-path-copy>Choose proportions and finishes around the space you are furnishing.</p>
+          <h3 data-path-title>Find rugs for every room.</h3>
+          <p data-path-copy>Shop living room rugs, bedroom rugs, dining room carpets and outdoor rugs by space.</p>
           <div class="shop-paths__links" data-path-links>
             <a href="https://fableroom.com/collections/living-room-rugs">Living Room</a>
             <a href="https://fableroom.com/collections/bedroom-rugs">Bedroom</a>
@@ -1303,9 +1333,9 @@ body > section + section{margin-top:10px;}
     <div class="edit__head reveal">
       <div class="edit__number">01</div>
       <div>
-        <div class="eyebrow">Hand-Knotted Wool</div>
-        <h2>The Knotted Edit</h2>
-        <p>Thousands of knots, tied one at a time, row by row. The densest, longest-lasting technique we sell, built for rooms that see daily footfall.</p>
+        <div class="eyebrow">Hand-Knotted Wool Rugs</div>
+        <h2>The Hand-Knotted Rug Edit</h2>
+        <p>Traditional hand-knotted wool rugs and wool-bamboo silk carpets, tied knot by knot for dense pattern, durable pile and lasting character.</p>
       </div>
     </div>
     <div class="edit__pills reveal">
@@ -1367,9 +1397,9 @@ body > section + section{margin-top:10px;}
     <div class="edit__head reveal">
       <div class="edit__number">02</div>
       <div>
-        <div class="eyebrow">Hand-Tufted Wool</div>
-        <h2>The Tufted Edit</h2>
-        <p>A tufting gun and a skilled hand. Softer and lighter than a knotted pile, and quicker to make, which keeps the price kind too.</p>
+        <div class="eyebrow">Hand-Tufted Wool Rugs</div>
+        <h2>The Hand-Tufted Rug Edit</h2>
+        <p>Soft hand-tufted wool rugs for bedrooms and living rooms, shaped by skilled hands for a plush pile and approachable price.</p>
       </div>
     </div>
     <div class="edit__pills reveal">
@@ -1412,9 +1442,9 @@ body > section + section{margin-top:10px;}
     <div class="edit__head reveal">
       <div class="edit__number">03</div>
       <div>
-        <div class="eyebrow">Hand-Woven Wool &amp; Jute</div>
-        <h2>The Woven Edit</h2>
-        <p>Loomed flat with no pile, so the design shows through on both sides. Lighter to handle, and at home in kitchens, dining rooms and hallways.</p>
+        <div class="eyebrow">Hand-Woven Wool &amp; Jute Rugs</div>
+        <h2>The Hand-Woven Rug Edit</h2>
+        <p>Flatweave wool and jute rugs, loomed with little or no pile for dining rooms, kitchens, hallways and relaxed living spaces.</p>
       </div>
     </div>
     <div class="edit__pills reveal">
@@ -1451,9 +1481,9 @@ body > section + section{margin-top:10px;}
     <div class="edit__head reveal">
       <div class="edit__number">04</div>
       <div>
-        <div class="eyebrow">Easy-Care, Everyday</div>
-        <h2>The Washable Edit</h2>
-        <p>Tightly woven for real life. For households with kids, pets, or a kitchen that gets properly used, without giving up on the handmade look.</p>
+        <div class="eyebrow">Washable &amp; Easy-Care Rugs</div>
+        <h2>The Washable Rug Edit</h2>
+        <p>Easy-care washable rugs for busy living rooms, kitchens and family spaces, made for everyday life without losing the handmade look.</p>
       </div>
     </div>
     <div class="edit__pills reveal">
@@ -1495,8 +1525,8 @@ body > section + section{margin-top:10px;}
   <div class="container">
     <div class="section-head reveal">
       <div>
-        <div class="eyebrow" style="margin-bottom:10px;">See It Placed</div>
-        <h2>Tap a marker and go straight to the rug.</h2>
+        <div class="eyebrow" style="margin-bottom:10px;">Shop Rugs by Room</div>
+        <h2>See the right rug in the right room.</h2>
       </div>
     </div>
     <div class="room__slides reveal">
@@ -1536,29 +1566,29 @@ body > section + section{margin-top:10px;}
   <div class="container">
     <div class="section-head reveal" style="margin-bottom:30px;">
       <div>
-        <div class="eyebrow" style="margin-bottom:10px;">Before You Buy</div>
-        <h2 style="font-size:clamp(24px,2.8vw,32px);">Get the size right the first time.</h2>
+        <div class="eyebrow" style="margin-bottom:10px;">Rug &amp; Carpet Size Guide</div>
+        <h2 style="font-size:clamp(24px,2.8vw,32px);">Choose the right rug size for every room.</h2>
       </div>
     </div>
     <div class="size-guide__grid reveal-stagger">
       <div>
-        <h4>Living Room</h4>
-        <p>Big enough for the front legs of your sofa and chairs to rest on it, or large enough to hold the whole seating arrangement. Either reads as intentional.</p>
+        <h4>Living Room Rugs</h4>
+        <p>Choose a large area rug for the front legs of your sofa and chairs, or one that holds the whole seating arrangement.</p>
       </div>
       <div>
-        <h4>Bedroom</h4>
-        <p>Comfort over drama. A hand-tufted or hand-woven rug feels softer underfoot, right where your feet land each morning.</p>
+        <h4>Bedroom Rugs</h4>
+        <p>Place a soft wool, hand-tufted or hand-woven rug where your feet land each morning.</p>
       </div>
       <div>
-        <h4>Dining Room</h4>
-        <p>Add at least 60cm around the table so chairs can be pulled out without catching the edge.</p>
+        <h4>Dining Room Rugs</h4>
+        <p>Choose a dining room rug that extends at least 60cm beyond the table so chairs clear the edge.</p>
       </div>
       <div>
-        <h4>Hallways &amp; Runners</h4>
-        <p>Let a runner follow the natural width of the hallway, with bare floor showing on each side.</p>
+        <h4>Hallway Rugs &amp; Runners</h4>
+        <p>Size a runner rug to follow the hallway, leaving a balanced border of bare floor on each side.</p>
       </div>
     </div>
-    <p class="reveal" style="font-size:13px; color:var(--ink-soft); margin-top:26px; max-width:60ch;">Not sure it'll fit? Mark the dimensions out with masking tape before you order. It takes about three minutes and removes the guesswork.</p>
+    <p class="reveal" style="font-size:13px; color:var(--ink-soft); margin-top:26px; max-width:60ch;">Not sure which rug or carpet size will fit? Mark the dimensions with masking tape before ordering to remove the guesswork.</p>
   </div>
 </section>
 
@@ -1567,8 +1597,8 @@ body > section + section{margin-top:10px;}
   <div class="container">
     <div class="section-head reveal">
       <div>
-        <div class="eyebrow" style="margin-bottom:10px;">Recommended For You</div>
-        <h2>A considered place to begin.</h2>
+        <div class="eyebrow" style="margin-bottom:10px;">Recommended Handmade Rugs</div>
+        <h2>Four rug styles to start with.</h2>
       </div>
     </div>
     <div class="recommended__grid reveal-stagger">
@@ -1602,7 +1632,7 @@ body > section + section{margin-top:10px;}
     <div class="section-head reveal">
       <div>
         <div class="eyebrow" style="margin-bottom:10px;">FAQ</div>
-        <h2>Materials, care and delivery.</h2>
+        <h2>Rug materials, rug care, sizing and delivery.</h2>
       </div>
     </div>
     <div class="faq reveal">
@@ -1632,8 +1662,8 @@ body > section + section{margin-top:10px;}
 
 <!-- ================= EMAIL CAPTURE ================= -->
 <section class="email-cap">
-  <div class="eyebrow">The FableRoom Edit</div>
-  <h2>Be first to see what comes next.</h2>
+  <div class="eyebrow">The FableRoom Rug Edit</div>
+  <h2>New rugs, room ideas and buying guides.</h2>
   <form onsubmit="return false;">
     <input type="email" placeholder="Your email address" required />
     <button type="submit">Join the Edit</button>
@@ -1646,7 +1676,7 @@ body > section + section{margin-top:10px;}
     <div class="site-footer__grid">
       <div class="site-footer__brand">
         <img src="assets/fableroom-logo.svg" alt="FABLEROOM" />
-        <p>Thoughtfully made pieces for home and everyday life.</p>
+        <p>Handmade rugs, carpets and thoughtfully made pieces for home.</p>
       </div>
       <div>
         <h5>Rugs</h5>
@@ -1719,19 +1749,21 @@ window.addEventListener('load', ()=>{
     const segment = distance/(scenes.length-1);
     const unfoldDistance = segment*.36;
     let active = 0;
-    let rollY = -8;
-    let rollOpacity = 0;
 
     scenes.forEach((scene,index)=>{
       let unfold = index === 0 ? 1 : clamp((travelled-(index-1)*segment)/unfoldDistance);
       if(reduceMotion && index > 0) unfold = unfold < .5 ? 0 : 1;
       const eased = unfold*unfold*(3-2*unfold);
-      scene.style.setProperty('--hero-unfold',`${(eased*100).toFixed(2)}%`);
+      const sceneOpacity = index === 0 ? 1 : clamp((unfold-.72)/.28);
+      const layerIn = index === 0 ? 0 : clamp(unfold/.08);
+      const layerOut = index === 0 ? 0 : 1-clamp((unfold-.84)/.16);
+      const layerOpacity = layerIn*layerOut;
+      const rollOpacity = index === 0 ? 0 : Math.sin(unfold*Math.PI)*.92;
+      scene.style.setProperty('--hero-scene-opacity',sceneOpacity.toFixed(3));
+      scene.style.setProperty('--rug-reveal',`${(eased*100).toFixed(2)}%`);
+      scene.style.setProperty('--rug-layer-opacity',layerOpacity.toFixed(3));
+      scene.style.setProperty('--rug-roll-opacity',rollOpacity.toFixed(3));
       if(unfold > .001) active = index;
-      if(index > 0 && unfold > 0 && unfold < 1){
-        rollY = eased*100;
-        rollOpacity = Math.sin(unfold*Math.PI)*.92;
-      }
     });
 
     scenes.forEach((scene,index)=>{
@@ -1739,8 +1771,6 @@ window.addEventListener('load', ()=>{
       scene.classList.toggle('is-active',isActive);
       scene.setAttribute('aria-hidden',String(!isActive));
     });
-    stage.style.setProperty('--hero-roll-y',`${rollY.toFixed(2)}%`);
-    stage.style.setProperty('--hero-roll-opacity',rollOpacity.toFixed(3));
     ticking = false;
   }
   function requestUpdate(){
@@ -1825,12 +1855,12 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
   const copy = directory.querySelector('[data-path-copy]');
   const links = directory.querySelector('[data-path-links]');
   const paths = {
-    room:{count:'01',title:'Begin with the room.',copy:'Choose proportions and finishes around the space you are furnishing.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[['Living Room','https://fableroom.com/collections/living-room-rugs'],['Bedroom','https://fableroom.com/collections/bedroom-rugs'],['Dining Room','https://fableroom.com/collections/dining-room'],['Outdoor','https://fableroom.com/collections/outdoor-rugs']]},
-    style:{count:'02',title:'Follow the look you love.',copy:'Move from enduring pattern to quieter, more contemporary rooms.',image:'assets/hero-heritage-sand.webp',alt:'Heritage patterned rug in a warm neutral palette',links:[['Persian','https://fableroom.com/search?q=persian+rug&type=product'],['Modern','https://fableroom.com/search?q=modern+rug&type=product'],['Minimal','https://fableroom.com/search?q=minimal+rug&type=product'],['Bohemian','https://fableroom.com/search?q=bohemian+rug&type=product']]},
-    technique:{count:'03',title:'Choose how it is made.',copy:'Compare the density, softness and everyday character of each technique.',image:'assets/rug-craft-poster.jpg',alt:'Close view of rug craftsmanship',links:[['Hand-Knotted','https://fableroom.com/collections/hand-knotted-rugs'],['Hand-Tufted','https://fableroom.com/collections/hand-tufted-rugs'],['Hand-Woven','https://fableroom.com/collections/all-hand-woven-rugs-collection'],['Washable','https://fableroom.com/search?q=washable+rug&type=product']]},
-    colour:{count:'04',title:'Set the room\'s colour.',copy:'Find a rug that settles the palette or becomes its focal point.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[['Neutral','https://fableroom.com/search?q=neutral+rug&type=product'],['Blue','https://fableroom.com/search?q=blue+rug&type=product'],['Red','https://fableroom.com/search?q=red+rug&type=product'],['Multicolour','https://fableroom.com/search?q=multicolour+rug&type=product']]},
-    material:{count:'05',title:'Start with the feel.',copy:'Choose natural texture, soft wool or an easier everyday finish.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[['Wool','https://fableroom.com/search?q=wool+rug&type=product'],['Jute','https://fableroom.com/search?q=jute+rug&type=product'],['Bamboo Silk','https://fableroom.com/search?q=bamboo+silk+rug&type=product'],['PET','https://fableroom.com/search?q=PET+rug&type=product']]},
-    budget:{count:'06',title:'Shop within your range.',copy:'See the strongest handmade choices at the price that works for you.',image:'assets/ai-story-06-woven-banner.webp',alt:'Hand-woven rug in a styled home',links:[['Under £150','https://fableroom.com/collections/all-rugs-collection'],['£150–£300','https://fableroom.com/collections/all-rugs-collection'],['£300–£600','https://fableroom.com/collections/all-rugs-collection'],['Luxury Rugs','https://fableroom.com/search?q=luxury+rug&type=product']]}
+    room:{count:'01',title:'Find rugs for every room.',copy:'Shop living room rugs, bedroom rugs, dining room carpets and outdoor rugs by space.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[['Living Room','https://fableroom.com/collections/living-room-rugs'],['Bedroom','https://fableroom.com/collections/bedroom-rugs'],['Dining Room','https://fableroom.com/collections/dining-room'],['Outdoor','https://fableroom.com/collections/outdoor-rugs']]},
+    style:{count:'02',title:'Choose a rug style.',copy:'Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.',image:'assets/hero-heritage-sand.webp',alt:'Heritage patterned rug in a warm neutral palette',links:[['Persian','https://fableroom.com/search?q=persian+rug&type=product'],['Modern','https://fableroom.com/search?q=modern+rug&type=product'],['Minimal','https://fableroom.com/search?q=minimal+rug&type=product'],['Bohemian','https://fableroom.com/search?q=bohemian+rug&type=product']]},
+    technique:{count:'03',title:'Compare rug techniques.',copy:'Choose hand-knotted, hand-tufted, hand-woven or washable rugs by pile and feel.',image:'assets/rug-craft-poster.jpg',alt:'Close view of rug craftsmanship',links:[['Hand-Knotted','https://fableroom.com/collections/hand-knotted-rugs'],['Hand-Tufted','https://fableroom.com/collections/hand-tufted-rugs'],['Hand-Woven','https://fableroom.com/collections/all-hand-woven-rugs-collection'],['Washable','https://fableroom.com/search?q=washable+rug&type=product']]},
+    colour:{count:'04',title:'Shop rugs by colour.',copy:'Find neutral, beige, cream, grey, blue, red and multicolour rugs for your palette.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[['Neutral','https://fableroom.com/search?q=neutral+rug&type=product'],['Blue','https://fableroom.com/search?q=blue+rug&type=product'],['Red','https://fableroom.com/search?q=red+rug&type=product'],['Multicolour','https://fableroom.com/search?q=multicolour+rug&type=product']]},
+    material:{count:'05',title:'Choose a rug material.',copy:'Compare wool rugs, jute rugs, bamboo silk carpets and easy-care PET fibres.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[['Wool','https://fableroom.com/search?q=wool+rug&type=product'],['Jute','https://fableroom.com/search?q=jute+rug&type=product'],['Bamboo Silk','https://fableroom.com/search?q=bamboo+silk+rug&type=product'],['PET','https://fableroom.com/search?q=PET+rug&type=product']]},
+    budget:{count:'06',title:'Find a rug for your budget.',copy:'Move from affordable area rugs under £150 to luxury handmade carpets.',image:'assets/ai-story-06-woven-banner.webp',alt:'Hand-woven rug in a styled home',links:[['Under £150','https://fableroom.com/collections/all-rugs-collection'],['£150–£300','https://fableroom.com/collections/all-rugs-collection'],['£300–£600','https://fableroom.com/collections/all-rugs-collection'],['Luxury Rugs','https://fableroom.com/search?q=luxury+rug&type=product']]}
   };
   directory.querySelectorAll('.shop-paths__tab').forEach(tab=>{
     tab.addEventListener('click',()=>{
