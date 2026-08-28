@@ -875,10 +875,8 @@ body > section + section{margin-top:10px;}
   background:transparent;
   --hero-scene-opacity:0;
   --rug-reveal:0%;
-  --rug-layer-opacity:0;
   --rug-roll-opacity:0;
   --rug-shape:polygon(38% 56%,100% 56%,100% 100%,24% 100%,24% 84%);
-  --hero-image:none;
   clip-path:none;
   transition:none;
   backface-visibility:hidden;
@@ -888,7 +886,6 @@ body > section + section{margin-top:10px;}
   opacity:var(--hero-scene-opacity);
   will-change:opacity;
 }
-.hero__scene::before,
 .hero__scene::after{
   content:"";
   position:absolute;
@@ -896,22 +893,8 @@ body > section + section{margin-top:10px;}
   pointer-events:none;
   clip-path:var(--rug-shape);
 }
-.hero__scene::before{
-  z-index:2;
-  opacity:var(--rug-layer-opacity);
-  background-image:var(--hero-image);
-  background-size:cover;
-  background-position:center center;
-  background-repeat:no-repeat;
-  filter:brightness(1.14) contrast(1.035);
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 var(--rug-reveal),transparent calc(var(--rug-reveal) + .2%));
-  mask-image:linear-gradient(to bottom,#000 0,#000 var(--rug-reveal),transparent calc(var(--rug-reveal) + .2%));
-  -webkit-mask-repeat:no-repeat;
-  mask-repeat:no-repeat;
-  will-change:opacity,-webkit-mask-image,mask-image;
-}
 .hero__scene::after{
-  z-index:3;
+  z-index:2;
   opacity:var(--rug-roll-opacity);
   background:linear-gradient(to bottom,
     transparent 0,
@@ -923,9 +906,9 @@ body > section + section{margin-top:10px;}
   filter:drop-shadow(0 12px 12px rgba(18,14,9,.18));
   will-change:opacity,background;
 }
-.hero__scene:nth-child(1){z-index:1; --hero-scene-opacity:1; --hero-image:url('assets/hero-spotlight-01-desktop.webp');}
-.hero__scene:nth-child(2){z-index:2; --hero-image:url('assets/hero-spotlight-02-desktop.webp'); --rug-shape:polygon(42% 57%,100% 58%,100% 100%,25% 100%,25% 86%);}
-.hero__scene:nth-child(3){z-index:3; --hero-image:url('assets/hero-spotlight-03-desktop.webp'); --rug-shape:polygon(48% 51%,100% 61%,100% 100%,25% 100%,25% 84%);}
+.hero__scene:nth-child(1){z-index:1; --hero-scene-opacity:1;}
+.hero__scene:nth-child(2){z-index:2; --rug-shape:polygon(42% 57%,100% 58%,100% 100%,25% 100%,25% 86%);}
+.hero__scene:nth-child(3){z-index:3; --rug-shape:polygon(48% 51%,100% 61%,100% 100%,25% 100%,25% 84%);}
 .hero__scene.is-active{opacity:1;}
 .hero__scrim{z-index:8;}
 .hero__content{z-index:9;}
@@ -936,9 +919,8 @@ body > section + section{margin-top:10px;}
 
 /* Mobile trust badges: all three remain visible in one horizontal row. */
 @media (max-width:760px){
-  .hero__scene:nth-child(1){--hero-image:url('assets/hero-spotlight-01-mobile.webp');}
-  .hero__scene:nth-child(2){--hero-image:url('assets/hero-spotlight-02-mobile.webp'); --rug-shape:polygon(58% 47%,100% 48%,100% 94%,0 87%,0 65%);}
-  .hero__scene:nth-child(3){--hero-image:url('assets/hero-spotlight-03-mobile.webp'); --rug-shape:polygon(28% 50%,100% 55%,100% 95%,0 92%,0 61%);}
+  .hero__scene:nth-child(2){--rug-shape:polygon(58% 47%,100% 48%,100% 94%,0 87%,0 65%);}
+  .hero__scene:nth-child(3){--rug-shape:polygon(28% 50%,100% 55%,100% 95%,0 92%,0 61%);}
   .trust__badges{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
@@ -1755,14 +1737,10 @@ window.addEventListener('load', ()=>{
       let unfold = index === 0 ? 1 : clamp((travelled-(index-1)*segment)/unfoldDistance);
       if(reduceMotion && index > 0) unfold = unfold < .5 ? 0 : 1;
       const eased = unfold*unfold*(3-2*unfold);
-      const sceneOpacity = index === 0 ? 1 : clamp((unfold-.72)/.28);
-      const layerIn = index === 0 ? 0 : clamp(unfold/.08);
-      const layerOut = index === 0 ? 0 : 1-clamp((unfold-.84)/.16);
-      const layerOpacity = layerIn*layerOut;
+      const sceneOpacity = index === 0 ? 1 : eased;
       const rollOpacity = index === 0 ? 0 : Math.sin(unfold*Math.PI)*.92;
       scene.style.setProperty('--hero-scene-opacity',sceneOpacity.toFixed(3));
       scene.style.setProperty('--rug-reveal',`${(eased*100).toFixed(2)}%`);
-      scene.style.setProperty('--rug-layer-opacity',layerOpacity.toFixed(3));
       scene.style.setProperty('--rug-roll-opacity',rollOpacity.toFixed(3));
       if(unfold > .001) active = index;
     });
