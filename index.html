@@ -1762,7 +1762,7 @@ window.addEventListener('load', ()=>{
     const distance = Math.max(1,hero.offsetHeight-window.innerHeight);
     const travelled = Math.min(distance,Math.max(0,-rect.top));
     const segment = distance/(scenes.length-1);
-    const unfoldDistance = segment*.36;
+    const unfoldDistance = segment*.52;
     let active = 0;
     let rugProgress = 0;
     let rugOpacity = 0;
@@ -1771,12 +1771,12 @@ window.addEventListener('load', ()=>{
     scenes.forEach((scene,index)=>{
       let unfold = index === 0 ? 1 : clamp((travelled-(index-1)*segment)/unfoldDistance);
       if(reduceMotion && index > 0) unfold = unfold < .5 ? 0 : 1;
-      const eased = unfold*unfold*(3-2*unfold);
+      const eased = unfold*unfold*unfold*(unfold*(unfold*6-15)+10);
       scene.style.setProperty('--hero-unfold',`${(eased*100).toFixed(2)}%`);
       if(unfold > .001) active = index;
       if(index > 0 && unfold > 0 && unfold < 1){
         rugProgress = eased*100;
-        rugOpacity = Math.sin(unfold*Math.PI)*.48;
+        rugOpacity = Math.sin(unfold*Math.PI)*.70;
         rugScene = index;
       }
     });
