@@ -92,6 +92,10 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 .section{padding:5px 0;}
 .section--tight{padding:5px 0;}
 
+/* Exact inter-section rhythm requested for desktop and mobile. */
+body > section{margin:0;}
+body > section + section{margin-top:10px;}
+
 .section-head{
   display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
   margin-bottom:40px; flex-wrap:wrap;
@@ -292,23 +296,70 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 }
 
 /* ============================================================
-   TRUSTPILOT STRIP
+   SCROLL-LED REVIEWS — the rug unfolds as the visitor reads
    ============================================================ */
 .trust{
-  position:relative; isolation:isolate; overflow:hidden;
+  --review-progress:0;
+  --review-remaining:1;
+  position:relative; isolation:isolate;
+  height:clamp(860px, 165vh, 1320px);
   border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-  padding:5px 0;
+  background:var(--white);
 }
-.trust::before{
-  content:''; position:absolute; inset:0; z-index:-2;
-  background:url('assets/hero-bidjar-red.webp') center 30% / cover no-repeat;
+.trust__sticky{
+  position:sticky; top:76px;
+  min-height:calc(100vh - 76px);
+  display:flex; align-items:center;
+  overflow:hidden; padding:5px 0;
 }
-.trust::after{
-  content:''; position:absolute; inset:0; z-index:-1;
-  background:rgba(255,255,255,.92);
+.trust__experience{
+  width:100%; display:grid;
+  grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);
+  gap:clamp(30px,5vw,72px); align-items:center;
+}
+.trust__rug-stage{
+  position:relative; height:clamp(390px,66vh,620px);
+  overflow:hidden; border-radius:2px;
+  background:#e7dfd2;
+  box-shadow:0 18px 50px rgba(26,26,26,.12);
+}
+.trust__rug{
+  position:absolute; inset:0;
+  clip-path:inset(0 0 calc(var(--review-remaining) * 100%) 0);
+  filter:saturate(.9) contrast(.96);
+}
+.trust__rug img{width:100%; height:100%; object-fit:cover; object-position:center top;}
+.trust__rug-roll{
+  position:absolute; z-index:2; left:-2%; width:104%; height:22px;
+  top:clamp(0px, calc(var(--review-progress) * 100% - 11px), calc(100% - 22px));
+  border-radius:50%;
+  background:url('assets/hero-bidjar-red.webp') center / 100% auto;
+  box-shadow:0 7px 13px rgba(26,26,26,.3), inset 0 2px 2px rgba(255,255,255,.28);
+  transform:scaleY(calc(.72 + var(--review-progress) * .28));
+}
+.trust__rug-caption{
+  position:absolute; z-index:3; left:18px; top:18px;
+  padding:8px 11px; background:rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.65);
+  font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+}
+.trust__content{min-width:0;}
+.trust__hint{
+  display:flex; align-items:center; gap:9px; margin-bottom:24px;
+  font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
+}
+.trust__hint::before{content:'↓'; font-size:15px; color:var(--ink);}
+.trust__hint span{display:block; height:1px; width:44px; background:var(--line-strong);}
+.trust__progress{
+  flex:1; height:1px; background:var(--line);
+  position:relative; overflow:hidden;
+}
+.trust__progress::after{
+  content:''; position:absolute; inset:0; background:var(--ink);
+  transform:scaleX(var(--review-progress)); transform-origin:left center;
 }
 .trust__row{
-  display:flex; gap:56px; align-items:flex-start; flex-wrap:wrap;
+  display:flex; gap:42px; align-items:flex-start; flex-wrap:nowrap;
 }
 .trust__score{flex:none; width:200px;}
 .trust__score .eyebrow{margin-bottom:10px;}
@@ -324,12 +375,8 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 }
 .trust__track{
   display:flex; gap:14px; width:max-content;
-  animation:trust-marquee 26s linear infinite;
-}
-.trust__marquee:hover .trust__track{animation-play-state:paused;}
-@keyframes trust-marquee{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
+  transform:translateX(calc(var(--review-progress) * -47%));
+  will-change:transform;
 }
 .trust__quote{
   flex:none; width:188px; padding:14px;
@@ -352,12 +399,84 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
   font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft);
 }
 .trust__badge svg{width:15px; height:15px; stroke:var(--ink); flex:none;}
-@media (prefers-reduced-motion: reduce){
-  .trust__track{animation:none;}
+@media (max-width:760px){
+  .trust{height:max(900px, 172vh);}
+  .trust__sticky{top:64px; min-height:calc(100vh - 64px); padding:10px 0;}
+  .trust__experience{grid-template-columns:1fr; grid-template-rows:190px auto; gap:18px;}
+  .trust__rug-stage{height:190px; width:100%;}
+  .trust__rug img{object-position:center 38%;}
+  .trust__rug-caption{left:12px; top:12px; padding:6px 9px; font-size:9px;}
+  .trust__hint{margin-bottom:12px;}
+  .trust__row{display:block;}
+  .trust__score{width:auto; display:grid; grid-template-columns:auto 1fr; column-gap:14px; align-items:center; margin-bottom:14px;}
+  .trust__score .eyebrow,.trust__score a{grid-column:1 / -1;}
+  .trust__score .eyebrow{margin-bottom:3px;}
+  .trust__score b{font-size:36px;}
+  .trust__score .trust__stars{margin:0;}
+  .trust__score span{grid-column:2;}
+  .trust__score a{margin-top:8px; width:max-content;}
+  .trust__marquee{-webkit-mask-image:linear-gradient(90deg,black 92%,transparent); mask-image:linear-gradient(90deg,black 92%,transparent);}
+  .trust__track{transform:translateX(calc(var(--review-progress) * -52%));}
+  .trust__quote{width:210px; padding:12px;}
+  .trust__badges{flex-wrap:nowrap; overflow-x:auto; margin-top:14px; padding-top:14px; scrollbar-width:none;}
+  .trust__badges::-webkit-scrollbar{display:none;}
+  .trust__badge{flex:none; padding:8px 12px;}
 }
-@media (max-width:640px){
-  .trust::before{background:none;}
-  .trust::after{background:var(--white);}
+@media (prefers-reduced-motion:reduce){
+  .trust{height:auto;}
+  .trust__sticky{position:relative; top:auto; min-height:auto; padding:30px 0;}
+  .trust__rug{clip-path:none;}
+  .trust__rug-roll{display:none;}
+  .trust__track{transform:none;}
+}
+
+/* ============================================================
+   SHOP YOUR WAY — original directory inspired by shopping lenses
+   ============================================================ */
+.shop-paths{border-top:1px solid var(--line); background:var(--cream);}
+.shop-paths__intro{max-width:58ch; margin-bottom:28px;}
+.shop-paths__intro h2{font-size:clamp(28px,3.4vw,42px); margin:8px 0 8px;}
+.shop-paths__intro p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+.shop-paths__directory{
+  display:grid; grid-template-columns:240px minmax(0,1fr);
+  border:1px solid var(--line-strong); min-height:430px;
+}
+.shop-paths__tabs{display:flex; flex-direction:column; border-right:1px solid var(--line-strong);}
+.shop-paths__tab{
+  flex:1; min-height:66px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:16px 20px; border:0; border-bottom:1px solid var(--line); background:transparent;
+  color:var(--ink-soft); text-align:left; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  transition:background .3s var(--ease), color .3s var(--ease);
+}
+.shop-paths__tab:last-child{border-bottom:0;}
+.shop-paths__tab::after{content:'↗'; font-size:14px; font-weight:400; opacity:.35;}
+.shop-paths__tab.is-active{background:var(--ink); color:var(--white);}
+.shop-paths__tab.is-active::after{opacity:1;}
+.shop-paths__panel{display:grid; grid-template-columns:minmax(300px,1.18fr) minmax(280px,.82fr); min-width:0;}
+.shop-paths__image{position:relative; overflow:hidden; min-height:430px; background:var(--white);}
+.shop-paths__image img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:opacity .3s ease, transform .7s var(--ease-slow);}
+.shop-paths__panel.is-changing .shop-paths__image img{opacity:.35; transform:scale(1.02);}
+.shop-paths__body{padding:clamp(26px,4vw,48px); display:flex; flex-direction:column; justify-content:center;}
+.shop-paths__count{font-family:var(--serif); color:var(--ink-faint); font-size:16px;}
+.shop-paths__body h3{font-size:clamp(28px,3vw,38px); margin:14px 0 8px;}
+.shop-paths__body > p{font-size:14px; color:var(--ink-soft); margin:0 0 24px; max-width:36ch;}
+.shop-paths__links{display:flex; flex-wrap:wrap; gap:9px;}
+.shop-paths__links a{
+  border:1px solid var(--line-strong); padding:10px 13px; border-radius:20px;
+  font-size:11px; font-weight:700; letter-spacing:.04em;
+  transition:background .25s ease,color .25s ease;
+}
+.shop-paths__links a:hover{background:var(--ink); color:var(--white);}
+@media (max-width:760px){
+  .shop-paths__intro{margin-bottom:18px;}
+  .shop-paths__directory{display:block; min-height:0; border-left:0; border-right:0;}
+  .shop-paths__tabs{flex-direction:row; overflow-x:auto; border-right:0; border-bottom:1px solid var(--line-strong); scrollbar-width:none;}
+  .shop-paths__tabs::-webkit-scrollbar{display:none;}
+  .shop-paths__tab{flex:none; min-height:0; padding:13px 16px; border-right:1px solid var(--line); border-bottom:0; white-space:nowrap;}
+  .shop-paths__panel{grid-template-columns:1fr;}
+  .shop-paths__image{min-height:250px;}
+  .shop-paths__body{padding:24px 0 4px;}
+  .shop-paths__body h3{font-size:28px;}
 }
 
 /* ============================================================
@@ -609,8 +728,8 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
   <div class="hero__scrim"></div>
   <div class="hero__content reveal">
     <div class="hero__eyebrow">Over 300 handmade designs</div>
-    <h1>Rugs Made to Last.<br>Priced to Make Sense.</h1>
-    <p>Every rug here was made by hand, usually over weeks, sometimes months. We work directly with the people who make them, no importers, no distributors, so the price reflects the rug, not the chain of hands it passed through.</p>
+    <h1>Handmade Rugs.<br>Honest Prices.</h1>
+    <p>Made by skilled hands. Sourced directly. Designed to last.</p>
     <div class="hero__rooms">
       <a href="https://fableroom.com/collections/living-room-rugs">Living Room</a>
       <a href="https://fableroom.com/collections/bedroom-rugs">Bedroom</a>
@@ -687,17 +806,26 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 </section>
 
 <!-- ================= TRUSTPILOT STRIP ================= -->
-<section class="trust">
-  <div class="container trust__row reveal">
-    <div class="trust__score">
-      <div class="eyebrow">Customer Reviews</div>
-      <b>4.6</b>
-      <div class="trust__stars">★★★★★</div>
-      <span>EXCELLENT · 1,260 TRUSTPILOT REVIEWS</span>
-      <a href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">Read Verified Reviews</a>
-    </div>
-    <div class="trust__marquee">
-      <div class="trust__track">
+<section class="trust" data-rug-reviews>
+  <div class="trust__sticky">
+    <div class="container trust__experience">
+      <div class="trust__rug-stage" aria-hidden="true">
+        <div class="trust__rug"><img src="assets/hero-bidjar-red.webp" alt=""></div>
+        <div class="trust__rug-roll"></div>
+        <div class="trust__rug-caption">Scroll to unfold</div>
+      </div>
+      <div class="trust__content">
+        <div class="trust__hint" aria-hidden="true">Your scroll reveals the story <span></span><i class="trust__progress"></i></div>
+        <div class="trust__row">
+          <div class="trust__score">
+            <div class="eyebrow">Customer Reviews</div>
+            <b>4.6</b>
+            <div class="trust__stars">★★★★★</div>
+            <span>EXCELLENT · 1,260 TRUSTPILOT REVIEWS</span>
+            <a href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">Read Verified Reviews</a>
+          </div>
+          <div class="trust__marquee">
+            <div class="trust__track">
         <div class="trust__quote">
           <div class="trust__stars">★★★★★</div>
           <p>&ldquo;Luxury quality, with great service.&rdquo;</p>
@@ -737,23 +865,59 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
           <div class="trust__stars">★★★★★</div>
           <p>&ldquo;First time ordering and I wasn't disappointed. I'll definitely be returning.&rdquo;</p>
           <cite>Yvonne · Verified Buyer</cite>
+        </div>
+            </div>
+          </div>
+        </div>
+        <div class="trust__badges">
+          <div class="trust__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3c3 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-7 6-10z"/></svg>
+            <span>B Corp&trade; Certified</span>
+          </div>
+          <div class="trust__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3l2.4 5.5 6 .6-4.5 4 1.3 6-5.2-3.2-5.2 3.2 1.3-6-4.5-4 6-.6z"/></svg>
+            <span>4.6 Excellent on Trustpilot</span>
+          </div>
+          <div class="trust__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
+            <span>30-Day Returns</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- ================= SHOP RUGS YOUR WAY ================= -->
+<section class="shop-paths section" aria-labelledby="shop-paths-title">
   <div class="container">
-    <div class="trust__badges reveal">
-      <div class="trust__badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3c3 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-7 6-10z"/></svg>
-        <span>B Corp&trade; Certified</span>
+    <div class="shop-paths__intro reveal">
+      <div class="eyebrow">Shop Rugs Your Way</div>
+      <h2 id="shop-paths-title">Start with what matters most.</h2>
+      <p>Room, look, colour or craft—choose your way in.</p>
+    </div>
+    <div class="shop-paths__directory reveal" data-shop-paths>
+      <div class="shop-paths__tabs" role="tablist" aria-label="Ways to shop rugs">
+        <button class="shop-paths__tab is-active" type="button" role="tab" aria-selected="true" data-path="room">Room</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="style">Style</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="technique">Technique</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="colour">Colour</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="material">Material</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="budget">Budget</button>
       </div>
-      <div class="trust__badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3l2.4 5.5 6 .6-4.5 4 1.3 6-5.2-3.2-5.2 3.2 1.3-6-4.5-4 6-.6z"/></svg>
-        <span>4.6 Excellent on Trustpilot</span>
-      </div>
-      <div class="trust__badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
-        <span>30-Day Returns</span>
+      <div class="shop-paths__panel" role="tabpanel">
+        <div class="shop-paths__image"><img src="assets/ai-story-08-room-meadow.webp" alt="Rug styled in a living room" data-path-image></div>
+        <div class="shop-paths__body">
+          <span class="shop-paths__count" data-path-count>01</span>
+          <h3 data-path-title>Begin with the room.</h3>
+          <p data-path-copy>Choose proportions and finishes around the space you are furnishing.</p>
+          <div class="shop-paths__links" data-path-links>
+            <a href="https://fableroom.com/collections/living-room-rugs">Living Room</a>
+            <a href="https://fableroom.com/collections/bedroom-rugs">Bedroom</a>
+            <a href="https://fableroom.com/collections/dining-room">Dining Room</a>
+            <a href="https://fableroom.com/collections/outdoor-rugs">Outdoor</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1230,6 +1394,67 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     if(!open){ marker.classList.add('is-open'); card.classList.add('is-open'); }
   });
 });
+
+/* ---------- Scroll-driven rug unfold and review reading ---------- */
+(function(){
+  const section = document.querySelector('[data-rug-reviews]');
+  if(!section) return;
+  let ticking = false;
+  const update = ()=>{
+    const rect = section.getBoundingClientRect();
+    const distance = Math.max(1, section.offsetHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, -rect.top / distance));
+    section.style.setProperty('--review-progress', progress.toFixed(4));
+    section.style.setProperty('--review-remaining', (1-progress).toFixed(4));
+    ticking = false;
+  };
+  const requestUpdate = ()=>{
+    if(!ticking){ requestAnimationFrame(update); ticking = true; }
+  };
+  update();
+  addEventListener('scroll', requestUpdate, {passive:true});
+  addEventListener('resize', requestUpdate, {passive:true});
+})();
+
+/* ---------- Original shop-by directory ---------- */
+(function(){
+  const directory = document.querySelector('[data-shop-paths]');
+  if(!directory) return;
+  const panel = directory.querySelector('.shop-paths__panel');
+  const image = directory.querySelector('[data-path-image]');
+  const count = directory.querySelector('[data-path-count]');
+  const title = directory.querySelector('[data-path-title]');
+  const copy = directory.querySelector('[data-path-copy]');
+  const links = directory.querySelector('[data-path-links]');
+  const paths = {
+    room:{count:'01',title:'Begin with the room.',copy:'Choose proportions and finishes around the space you are furnishing.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[['Living Room','https://fableroom.com/collections/living-room-rugs'],['Bedroom','https://fableroom.com/collections/bedroom-rugs'],['Dining Room','https://fableroom.com/collections/dining-room'],['Outdoor','https://fableroom.com/collections/outdoor-rugs']]},
+    style:{count:'02',title:'Follow the look you love.',copy:'Move from enduring pattern to quieter, more contemporary rooms.',image:'assets/hero-heritage-sand.webp',alt:'Heritage patterned rug in a warm neutral palette',links:[['Persian','https://fableroom.com/search?q=persian+rug&type=product'],['Modern','https://fableroom.com/search?q=modern+rug&type=product'],['Minimal','https://fableroom.com/search?q=minimal+rug&type=product'],['Bohemian','https://fableroom.com/search?q=bohemian+rug&type=product']]},
+    technique:{count:'03',title:'Choose how it is made.',copy:'Compare the density, softness and everyday character of each technique.',image:'assets/rug-craft-poster.jpg',alt:'Close view of rug craftsmanship',links:[['Hand-Knotted','https://fableroom.com/collections/hand-knotted-rugs'],['Hand-Tufted','https://fableroom.com/collections/hand-tufted-rugs'],['Hand-Woven','https://fableroom.com/collections/all-hand-woven-rugs-collection'],['Washable','https://fableroom.com/search?q=washable+rug&type=product']]},
+    colour:{count:'04',title:'Set the room\'s colour.',copy:'Find a rug that settles the palette or becomes its focal point.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[['Neutral','https://fableroom.com/search?q=neutral+rug&type=product'],['Blue','https://fableroom.com/search?q=blue+rug&type=product'],['Red','https://fableroom.com/search?q=red+rug&type=product'],['Multicolour','https://fableroom.com/search?q=multicolour+rug&type=product']]},
+    material:{count:'05',title:'Start with the feel.',copy:'Choose natural texture, soft wool or an easier everyday finish.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[['Wool','https://fableroom.com/search?q=wool+rug&type=product'],['Jute','https://fableroom.com/search?q=jute+rug&type=product'],['Bamboo Silk','https://fableroom.com/search?q=bamboo+silk+rug&type=product'],['PET','https://fableroom.com/search?q=PET+rug&type=product']]},
+    budget:{count:'06',title:'Shop within your range.',copy:'See the strongest handmade choices at the price that works for you.',image:'assets/ai-story-06-woven-banner.webp',alt:'Hand-woven rug in a styled home',links:[['Under £150','https://fableroom.com/collections/all-rugs-collection'],['£150–£300','https://fableroom.com/collections/all-rugs-collection'],['£300–£600','https://fableroom.com/collections/all-rugs-collection'],['Luxury Rugs','https://fableroom.com/search?q=luxury+rug&type=product']]}
+  };
+  directory.querySelectorAll('.shop-paths__tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      const data = paths[tab.dataset.path];
+      if(!data || tab.classList.contains('is-active')) return;
+      directory.querySelectorAll('.shop-paths__tab').forEach(item=>{
+        const active = item === tab;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-selected', String(active));
+      });
+      panel.classList.add('is-changing');
+      setTimeout(()=>{
+        image.src=data.image; image.alt=data.alt; count.textContent=data.count;
+        title.textContent=data.title; copy.textContent=data.copy;
+        links.replaceChildren(...data.links.map(([label,href])=>{
+          const a=document.createElement('a'); a.href=href; a.textContent=label; return a;
+        }));
+        panel.classList.remove('is-changing');
+      },160);
+    });
+  });
+})();
 </script>
 
 </body>
