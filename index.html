@@ -870,7 +870,7 @@ body > section + section{margin-top:10px;}
   background:#e9e3d3;
 }
 .hero__scene{
-  opacity:1;
+  opacity:var(--hero-scene-opacity);
   z-index:0;
   background:transparent;
   --hero-scene-opacity:0;
@@ -882,9 +882,8 @@ body > section + section{margin-top:10px;}
   backface-visibility:hidden;
 }
 .hero__scene picture{
-  z-index:1;
-  opacity:var(--hero-scene-opacity);
-  will-change:opacity;
+  z-index:auto;
+  opacity:1;
 }
 .hero__scene::after{
   content:"";
@@ -909,7 +908,7 @@ body > section + section{margin-top:10px;}
 .hero__scene:nth-child(1){z-index:1; --hero-scene-opacity:1;}
 .hero__scene:nth-child(2){z-index:2; --rug-shape:polygon(42% 57%,100% 58%,100% 100%,25% 100%,25% 86%);}
 .hero__scene:nth-child(3){z-index:3; --rug-shape:polygon(48% 51%,100% 61%,100% 100%,25% 100%,25% 84%);}
-.hero__scene.is-active{opacity:1;}
+.hero__scene.is-active{opacity:var(--hero-scene-opacity);}
 .hero__scrim{z-index:8;}
 .hero__content{z-index:9;}
 @supports not (height:100svh){
