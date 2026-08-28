@@ -867,48 +867,38 @@ body > section + section{margin-top:10px;}
   overflow:hidden;
   display:flex;
   align-items:flex-end;
-  background:#e9e3d3;
+  --hero-roll-y:-8%;
+  --hero-roll-opacity:0;
 }
-.hero__scene{
-  opacity:var(--hero-scene-opacity);
-  z-index:0;
-  background:transparent;
-  --hero-scene-opacity:0;
-  --rug-reveal:0%;
-  --rug-roll-opacity:0;
-  --rug-shape:polygon(38% 56%,100% 56%,100% 100%,24% 100%,24% 84%);
-  clip-path:none;
-  transition:none;
-  backface-visibility:hidden;
-}
-.hero__scene picture{
-  z-index:auto;
-  opacity:1;
-}
-.hero__scene::after{
+.hero__stage::after{
   content:"";
   position:absolute;
-  inset:0;
+  z-index:7;
+  left:0;
+  right:0;
+  top:var(--hero-roll-y);
+  height:clamp(18px,3.2vw,44px);
+  transform:translateY(-50%);
+  opacity:var(--hero-roll-opacity);
   pointer-events:none;
-  clip-path:var(--rug-shape);
+  background:linear-gradient(180deg,transparent 0%,rgba(255,255,255,.2) 40%,rgba(18,14,9,.2) 62%,transparent 100%);
+  box-shadow:0 16px 28px rgba(18,14,9,.2),0 -8px 18px rgba(255,255,255,.08);
+  will-change:top,opacity;
 }
-.hero__scene::after{
-  z-index:2;
-  opacity:var(--rug-roll-opacity);
-  background:linear-gradient(to bottom,
-    transparent 0,
-    transparent calc(var(--rug-reveal) - 3%),
-    rgba(255,255,255,.18) calc(var(--rug-reveal) - 1%),
-    rgba(20,15,9,.26) var(--rug-reveal),
-    transparent calc(var(--rug-reveal) + 3%),
-    transparent 100%);
-  filter:drop-shadow(0 12px 12px rgba(18,14,9,.18));
-  will-change:opacity,background;
+.hero__scene{
+  opacity:1;
+  z-index:0;
+  --hero-unfold:0%;
+  clip-path:inset(0 0 calc(100% - var(--hero-unfold)) 0);
+  transition:none;
+  will-change:clip-path;
+  backface-visibility:hidden;
 }
-.hero__scene:nth-child(1){z-index:1; --hero-scene-opacity:1;}
-.hero__scene:nth-child(2){z-index:2; --rug-shape:polygon(42% 57%,100% 58%,100% 100%,25% 100%,25% 86%);}
-.hero__scene:nth-child(3){z-index:3; --rug-shape:polygon(48% 51%,100% 61%,100% 100%,25% 100%,25% 84%);}
-.hero__scene.is-active{opacity:var(--hero-scene-opacity);}
+.hero__scene:first-child{--hero-unfold:100%;}
+.hero__scene:nth-child(1){z-index:1;}
+.hero__scene:nth-child(2){z-index:2;}
+.hero__scene:nth-child(3){z-index:3;}
+.hero__scene.is-active{opacity:1;}
 .hero__scrim{z-index:8;}
 .hero__content{z-index:9;}
 @supports not (height:100svh){
@@ -918,8 +908,6 @@ body > section + section{margin-top:10px;}
 
 /* Mobile trust badges: all three remain visible in one horizontal row. */
 @media (max-width:760px){
-  .hero__scene:nth-child(2){--rug-shape:polygon(58% 47%,100% 48%,100% 94%,0 87%,0 65%);}
-  .hero__scene:nth-child(3){--rug-shape:polygon(28% 50%,100% 55%,100% 95%,0 92%,0 61%);}
   .trust__badges{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
@@ -1731,17 +1719,19 @@ window.addEventListener('load', ()=>{
     const segment = distance/(scenes.length-1);
     const unfoldDistance = segment*.36;
     let active = 0;
+    let rollY = -8;
+    let rollOpacity = 0;
 
     scenes.forEach((scene,index)=>{
       let unfold = index === 0 ? 1 : clamp((travelled-(index-1)*segment)/unfoldDistance);
       if(reduceMotion && index > 0) unfold = unfold < .5 ? 0 : 1;
       const eased = unfold*unfold*(3-2*unfold);
-      const sceneOpacity = index === 0 ? 1 : eased;
-      const rollOpacity = index === 0 ? 0 : Math.sin(unfold*Math.PI)*.92;
-      scene.style.setProperty('--hero-scene-opacity',sceneOpacity.toFixed(3));
-      scene.style.setProperty('--rug-reveal',`${(eased*100).toFixed(2)}%`);
-      scene.style.setProperty('--rug-roll-opacity',rollOpacity.toFixed(3));
+      scene.style.setProperty('--hero-unfold',`${(eased*100).toFixed(2)}%`);
       if(unfold > .001) active = index;
+      if(index > 0 && unfold > 0 && unfold < 1){
+        rollY = eased*100;
+        rollOpacity = Math.sin(unfold*Math.PI)*.92;
+      }
     });
 
     scenes.forEach((scene,index)=>{
@@ -1749,6 +1739,8 @@ window.addEventListener('load', ()=>{
       scene.classList.toggle('is-active',isActive);
       scene.setAttribute('aria-hidden',String(!isActive));
     });
+    stage.style.setProperty('--hero-roll-y',`${rollY.toFixed(2)}%`);
+    stage.style.setProperty('--hero-roll-opacity',rollOpacity.toFixed(3));
     ticking = false;
   }
   function requestUpdate(){
