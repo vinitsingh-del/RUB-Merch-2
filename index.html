@@ -879,6 +879,87 @@ body > section + section{margin-top:10px;}
   }
   .trust__badge svg{width:9px; height:9px;}
 }
+
+/* Hero image framing only: show every lifestyle image in full, without slideshow crop. */
+.hero__scene img{
+  object-fit:contain;
+  object-position:center center !important;
+  transform:none !important;
+}
+
+/* Mobile reassurance strip only: one swipeable row with an inward-moving sheen. */
+@media (max-width:760px){
+  .reassure{overflow:hidden;}
+  .reassure__row{
+    display:flex;
+    width:100%;
+    max-width:none;
+    overflow-x:auto;
+    overflow-y:hidden;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .reassure__row::-webkit-scrollbar{display:none;}
+  .reassure__item{
+    position:relative;
+    isolation:isolate;
+    flex:0 0 clamp(252px,82vw,340px);
+    overflow:hidden;
+    border-top:0;
+    border-left:1px solid var(--line);
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+  }
+  .reassure__item:first-child{border-left:0;}
+  .reassure__item > svg,
+  .reassure__item > div{position:relative; z-index:1;}
+  .reassure__item::before,
+  .reassure__item::after{
+    content:"";
+    position:absolute;
+    z-index:0;
+    top:0;
+    bottom:0;
+    width:34%;
+    pointer-events:none;
+    opacity:0;
+    animation-duration:4.2s;
+    animation-timing-function:var(--ease);
+    animation-iteration-count:infinite;
+    animation-delay:var(--shine-delay,0s);
+  }
+  .reassure__item::before{
+    left:-34%;
+    background:linear-gradient(90deg,transparent,rgba(168,132,63,.12),rgba(255,255,255,.88),transparent);
+    animation-name:reassure-shine-left;
+  }
+  .reassure__item::after{
+    right:-34%;
+    background:linear-gradient(270deg,transparent,rgba(168,132,63,.12),rgba(255,255,255,.88),transparent);
+    animation-name:reassure-shine-right;
+  }
+  .reassure__item:nth-child(2){--shine-delay:.45s;}
+  .reassure__item:nth-child(3){--shine-delay:.9s;}
+  .reassure__item:nth-child(4){--shine-delay:1.35s;}
+}
+@keyframes reassure-shine-left{
+  0%,55%{opacity:0; transform:translateX(0) skewX(-16deg);}
+  60%{opacity:.82;}
+  82%{opacity:.4; transform:translateX(205%) skewX(-16deg);}
+  100%{opacity:0; transform:translateX(205%) skewX(-16deg);}
+}
+@keyframes reassure-shine-right{
+  0%,55%{opacity:0; transform:translateX(0) skewX(16deg);}
+  60%{opacity:.82;}
+  82%{opacity:.4; transform:translateX(-205%) skewX(16deg);}
+  100%{opacity:0; transform:translateX(-205%) skewX(16deg);}
+}
+@media (prefers-reduced-motion:reduce){
+  .reassure__item::before,
+  .reassure__item::after{animation:none;}
+}
 </style>
 </head>
 <body>
