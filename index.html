@@ -218,6 +218,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 @media (max-width:640px){
   .hero{min-height:560px;}
   .hero__content{padding-bottom:40px;}
+  .hero__scene:nth-child(3) img{object-position:85% 38%;}
 }
 
 /* ============================================================
@@ -353,6 +354,10 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 .trust__badge svg{width:15px; height:15px; stroke:var(--ink); flex:none;}
 @media (prefers-reduced-motion: reduce){
   .trust__track{animation:none;}
+}
+@media (max-width:640px){
+  .trust::before{background:none;}
+  .trust::after{background:var(--white);}
 }
 
 /* ============================================================
@@ -593,13 +598,13 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
   <div class="hero__scene is-active">
-    <img src="assets/hero-sand-room-v2.webp" alt="A hand-knotted rug centred beneath a living room seating arrangement, photographed from above" />
+    <img src="assets/ai-story-01-hero-morning.webp" alt="A hand-knotted rug centred beneath a living room seating arrangement, photographed from above" />
   </div>
   <div class="hero__scene">
-    <img src="assets/hero-heritage-sand.webp" alt="A hand-knotted rug in a heritage sand colourway, shown flat" />
+    <img src="assets/ai-story-02-hero-heritage.webp" alt="A hand-knotted rug in a heritage sand colourway, shown flat" />
   </div>
   <div class="hero__scene">
-    <img src="assets/hero-meadow-blue.webp" alt="A hand-knotted rug in a meadow blue colourway, shown flat" />
+    <img src="assets/ai-story-03-hero-meadow-blue.webp" alt="A hand-knotted rug in a meadow blue colourway, shown flat" />
   </div>
   <div class="hero__scrim"></div>
   <div class="hero__content reveal">
@@ -773,7 +778,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
       <button>Runner</button>
     </div>
     <a href="https://fableroom.com/collections/hand-knotted-rugs" class="edit__banner reveal">
-      <img src="assets/hero-ink.webp" alt="A hand-knotted rug in a jewel-toned pattern anchoring a living room seating arrangement" loading="lazy">
+      <img src="assets/ai-story-04-knotted-banner.webp" alt="A hand-knotted rug in a jewel-toned pattern anchoring a living room seating arrangement" loading="lazy">
       <div class="edit__banner__scrim"></div>
       <span class="edit__banner__cta">Explore Now</span>
     </a>
@@ -836,7 +841,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
       <button>Geometric</button>
     </div>
     <a href="https://fableroom.com/collections/hand-tufted-rugs" class="edit__banner reveal">
-      <img src="assets/mobile-bedroom-rug-v1.webp" alt="A hand-tufted rug styled beneath a bed in a warm, neutral bedroom" loading="lazy">
+      <img src="assets/ai-story-05-tufted-banner.webp" alt="A hand-tufted rug styled beneath a bed in a warm, neutral bedroom" loading="lazy">
       <div class="edit__banner__scrim"></div>
       <span class="edit__banner__cta">Explore Now</span>
     </a>
@@ -881,7 +886,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
       <button>Flatweave</button>
     </div>
     <a href="https://fableroom.com/collections/all-hand-woven-rugs-collection" class="edit__banner reveal">
-      <img src="assets/hero-teal.webp" alt="A hand-woven rug laid flat beneath a living room seating arrangement" loading="lazy">
+      <img src="assets/ai-story-06-woven-banner.webp" alt="A hand-woven rug laid flat beneath a living room seating arrangement" loading="lazy">
       <div class="edit__banner__scrim"></div>
       <span class="edit__banner__cta">Explore Now</span>
     </a>
@@ -920,7 +925,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
       <button>Living Room</button>
     </div>
     <a href="https://fableroom.com/collections/all-rugs-collection" class="edit__banner reveal">
-      <img src="assets/elm-washable-rug.webp" alt="A washable rug styled beneath a living room sofa and coffee table" loading="lazy">
+      <img src="assets/ai-story-07-washable-banner.webp" alt="A washable rug styled beneath a living room sofa and coffee table" loading="lazy">
       <div class="edit__banner__scrim"></div>
       <span class="edit__banner__cta">Explore Now</span>
     </a>
@@ -958,7 +963,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
     </div>
     <div class="room__slides reveal">
       <div class="room__slide" data-room>
-        <img src="assets/hero-meadow-room-v2.webp" alt="A hand-knotted rug centred beneath a beige living room seating arrangement, viewed from above" loading="lazy" data-crop-fix>
+        <img src="assets/ai-story-08-room-meadow.webp" alt="A hand-knotted rug centred beneath a beige living room seating arrangement, viewed from above" loading="lazy" data-crop-fix>
         <button class="room__marker" style="top:50%; left:50%;" aria-label="View rug details"><span class="room__marker__dot"></span></button>
         <div class="room__card" style="top:56%; left:56%;">
           <b>Amber Oasis Hand-Knotted Wool Rug</b>
@@ -967,7 +972,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
         </div>
       </div>
       <div class="room__slide" data-room>
-        <img src="assets/hero-ruby.webp" alt="A richly patterned hand-knotted rug beneath a living room seating arrangement, viewed from above" loading="lazy" data-crop-fix>
+        <img src="assets/ai-story-09-room-ruby.webp" alt="A richly patterned hand-knotted rug beneath a living room seating arrangement, viewed from above" loading="lazy" data-crop-fix>
         <button class="room__marker" style="top:52%; left:48%;" aria-label="View rug details"><span class="room__marker__dot"></span></button>
         <div class="room__card" style="top:58%; left:52%;">
           <b>Rovira Hand-Knotted Wool &amp; Bamboo Silk Rug</b>
@@ -976,7 +981,7 @@ h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:
         </div>
       </div>
       <div class="room__slide" data-room>
-        <img src="assets/mobile-bedroom-rug-v1.webp" alt="A hand-tufted rug placed beside a bed in a warm, neutral bedroom" loading="lazy">
+        <img src="assets/ai-story-10-room-bedroom.webp" alt="A hand-tufted rug placed beside a bed in a warm, neutral bedroom" loading="lazy">
         <button class="room__marker" style="top:70%; left:38%;" aria-label="View rug details"><span class="room__marker__dot"></span></button>
         <div class="room__card" style="top:74%; left:20%;">
           <b>Rewa Hand-Tufted Wool Rug</b>
