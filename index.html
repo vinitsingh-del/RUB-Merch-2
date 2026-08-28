@@ -851,6 +851,34 @@ body > section + section{margin-top:10px;}
   padding-left:clamp(20px,5vw,64px);
   padding-right:clamp(20px,5vw,64px);
 }
+
+/* Only the Hero occupies one complete screen on desktop and mobile. */
+.hero{
+  height:100svh;
+  min-height:100svh;
+}
+@supports not (height:100svh){
+  .hero{height:100vh; min-height:100vh;}
+}
+
+/* Mobile trust badges: all three remain visible in one horizontal row. */
+@media (max-width:760px){
+  .trust__badges{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:4px;
+    overflow:visible;
+  }
+  .trust__badge{
+    width:100%; min-width:0;
+    justify-content:center;
+    gap:3px; padding:6px 3px;
+    font-size:clamp(6px,1.8vw,7.5px);
+    letter-spacing:0;
+    white-space:nowrap;
+  }
+  .trust__badge svg{width:9px; height:9px;}
+}
 </style>
 </head>
 <body>
