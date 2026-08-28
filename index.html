@@ -916,6 +916,24 @@ body > section + section{margin-top:10px;}
   }
 }
 
+/* Hero fit only: compensate for the promo/header so every CTA stays in view. */
+@media (min-width:761px){
+  .hero__content{padding-bottom:clamp(120px,12svh,148px);}
+  .hero__eyebrow{font-size:9.5px; margin-bottom:10px;}
+  .hero h1{font-size:clamp(34px,4vw,54px); line-height:1;}
+  .hero p{font-size:14px; margin:10px 0 16px;}
+  .hero__rooms{gap:8px;}
+  .hero__rooms a{padding:8px 14px; font-size:10px;}
+}
+@media (max-width:760px){
+  .hero__content{padding:0 var(--gutter) max(88px,13svh);}
+  .hero__eyebrow{font-size:8.5px; margin-bottom:8px;}
+  .hero h1{font-size:clamp(27px,8vw,30px); line-height:1;}
+  .hero p{font-size:12.5px; line-height:1.4; margin:9px 0 13px;}
+  .hero__rooms{gap:7px;}
+  .hero__rooms a{padding:7px 6px; font-size:8.5px;}
+}
+
 /* Mobile reassurance strip only: one swipeable row with an inward-moving sheen. */
 @media (max-width:760px){
   .reassure{overflow:hidden;}
