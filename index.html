@@ -879,11 +879,10 @@ body > section + section{margin-top:10px;}
   --hero-image:none;
   clip-path:none;
   transition:none;
-  isolation:isolate;
   backface-visibility:hidden;
 }
 .hero__scene picture{
-  z-index:0;
+  z-index:1;
   opacity:var(--hero-scene-opacity);
   will-change:opacity;
 }
@@ -896,7 +895,7 @@ body > section + section{margin-top:10px;}
   clip-path:var(--rug-shape);
 }
 .hero__scene::before{
-  z-index:1;
+  z-index:2;
   opacity:var(--rug-layer-opacity);
   background-image:var(--hero-image);
   background-size:cover;
@@ -910,7 +909,7 @@ body > section + section{margin-top:10px;}
   will-change:opacity,-webkit-mask-image,mask-image;
 }
 .hero__scene::after{
-  z-index:2;
+  z-index:3;
   opacity:var(--rug-roll-opacity);
   background:linear-gradient(to bottom,
     transparent 0,
