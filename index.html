@@ -867,67 +867,21 @@ body > section + section{margin-top:10px;}
   overflow:hidden;
   display:flex;
   align-items:flex-end;
-  --hero-rug-unfold:0%;
-  --hero-rug-opacity:0;
-}
-.hero__rug-unfold{
-  position:absolute;
-  z-index:7;
-  top:clamp(22px,5svh,54px);
-  left:clamp(18px,7vw,112px);
-  right:clamp(18px,7vw,112px);
-  height:90svh;
-  opacity:var(--hero-rug-opacity);
-  pointer-events:none;
-  filter:drop-shadow(0 18px 24px rgba(18,14,9,.24));
-  will-change:opacity;
-}
-.hero__rug-surface{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  clip-path:inset(0 0 calc(100% - var(--hero-rug-unfold)) 0 round 3px);
-  border:1px solid rgba(255,255,255,.34);
-  background:rgba(235,226,207,.16);
-  will-change:clip-path;
-}
-.hero__rug-surface img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  filter:saturate(.82) contrast(.94);
-}
-.hero__rug-unfold[data-rug-scene="1"] .hero__rug-image--sand,
-.hero__rug-unfold[data-rug-scene="2"] .hero__rug-image--blue{opacity:1;}
-.hero__rug-unfold::after{
-  content:"";
-  position:absolute;
-  left:-1.2%;
-  width:102.4%;
-  top:var(--hero-rug-unfold);
-  height:clamp(22px,3.2vw,46px);
-  transform:translateY(-50%);
-  border-radius:50%;
-  background:linear-gradient(180deg,rgba(255,255,255,.38) 0%,rgba(222,210,186,.72) 42%,rgba(54,43,31,.56) 68%,rgba(17,14,10,.12) 100%);
-  box-shadow:0 15px 24px rgba(18,14,9,.28),0 -7px 14px rgba(255,255,255,.1);
 }
 .hero__scene{
-  opacity:1;
+  opacity:var(--hero-scene-opacity,0);
   z-index:0;
-  --hero-unfold:0%;
-  clip-path:inset(0 0 calc(100% - var(--hero-unfold)) 0);
+  --hero-scene-opacity:0;
+  clip-path:none;
   transition:none;
-  will-change:clip-path;
+  will-change:opacity;
   backface-visibility:hidden;
 }
-.hero__scene:first-child{--hero-unfold:100%;}
+.hero__scene:first-child{--hero-scene-opacity:1;}
 .hero__scene:nth-child(1){z-index:1;}
 .hero__scene:nth-child(2){z-index:2;}
 .hero__scene:nth-child(3){z-index:3;}
-.hero__scene.is-active{opacity:1;}
+.hero__scene.is-active{opacity:var(--hero-scene-opacity,0);}
 .hero__scrim{z-index:8;}
 .hero__content{z-index:9;}
 @supports not (height:100svh){
@@ -971,21 +925,26 @@ body > section + section{margin-top:10px;}
     linear-gradient(100deg,rgba(10,9,6,.68) 0%,rgba(10,9,6,.42) 34%,rgba(10,9,6,.08) 62%,rgba(10,9,6,0) 78%);
 }
 @media (max-width:760px){
-  .hero__rug-unfold{
-    top:4svh;
-    left:12px;
-    right:12px;
-    height:92svh;
-  }
   .hero__scrim{
     background:
       linear-gradient(180deg,rgba(15,13,9,.1) 0%,rgba(15,13,9,.04) 48%,rgba(15,13,9,.62) 100%),
       linear-gradient(100deg,rgba(10,9,6,.38) 0%,rgba(10,9,6,.14) 58%,rgba(10,9,6,0) 86%);
   }
 }
-@media (prefers-reduced-motion:reduce){
-  .hero__rug-unfold{display:none;}
-}
+
+/* Typography alignment only: preserves the approved left/centre intent at every width. */
+.hero__content,
+.section-head > div,
+.shop-paths__intro,
+.shop-paths__body,
+.edit__head > div,
+.proof__card,
+.trust__content,
+.size-guide__grid > div,
+.recommended__grid > *,
+.faq{text-align:left;}
+.stat-bar__row,
+.email-cap{text-align:center;}
 
 /* Hero fit only: compensate for the promo/header so every CTA stays in view. */
 @media (min-width:761px){
@@ -1135,12 +1094,6 @@ body > section + section{margin-top:10px;}
         <source media="(max-width:760px)" srcset="assets/hero-spotlight-03-mobile.webp" />
         <img src="assets/hero-spotlight-03-desktop.webp" alt="A blue patterned living room rug beside a neutral sofa" decoding="async" />
       </picture>
-    </div>
-    <div class="hero__rug-unfold" data-rug-scene="1" aria-hidden="true">
-      <div class="hero__rug-surface">
-        <img class="hero__rug-image--sand" src="assets/hero-heritage-sand.webp" alt="" decoding="async" />
-        <img class="hero__rug-image--blue" src="assets/hero-meadow-blue.webp" alt="" decoding="async" />
-      </div>
     </div>
     <div class="hero__scrim"></div>
     <div class="hero__content reveal">
@@ -1747,12 +1700,11 @@ window.addEventListener('load', ()=>{
   document.querySelector('.hero').classList.add('is-loaded');
 });
 
-/* ---------- Hero slideshow: each scroll stage unfolds the next banner ---------- */
+/* ---------- Hero slideshow: each scroll stage crossfades to the next banner ---------- */
 (function(){
   const hero = document.querySelector('.hero');
   const stage = hero && hero.querySelector('.hero__stage');
   const scenes = hero ? [...hero.querySelectorAll('.hero__scene')] : [];
-  const rugUnfold = hero && hero.querySelector('.hero__rug-unfold');
   if(!hero || !stage || scenes.length < 2) return;
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let ticking = false;
@@ -1762,23 +1714,15 @@ window.addEventListener('load', ()=>{
     const distance = Math.max(1,hero.offsetHeight-window.innerHeight);
     const travelled = Math.min(distance,Math.max(0,-rect.top));
     const segment = distance/(scenes.length-1);
-    const unfoldDistance = segment*.52;
+    const transitionDistance = segment*.52;
     let active = 0;
-    let rugProgress = 0;
-    let rugOpacity = 0;
-    let rugScene = 1;
 
     scenes.forEach((scene,index)=>{
-      let unfold = index === 0 ? 1 : clamp((travelled-(index-1)*segment)/unfoldDistance);
-      if(reduceMotion && index > 0) unfold = unfold < .5 ? 0 : 1;
-      const eased = unfold*unfold*unfold*(unfold*(unfold*6-15)+10);
-      scene.style.setProperty('--hero-unfold',`${(eased*100).toFixed(2)}%`);
-      if(unfold > .001) active = index;
-      if(index > 0 && unfold > 0 && unfold < 1){
-        rugProgress = eased*100;
-        rugOpacity = Math.sin(unfold*Math.PI)*.70;
-        rugScene = index;
-      }
+      let progress = index === 0 ? 1 : clamp((travelled-(index-1)*segment)/transitionDistance);
+      if(reduceMotion && index > 0) progress = progress < .5 ? 0 : 1;
+      const eased = progress*progress*progress*(progress*(progress*6-15)+10);
+      scene.style.setProperty('--hero-scene-opacity',(index === 0 ? 1 : eased).toFixed(3));
+      if(progress > .001) active = index;
     });
 
     scenes.forEach((scene,index)=>{
@@ -1786,9 +1730,6 @@ window.addEventListener('load', ()=>{
       scene.classList.toggle('is-active',isActive);
       scene.setAttribute('aria-hidden',String(!isActive));
     });
-    stage.style.setProperty('--hero-rug-unfold',`${rugProgress.toFixed(2)}%`);
-    stage.style.setProperty('--hero-rug-opacity',reduceMotion ? '0' : rugOpacity.toFixed(3));
-    if(rugUnfold) rugUnfold.dataset.rugScene = String(rugScene);
     ticking = false;
   }
   function requestUpdate(){
