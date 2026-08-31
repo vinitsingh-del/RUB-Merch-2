@@ -1271,6 +1271,65 @@ body > section + section{margin-top:10px;}
   .reassure__item::before,
   .reassure__item::after{animation:none;}
 }
+
+/* Requested compact merchandising refinements — scoped to named sections only. */
+.style-hub.section{padding-top:calc(var(--section-space) * .7);padding-bottom:calc(var(--section-space) * .7);}
+.style-hub__shell{grid-template-columns:minmax(230px,.68fr) minmax(0,1.32fr);min-height:0;}
+.style-hub__media{min-height:434px;}
+.style-hub__panel{padding:clamp(17px,2.45vw,34px);}
+.style-hub__intro h2{font-size:clamp(25px,2.55vw,34px);}
+.style-hub__filters{padding:15px 0 13px;}
+.style-hub__filter{padding:7px 10px;font-size:8px;}
+.style-hub__card{flex-basis:126px;}
+.style-hub__card div{padding:7px;}
+.style-hub__card h3{font-size:12px;}
+.style-hub__footer{padding-top:16px;}
+
+.trust{height:clamp(690px,108vh,860px);}
+.trust__sticky{min-height:calc(100vh - 76px);padding:0;}
+.trust__rug-stage{height:clamp(350px,57vh,520px);}
+.trust__hint{margin-bottom:16px;}
+.trust__badges{margin-top:20px;padding-top:18px;}
+
+.washable-edit.section{padding-top:calc(var(--section-space) * .8);padding-bottom:calc(var(--section-space) * .8);}
+.washable-edit .edit__head{margin-bottom:18px;}
+.washable-edit .edit__pills{margin:14px 0 18px;}
+.washable-edit .edit__banner{aspect-ratio:10/3;margin-bottom:18px;}
+.washable-edit .edit__row{display:flex;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;gap:14px;}
+.washable-edit .edit__row::-webkit-scrollbar{display:none;}
+.washable-edit .edit__card{flex:0 0 min(220px,22vw);scroll-snap-align:start;}
+
+@media (max-width:760px){
+  .style-hub.section{padding-top:calc(var(--section-space) * .7);padding-bottom:calc(var(--section-space) * .7);}
+  .style-hub__media{min-height:150px;}
+  .style-hub__panel{padding:10px 0 1px;}
+  .style-hub__intro h2{font-size:21px;}
+  .style-hub__intro p{font-size:10px;}
+  .style-hub__filters{padding:7px 0 6px;}
+  .style-hub__filter{padding:6px 8px;font-size:8px;}
+  .style-hub__card{flex-basis:105px;max-width:105px;}
+  .style-hub__card img{aspect-ratio:1.12/1;}
+  .style-hub__footer{padding-top:7px;}
+
+  .proof__grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .proof__grid::-webkit-scrollbar{display:none;}
+  .proof__card{flex:0 0 74vw;max-width:286px;scroll-snap-align:start;scroll-snap-stop:always;}
+
+  .trust{height:max(690px,100svh);}
+  .trust__sticky{top:64px;min-height:calc(100svh - 64px);padding:0;}
+  .trust__experience{grid-template-rows:180px auto;gap:14px;}
+  .trust__rug-stage{height:180px;}
+  .trust__hint{margin-bottom:8px;}
+  .trust__score{margin-bottom:10px;}
+  .trust__badges{margin-top:10px;padding-top:10px;}
+
+  .washable-edit.section{padding-top:calc(var(--section-space) * .8);padding-bottom:calc(var(--section-space) * .8);}
+  .washable-edit .edit__head{margin-bottom:12px;}
+  .washable-edit .edit__pills{margin:9px 0 12px;}
+  .washable-edit .edit__banner{aspect-ratio:16/9;margin-bottom:12px;}
+  .washable-edit .edit__row{gap:11px;}
+  .washable-edit .edit__row .edit__card{flex:0 0 46vw;width:46vw;max-width:176px;}
+}
 </style>
 </head>
 <body>
@@ -1409,17 +1468,17 @@ body > section + section{margin-top:10px;}
   <div class="trust__sticky">
     <div class="container trust__experience">
       <div class="trust__rug-stage" data-rug-cycle>
-        <button class="trust__rug-frame is-active" type="button" data-rug-index="0" aria-label="Zoom in on Zahana Hand-tufted Wool Rug">
-          <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug">
+        <button class="trust__rug-frame is-active" type="button" data-rug-index="0" aria-label="Zoom in on cream and sage handmade rug">
+          <img src="assets/review-rug-01.webp" alt="The FableRoom model showcasing a cream and sage handmade rug">
         </button>
-        <button class="trust__rug-frame" type="button" data-rug-index="1" aria-label="Zoom in on Savana Botanical Hand-tufted Wool Rug">
-          <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug">
+        <button class="trust__rug-frame" type="button" data-rug-index="1" aria-label="Zoom in on rust and navy handmade rug">
+          <img src="assets/review-rug-02.webp" alt="The FableRoom model showcasing a rust and navy handmade rug">
         </button>
-        <button class="trust__rug-frame" type="button" data-rug-index="2" aria-label="Zoom in on Amber Oasis Hand-knotted Wool Rug">
-          <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug">
+        <button class="trust__rug-frame" type="button" data-rug-index="2" aria-label="Zoom in on modern abstract handmade rug">
+          <img src="assets/review-rug-03.webp" alt="The FableRoom model showcasing a modern abstract handmade rug">
         </button>
-        <button class="trust__rug-frame" type="button" data-rug-index="3" aria-label="Zoom in on Rewa Hand-tufted Wool Rug">
-          <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug">
+        <button class="trust__rug-frame" type="button" data-rug-index="3" aria-label="Zoom in on natural geometric woven rug">
+          <img src="assets/review-rug-04.webp" alt="The FableRoom model showcasing a natural geometric woven rug">
         </button>
         <div class="trust__rug-caption">Tap a rug to zoom in</div>
       </div>
@@ -1797,7 +1856,7 @@ body > section + section{margin-top:10px;}
 </section>
 
 <!-- ================= 04 · THE WASHABLE EDIT ================= -->
-<section class="edit section" id="washable" hidden aria-hidden="true">
+<section class="edit section washable-edit" id="washable" hidden aria-hidden="true">
   <div class="container">
     <div class="edit__head reveal">
       <div class="edit__number">04</div>
@@ -1918,6 +1977,17 @@ body > section + section{margin-top:10px;}
 </section>
 
 <!-- ================= FIND YOUR RUG ================= -->
+<script>
+  /* Keep the requested merchandising order without altering any unrelated section. */
+  (() => {
+    const spaceSection = document.querySelector('.room-discovery');
+    const washableSection = document.getElementById('washable');
+    if (!spaceSection || !washableSection) return;
+    spaceSection.insertAdjacentElement('afterend', washableSection);
+    washableSection.hidden = false;
+    washableSection.removeAttribute('aria-hidden');
+  })();
+</script>
 <section class="rug-finder section" aria-labelledby="rug-finder-title" data-rug-finder>
   <div class="container">
     <div class="rug-finder__shell reveal">
@@ -2082,7 +2152,7 @@ body > section + section{margin-top:10px;}
   <div class="container">
     <div class="why-fableroom__shell reveal">
       <div class="why-fableroom__story">
-        <img src="assets/why-fableroom-story.webp" alt="A handmade rug being styled in a warm living space" loading="lazy">
+        <img src="assets/why-fableroom-couple-v2.webp" alt="A couple unrolling a handmade rug together in a warm living space" loading="lazy">
         <div class="why-fableroom__copy"><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
       </div>
       <div class="why-fableroom__list">
