@@ -1080,19 +1080,21 @@ body > section + section{margin-top:10px;}
 .compare-panel tbody th{width:150px; font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft);}
 .compare-panel tr:last-child th,.compare-panel tr:last-child td{border-bottom:0;}
 
-.why-fableroom__shell{display:grid; grid-template-columns:minmax(300px,.72fr) minmax(0,1.28fr); border:1px solid var(--line-strong);}
-.why-fableroom__story{position:relative; min-height:520px; overflow:hidden; background:#d5cec3; color:var(--white);}
+.why-fableroom__shell{display:grid; grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr); border:1px solid var(--line-strong);}
+.why-fableroom__story{position:relative; min-height:420px; overflow:hidden; background:#d5cec3; color:var(--white);}
 .why-fableroom__story img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
 .why-fableroom__story::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(18,15,12,.15),rgba(18,15,12,.7));}
-.why-fableroom__story > .why-fableroom__copy{position:absolute; z-index:1; left:28px; right:28px; bottom:28px;}
-.why-fableroom__story .eyebrow{color:var(--white); margin-bottom:8px;}
-.why-fableroom__story h2{font-size:clamp(31px,4vw,48px); line-height:1.02;}
-.why-fableroom__list{padding:clamp(26px,4vw,52px); display:flex; flex-direction:column; justify-content:center;}
-.why-fableroom__item{display:grid; grid-template-columns:34px minmax(0,1fr); align-items:start; gap:14px; padding:18px 0; border-bottom:1px solid var(--line);}
-.why-fableroom__item:last-child{border-bottom:0;}
-.why-fableroom__check{width:26px; height:26px; border:1px solid var(--sage); border-radius:50%; display:grid; place-items:center; font-size:12px; color:var(--sage);}
-.why-fableroom__item h3{font-family:var(--sans); font-size:14px; font-weight:700; margin-bottom:3px;}
-.why-fableroom__item p{font-size:12.5px; color:var(--ink-soft); margin:0;}
+.why-fableroom__story > .why-fableroom__copy{position:absolute; z-index:1; left:22px; right:22px; bottom:22px;}
+.why-fableroom__story .eyebrow{color:var(--white); margin-bottom:6px;}
+.why-fableroom__story h2{font-size:clamp(25px,3.2vw,39px); line-height:1.02;}
+.why-fableroom__list{padding:clamp(21px,3.2vw,42px); display:flex; flex-direction:column; justify-content:center;}
+.why-fableroom__table{width:100%; border-collapse:collapse;}
+.why-fableroom__table th{text-align:left; font-family:var(--sans); font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); padding:0 8px 9px;}
+.why-fableroom__table th:first-child{padding-left:0;}
+.why-fableroom__table td{padding:11px 8px; font-family:var(--sans); font-size:12.5px; border-top:1px solid var(--line); color:var(--ink-soft);}
+.why-fableroom__table td:first-child{padding-left:0; color:var(--ink); font-weight:700; font-size:12px;}
+.why-fableroom__table td.is-fableroom{color:var(--sage); font-weight:700;}
+.why-fableroom__footnote{font-family:var(--sans); font-size:10px; color:var(--ink-faint); margin:12px 0 0; line-height:1.5;}
 
 .rug-finder{background:var(--white);}
 .rug-finder__shell{display:grid; grid-template-columns:minmax(320px,.75fr) minmax(0,1.25fr); border:1px solid var(--line-strong);}
@@ -1149,7 +1151,7 @@ body > section + section{margin-top:10px;}
   .compare-panel{margin-top:15px;}
 
   .why-fableroom__shell,.rug-finder__shell{grid-template-columns:1fr; border-left:0; border-right:0;}
-  .why-fableroom__story{min-height:390px;}
+  .why-fableroom__story{min-height:312px;}
   .why-fableroom__story > .why-fableroom__copy{left:18px; right:18px; bottom:18px;}
   .why-fableroom__list{padding:12px 0 2px;}
   .why-fableroom__item{padding:14px 0;}
@@ -2042,10 +2044,23 @@ body > section + section{margin-top:10px;}
         <div class="why-fableroom__copy"><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
       </div>
       <div class="why-fableroom__list">
-        <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>Direct from skilled makers</h3><p>FableRoom works directly with workshops and artisan networks in India, reducing traditional wholesale and retail layers.</p></div></div>
-        <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>Handmade construction</h3><p>Each rug is made using established hand-knotting, hand-tufting or hand-weaving techniques, depending on the design.</p></div></div>
-        <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>365-day quality guarantee</h3><p>Eligible quality defects or deterioration are covered through repair, replacement or refund within the stated guarantee period.</p></div></div>
-        <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>Clear availability choices</h3><p>Ready to Ship, Standard Shipping and Pre-Order labels make the expected delivery route visible before purchase.</p></div></div>
+        <table class="why-fableroom__table">
+          <thead>
+            <tr>
+              <th>Detail</th>
+              <th>FableRoom</th>
+              <th>Other Retailers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Middlemen</td><td class="is-fableroom">0</td><td>Multiple Middlemen</td></tr>
+            <tr><td>Delivery</td><td class="is-fableroom">Free¹</td><td>Often Charged Separately</td></tr>
+            <tr><td>Returns</td><td class="is-fableroom">365-Day Guarantee*</td><td>Typically Shorter Windows</td></tr>
+            <tr><td>Savings</td><td class="is-fableroom">40–50% You Save</td><td>0% Savings</td></tr>
+            <tr><td>Ratings</td><td class="is-fableroom">4.6 Rating</td><td>4.0 &amp; Below</td></tr>
+          </tbody>
+        </table>
+        <p class="why-fableroom__footnote">¹On orders over £500. *Eligible quality defects or deterioration are covered through repair, replacement or refund within the stated guarantee period.</p>
       </div>
     </div>
   </div>
