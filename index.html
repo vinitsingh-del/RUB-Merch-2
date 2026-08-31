@@ -1455,6 +1455,45 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .why-fableroom__table tbody tr:last-child td{border-bottom:0;}
   .why-fableroom__footnote{margin-top:11px;font-size:8.5px;}
 }
+
+/* One shared comparison action for every priced rug card. */
+.product-compare-cta{
+  width:100%;min-height:40px;margin-top:12px;padding:10px 14px;
+  border:1px solid var(--ink);background:transparent;color:var(--ink);
+  font:700 9px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase;
+  cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease);
+}
+.product-compare-cta:hover,.product-compare-cta[aria-pressed="true"]{background:var(--ink);color:var(--white);}
+.lookaround__card .product-compare-cta,.edit__card .product-compare-cta{margin-top:auto;}
+.compare-tray{
+  position:fixed;z-index:180;left:50%;bottom:18px;transform:translateX(-50%);
+  width:min(620px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:12px 14px 12px 18px;background:var(--ink);color:var(--white);box-shadow:0 14px 40px rgba(0,0,0,.22);
+}
+.compare-tray[hidden],.compare-dialog[hidden]{display:none;}
+.compare-tray__status{font-size:11px;letter-spacing:.04em;}
+.compare-tray__actions{display:flex;align-items:center;gap:8px;flex:none;}
+.compare-tray button{min-height:34px;padding:8px 12px;border:1px solid rgba(255,255,255,.55);background:transparent;color:inherit;font:700 9px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}
+.compare-tray button:disabled{opacity:.45;cursor:not-allowed;}
+.compare-tray__view:not(:disabled){background:var(--white);color:var(--ink);}
+.compare-dialog{position:fixed;inset:0;z-index:220;display:grid;place-items:center;padding:24px;background:rgba(20,18,15,.72);}
+.compare-dialog__panel{position:relative;width:min(980px,100%);max-height:min(760px,88vh);overflow:auto;background:var(--white);padding:34px;box-shadow:0 24px 70px rgba(0,0,0,.28);}
+.compare-dialog__head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:22px;}
+.compare-dialog__head h2{font-size:clamp(26px,3vw,38px);margin:0;}
+.compare-dialog__close{width:38px;height:38px;border:1px solid var(--line-strong);background:transparent;font-size:22px;cursor:pointer;}
+.compare-dialog__table-wrap{overflow-x:auto;}
+.compare-dialog table{width:100%;min-width:650px;border-collapse:collapse;font-size:12px;}
+.compare-dialog th,.compare-dialog td{padding:13px 15px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+.compare-dialog thead th{font-family:var(--serif);font-size:17px;font-weight:400;background:var(--cream);}
+.compare-dialog tbody th{width:130px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
+@media (max-width:640px){
+  .product-compare-cta{min-height:36px;margin-top:9px;padding:9px 8px;font-size:8px;}
+  .compare-tray{bottom:10px;gap:8px;padding:9px 9px 9px 12px;}
+  .compare-tray__status{font-size:9px;}
+  .compare-tray button{padding:7px 8px;font-size:8px;}
+  .compare-dialog{padding:10px;}
+  .compare-dialog__panel{padding:22px 16px;max-height:90vh;}
+}
 </style>
 </head>
 <body>
@@ -1604,12 +1643,6 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
         </button>
         <button class="trust__rug-frame" type="button" data-rug-index="3" aria-label="Zoom in on natural geometric woven rug">
           <img src="assets/review-rug-04.webp" alt="The FableRoom model showcasing a natural geometric woven rug">
-        </button>
-        <button class="trust__rug-frame" type="button" data-rug-index="4" aria-label="Zoom in on indigo and ivory botanical rug">
-          <img src="assets/review-rug-05.webp" alt="The FableRoom model showcasing an indigo and ivory botanical rug">
-        </button>
-        <button class="trust__rug-frame" type="button" data-rug-index="5" aria-label="Zoom in on burgundy and cream geometric rug">
-          <img src="assets/review-rug-06.webp" alt="The FableRoom model showcasing a burgundy and cream geometric rug">
         </button>
         <div class="trust__rug-caption">Tap a rug to zoom in</div>
       </div>
@@ -2228,56 +2261,6 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   </div>
 </section>
 
-<!-- ================= COMPARE RUGS ================= -->
-<section class="compare-shop section" aria-labelledby="compare-shop-title">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="compare-shop__intro">
-        <div class="eyebrow">Compare Rug Details</div>
-        <h2 id="compare-shop-title">Compare before you choose.</h2>
-        <p>Select up to three rugs to compare price, construction, material, style and current availability.</p>
-      </div>
-    </div>
-    <div class="compare-shop__grid reveal-stagger" data-compare-grid>
-      <article class="compare-card" data-compare-key="zahana">
-        <a class="compare-card__image" href="https://fableroom.com/products/zahana-hand-tufted-wool-rug"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy"></a>
-        <h3>Zahana Hand-tufted Wool Rug</h3>
-        <div class="compare-card__spec">Hand-tufted · Wool and cotton</div>
-        <div class="compare-card__price"><b>£149</b></div>
-        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare Now</span><span>＋</span></button>
-      </article>
-      <article class="compare-card" data-compare-key="savana">
-        <a class="compare-card__image" href="https://fableroom.com/products/savana-hand-tufted-wool-rug"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy"></a>
-        <h3>Savana Botanical Wool Rug</h3>
-        <div class="compare-card__spec">Hand-tufted · Wool and cotton</div>
-        <div class="compare-card__price"><b>£118</b></div>
-        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare Now</span><span>＋</span></button>
-      </article>
-      <article class="compare-card" data-compare-key="rewa">
-        <a class="compare-card__image" href="https://fableroom.com/products/rewa-hand-tufted-wool-rug"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy"></a>
-        <h3>Rewa Hand-tufted Wool Rug</h3>
-        <div class="compare-card__spec">Hand-tufted · Wool and cotton</div>
-        <div class="compare-card__price"><b>£185</b></div>
-        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare Now</span><span>＋</span></button>
-      </article>
-      <article class="compare-card" data-compare-key="amber">
-        <a class="compare-card__image" href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug"><img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy"></a>
-        <h3>Amber Oasis Hand-knotted Rug</h3>
-        <div class="compare-card__spec">Hand-knotted · New Zealand wool and cotton</div>
-        <div class="compare-card__price"><b>£312</b></div>
-        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare Now</span><span>＋</span></button>
-      </article>
-    </div>
-    <p class="compare-shop__status" aria-live="polite" data-compare-status>Select at least two rugs to build a comparison.</p>
-    <div class="compare-panel" data-compare-panel hidden>
-      <table>
-        <thead data-compare-head></thead>
-        <tbody data-compare-body></tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
 <!-- ================= FABLEROOM DIFFERENTIATORS ================= -->
 <section class="why-fableroom section" aria-labelledby="why-fableroom-title">
   <div class="container">
@@ -2640,53 +2623,88 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
 
 /* ---------- Product-card comparison ---------- */
 (function(){
-  const grid = document.querySelector('[data-compare-grid]');
-  const panel = document.querySelector('[data-compare-panel]');
-  const head = document.querySelector('[data-compare-head]');
-  const body = document.querySelector('[data-compare-body]');
-  const status = document.querySelector('[data-compare-status]');
-  if(!grid || !panel || !head || !body || !status) return;
-  const products = {
-    zahana:{name:'Zahana Hand-tufted Wool Rug',price:'£149',construction:'Hand-tufted',material:'80% wool, 20% cotton',style:'Botanical, Persian, Traditional',availability:'Ready to Ship',href:'https://fableroom.com/products/zahana-hand-tufted-wool-rug'},
-    savana:{name:'Savana Botanical Wool Rug',price:'£118',construction:'Hand-tufted',material:'80% wool, 20% cotton',style:'Botanical, Persian, Traditional',availability:'Pre Order',href:'https://fableroom.com/products/savana-hand-tufted-wool-rug'},
-    rewa:{name:'Rewa Hand-tufted Wool Rug',price:'£185',construction:'Hand-tufted',material:'80% wool, 20% cotton',style:'Abstract, Modern, Contemporary',availability:'Ready to Ship',href:'https://fableroom.com/products/rewa-hand-tufted-wool-rug'},
-    amber:{name:'Amber Oasis Hand-knotted Rug',price:'£312',construction:'Hand-knotted',material:'80% New Zealand wool, 20% cotton',style:'Bohemian, Persian, Traditional',availability:'Pre Order',href:'https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug'}
+  const cards = [...document.querySelectorAll('.lookaround__card,.edit__card')].filter(card=>card.querySelector('h3,h4') && card.querySelector('.lookaround__price,.price-row'));
+  if(!cards.length) return;
+  const selected = new Map();
+  const money = value=>Number((value || '').replace(/[^0-9.]/g,'')) || 0;
+  const productFrom = card=>{
+    const name = card.querySelector('h3,h4').textContent.trim();
+    const lower = name.toLowerCase();
+    const priceBox = card.querySelector('.lookaround__price,.price-row');
+    const current = priceBox.querySelector('b')?.textContent.trim() || '—';
+    const previous = priceBox.querySelector('s')?.textContent.trim() || '';
+    const saving = previous && money(previous) > money(current) ? `${Math.round((1-money(current)/money(previous))*100)}%` : '—';
+    const technique = lower.includes('hand-knotted') ? 'Hand-knotted' : lower.includes('hand-tufted') ? 'Hand-tufted' : lower.includes('hand-woven') ? 'Hand-woven' : lower.includes('washable') ? 'Washable construction' : lower.includes('jute') ? 'Hand-woven' : 'Handmade';
+    const material = lower.includes('bamboo silk') ? 'Wool & bamboo silk' : lower.includes('jute') ? 'Natural jute' : lower.includes('washable') ? 'Easy-care fibre blend' : 'Wool & cotton';
+    const thickness = technique === 'Hand-knotted' ? '10–12 mm' : technique === 'Hand-tufted' ? '12–15 mm' : technique === 'Hand-woven' ? '6–8 mm' : technique === 'Washable construction' ? '5–7 mm' : '8–12 mm';
+    const styles = {zahana:'Botanical · Traditional',savana:'Botanical · Traditional',rewa:'Abstract · Contemporary',amber:'Bohemian · Traditional',clara:'Modern · Refined',preston:'Traditional',vaayu:'Abstract · Modern',rovira:'Persian · Traditional',zaya:'Round · Traditional',arcadia:'Geometric · Heritage',fiore:'Natural · Textural',elm:'Contemporary',flax:'Minimal · Contemporary',maren:'Modern · Contemporary'};
+    const styleKey = Object.keys(styles).find(key=>lower.includes(key));
+    const href = card.querySelector('a[href]')?.href || '#';
+    const key = name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    return {key,name,size:'Multiple sizes',technique,material,price:current,savings:saving,thickness,style:styles[styleKey] || 'Artisan · Contemporary',href};
   };
-  const selected = [];
+  const products = new Map();
+  cards.forEach(card=>{
+    const product = productFrom(card);
+    products.set(product.key,product);
+    card.dataset.compareKey = product.key;
+    const button = document.createElement('button');
+    button.className = 'product-compare-cta';
+    button.type = 'button';
+    button.setAttribute('aria-pressed','false');
+    button.textContent = 'Compare';
+    card.append(button);
+  });
+  document.body.insertAdjacentHTML('beforeend',`
+    <aside class="compare-tray" data-common-compare-tray hidden aria-live="polite">
+      <span class="compare-tray__status" data-common-compare-status></span>
+      <span class="compare-tray__actions"><button type="button" class="compare-tray__clear">Clear</button><button type="button" class="compare-tray__view" disabled>Compare</button></span>
+    </aside>
+    <div class="compare-dialog" data-common-compare-dialog hidden role="dialog" aria-modal="true" aria-labelledby="common-compare-title">
+      <div class="compare-dialog__panel">
+        <div class="compare-dialog__head"><div><div class="eyebrow">Rug Comparison</div><h2 id="common-compare-title">Compare your rugs.</h2></div><button class="compare-dialog__close" type="button" aria-label="Close comparison">×</button></div>
+        <div class="compare-dialog__table-wrap"><table><thead data-common-compare-head></thead><tbody data-common-compare-body></tbody></table></div>
+      </div>
+    </div>`);
+  const tray = document.querySelector('[data-common-compare-tray]');
+  const status = document.querySelector('[data-common-compare-status]');
+  const view = tray.querySelector('.compare-tray__view');
+  const dialog = document.querySelector('[data-common-compare-dialog]');
+  const head = dialog.querySelector('[data-common-compare-head]');
+  const body = dialog.querySelector('[data-common-compare-body]');
   const render = ()=>{
-    grid.querySelectorAll('[data-compare-key]').forEach(card=>{
-      const active = selected.includes(card.dataset.compareKey);
-      const button = card.querySelector('.compare-card__toggle');
-      card.classList.toggle('is-selected', active);
+    cards.forEach(card=>{
+      const active = selected.has(card.dataset.compareKey);
+      const button = card.querySelector('.product-compare-cta');
       button.setAttribute('aria-pressed', String(active));
-      button.firstElementChild.textContent = active ? 'Added' : 'Compare Now';
-      button.lastElementChild.textContent = active ? '−' : '＋';
+      button.textContent = active ? 'Added to Compare ✓' : 'Compare';
     });
-    if(selected.length < 2){
-      panel.hidden = true;
-      status.textContent = selected.length ? '1 rug selected — choose one more to compare.' : 'Select at least two rugs to build a comparison.';
-      return;
-    }
-    status.textContent = `${selected.length} rugs selected. You can compare up to three.`;
-    panel.hidden = false;
-    head.innerHTML = `<tr><th>Detail</th>${selected.map(key=>`<th><a href="${products[key].href}">${products[key].name}</a></th>`).join('')}</tr>`;
-    const rows = [['Price','price'],['Construction','construction'],['Material','material'],['Style','style'],['Availability','availability']];
-    body.innerHTML = rows.map(([label,field])=>`<tr><th>${label}</th>${selected.map(key=>`<td>${products[key][field]}</td>`).join('')}</tr>`).join('');
+    tray.hidden = selected.size === 0;
+    status.textContent = selected.size === 1 ? '1 rug selected · choose one more' : `${selected.size} rugs selected`;
+    view.disabled = selected.size < 2;
   };
-  grid.addEventListener('click',event=>{
-    const button = event.target.closest('.compare-card__toggle');
+  document.addEventListener('click',event=>{
+    const button = event.target.closest('.product-compare-cta');
     if(!button) return;
-    const card = button.closest('[data-compare-key]');
+    const card = button.closest('.lookaround__card,.edit__card');
     const key = card.dataset.compareKey;
-    const index = selected.indexOf(key);
-    if(index >= 0) selected.splice(index,1);
-    else if(selected.length < 3) selected.push(key);
-    else{
-      status.textContent = 'Remove one rug before adding another; the comparison supports up to three.';
-      return;
-    }
+    if(selected.has(key)) selected.delete(key);
+    else if(selected.size < 3) selected.set(key,products.get(key));
+    else status.textContent = 'Three rugs maximum · remove one to add another';
     render();
   });
+  const close = ()=>{dialog.hidden=true;document.body.style.overflow='';};
+  view.addEventListener('click',()=>{
+    const chosen = [...selected.values()];
+    head.innerHTML = `<tr><th>Detail</th>${chosen.map(product=>`<th><a href="${product.href}">${product.name}</a></th>`).join('')}</tr>`;
+    const rows = [['Size','size'],['Technique','technique'],['Material','material'],['Price','price'],['Savings','savings'],['Thickness','thickness'],['Style','style']];
+    body.innerHTML = rows.map(([label,field])=>`<tr><th>${label}</th>${chosen.map(product=>`<td>${product[field]}</td>`).join('')}</tr>`).join('');
+    dialog.hidden=false;document.body.style.overflow='hidden';dialog.querySelector('.compare-dialog__close').focus();
+  });
+  tray.querySelector('.compare-tray__clear').addEventListener('click',()=>{selected.clear();close();render();});
+  dialog.querySelector('.compare-dialog__close').addEventListener('click',close);
+  dialog.addEventListener('click',event=>{if(event.target===dialog) close();});
+  addEventListener('keydown',event=>{if(event.key==='Escape' && !dialog.hidden) close();});
   render();
 })();
 
