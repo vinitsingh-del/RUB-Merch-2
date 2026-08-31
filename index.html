@@ -1,247 +1,2510 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FABLEROOM Rugs</title>
-<style>html,body{margin:0;background:#fff}#boot{font-family:Arial,sans-serif;padding:24px;color:#1a1a1a;font-size:13px}</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#ffffff" />
+<title>Handmade Rugs &amp; Carpets | Wool, Jute &amp; Washable | FABLEROOM</title>
+<meta name="description" content="Shop handmade area rugs and designer carpets online in the UK for living rooms, bedrooms, dining rooms and hallways. Explore wool, jute and washable rugs." />
+
+<style>
+/* ============================================================
+   FONT FACES — FableRoom brand system (Ivy Presto Display + HK Grotesk)
+   ============================================================ */
+@font-face{
+  font-family:'Ivy Presto Display';
+  src:url('fonts/IvyPrestoDisplay-Regular.woff2') format('woff2');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'HK Grotesk';
+  src:url('fonts/HKGrotesk-Regular.woff2') format('woff2');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'HK Grotesk';
+  src:url('fonts/HKGrotesk-Bold.woff2') format('woff2');
+  font-weight:700; font-style:normal; font-display:swap;
+}
+
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --cream:#ffffff;
+  --white:#f7f4ee;
+  --ink:#1a1a1a;
+  --ink-soft:#5c5a54;
+  --ink-faint:#8c887f;
+  --line:rgba(26,26,26,0.11);
+  --line-strong:rgba(26,26,26,0.18);
+  --sage:#7c8268;
+  --clay:#a9603f;
+  --gold:#a8843f;
+
+  --serif:'Ivy Presto Display', Georgia, 'Times New Roman', serif;
+  --sans:'HK Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-slow:cubic-bezier(.16,.68,.24,1);
+
+  --container:1320px;
+  --gutter:clamp(20px, 5vw, 64px);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer;}
+.container{max-width:var(--container); margin:0 auto; padding:0 var(--gutter);}
+
+h1,h2,h3,h4{font-family:var(--serif); font-weight:400; margin:0; letter-spacing:-0.01em;}
+
+.eyebrow{
+  font-family:var(--sans); font-weight:700; font-size:11px;
+  letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-soft);
+}
+
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:14px 28px; border-radius:2px;
+  font-family:var(--sans); font-weight:700; font-size:12px;
+  letter-spacing:0.1em; text-transform:uppercase;
+  border:1px solid var(--ink); background:var(--ink); color:var(--white);
+  transition:background .45s var(--ease), color .45s var(--ease), border-color .45s var(--ease), transform .3s var(--ease);
+}
+.btn:hover{background:var(--cream); color:var(--ink); transform:translateY(-1px);}
+.btn--ghost{background:transparent; color:var(--ink); border:1px solid var(--ink);}
+.btn--ghost:hover{background:var(--ink); color:var(--white);}
+.btn--light{background:var(--cream); color:var(--ink); border:1px solid var(--cream);}
+.btn--light:hover{background:var(--white);}
+
+.section{padding:5px 0;}
+.section--tight{padding:5px 0;}
+
+/* Exact inter-section rhythm requested for desktop and mobile. */
+body > section{margin:0;}
+body > section + section{margin-top:10px;}
+
+.section-head{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
+  margin-bottom:40px; flex-wrap:wrap;
+}
+.section-head h2{font-size:clamp(28px, 3.4vw, 42px);}
+
+/* reveal-on-scroll */
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .9s var(--ease-slow), transform .9s var(--ease-slow);}
+.reveal.is-visible{opacity:1; transform:translateY(0);}
+.reveal-stagger > *{opacity:0; transform:translateY(22px); transition:opacity .8s var(--ease-slow), transform .8s var(--ease-slow);}
+.reveal-stagger.is-visible > *{opacity:1; transform:translateY(0);}
+.reveal-stagger.is-visible > *:nth-child(1){transition-delay:.02s;}
+.reveal-stagger.is-visible > *:nth-child(2){transition-delay:.10s;}
+.reveal-stagger.is-visible > *:nth-child(3){transition-delay:.18s;}
+.reveal-stagger.is-visible > *:nth-child(4){transition-delay:.26s;}
+.reveal-stagger.is-visible > *:nth-child(5){transition-delay:.34s;}
+.reveal-stagger.is-visible > *:nth-child(6){transition-delay:.42s;}
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal-stagger > *{opacity:1 !important; transform:none !important; transition:none !important;}
+  html{scroll-behavior:auto;}
+}
+
+.hr{border:0; border-top:1px solid var(--line); margin:0;}
+
+/* ============================================================
+   PROMO BAR + HEADER
+   ============================================================ */
+.promo-bar{
+  background:var(--ink); color:var(--cream);
+  font-size:12px; letter-spacing:0.03em;
+  text-align:center; padding:9px var(--gutter);
+}
+.promo-bar b{font-weight:700;}
+.promo-bar span{opacity:.55; margin:0 10px;}
+.promo-bar a{border-bottom:1px solid rgba(255,255,255,.4);}
+@media (max-width:900px){
+  .promo-bar{padding:10px var(--gutter);}
+  .promo-bar__full{display:none;}
+  .promo-bar__core{opacity:1;}
+}
+
+.site-header{
+  position:sticky; top:0; z-index:60;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.site-header__row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px var(--gutter); max-width:var(--container); margin:0 auto; gap:24px;
+}
+.site-header__logo{width:150px; flex:none;}
+.site-header__logo img{width:100%;}
+.site-header__nav{display:flex; gap:30px; font-size:13px; font-weight:700; letter-spacing:.02em;}
+.site-header__nav a{padding:6px 0; border-bottom:1px solid transparent; transition:border-color .3s var(--ease), opacity .3s var(--ease);}
+.site-header__nav a:hover{border-color:var(--ink);}
+.site-header__nav a.is-active{border-color:var(--ink);}
+.site-header__icons{display:flex; align-items:center; gap:18px; flex:none;}
+.site-header__icons button{background:none; border:0; padding:11px; margin:-11px; color:var(--ink); display:flex; align-items:center; justify-content:center;}
+.site-header__icons svg{width:19px; height:19px; display:block;}
+.site-header__menu-btn.site-header__menu-btn{display:none; background:none; border:0; padding:4px;}
+@media (max-width:1080px){
+  .site-header__nav{display:none;}
+  .site-header__menu-btn.site-header__menu-btn{display:block;}
+}
+
+/* ============================================================
+   HERO — room-led, per Kukoon benchmark: "start with your room"
+   ============================================================ */
+.hero{
+  position:relative; overflow:hidden;
+  min-height:640px;
+  display:flex; align-items:flex-end;
+}
+.hero__scene{
+  position:absolute; inset:0; z-index:0;
+  background:#e9e3d3;
+  opacity:0; transition:opacity 1.4s ease;
+}
+.hero__scene.is-active{opacity:1; z-index:1;}
+.hero__scene img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  object-position:center 38%;
+  transform:scale(1.04);
+  transition:transform 6s var(--ease-slow);
+}
+.hero.is-loaded .hero__scene img{transform:scale(1);}
+.hero__scrim{
+  position:absolute; inset:0; z-index:1;
+  background:
+    linear-gradient(180deg, rgba(15,13,9,.32) 0%, rgba(15,13,9,.22) 26%, rgba(15,13,9,.7) 86%, rgba(15,13,9,.8) 100%),
+    linear-gradient(100deg, rgba(10,9,6,.62) 0%, rgba(10,9,6,.38) 38%, rgba(10,9,6,.06) 62%, rgba(10,9,6,0) 78%);
+}
+.hero__content{
+  position:relative; z-index:2; width:100%;
+  padding:0 var(--gutter) 56px;
+  max-width:var(--container); margin:0 auto;
+  color:var(--white);
+}
+.hero__eyebrow{
+  font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  opacity:.85; margin-bottom:18px;
+  text-shadow:0 2px 14px rgba(0,0,0,.5);
+}
+.hero h1{
+  font-size:clamp(38px, 6vw, 74px); line-height:1.03; max-width:14ch;
+  color:var(--white);
+  text-shadow:0 4px 24px rgba(0,0,0,.45), 0 1px 4px rgba(0,0,0,.4);
+}
+.hero p{
+  font-size:clamp(15px, 1.6vw, 18px); max-width:46ch; margin:20px 0 30px;
+  opacity:.92; line-height:1.55;
+  text-shadow:0 2px 14px rgba(0,0,0,.5);
+}
+.hero__rooms{
+  display:flex; flex-wrap:wrap; gap:10px;
+}
+.hero__rooms a{
+  padding:11px 20px; border:1px solid rgba(255,255,255,.55); border-radius:2px;
+  font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  transition:background .35s var(--ease), border-color .35s var(--ease);
+  backdrop-filter:blur(6px); background:rgba(255,255,255,.06);
+}
+.hero__rooms a:hover{background:var(--white); color:var(--ink); border-color:var(--white);}
+@media (max-width:640px){
+  .hero{min-height:560px;}
+  .hero__content{padding-bottom:40px;}
+  .hero__scene:nth-child(3) img{object-position:85% 38%;}
+}
+
+/* ============================================================
+   STAT BAR
+   ============================================================ */
+.stat-bar{
+  background:var(--ink); color:var(--cream);
+  padding:5px var(--gutter);
+}
+.stat-bar__row{
+  max-width:var(--container); margin:0 auto;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  text-align:center;
+}
+.stat-bar__row div b{
+  display:block; font-family:var(--serif); font-size:clamp(24px,2.6vw,34px); font-weight:400;
+}
+.stat-bar__row div span{
+  display:block; font-size:11px; letter-spacing:.1em; text-transform:uppercase; opacity:.65; margin-top:6px;
+}
+@media (max-width:720px){
+  .stat-bar__row{grid-template-columns:repeat(2,1fr); row-gap:26px;}
+}
+
+/* ============================================================
+   REASSURANCE STRIP — Kukoon-inspired, moved close to the decision
+   ============================================================ */
+.reassure{
+  border-bottom:1px solid var(--line);
+  padding:5px 0;
+}
+.reassure__row{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  max-width:var(--container); margin:0 auto;
+}
+.reassure__item{
+  display:flex; align-items:center; gap:12px;
+  padding:22px var(--gutter);
+  border-left:1px solid var(--line);
+}
+.reassure__item:first-child{border-left:0;}
+.reassure__item svg{width:22px; height:22px; flex:none; stroke:var(--ink); opacity:.75;}
+.reassure__item div b{display:block; font-size:13px; font-weight:700;}
+.reassure__item div span{display:block; font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
+@media (max-width:860px){
+  .reassure__row{grid-template-columns:repeat(2,1fr);}
+  .reassure__item{border-left:0; border-top:1px solid var(--line); padding:18px var(--gutter);}
+  .reassure__item:nth-child(1),.reassure__item:nth-child(2){border-top:0;}
+}
+
+/* ============================================================
+   PROOF CARDS — "the proof is in the detail"
+   ============================================================ */
+.proof__grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gutter);
+}
+.proof__card{}
+.proof__frame{
+  position:relative; aspect-ratio:4/5; overflow:hidden; border-radius:2px; margin-bottom:18px;
+  background:var(--white);
+}
+.proof__frame img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 1.1s var(--ease-slow);
+}
+.proof__card:hover .proof__frame img{transform:scale(1.045);}
+.proof__card h3{font-size:19px; margin:0 0 6px;}
+.proof__card p{font-size:13.5px; color:var(--ink-soft); margin:0; line-height:1.5;}
+@media (max-width:900px){
+  .proof__grid{grid-template-columns:repeat(2,1fr); row-gap:32px;}
+}
+
+/* ============================================================
+   SCROLL-LED REVIEWS — the rug unfolds as the visitor reads
+   ============================================================ */
+.trust{
+  --review-progress:0;
+  --review-remaining:1;
+  position:relative; isolation:isolate;
+  height:clamp(860px, 165vh, 1320px);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.82);
+}
+.trust__sticky{
+  position:sticky; top:76px;
+  min-height:calc(100vh - 76px);
+  display:flex; align-items:center;
+  overflow:hidden; padding:5px 0;
+}
+.trust__experience{
+  width:100%; display:grid;
+  grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);
+  gap:clamp(30px,5vw,72px); align-items:center;
+}
+.trust__rug-stage{
+  position:relative; height:clamp(390px,66vh,620px);
+  overflow:hidden; border-radius:2px;
+  background:#e7dfd2;
+  box-shadow:0 18px 50px rgba(26,26,26,.12);
+}
+.trust__rug-frame{
+  position:absolute; inset:0; width:100%; height:100%; border:0; padding:0; margin:0;
+  background:none; cursor:zoom-in; opacity:0; z-index:0;
+  transition:opacity .6s ease;
+}
+.trust__rug-frame.is-active{opacity:1; z-index:1;}
+.trust__rug-frame img{width:100%; height:100%; object-fit:cover; object-position:center top; display:block;}
+.trust__rug-caption{
+  position:absolute; z-index:3; left:18px; top:18px;
+  padding:8px 11px; background:rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.65);
+  font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  pointer-events:none;
+}
+.trust__content{min-width:0;}
+
+/* ---------- Rug zoom lightbox ---------- */
+.rug-zoom{
+  position:fixed; inset:0; z-index:500;
+  background:rgba(18,15,12,.92);
+  display:flex; align-items:center; justify-content:center;
+  padding:56px;
+}
+.rug-zoom[hidden]{display:none;}
+.rug-zoom img{
+  max-width:min(900px,90vw); max-height:88vh; width:auto; height:auto;
+  object-fit:contain; border-radius:2px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+.rug-zoom__close{
+  position:absolute; top:22px; right:22px; z-index:1;
+  width:44px; height:44px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.4); background:rgba(255,255,255,.08);
+  color:#fff; font-size:22px; line-height:1; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .3s var(--ease);
+}
+.rug-zoom__close:hover{background:rgba(255,255,255,.18);}
+@media (max-width:640px){
+  .rug-zoom{padding:20px;}
+  .rug-zoom__close{top:14px; right:14px; width:40px; height:40px;}
+}
+.trust__hint{
+  display:flex; align-items:center; gap:9px; margin-bottom:24px;
+  font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
+}
+.trust__hint::before{content:'↓'; font-size:15px; color:var(--ink);}
+.trust__hint span{display:block; height:1px; width:44px; background:var(--line-strong);}
+.trust__progress{
+  flex:1; height:1px; background:var(--line);
+  position:relative; overflow:hidden;
+}
+.trust__progress::after{
+  content:''; position:absolute; inset:0; background:var(--ink);
+  transform:scaleX(var(--review-progress)); transform-origin:left center;
+}
+.trust__row{
+  display:flex; gap:42px; align-items:flex-start; flex-wrap:nowrap;
+}
+.trust__score{flex:none; width:200px;}
+.trust__score .eyebrow{margin-bottom:10px;}
+.trust__score b{font-family:var(--serif); font-size:44px; font-weight:400; display:block;}
+.trust__stars{color:var(--gold); letter-spacing:2px; font-size:15px; margin:4px 0 8px;}
+.trust__score span{font-size:12px; color:var(--ink-soft); display:block; line-height:1.5;}
+.trust__score a{display:inline-block; margin-top:14px; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-bottom:1px solid var(--ink);}
+
+.trust__marquee{
+  flex:1; min-width:0; overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+.trust__track{
+  display:flex; gap:14px; width:max-content;
+  transform:translateX(calc(var(--review-progress) * -47%));
+  will-change:transform;
+}
+.trust__quote{
+  flex:none; width:188px; padding:14px;
+  border:1px solid var(--line); border-radius:2px;
+  background:rgba(255,255,255,.82); backdrop-filter:blur(3px);
+}
+.trust__quote .trust__stars{font-size:10px; margin-bottom:6px;}
+.trust__quote p{font-size:11.5px; line-height:1.5; margin:0 0 6px; color:var(--ink);}
+.trust__quote cite{font-style:normal; font-size:9.5px; letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase;}
+
+.trust__badges{
+  display:flex; gap:12px; flex-wrap:wrap;
+  margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
+}
+.trust__badge{
+  display:flex; align-items:center; gap:8px;
+  padding:9px 16px; border-radius:20px;
+  border:1px solid var(--line-strong);
+  background:rgba(255,255,255,.82); backdrop-filter:blur(4px);
+  font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft);
+}
+.trust__badge svg{width:15px; height:15px; stroke:var(--ink); flex:none;}
+@media (max-width:760px){
+  .trust{height:max(900px, 172vh);}
+  .trust__sticky{top:64px; min-height:calc(100vh - 64px); padding:10px 0;}
+  .trust__experience{grid-template-columns:1fr; grid-template-rows:190px auto; gap:18px;}
+  .trust__rug-stage{height:190px; width:100%;}
+  .trust__rug-frame img{object-position:center 38%;}
+  .trust__rug-caption{left:12px; top:12px; padding:6px 9px; font-size:9px;}
+  .trust__hint{margin-bottom:12px;}
+  .trust__row{display:block;}
+  .trust__score{width:auto; display:grid; grid-template-columns:auto 1fr; column-gap:14px; align-items:center; margin-bottom:14px;}
+  .trust__score .eyebrow,.trust__score a{grid-column:1 / -1;}
+  .trust__score .eyebrow{margin-bottom:3px;}
+  .trust__score b{font-size:36px;}
+  .trust__score .trust__stars{margin:0;}
+  .trust__score span{grid-column:2;}
+  .trust__score a{margin-top:8px; width:max-content;}
+  .trust__marquee{-webkit-mask-image:linear-gradient(90deg,black 92%,transparent); mask-image:linear-gradient(90deg,black 92%,transparent);}
+  .trust__track{transform:translateX(calc(var(--review-progress) * -52%));}
+  .trust__quote{width:210px; padding:12px;}
+  .trust__badges{flex-wrap:nowrap; overflow-x:auto; margin-top:14px; padding-top:14px; scrollbar-width:none;}
+  .trust__badges::-webkit-scrollbar{display:none;}
+  .trust__badge{flex:none; padding:8px 12px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .trust{height:auto;}
+  .trust__sticky{position:relative; top:auto; min-height:auto; padding:30px 0;}
+  .trust__rug-frame{transition:none;}
+  .trust__track{transform:none;}
+}
+
+/* ============================================================
+   SHOP YOUR WAY — original directory inspired by shopping lenses
+   ============================================================ */
+.shop-paths{border-top:1px solid var(--line); background:var(--cream);}
+.shop-paths__intro{max-width:58ch; margin-bottom:28px;}
+.shop-paths__intro h2{font-size:clamp(28px,3.4vw,42px); margin:8px 0 8px;}
+.shop-paths__intro p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+.shop-paths__directory{
+  display:grid; grid-template-columns:240px minmax(0,1fr);
+  border:1px solid var(--line-strong); min-height:430px;
+}
+.shop-paths__tabs{display:flex; flex-direction:column; border-right:1px solid var(--line-strong);}
+.shop-paths__tab{
+  flex:1; min-height:66px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:16px 20px; border:0; border-bottom:1px solid var(--line); background:transparent;
+  color:var(--ink-soft); text-align:left; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  transition:background .3s var(--ease), color .3s var(--ease);
+}
+.shop-paths__tab:last-child{border-bottom:0;}
+.shop-paths__tab::after{content:'↗'; font-size:14px; font-weight:400; opacity:.35;}
+.shop-paths__tab.is-active{background:var(--ink); color:var(--white);}
+.shop-paths__tab.is-active::after{opacity:1;}
+.shop-paths__panel{display:grid; grid-template-columns:minmax(300px,1.18fr) minmax(280px,.82fr); min-width:0;}
+.shop-paths__image{position:relative; overflow:hidden; min-height:430px; background:var(--white);}
+.shop-paths__image img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:opacity .3s ease, transform .7s var(--ease-slow);}
+.shop-paths__panel.is-changing .shop-paths__image img{opacity:.35; transform:scale(1.02);}
+.shop-paths__body{padding:clamp(26px,4vw,48px); display:flex; flex-direction:column; justify-content:center;}
+.shop-paths__count{font-family:var(--serif); color:var(--ink-faint); font-size:16px;}
+.shop-paths__body h3{font-size:clamp(28px,3vw,38px); margin:14px 0 8px;}
+.shop-paths__body > p{font-size:14px; color:var(--ink-soft); margin:0 0 24px; max-width:36ch;}
+.shop-paths__links{display:flex; flex-wrap:wrap; gap:9px;}
+.shop-paths__links a{
+  border:1px solid var(--line-strong); padding:10px 13px; border-radius:20px;
+  font-size:11px; font-weight:700; letter-spacing:.04em;
+  transition:background .25s ease,color .25s ease;
+}
+.shop-paths__links a:hover{background:var(--ink); color:var(--white);}
+@media (max-width:760px){
+  .shop-paths__intro{margin-bottom:18px;}
+  .shop-paths__directory{display:block; min-height:0; border-left:0; border-right:0;}
+  .shop-paths__tabs{flex-direction:row; overflow-x:auto; border-right:0; border-bottom:1px solid var(--line-strong); scrollbar-width:none;}
+  .shop-paths__tabs::-webkit-scrollbar{display:none;}
+  .shop-paths__tab{flex:none; min-height:0; padding:13px 16px; border-right:1px solid var(--line); border-bottom:0; white-space:nowrap;}
+  .shop-paths__panel{grid-template-columns:1fr;}
+  .shop-paths__image{min-height:250px;}
+  .shop-paths__body{padding:24px 0 4px;}
+  .shop-paths__body h3{font-size:28px;}
+}
+
+/* ============================================================
+   EDIT SECTIONS (the core merchandising blocks)
+   ============================================================ */
+.edit{border-top:1px solid var(--line);}
+.edit__head{
+  display:flex; gap:24px; align-items:flex-start; margin-bottom:28px; flex-wrap:wrap;
+}
+.edit__number{
+  font-family:var(--serif); font-size:15px; color:var(--ink-faint); flex:none; padding-top:3px;
+}
+.edit__head h2{font-size:clamp(28px,3.2vw,40px); margin:10px 0 10px;}
+.edit__head p{font-size:14.5px; color:var(--ink-soft); max-width:52ch; margin:0;}
+
+.edit__pills{
+  display:flex; gap:10px; flex-wrap:wrap; margin:22px 0 30px;
+}
+.edit__pills button{
+  background:none; border:1px solid var(--line-strong); border-radius:20px;
+  padding:13px 18px; font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--ink-soft); transition:all .3s var(--ease);
+}
+.edit__pills button.is-active, .edit__pills button:hover{background:var(--ink); border-color:var(--ink); color:var(--white);}
+
+.edit__banner{
+  position:relative; display:block; border-radius:2px; overflow:hidden;
+  aspect-ratio:21/9; margin-bottom:32px; background:#ddd7c6;
+}
+.edit__banner img{width:100%; height:100%; object-fit:cover; transition:transform 1s var(--ease-slow);}
+.edit__banner:hover img{transform:scale(1.035);}
+.edit__banner__scrim{position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,17,12,.5) 0%, rgba(20,17,12,0) 55%);}
+.edit__banner__cta{
+  position:absolute; left:32px; bottom:28px; z-index:2;
+  color:var(--white); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  padding:13px 26px; border:1px solid rgba(255,255,255,.7); border-radius:2px;
+  backdrop-filter:blur(4px); background:rgba(255,255,255,.08);
+  transition:background .35s var(--ease);
+}
+.edit__banner:hover .edit__banner__cta{background:var(--white); color:var(--ink);}
+@media (max-width:640px){
+  .edit__banner{aspect-ratio:4/5;}
+}
+
+.edit__row{
+  display:flex; gap:22px; overflow-x:auto; padding-bottom:8px;
+  scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
+}
+.edit__row::-webkit-scrollbar{height:0;}
+.edit__row .edit__card{
+  flex:none; width:250px; scroll-snap-align:start;
+}
+.edit__card__frame{
+  aspect-ratio:3/4; overflow:hidden; border-radius:2px; margin-bottom:14px; background:var(--white);
+}
+.edit__card__frame img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease-slow);}
+.edit__card:hover .edit__card__frame img{transform:scale(1.05);}
+.edit__card h4{font-size:14px; font-weight:700; font-family:var(--sans); margin:0 0 5px; line-height:1.35;}
+.edit__card .price-row{font-size:13.5px;}
+.edit__card .price-row b{margin-right:8px;}
+.edit__card .price-row s{color:var(--ink-faint); font-weight:400;}
+.edit__card .other-retailers{display:block; font-size:11.5px; color:var(--ink-faint); margin-top:2px;}
+@media (max-width:640px){
+  .edit__row .edit__card{width:62vw;}
+}
+
+/* ============================================================
+   SHOP THE ROOM — signature device
+   ============================================================ */
+.room{background:var(--white); border-top:1px solid var(--line);}
+.room__slides{
+  display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch; padding-bottom:6px;
+}
+.room__slides::-webkit-scrollbar{height:0;}
+.room__slide{
+  position:relative; flex:none; width:min(560px,84vw); aspect-ratio:1/1;
+  border-radius:2px; overflow:hidden; scroll-snap-align:start; background:#e5e0d1;
+}
+.room__slide img{width:100%; height:100%; object-fit:cover;}
+.room__slide img[data-crop-fix]{transform:scale(1.36); transform-origin:center;}
+.room__marker{
+  position:absolute; width:44px; height:44px; margin:-22px 0 0 -22px;
+  background:none; border:0; padding:0; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.room__marker__dot{
+  position:relative; width:26px; height:26px; border-radius:50%;
+  background:rgba(255,255,255,.92); border:1px solid var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .3s var(--ease);
+}
+.room__marker:hover .room__marker__dot{transform:scale(1.08);}
+.room__marker__dot::after{content:'+'; font-size:16px; line-height:1; color:var(--ink); transition:transform .3s var(--ease);}
+.room__marker.is-open .room__marker__dot::after{transform:rotate(45deg);}
+.room__marker__dot::before{
+  content:''; position:absolute; inset:-8px; border-radius:50%; border:1px solid rgba(255,255,255,.5);
+  animation:pulse 2.4s ease-out infinite;
+}
+@keyframes pulse{0%{transform:scale(.85); opacity:.9;} 100%{transform:scale(1.9); opacity:0;}}
+.room__card{
+  position:absolute; z-index:5; width:220px;
+  background:rgba(255,255,255,.85); backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.6); border-radius:2px; padding:14px;
+  box-shadow:0 18px 40px rgba(20,17,12,.18);
+  opacity:0; transform:translateY(8px) scale(.98); pointer-events:none;
+  transition:opacity .3s var(--ease), transform .3s var(--ease);
+}
+.room__card.is-open{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+.room__card b{display:block; font-size:13px; margin-bottom:3px;}
+.room__card span{display:block; font-size:11.5px; color:var(--ink-soft); margin-bottom:6px;}
+.room__card a{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; border-bottom:1px solid var(--ink);}
+@media (max-width:640px){
+  .room__slide{width:88vw;}
+}
+
+/* ============================================================
+   SIZE GUIDE STRIP
+   ============================================================ */
+.size-guide{background:var(--cream);}
+.size-guide__grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gutter);
+}
+.size-guide__grid h4{font-size:13px; letter-spacing:.04em; text-transform:uppercase; margin:0 0 10px; font-family:var(--sans); font-weight:700;}
+.size-guide__grid p{font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin:0;}
+@media (max-width:860px){
+  .size-guide__grid{grid-template-columns:repeat(2,1fr); row-gap:30px;}
+}
+
+/* ============================================================
+   RECOMMENDED ROW
+   ============================================================ */
+.recommended{background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.recommended__grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gutter);
+}
+@media (max-width:860px){
+  .recommended__grid{grid-template-columns:repeat(2,1fr); row-gap:30px;}
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{max-width:840px;}
+.faq__item{border-top:1px solid var(--line);}
+.faq__item:last-child{border-bottom:1px solid var(--line);}
+.faq__q{
+  width:100%; text-align:left; background:none; border:0; padding:22px 0;
+  display:flex; justify-content:space-between; align-items:center; gap:20px;
+  font-family:var(--serif); font-size:18px; color:var(--ink);
+}
+.faq__q svg{width:16px; height:16px; flex:none; transition:transform .35s var(--ease); stroke:var(--ink);}
+.faq__item.is-open .faq__q svg{transform:rotate(45deg);}
+.faq__a{
+  max-height:0; overflow:hidden; transition:max-height .5s var(--ease-slow);
+}
+.faq__a p{font-size:14.5px; color:var(--ink-soft); line-height:1.65; margin:0 0 22px; max-width:64ch;}
+
+/* ============================================================
+   EMAIL CAPTURE
+   ============================================================ */
+.email-cap{
+  background:var(--ink); color:var(--cream); text-align:center;
+  padding:5px var(--gutter);
+}
+.email-cap .eyebrow{color:rgba(255,255,255,.6); margin-bottom:14px;}
+.email-cap h2{color:var(--white); font-size:clamp(28px,3.4vw,42px); max-width:16ch; margin:0 auto 26px;}
+.email-cap form{
+  display:flex; max-width:420px; margin:0 auto; border-bottom:1px solid rgba(255,255,255,.4);
+  padding-bottom:10px; gap:12px;
+}
+.email-cap input{
+  flex:1; background:none; border:0; color:var(--white); font-family:var(--sans); font-size:14px; padding:8px 0;
+}
+.email-cap input::placeholder{color:rgba(255,255,255,.5);}
+.email-cap button{
+  background:none; border:0; color:var(--white); font-size:11px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:var(--cream); padding:5px 0 28px; font-size:13px;}
+.site-footer__grid{
+  display:grid; grid-template-columns:1.6fr repeat(4,1fr); gap:32px;
+  padding-bottom:44px; border-bottom:1px solid var(--line);
+}
+.site-footer__brand img{width:140px; margin-bottom:14px;}
+.site-footer__brand p{color:var(--ink-soft); font-size:13px; max-width:32ch; line-height:1.6;}
+.site-footer h5{font-size:11px; letter-spacing:.1em; text-transform:uppercase; margin:0 0 16px; font-family:var(--sans); color:var(--ink-faint);}
+.site-footer ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;}
+.site-footer a{color:var(--ink-soft); transition:color .25s var(--ease);}
+.site-footer a:hover{color:var(--ink);}
+.site-footer__bottom{
+  padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  font-size:12px; color:var(--ink-faint);
+}
+@media (max-width:900px){
+  .site-footer__grid{grid-template-columns:repeat(2,1fr); row-gap:32px;}
+}
+
+/* ============================================================
+   RESPONSIVE SCALE + ALIGNMENT PASS
+   Existing content, section order, colours, fonts and interactions stay locked.
+   ============================================================ */
+@media (min-width:761px){
+  :root{
+    --container:1180px;
+    --gutter:clamp(24px,4vw,52px);
+  }
+  body{font-size:15px;}
+  .site-header__row{padding-top:14px; padding-bottom:14px;}
+  .site-header__logo{width:138px;}
+  .site-header__nav{gap:26px; font-size:12px;}
+  .site-header__icons{gap:16px;}
+  .site-header__icons svg{width:18px; height:18px;}
+
+  .hero{min-height:530px;}
+  .hero__content{padding-bottom:40px;}
+  .hero__eyebrow{font-size:10px; margin-bottom:13px;}
+  .hero h1{font-size:clamp(36px,4.8vw,62px); max-width:13ch;}
+  .hero p{font-size:clamp(14px,1.2vw,16px); margin:14px 0 22px;}
+  .hero__rooms a{padding:10px 16px; font-size:11px;}
+
+  .stat-bar__row div b{font-size:clamp(23px,2.2vw,30px);}
+  .stat-bar__row div span{font-size:10px; margin-top:3px;}
+  .reassure__item{padding:17px var(--gutter); gap:10px;}
+  .reassure__item svg{width:20px; height:20px;}
+  .reassure__item div b{font-size:12px;}
+  .reassure__item div span{font-size:11.5px;}
+
+  .section-head{gap:20px; margin-bottom:28px;}
+  .section-head h2{font-size:clamp(26px,2.8vw,36px);}
+  .proof__grid{gap:32px;}
+  .proof__frame{margin-bottom:14px;}
+  .proof__card h3{font-size:18px;}
+  .proof__card p{font-size:12.5px;}
+
+  .shop-paths__intro{margin-bottom:22px;}
+  .shop-paths__intro h2{font-size:clamp(27px,2.8vw,36px);}
+  .shop-paths__directory{grid-template-columns:220px minmax(0,1fr); min-height:390px;}
+  .shop-paths__tab{min-height:58px; padding:13px 17px; font-size:11px;}
+  .shop-paths__image{min-height:390px;}
+  .shop-paths__body{padding:clamp(24px,3vw,38px);}
+  .shop-paths__body h3{font-size:clamp(26px,2.7vw,34px); margin:11px 0 7px;}
+  .shop-paths__body > p{font-size:13px; margin-bottom:20px;}
+  .shop-paths__links a{padding:9px 12px; font-size:10.5px;}
+
+  .edit__head{gap:20px; margin-bottom:22px;}
+  .edit__number{font-size:14px;}
+  .edit__head h2{font-size:clamp(27px,2.8vw,34px); margin:7px 0 8px;}
+  .edit__head p{font-size:13.5px;}
+  .edit__pills{gap:8px; margin:16px 0 22px;}
+  .edit__pills button{padding:10px 15px; font-size:10.5px;}
+  .edit__banner{aspect-ratio:8/3; margin-bottom:24px;}
+  .edit__banner__cta{left:24px; bottom:22px; padding:11px 21px; font-size:11px;}
+  .edit__row{gap:18px;}
+  .edit__row .edit__card{width:220px;}
+  .edit__card__frame{margin-bottom:11px;}
+  .edit__card h4{font-size:13px;}
+  .edit__card .price-row{font-size:12.5px;}
+  .edit__card .other-retailers{font-size:10.5px;}
+
+  .room__slides{gap:18px;}
+  .room__slide{width:min(480px,78vw);}
+  .size-guide__grid,.recommended__grid{gap:32px;}
+  .size-guide__grid p{font-size:12.5px;}
+  .faq{max-width:760px;}
+  .faq__q{padding:18px 0; font-size:17px;}
+  .faq__a p{font-size:13.5px;}
+  .email-cap h2{font-size:clamp(26px,2.8vw,36px); margin-bottom:20px;}
+  .site-footer__grid{gap:28px; padding-bottom:36px;}
+}
+
+@media (max-width:760px){
+  :root{--gutter:16px;}
+  body{font-size:14px; overflow-x:hidden;}
+  .container{width:100%;}
+
+  .promo-bar{padding:7px var(--gutter); font-size:10px;}
+  .site-header__row{padding:13px var(--gutter); gap:14px;}
+  .site-header__logo{width:124px;}
+  .site-header__icons{gap:13px;}
+  .site-header__icons svg{width:17px; height:17px;}
+
+  .hero{min-height:500px;}
+  .hero__content{padding:0 var(--gutter) 24px;}
+  .hero__eyebrow{font-size:9.5px; margin-bottom:11px;}
+  .hero h1{font-size:34px; line-height:1; max-width:12ch;}
+  .hero p{font-size:13.5px; line-height:1.45; margin:12px 0 18px; max-width:34ch;}
+  .hero__rooms{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; width:100%;}
+  .hero__rooms a{padding:9px 7px; font-size:9.5px; text-align:center; white-space:nowrap;}
+
+  .stat-bar{padding:7px var(--gutter);}
+  .stat-bar__row{gap:12px; row-gap:12px;}
+  .stat-bar__row div b{font-size:23px;}
+  .stat-bar__row div span{font-size:9px; margin-top:2px;}
+  .reassure__item{padding:12px var(--gutter); gap:8px; min-width:0;}
+  .reassure__item svg{width:18px; height:18px;}
+  .reassure__item div{min-width:0;}
+  .reassure__item div b{font-size:11.5px; line-height:1.3;}
+  .reassure__item div span{font-size:10.5px; line-height:1.3;}
+
+  .section-head{align-items:flex-start; gap:12px; margin-bottom:20px;}
+  .section-head h2{font-size:26px; line-height:1.08;}
+  .eyebrow{font-size:9.5px;}
+  .proof__grid{gap:22px 12px;}
+  .proof__frame{margin-bottom:10px;}
+  .proof__card h3{font-size:16px; line-height:1.15; margin-bottom:5px;}
+  .proof__card p{font-size:12px; line-height:1.4;}
+
+  .shop-paths__intro{margin-bottom:16px;}
+  .shop-paths__intro h2{font-size:26px; line-height:1.08; margin:6px 0;}
+  .shop-paths__intro p{font-size:13px;}
+  .shop-paths__tab{padding:11px 13px; font-size:10px;}
+  .shop-paths__image{min-height:215px;}
+  .shop-paths__body{padding:18px 0 2px;}
+  .shop-paths__count{font-size:14px;}
+  .shop-paths__body h3{font-size:25px; line-height:1.08; margin:9px 0 6px;}
+  .shop-paths__body > p{font-size:13px; margin-bottom:17px;}
+  .shop-paths__links{gap:7px;}
+  .shop-paths__links a{padding:8px 10px; font-size:10px;}
+
+  .edit__head{display:grid; grid-template-columns:22px minmax(0,1fr); gap:10px; margin-bottom:16px;}
+  .edit__number{font-size:13px; padding-top:1px;}
+  .edit__head h2{font-size:26px; line-height:1.08; margin:5px 0 7px;}
+  .edit__head p{font-size:13px; line-height:1.45;}
+  .edit__pills{flex-wrap:nowrap; overflow-x:auto; gap:7px; margin:12px 0 16px; padding-bottom:1px; scrollbar-width:none;}
+  .edit__pills::-webkit-scrollbar{display:none;}
+  .edit__pills button{flex:none; padding:9px 12px; font-size:9.5px;}
+  .edit__banner{aspect-ratio:5/4; margin-bottom:16px;}
+  .edit__banner__cta{left:14px; bottom:14px; padding:9px 15px; font-size:9.5px;}
+  .edit__row{gap:14px; padding-bottom:5px;}
+  .edit__row .edit__card{width:54vw; max-width:210px;}
+  .edit__card__frame{margin-bottom:9px;}
+  .edit__card h4{font-size:12.5px; line-height:1.3;}
+  .edit__card .price-row{font-size:12px;}
+  .edit__card .other-retailers{font-size:10px;}
+
+  .room__slides{gap:14px;}
+  .room__slide{width:82vw;}
+  .room__marker{width:38px; height:38px; margin:-19px 0 0 -19px;}
+  .room__marker__dot{width:24px; height:24px;}
+  .room__card{width:min(205px,62vw); padding:11px;}
+  .room__card b{font-size:12px;}
+  .room__card span{font-size:10.5px;}
+  .room__card a{font-size:10px;}
+
+  .size-guide__grid{gap:20px 14px;}
+  .size-guide__grid h4{font-size:11px; margin-bottom:6px;}
+  .size-guide__grid p{font-size:12px; line-height:1.48;}
+  .recommended__grid{gap:22px 14px;}
+  .faq__q{padding:16px 0; gap:14px; font-size:16px; line-height:1.25;}
+  .faq__a p{font-size:13px; margin-bottom:17px;}
+  .email-cap h2{font-size:26px; line-height:1.08; margin-bottom:18px;}
+  .email-cap form{max-width:340px;}
+  .email-cap input{font-size:13px; min-width:0;}
+  .email-cap button{font-size:9.5px;}
+  .site-footer{font-size:12px;}
+  .site-footer__grid{gap:26px 18px; row-gap:26px; padding-bottom:30px;}
+  .site-footer__brand img{width:122px;}
+  .site-footer__brand p{font-size:12px;}
+  .site-footer h5{font-size:10px; margin-bottom:11px;}
+  .site-footer ul{gap:8px;}
+  .site-footer__bottom{padding-top:18px; font-size:10.5px;}
+}
+
+/* Reviews geometry remains on its approved desktop/mobile measurements. */
+.trust .container{
+  max-width:1320px;
+  padding-left:clamp(20px,5vw,64px);
+  padding-right:clamp(20px,5vw,64px);
+}
+
+/* Hero-only scroll runway: each banner stays full-screen while scroll selects the scene. */
+.hero{
+  height:300svh;
+  min-height:300svh;
+  display:block;
+  overflow:visible;
+}
+.hero__stage{
+  position:sticky;
+  top:0;
+  height:100svh;
+  min-height:100svh;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+}
+.hero__scene{
+  opacity:var(--hero-scene-opacity,0);
+  z-index:0;
+  --hero-scene-opacity:0;
+  clip-path:none;
+  transition:none;
+  will-change:opacity;
+  backface-visibility:hidden;
+}
+.hero__scene:first-child{--hero-scene-opacity:1;}
+.hero__scene:nth-child(1){z-index:1;}
+.hero__scene:nth-child(2){z-index:2;}
+.hero__scene:nth-child(3){z-index:3;}
+.hero__scene.is-active{opacity:var(--hero-scene-opacity,0);}
+.hero__scrim{z-index:8;}
+.hero__content{z-index:9;}
+@supports not (height:100svh){
+  .hero{height:300vh; min-height:300vh;}
+  .hero__stage{height:100vh; min-height:100vh;}
+}
+
+/* Mobile trust badges: all three remain visible in one horizontal row. */
+@media (max-width:760px){
+  .trust__badges{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:4px;
+    overflow:visible;
+  }
+  .trust__badge{
+    width:100%; min-width:0;
+    justify-content:center;
+    gap:3px; padding:6px 3px;
+    font-size:clamp(6px,1.8vw,7.5px);
+    letter-spacing:0;
+    white-space:nowrap;
+  }
+  .trust__badge svg{width:9px; height:9px;}
+}
+
+/* Responsive hero assets are composed for their viewport, so the banner opens full-bleed. */
+.hero__scene picture{
+  position:absolute;
+  inset:0;
+  display:block;
+}
+.hero__scene img{
+  object-fit:cover;
+  object-position:center center !important;
+  transform:none !important;
+}
+.hero__scrim{
+  background:
+    linear-gradient(180deg,rgba(15,13,9,.14) 0%,rgba(15,13,9,.04) 52%,rgba(15,13,9,.34) 100%),
+    linear-gradient(100deg,rgba(10,9,6,.68) 0%,rgba(10,9,6,.42) 34%,rgba(10,9,6,.08) 62%,rgba(10,9,6,0) 78%);
+}
+@media (max-width:760px){
+  .hero__scrim{
+    background:
+      linear-gradient(180deg,rgba(15,13,9,.1) 0%,rgba(15,13,9,.04) 48%,rgba(15,13,9,.62) 100%),
+      linear-gradient(100deg,rgba(10,9,6,.38) 0%,rgba(10,9,6,.14) 58%,rgba(10,9,6,0) 86%);
+  }
+}
+
+/* Typography alignment only: preserves the approved left/centre intent at every width. */
+.hero__content,
+.section-head > div,
+.shop-paths__intro,
+.shop-paths__body,
+.edit__head > div,
+.proof__card,
+.trust__content,
+.size-guide__grid > div,
+.recommended__grid > *,
+.faq{text-align:left;}
+.stat-bar__row,
+.email-cap{text-align:center;}
+
+/* Hero fit only: compensate for the promo/header so every CTA stays in view. */
+@media (min-width:761px){
+  .hero__content{padding-bottom:clamp(120px,12svh,148px);}
+  .hero__eyebrow{font-size:9.5px; margin-bottom:10px;}
+  .hero h1{font-size:clamp(34px,4vw,54px); line-height:1;}
+  .hero p{font-size:14px; margin:10px 0 16px;}
+  .hero__rooms{gap:8px;}
+  .hero__rooms a{padding:8px 14px; font-size:10px;}
+}
+@media (max-width:760px){
+  .hero__content{padding:0 var(--gutter) max(88px,13svh);}
+  .hero__eyebrow{font-size:8.5px; margin-bottom:8px;}
+  .hero h1{font-size:clamp(27px,8vw,30px); line-height:1;}
+  .hero p{font-size:12.5px; line-height:1.4; margin:9px 0 13px;}
+  .hero__rooms{gap:7px;}
+  .hero__rooms a{padding:7px 6px; font-size:8.5px;}
+}
+
+/* ============================================================
+   POST-REVIEWS DISCOVERY FLOW
+   Scoped to the requested merchandising sequence only.
+   ============================================================ */
+.lookaround,.style-hub,.room-discovery,.compare-shop,.why-fableroom,.rug-finder{
+  border-top:1px solid var(--line);
+}
+.lookaround__intro,.style-hub__intro,.room-discovery__intro,.compare-shop__intro{
+  max-width:62ch;
+}
+.lookaround__intro p,.style-hub__intro p,.room-discovery__intro p,.compare-shop__intro p{
+  margin:8px 0 0; color:var(--ink-soft); font-size:14px;
+}
+.lookaround__filters{
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid var(--line-strong); margin-bottom:24px;
+}
+.lookaround__filter{
+  min-height:58px; border:0; border-right:1px solid var(--line);
+  background:transparent; color:var(--ink-soft); padding:12px 14px;
+  font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  transition:background .3s var(--ease),color .3s var(--ease);
+}
+.lookaround__filter:last-child{border-right:0;}
+.lookaround__filter.is-active{background:var(--ink); color:var(--white);}
+.lookaround__grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px;
+}
+.lookaround__card{min-width:0;}
+.lookaround__card[hidden]{display:none;}
+.lookaround__frame{
+  position:relative; aspect-ratio:3/4; overflow:hidden; margin-bottom:12px; background:var(--white);
+}
+.lookaround__frame img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease-slow);}
+.lookaround__card:hover .lookaround__frame img{transform:scale(1.04);}
+.lookaround__badges{position:absolute; left:10px; top:10px; display:flex; flex-wrap:wrap; gap:5px; max-width:calc(100% - 20px);}
+.lookaround__badge{
+  display:inline-flex; padding:6px 8px; background:rgba(255,255,255,.92); border:1px solid rgba(255,255,255,.75);
+  font-size:8.5px; line-height:1; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+}
+.lookaround__card h3{font-family:var(--sans); font-size:13px; font-weight:700; line-height:1.35; margin-bottom:5px;}
+.lookaround__meta{font-size:11px; color:var(--ink-faint); margin-bottom:3px;}
+.lookaround__price{font-size:13px;}
+.lookaround__price b{margin-right:7px;}
+.lookaround__price s{color:var(--ink-faint);}
+
+.style-hub{background:var(--white);}
+.style-hub__shell{
+  display:grid; grid-template-columns:minmax(250px,.38fr) minmax(0,1fr);
+  border:1px solid var(--line-strong); min-height:620px;
+}
+.style-hub__media{position:relative; overflow:hidden; background:#d8c8b5; min-height:620px;}
+.style-hub__media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.style-hub__panel{min-width:0; padding:clamp(24px,3.5vw,48px); display:flex; flex-direction:column;}
+.style-hub__intro h2{font-size:clamp(30px,3.6vw,48px); line-height:1.02; margin:8px 0 0;}
+.style-hub__intro h2 em{display:block; color:var(--clay); font-weight:400;}
+.style-hub__filters{display:flex; gap:8px; overflow-x:auto; padding:22px 0 18px; scrollbar-width:none;}
+.style-hub__filters::-webkit-scrollbar{display:none;}
+.style-hub__filter{
+  flex:none; border:1px solid var(--line-strong); border-radius:20px; background:transparent;
+  padding:9px 12px; color:var(--ink-soft); font-size:10px; font-weight:700; letter-spacing:.04em;
+}
+.style-hub__filter.is-active{background:var(--ink); border-color:var(--ink); color:var(--white);}
+.style-hub__products{display:flex; gap:12px; overflow-x:auto; padding-bottom:8px; scroll-snap-type:x proximity; scrollbar-width:none;}
+.style-hub__products::-webkit-scrollbar{display:none;}
+.style-hub__card{flex:0 0 180px; scroll-snap-align:start; border:1px solid var(--line); background:var(--cream);}
+.style-hub__card[hidden]{display:none;}
+.style-hub__card img{width:100%; aspect-ratio:3/4; object-fit:cover;}
+.style-hub__card div{padding:10px;}
+.style-hub__card span{display:block; color:var(--clay); font-size:8px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px;}
+.style-hub__card h3{font-size:15px; line-height:1.05; margin-bottom:5px;}
+.style-hub__card small{font-size:10.5px; color:var(--ink-soft);}
+.style-hub__footer{display:flex; justify-content:space-between; align-items:center; gap:18px; margin-top:auto; padding-top:24px; border-top:1px solid var(--line);}
+.style-hub__footer span{font-size:11px; color:var(--ink-soft);}
+.style-hub__footer a{font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-bottom:1px solid var(--ink);}
+
+.room-discovery__head{display:flex; justify-content:space-between; align-items:flex-end; gap:28px; margin-bottom:28px;}
+.room-discovery__intro h2{font-size:clamp(30px,4vw,50px); line-height:1.02; margin-top:8px;}
+.room-discovery__intro h2 em{display:block; color:var(--clay); font-weight:400;}
+.room-discovery__copy{max-width:39ch; color:var(--ink-soft); font-size:14px; margin:0 0 4px;}
+.room-discovery__grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; align-items:start;}
+.room-discovery__card{position:relative; display:block; overflow:hidden; aspect-ratio:4/5; background:#d8d0c6;}
+.room-discovery__card:nth-child(2),.room-discovery__card:nth-child(3){margin-top:34px;}
+.room-discovery__card img{width:100%; height:100%; object-fit:cover; transition:transform .9s var(--ease-slow);}
+.room-discovery__card:hover img{transform:scale(1.035);}
+.room-discovery__shade{position:absolute; inset:42% 0 0; background:linear-gradient(transparent,rgba(18,15,12,.68));}
+.room-discovery__label{position:absolute; inset:auto 16px 15px; color:var(--white);}
+.room-discovery__label h3{font-size:23px; line-height:1; margin-bottom:6px;}
+.room-discovery__label span{display:flex; justify-content:space-between; gap:12px; font-size:10px; letter-spacing:.04em;}
+
+.compare-shop{background:var(--white);}
+.compare-shop__grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px;}
+.compare-card{position:relative; min-width:0; padding-bottom:12px; border-bottom:1px solid var(--line);}
+.compare-card.is-selected{outline:1px solid var(--ink); outline-offset:7px;}
+.compare-card__image{display:block; overflow:hidden; aspect-ratio:3/4; margin-bottom:12px; background:var(--cream);}
+.compare-card__image img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease-slow);}
+.compare-card:hover .compare-card__image img{transform:scale(1.04);}
+.compare-card h3{font-family:var(--sans); font-size:13px; font-weight:700; line-height:1.35; margin-bottom:4px;}
+.compare-card__spec{font-size:10.5px; color:var(--ink-faint); margin-bottom:7px; min-height:32px;}
+.compare-card__price{font-size:13px; margin-bottom:10px;}
+.compare-card__toggle{
+  width:100%; min-height:42px; border:1px solid var(--line-strong); background:transparent;
+  display:flex; justify-content:space-between; align-items:center; padding:9px 11px;
+  font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+}
+.compare-card__toggle span:last-child{font-size:16px; font-weight:400;}
+.compare-card__toggle[aria-pressed="true"]{background:var(--ink); color:var(--white); border-color:var(--ink);}
+.compare-shop__status{min-height:20px; margin:14px 0 0; font-size:11px; color:var(--ink-soft);}
+.compare-panel{margin-top:22px; border:1px solid var(--line-strong); overflow-x:auto;}
+.compare-panel[hidden]{display:none;}
+.compare-panel table{width:100%; min-width:650px; border-collapse:collapse; font-size:12px;}
+.compare-panel th,.compare-panel td{padding:14px 16px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top;}
+.compare-panel thead th{font-family:var(--serif); font-size:17px; font-weight:400; background:var(--cream);}
+.compare-panel tbody th{width:150px; font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft);}
+.compare-panel tr:last-child th,.compare-panel tr:last-child td{border-bottom:0;}
+
+.why-fableroom__shell{display:grid; grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr); border:1px solid var(--line-strong);}
+.why-fableroom__story{position:relative; min-height:420px; overflow:hidden; background:#d5cec3; color:var(--white);}
+.why-fableroom__story img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.why-fableroom__story::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(18,15,12,.15),rgba(18,15,12,.7));}
+.why-fableroom__story > .why-fableroom__copy{position:absolute; z-index:1; left:22px; right:22px; bottom:22px;}
+.why-fableroom__story .eyebrow{color:var(--white); margin-bottom:6px;}
+.why-fableroom__story h2{font-size:clamp(25px,3.2vw,39px); line-height:1.02;}
+.why-fableroom__list{padding:clamp(21px,3.2vw,42px); display:flex; flex-direction:column; justify-content:center;}
+.why-fableroom__table{width:100%; border-collapse:collapse;}
+.why-fableroom__table th{text-align:left; font-family:var(--sans); font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); padding:0 8px 9px;}
+.why-fableroom__table th:first-child{padding-left:0;}
+.why-fableroom__table td{padding:11px 8px; font-family:var(--sans); font-size:12.5px; border-top:1px solid var(--line); color:var(--ink-soft);}
+.why-fableroom__table td:first-child{padding-left:0; color:var(--ink); font-weight:700; font-size:12px;}
+.why-fableroom__table td.is-fableroom{color:var(--sage); font-weight:700;}
+.why-fableroom__footnote{font-family:var(--sans); font-size:10px; color:var(--ink-faint); margin:12px 0 0; line-height:1.5;}
+
+.rug-finder{background:var(--white);}
+.rug-finder__shell{display:grid; grid-template-columns:minmax(320px,.75fr) minmax(0,1.25fr); border:1px solid var(--line-strong);}
+.rug-finder__media{min-height:590px; background:#d9d1c5;}
+.rug-finder__media img{width:100%; height:100%; object-fit:cover;}
+.rug-finder__body{padding:clamp(26px,4vw,52px); display:flex; flex-direction:column; justify-content:center;}
+.rug-finder__body h2{font-size:clamp(31px,4vw,48px); line-height:1; margin:8px 0 8px;}
+.rug-finder__body > p{font-size:13px; color:var(--ink-soft); margin:0 0 18px;}
+.rug-finder__step{min-width:0; margin:0; border:0; border-top:1px solid var(--line); padding:13px 0;}
+.rug-finder__step legend{padding:0 8px 0 0; color:var(--clay); font-size:9px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;}
+.rug-finder__options{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px;}
+.rug-finder__option{min-height:40px; border:1px solid var(--line); background:transparent; padding:8px 6px; font-size:9.5px; color:var(--ink-soft);}
+.rug-finder__option.is-active{background:var(--ink); border-color:var(--ink); color:var(--white);}
+.rug-finder__result{display:flex; align-items:center; justify-content:space-between; gap:18px; margin-top:13px; padding:14px; background:#eee3d1; border:1px solid rgba(168,132,63,.24);}
+.rug-finder__result small{display:block; color:var(--clay); font-size:8px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:3px;}
+.rug-finder__result strong{display:block; font-family:var(--serif); font-size:18px; font-weight:400; line-height:1.15;}
+.rug-finder__result a{flex:none; padding:11px 15px; background:var(--clay); color:var(--white); font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;}
+
+@media (max-width:900px){
+  .lookaround__grid,.compare-shop__grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .style-hub__shell{grid-template-columns:280px minmax(0,1fr);}
+  .why-fableroom__shell,.rug-finder__shell{grid-template-columns:1fr 1.2fr;}
+}
+@media (max-width:760px){
+  .lookaround__intro p,.style-hub__intro p,.room-discovery__intro p,.compare-shop__intro p{font-size:12.5px;}
+  .lookaround__filters{display:flex; overflow-x:auto; margin-bottom:16px; scrollbar-width:none;}
+  .lookaround__filters::-webkit-scrollbar{display:none;}
+  .lookaround__filter{flex:0 0 42%; min-height:48px; padding:10px; font-size:9.5px;}
+  .lookaround__grid{display:flex; overflow-x:auto; gap:12px; padding-bottom:5px; scrollbar-width:none;}
+  .lookaround__grid::-webkit-scrollbar{display:none;}
+  .lookaround__card{flex:0 0 58vw;}
+  .lookaround__card[hidden]{display:none;}
+  .lookaround__card h3{font-size:12.5px;}
+
+  .style-hub__shell{display:block; border-left:0; border-right:0; min-height:0;}
+  .style-hub__media{min-height:360px;}
+  .style-hub__panel{padding:20px 0 4px;}
+  .style-hub__intro h2{font-size:30px;}
+  .style-hub__filters{padding:16px 0 14px;}
+  .style-hub__card{flex-basis:56vw; max-width:205px;}
+  .style-hub__footer{padding-top:17px;}
+
+  .room-discovery__head{display:block; margin-bottom:18px;}
+  .room-discovery__intro h2{font-size:30px;}
+  .room-discovery__copy{font-size:12.5px; margin-top:10px;}
+  .room-discovery__grid{display:flex; overflow-x:auto; gap:10px; scrollbar-width:none; scroll-snap-type:x mandatory;}
+  .room-discovery__grid::-webkit-scrollbar{display:none;}
+  .room-discovery__card{flex:0 0 73vw; max-width:300px; margin-top:0 !important; scroll-snap-align:start;}
+
+  .compare-shop__grid{display:flex; overflow-x:auto; gap:14px; padding:8px 8px 8px 0; scrollbar-width:none;}
+  .compare-shop__grid::-webkit-scrollbar{display:none;}
+  .compare-card{flex:0 0 56vw; max-width:210px;}
+  .compare-card h3{font-size:12.5px;}
+  .compare-panel{margin-top:15px;}
+
+  .why-fableroom__shell,.rug-finder__shell{grid-template-columns:1fr; border-left:0; border-right:0;}
+  .why-fableroom__story{min-height:312px;}
+  .why-fableroom__story > .why-fableroom__copy{left:18px; right:18px; bottom:18px;}
+  .why-fableroom__list{padding:12px 0 2px;}
+  .why-fableroom__item{padding:14px 0;}
+
+  .rug-finder__media{min-height:320px;}
+  .rug-finder__body{padding:20px 0 2px;}
+  .rug-finder__body h2{font-size:30px;}
+  .rug-finder__options{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .rug-finder__option{min-height:42px;}
+  .rug-finder__result{align-items:flex-start; flex-direction:column;}
+  .rug-finder__result a{width:100%; text-align:center;}
+}
+
+/* Mobile reassurance strip only: one swipeable row with an inward-moving sheen. */
+@media (max-width:760px){
+  .reassure{overflow:hidden;}
+  .reassure__row{
+    display:flex;
+    width:100%;
+    max-width:none;
+    overflow-x:auto;
+    overflow-y:hidden;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .reassure__row::-webkit-scrollbar{display:none;}
+  .reassure__item{
+    position:relative;
+    isolation:isolate;
+    flex:0 0 clamp(252px,82vw,340px);
+    overflow:hidden;
+    border-top:0;
+    border-left:1px solid var(--line);
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+  }
+  .reassure__item:first-child{border-left:0;}
+  .reassure__item > svg,
+  .reassure__item > div{position:relative; z-index:1;}
+  .reassure__item::before,
+  .reassure__item::after{
+    content:"";
+    position:absolute;
+    z-index:0;
+    top:0;
+    bottom:0;
+    width:34%;
+    pointer-events:none;
+    opacity:0;
+    animation-duration:4.2s;
+    animation-timing-function:var(--ease);
+    animation-iteration-count:infinite;
+    animation-delay:var(--shine-delay,0s);
+  }
+  .reassure__item::before{
+    left:-34%;
+    background:linear-gradient(90deg,transparent,rgba(168,132,63,.12),rgba(255,255,255,.88),transparent);
+    animation-name:reassure-shine-left;
+  }
+  .reassure__item::after{
+    right:-34%;
+    background:linear-gradient(270deg,transparent,rgba(168,132,63,.12),rgba(255,255,255,.88),transparent);
+    animation-name:reassure-shine-right;
+  }
+  .reassure__item:nth-child(2){--shine-delay:.45s;}
+  .reassure__item:nth-child(3){--shine-delay:.9s;}
+  .reassure__item:nth-child(4){--shine-delay:1.35s;}
+}
+@keyframes reassure-shine-left{
+  0%,55%{opacity:0; transform:translateX(0) skewX(-16deg);}
+  60%{opacity:.82;}
+  82%{opacity:.4; transform:translateX(205%) skewX(-16deg);}
+  100%{opacity:0; transform:translateX(205%) skewX(-16deg);}
+}
+@keyframes reassure-shine-right{
+  0%,55%{opacity:0; transform:translateX(0) skewX(16deg);}
+  60%{opacity:.82;}
+  82%{opacity:.4; transform:translateX(-205%) skewX(16deg);}
+  100%{opacity:0; transform:translateX(-205%) skewX(16deg);}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero__scene{transition:none;}
+  .reassure__item::before,
+  .reassure__item::after{animation:none;}
+}
+</style>
 </head>
 <body>
-<div id="boot">Loading FableRoom…</div>
+
+<!-- ================= PROMO BAR ================= -->
+<div class="promo-bar">
+  <span class="promo-bar__full"><b>Thoughtfully Made, Fairly Priced</b> — FableRoom is now a certified B Corp&trade;</span>
+  <span class="promo-bar__full promo-bar__sep">|</span>
+  <span class="promo-bar__core">EXTRA 10% OFF: <b>CODE SUMMER10</b></span>
+  <span class="promo-bar__full promo-bar__sep">|</span>
+  <a class="promo-bar__full" href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">on Trustpilot</a>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="site-header__row">
+    <a href="https://fableroom.com/" class="site-header__logo">
+      <img src="assets/fableroom-logo.svg" alt="FABLEROOM" />
+    </a>
+    <nav class="site-header__nav">
+      <a href="https://fableroom.com/collections/furniture">Furniture</a>
+      <a href="#top" class="is-active">Rugs</a>
+      <a href="https://fableroom.com/pages/fashion-lifestyle">Fashion &amp; Lifestyle</a>
+      <a href="https://fableroom.com/collections/decor">Accessories</a>
+      <a href="https://fableroom.com/collections/home-textiles">Home Textiles</a>
+      <a href="https://fableroom.com/pages/tableware-kitchen">Tableware &amp; Kitchen</a>
+    </nav>
+    <div class="site-header__icons">
+      <button aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg></button>
+      <button aria-label="Wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7.5-4.6-10-9.3C0.4 7 2 3.5 5.6 3c2.2-.3 4.2.8 6.4 3.4C14.2 3.8 16.2 2.7 18.4 3c3.6.5 5.2 4 3.6 7.7C19.5 15.4 12 20 12 20z"/></svg></button>
+      <button aria-label="Bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></button>
+      <button class="site-header__menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero__stage">
+    <div class="hero__scene is-active" aria-hidden="false">
+      <picture>
+        <source media="(max-width:760px)" srcset="assets/hero-spotlight-01-mobile.webp" />
+        <img src="assets/hero-spotlight-01-desktop.webp" alt="A cream hand-knotted wool rug being unrolled in a warm living room" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
+    <div class="hero__scene" aria-hidden="true">
+      <picture>
+        <source media="(max-width:760px)" srcset="assets/hero-spotlight-02-mobile.webp" />
+        <img src="assets/hero-spotlight-02-desktop.webp" alt="A pale Persian-style area rug being placed in a living room" decoding="async" />
+      </picture>
+    </div>
+    <div class="hero__scene" aria-hidden="true">
+      <picture>
+        <source media="(max-width:760px)" srcset="assets/hero-spotlight-03-mobile.webp" />
+        <img src="assets/hero-spotlight-03-desktop.webp" alt="A blue patterned living room rug beside a neutral sofa" decoding="async" />
+      </picture>
+    </div>
+    <div class="hero__scrim"></div>
+    <div class="hero__content reveal">
+      <div class="hero__eyebrow">500+ handmade rugs &amp; carpets</div>
+      <h1>Handmade Rugs.<br>Honest Prices.</h1>
+      <p>Handmade wool, jute and washable rugs for every room.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAT BAR ================= -->
+<section class="stat-bar">
+  <div class="stat-bar__row reveal-stagger">
+    <div><b>15,000+</b><span>Loved by Homes</span></div>
+    <div><b>500+</b><span>Designs</span></div>
+    <div><b>100%</b><span>Handmade</span></div>
+    <div><b>0</b><span>Middlemen</span></div>
+  </div>
+</section>
+
+<!-- ================= REASSURANCE STRIP ================= -->
+<section class="reassure">
+  <div class="reassure__row">
+    <div class="reassure__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+      <div><b>Not sure on size?</b><span>Room-by-room sizing guide</span></div>
+    </div>
+    <div class="reassure__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+      <div><b>Free UK delivery</b><span>On orders over £500</span></div>
+    </div>
+    <div class="reassure__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
+      <div><b>30-day returns</b><span>If it's not right, send it back</span></div>
+    </div>
+    <div class="reassure__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3c3 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-7 6-10z"/></svg>
+      <div><b>New-rug shedding is normal</b><span>Settles within 4–6 weeks</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHOP RUGS YOUR WAY ================= -->
+<section class="shop-paths section" aria-labelledby="shop-paths-title">
+  <div class="container">
+    <div class="shop-paths__intro reveal">
+      <div class="eyebrow">Find Your Rug or Carpet</div>
+      <h2 id="shop-paths-title">Shop by room, style or craft.</h2>
+      <p>Explore area rugs by size, colour, material, technique and budget.</p>
+    </div>
+    <div class="shop-paths__directory reveal" data-shop-paths>
+      <div class="shop-paths__tabs" role="tablist" aria-label="Ways to shop rugs">
+        <button class="shop-paths__tab is-active" type="button" role="tab" aria-selected="true" data-path="room">Room</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="style">Style</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="technique">Technique</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="colour">Colour</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="material">Material</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="budget">Budget</button>
+      </div>
+      <div class="shop-paths__panel" role="tabpanel">
+        <div class="shop-paths__image"><img src="assets/ai-story-08-room-meadow.webp" alt="Rug styled in a living room" data-path-image></div>
+        <div class="shop-paths__body">
+          <span class="shop-paths__count" data-path-count>01</span>
+          <h3 data-path-title>Find rugs for every room.</h3>
+          <p data-path-copy>Shop living room rugs, bedroom rugs, dining room carpets and outdoor rugs by space.</p>
+          <div class="shop-paths__links" data-path-links>
+            <a href="https://fableroom.com/collections/living-room-rugs">Living Room</a>
+            <a href="https://fableroom.com/collections/bedroom-rugs">Bedroom</a>
+            <a href="https://fableroom.com/collections/dining-room">Dining Room</a>
+            <a href="https://fableroom.com/collections/outdoor-rugs">Outdoor</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUSTPILOT STRIP ================= -->
+<section class="trust" data-rug-reviews>
+  <div class="trust__sticky">
+    <div class="container trust__experience">
+      <div class="trust__rug-stage" data-rug-cycle>
+        <button class="trust__rug-frame is-active" type="button" data-rug-index="0" aria-label="Zoom in on Zahana Hand-tufted Wool Rug">
+          <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug">
+        </button>
+        <button class="trust__rug-frame" type="button" data-rug-index="1" aria-label="Zoom in on Savana Botanical Hand-tufted Wool Rug">
+          <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug">
+        </button>
+        <button class="trust__rug-frame" type="button" data-rug-index="2" aria-label="Zoom in on Amber Oasis Hand-knotted Wool Rug">
+          <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug">
+        </button>
+        <button class="trust__rug-frame" type="button" data-rug-index="3" aria-label="Zoom in on Rewa Hand-tufted Wool Rug">
+          <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug">
+        </button>
+        <div class="trust__rug-caption">Tap a rug to zoom in</div>
+      </div>
+      <div class="trust__content">
+        <div class="trust__hint" aria-hidden="true">Your scroll reveals the story <span></span><i class="trust__progress"></i></div>
+        <div class="trust__row">
+          <div class="trust__score">
+            <div class="eyebrow">Customer Reviews</div>
+            <b>4.6</b>
+            <div class="trust__stars">★★★★★</div>
+            <span>EXCELLENT · 1,260 TRUSTPILOT REVIEWS</span>
+            <a href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">Read Verified Reviews</a>
+          </div>
+          <div class="trust__marquee">
+            <div class="trust__track">
+        <div class="trust__quote">
+          <div class="trust__stars">★★★★★</div>
+          <p>&ldquo;Luxury quality, with great service.&rdquo;</p>
+          <cite>Elle · Verified Buyer</cite>
+        </div>
+        <div class="trust__quote">
+          <div class="trust__stars">★★★★★</div>
+          <p>&ldquo;Super quick delivery, with great updates. Very happy with the whole experience.&rdquo;</p>
+          <cite>Sam · Verified Buyer</cite>
+        </div>
+        <div class="trust__quote">
+          <div class="trust__stars">★★★★★</div>
+          <p>&ldquo;Everything about my experience with FableRoom has been excellent!&rdquo;</p>
+          <cite>Ruth · Verified Buyer</cite>
+        </div>
+        <div class="trust__quote">
+          <div class="trust__stars">★★★★★</div>
+          <p>&ldquo;First time ordering and I wasn't disappointed. I'll definitely be returning.&rdquo;</p>
+          <cite>Yvonne · Verified Buyer</cite>
+        </div>
+        <div class="trust__quote" aria-hidden="true">
+          <div class="trust__stars">★★★★★</div>
+          <p>&ldquo;Luxury quality, with great service.&rdquo;</p>
+          <cite>Elle · Verified Buyer</cite>
+        </div>
+        <div class="trust__quote" aria-hidden="true">
+          <div class="trust__stars">★★★★★</div>
+          <p>&ldquo;Super quick delivery, with great updates. Very happy with the whole experience.&rdquo;</p>
+          <cite>Sam · Verified Buyer</cite>
+        </div>
+        <div class="trust__quote" aria-hidden="true">
+          <div class="trust__stars">★★★★★</div>
+          <p>&ldquo;Everything about my experience with FableRoom has been excellent!&rdquo;</p>
+          <cite>Ruth · Verified Buyer</cite>
+        </div>
+        <div class="trust__quote" aria-hidden="true">
+          <div class="trust__stars">★★★★★</div>
+          <p>&ldquo;First time ordering and I wasn't disappointed. I'll definitely be returning.&rdquo;</p>
+          <cite>Yvonne · Verified Buyer</cite>
+        </div>
+            </div>
+          </div>
+        </div>
+        <div class="trust__badges">
+          <div class="trust__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3c3 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-7 6-10z"/></svg>
+            <span>B Corp&trade; Certified</span>
+          </div>
+          <div class="trust__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3l2.4 5.5 6 .6-4.5 4 1.3 6-5.2-3.2-5.2 3.2 1.3-6-4.5-4 6-.6z"/></svg>
+            <span>4.6 Excellent on Trustpilot</span>
+          </div>
+          <div class="trust__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
+            <span>30-Day Returns</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RUG STYLE DISCOVERY ================= -->
+<section class="style-hub section" aria-labelledby="style-hub-title">
+  <div class="container">
+    <div class="style-hub__shell reveal">
+      <div class="style-hub__media">
+        <img src="assets/ai-story-02-hero-heritage.webp" alt="A woman placing a hand-knotted heritage rug in a warm living room" loading="lazy">
+      </div>
+      <div class="style-hub__panel">
+        <div class="style-hub__intro">
+          <div class="eyebrow">Rug Style Discovery</div>
+          <h2 id="style-hub-title">One rug discovery hub.<em>Find the style that feels like home.</em></h2>
+          <p>Filter the edit by the look you love. Every result opens the matching FableRoom rug.</p>
+        </div>
+        <div class="style-hub__filters" role="tablist" aria-label="Filter rugs by style" data-style-filters>
+          <button class="style-hub__filter is-active" type="button" role="tab" aria-selected="true" data-style-filter="all">All Styles</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="persian">Persian</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="modern">Modern</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="botanical">Botanical</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="bohemian">Bohemian</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="natural">Natural</button>
+        </div>
+        <div class="style-hub__products" data-style-products>
+          <a class="style-hub__card" href="https://fableroom.com/products/zahana-hand-tufted-wool-rug" data-styles="persian botanical">
+            <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy">
+            <div><span>Persian · Botanical</span><h3>Zahana Hand-tufted Wool Rug</h3><small>From £149</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/savana-hand-tufted-wool-rug" data-styles="persian botanical">
+            <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy">
+            <div><span>Botanical · Traditional</span><h3>Savana Botanical Wool Rug</h3><small>From £118</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/rewa-hand-tufted-wool-rug" data-styles="modern">
+            <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy">
+            <div><span>Modern · Abstract</span><h3>Rewa Hand-tufted Wool Rug</h3><small>From £185</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug" data-styles="persian bohemian">
+            <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy">
+            <div><span>Bohemian · Persian</span><h3>Amber Oasis Hand-knotted Rug</h3><small>From £312</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/search?q=jute+rug&amp;type=product" data-styles="natural">
+            <img src="assets/fiore-jute-rug.webp" alt="Fiore Jute Rug" loading="lazy">
+            <div><span>Natural · Textured</span><h3>Fiore Jute Rug</h3><small>Shop natural rugs</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/zaya-round-hand-knotted-wool-rug" data-styles="persian">
+            <img src="assets/zaya-round-hand-knotted-wool-rug.webp" alt="Zaya Round Hand-knotted Wool Rug" loading="lazy">
+            <div><span>Persian · Traditional</span><h3>Zaya Round Hand-knotted Rug</h3><small>From £755</small></div>
+          </a>
+        </div>
+        <div class="style-hub__footer"><span data-style-count>6 rugs in this edit</span><a href="https://fableroom.com/collections/all-rugs-collection">View all rugs →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROOF / TECHNIQUE CARDS ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:10px;">Handmade rug &amp; carpet craft</div>
+        <h2>Four ways to make a rug.</h2>
+      </div>
+    </div>
+    <div class="proof__grid reveal-stagger">
+      <div class="proof__card">
+        <div class="proof__frame"><img src="assets/hero-bidjar-red.webp" alt="Close detail of a hand-knotted wool rug showing dense, tightly tied knots" loading="lazy"></div>
+        <h3>Hand-Knotted Rugs</h3>
+        <p>Hand-knotted wool rugs, tied row by row for dense detail and lasting character in high-traffic rooms.</p>
+      </div>
+      <div class="proof__card">
+        <div class="proof__frame"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="A hand-tufted wool rug with a soft, even pile" loading="lazy"></div>
+        <h3>Hand-Tufted Rugs</h3>
+        <p>Hand-tufted wool rugs with a softer pile underfoot, made for bedrooms, lounges and everyday comfort.</p>
+      </div>
+      <div class="proof__card">
+        <div class="proof__frame"><img src="assets/arcadia-heritage-hand-woven-wool-rug.webp" alt="A flat hand-woven wool rug with a geometric pattern" loading="lazy"></div>
+        <h3>Hand-Woven Rugs</h3>
+        <p>Flatweave wool and jute rugs, loomed without pile for dining rooms, kitchens and hallway spaces.</p>
+      </div>
+      <div class="proof__card">
+        <div class="proof__frame"><img src="assets/elm-washable-rug.webp" alt="A washable rug styled in a living room, shown underfoot near a sofa" loading="lazy"></div>
+        <h3>Washable Rugs</h3>
+        <p>Easy-care washable rugs for living rooms, kitchens, family homes and everyday spills.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TAKE A LOOK AROUND ================= -->
+<section class="lookaround section" aria-labelledby="lookaround-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="lookaround__intro">
+        <div class="eyebrow">Take a Look Around</div>
+        <h2 id="lookaround-title">Start with what matters today.</h2>
+        <p>Browse bestselling rugs, current discounts, customer favourites and rugs available sooner.</p>
+      </div>
+    </div>
+    <div class="lookaround__filters reveal" role="tablist" aria-label="Ways to browse rugs" data-lookaround-filters>
+      <button class="lookaround__filter is-active" type="button" role="tab" aria-selected="true" data-lookaround-filter="bestsellers">Bestsellers</button>
+      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="new-arrivals">New Arrivals</button>
+      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="savings-discount">Savings/Discount</button>
+    </div>
+    <div class="lookaround__grid reveal-stagger" data-lookaround-grid>
+      <article class="lookaround__card" data-lookaround-groups="bestsellers savings-discount new-arrivals">
+        <a href="https://fableroom.com/products/zahana-hand-tufted-wool-rug">
+          <div class="lookaround__frame">
+            <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy">
+            <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Express Delivery</span></div>
+          </div>
+          <h3>Zahana Hand-tufted Wool Rug</h3>
+          <div class="lookaround__meta">7 reviews · 45% off</div>
+          <div class="lookaround__price"><b>£149</b><s>£270</s></div>
+        </a>
+      </article>
+      <article class="lookaround__card" data-lookaround-groups="bestsellers savings-discount new-arrivals">
+        <a href="https://fableroom.com/products/savana-hand-tufted-wool-rug">
+          <div class="lookaround__frame">
+            <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy">
+            <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Pre Order</span></div>
+          </div>
+          <h3>Savana Botanical Hand-tufted Wool Rug</h3>
+          <div class="lookaround__meta">11 reviews · 44% off</div>
+          <div class="lookaround__price"><b>£118</b><s>£210</s></div>
+        </a>
+      </article>
+      <article class="lookaround__card" data-lookaround-groups="bestsellers savings-discount new-arrivals">
+        <a href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug">
+          <div class="lookaround__frame">
+            <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy">
+            <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Pre Order</span></div>
+          </div>
+          <h3>Amber Oasis Hand-knotted Wool Rug</h3>
+          <div class="lookaround__meta">1 review · 59% off</div>
+          <div class="lookaround__price"><b>£312</b><s>£762</s></div>
+        </a>
+      </article>
+      <article class="lookaround__card" data-lookaround-groups="savings-discount new-arrivals">
+        <a href="https://fableroom.com/products/rewa-hand-tufted-wool-rug">
+          <div class="lookaround__frame">
+            <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy">
+            <div class="lookaround__badges"><span class="lookaround__badge">Express Delivery</span><span class="lookaround__badge">25% Off</span></div>
+          </div>
+          <h3>Rewa Hand-tufted Wool Rug</h3>
+          <div class="lookaround__meta">Express Delivery · 25% off</div>
+          <div class="lookaround__price"><b>£185</b><s>£247</s></div>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 01 · THE KNOTTED EDIT ================= -->
+<section class="edit section" id="hand-knotted" hidden aria-hidden="true">
+  <div class="container">
+    <div class="edit__head reveal">
+      <div class="edit__number">01</div>
+      <div>
+        <div class="eyebrow">Hand-Knotted Wool Rugs</div>
+        <h2>The Hand-Knotted Rug Edit</h2>
+        <p>Traditional hand-knotted wool rugs and wool-bamboo silk carpets, tied knot by knot for dense pattern, durable pile and lasting character.</p>
+      </div>
+    </div>
+    <div class="edit__pills reveal">
+      <button class="is-active">All Hand-Knotted</button>
+      <button>Living Room</button>
+      <button>Bamboo Silk</button>
+      <button>Round</button>
+      <button>Runner</button>
+    </div>
+    <a href="https://fableroom.com/collections/hand-knotted-rugs" class="edit__banner reveal">
+      <img src="assets/ai-story-04-knotted-banner.webp" alt="A hand-knotted rug in a jewel-toned pattern anchoring a living room seating arrangement" loading="lazy">
+      <div class="edit__banner__scrim"></div>
+      <span class="edit__banner__cta">Explore Now</span>
+    </a>
+    <div class="edit__row reveal-stagger">
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-Knotted Wool Rug" loading="lazy"></div>
+        <h4>Amber Oasis Hand-Knotted Wool Rug</h4>
+        <div class="price-row"><b>£298</b><s>£540</s></div>
+        <span class="other-retailers">Other Retailers £810</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/clara-hand-knotted-wool-bamboo-silk-rug.webp" alt="Clara Hand-Knotted Wool &amp; Bamboo Silk Rug" loading="lazy"></div>
+        <h4>Clara Hand-Knotted Wool &amp; Bamboo Silk Rug</h4>
+        <div class="price-row"><b>£340</b><s>£612</s></div>
+        <span class="other-retailers">Other Retailers £920</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/preston-hand-knotted-wool-rug.webp" alt="Preston Hand-Knotted Wool Rug" loading="lazy"></div>
+        <h4>Preston Hand-Knotted Wool Rug</h4>
+        <div class="price-row"><b>£275</b><s>£495</s></div>
+        <span class="other-retailers">Other Retailers £745</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/vaayu-hand-knotted-wool-rug.webp" alt="Vaayu Hand-Knotted Wool Rug" loading="lazy"></div>
+        <h4>Vaayu Hand-Knotted Wool Rug</h4>
+        <div class="price-row"><b>£312</b><s>£560</s></div>
+        <span class="other-retailers">Other Retailers £840</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/rovira-hand-knotted-wool-bamboo-silk-rug-burgundy.webp" alt="Rovira Hand-Knotted Wool &amp; Bamboo Silk Rug - Burgundy" loading="lazy"></div>
+        <h4>Rovira Hand-Knotted Wool &amp; Bamboo Silk Rug - Burgundy</h4>
+        <div class="price-row"><b>£355</b><s>£640</s></div>
+        <span class="other-retailers">Other Retailers £960</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/zaya-round-hand-knotted-wool-rug.webp" alt="Zaya Round Hand-Knotted Wool Rug" loading="lazy"></div>
+        <h4>Zaya Round Hand-Knotted Wool Rug</h4>
+        <div class="price-row"><b>£265</b><s>£478</s></div>
+        <span class="other-retailers">Other Retailers £715</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 · THE TUFTED EDIT ================= -->
+<section class="edit section" id="hand-tufted" hidden aria-hidden="true">
+  <div class="container">
+    <div class="edit__head reveal">
+      <div class="edit__number">02</div>
+      <div>
+        <div class="eyebrow">Hand-Tufted Wool Rugs</div>
+        <h2>The Hand-Tufted Rug Edit</h2>
+        <p>Soft hand-tufted wool rugs for bedrooms and living rooms, shaped by skilled hands for a plush pile and approachable price.</p>
+      </div>
+    </div>
+    <div class="edit__pills reveal">
+      <button class="is-active">All Hand-Tufted</button>
+      <button>Bedroom</button>
+      <button>Round</button>
+      <button>Geometric</button>
+    </div>
+    <a href="https://fableroom.com/collections/hand-tufted-rugs" class="edit__banner reveal">
+      <img src="assets/ai-story-05-tufted-banner.webp" alt="A hand-tufted rug styled beneath a bed in a warm, neutral bedroom" loading="lazy">
+      <div class="edit__banner__scrim"></div>
+      <span class="edit__banner__cta">Explore Now</span>
+    </a>
+    <div class="edit__row reveal-stagger">
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-Tufted Wool Rug" loading="lazy"></div>
+        <h4>Rewa Hand-Tufted Wool Rug</h4>
+        <div class="price-row"><b>£199</b><s>£360</s></div>
+        <span class="other-retailers">Other Retailers £540</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Hand-Tufted Wool Rug" loading="lazy"></div>
+        <h4>Savana Hand-Tufted Wool Rug</h4>
+        <div class="price-row"><b>£218</b><s>£395</s></div>
+        <span class="other-retailers">Other Retailers £595</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-Tufted Wool Rug" loading="lazy"></div>
+        <h4>Zahana Hand-Tufted Wool Rug</h4>
+        <div class="price-row"><b>£235</b><s>£425</s></div>
+        <span class="other-retailers">Other Retailers £640</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 · THE WOVEN EDIT ================= -->
+<section class="edit section" id="hand-woven" hidden aria-hidden="true">
+  <div class="container">
+    <div class="edit__head reveal">
+      <div class="edit__number">03</div>
+      <div>
+        <div class="eyebrow">Hand-Woven Wool &amp; Jute Rugs</div>
+        <h2>The Hand-Woven Rug Edit</h2>
+        <p>Flatweave wool and jute rugs, loomed with little or no pile for dining rooms, kitchens, hallways and relaxed living spaces.</p>
+      </div>
+    </div>
+    <div class="edit__pills reveal">
+      <button class="is-active">All Hand-Woven</button>
+      <button>Jute</button>
+      <button>Dining Room</button>
+      <button>Flatweave</button>
+    </div>
+    <a href="https://fableroom.com/collections/all-hand-woven-rugs-collection" class="edit__banner reveal">
+      <img src="assets/ai-story-06-woven-banner.webp" alt="A hand-woven rug laid flat beneath a living room seating arrangement" loading="lazy">
+      <div class="edit__banner__scrim"></div>
+      <span class="edit__banner__cta">Explore Now</span>
+    </a>
+    <div class="edit__row reveal-stagger">
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/arcadia-heritage-hand-woven-wool-rug.webp" alt="Arcadia Heritage Hand-Woven Wool Rug" loading="lazy"></div>
+        <h4>Arcadia Heritage Hand-Woven Wool Rug</h4>
+        <div class="price-row"><b>£245</b><s>£445</s></div>
+        <span class="other-retailers">Other Retailers £670</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/fiore-jute-rug.webp" alt="Fiore Jute Rug" loading="lazy"></div>
+        <h4>Fiore Jute Rug</h4>
+        <div class="price-row"><b>£165</b><s>£298</s></div>
+        <span class="other-retailers">Other Retailers £450</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 · THE WASHABLE EDIT ================= -->
+<section class="edit section" id="washable" hidden aria-hidden="true">
+  <div class="container">
+    <div class="edit__head reveal">
+      <div class="edit__number">04</div>
+      <div>
+        <div class="eyebrow">Washable &amp; Easy-Care Rugs</div>
+        <h2>The Washable Rug Edit</h2>
+        <p>Easy-care washable rugs for busy living rooms, kitchens and family spaces, made for everyday life without losing the handmade look.</p>
+      </div>
+    </div>
+    <div class="edit__pills reveal">
+      <button class="is-active">All Washable</button>
+      <button>Kitchen</button>
+      <button>Pet-Friendly</button>
+      <button>Living Room</button>
+    </div>
+    <a href="https://fableroom.com/collections/all-rugs-collection" class="edit__banner reveal">
+      <img src="assets/ai-story-07-washable-banner.webp" alt="A washable rug styled beneath a living room sofa and coffee table" loading="lazy">
+      <div class="edit__banner__scrim"></div>
+      <span class="edit__banner__cta">Explore Now</span>
+    </a>
+    <div class="edit__row reveal-stagger">
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/elm-washable-rug.webp" alt="Elm Washable Rug" loading="lazy"></div>
+        <h4>Elm Washable Rug</h4>
+        <div class="price-row"><b>£185</b><s>£335</s></div>
+        <span class="other-retailers">Other Retailers £505</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/flax-washable-rug.webp" alt="Flax Washable Rug" loading="lazy"></div>
+        <h4>Flax Washable Rug</h4>
+        <div class="price-row"><b>£172</b><s>£310</s></div>
+        <span class="other-retailers">Other Retailers £468</span>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/maren-washable-rug.webp" alt="Maren Washable Rug" loading="lazy"></div>
+        <h4>Maren Washable Rug</h4>
+        <div class="price-row"><b>£198</b><s>£358</s></div>
+        <span class="other-retailers">Other Retailers £540</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHOP THE ROOM ================= -->
+<section class="room section" hidden aria-hidden="true">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:10px;">Shop Rugs by Room</div>
+        <h2>See the right rug in the right room.</h2>
+      </div>
+    </div>
+    <div class="room__slides reveal">
+      <div class="room__slide" data-room>
+        <img src="assets/ai-story-08-room-meadow.webp" alt="A hand-knotted rug centred beneath a beige living room seating arrangement, viewed from above" loading="lazy" data-crop-fix>
+        <button class="room__marker" style="top:50%; left:50%;" aria-label="View rug details"><span class="room__marker__dot"></span></button>
+        <div class="room__card" style="top:56%; left:56%;">
+          <b>Amber Oasis Hand-Knotted Wool Rug</b>
+          <span>200x290 cm · £298</span>
+          <a href="https://fableroom.com/collections/hand-knotted-rugs">View Rug</a>
+        </div>
+      </div>
+      <div class="room__slide" data-room>
+        <img src="assets/ai-story-09-room-ruby.webp" alt="A richly patterned hand-knotted rug beneath a living room seating arrangement, viewed from above" loading="lazy" data-crop-fix>
+        <button class="room__marker" style="top:52%; left:48%;" aria-label="View rug details"><span class="room__marker__dot"></span></button>
+        <div class="room__card" style="top:58%; left:52%;">
+          <b>Rovira Hand-Knotted Wool &amp; Bamboo Silk Rug</b>
+          <span>244x305 cm · £355</span>
+          <a href="https://fableroom.com/collections/hand-knotted-rugs">View Rug</a>
+        </div>
+      </div>
+      <div class="room__slide" data-room>
+        <img src="assets/ai-story-10-room-bedroom.webp" alt="A hand-tufted rug placed beside a bed in a warm, neutral bedroom" loading="lazy">
+        <button class="room__marker" style="top:70%; left:38%;" aria-label="View rug details"><span class="room__marker__dot"></span></button>
+        <div class="room__card" style="top:74%; left:20%;">
+          <b>Rewa Hand-Tufted Wool Rug</b>
+          <span>170x240 cm · £199</span>
+          <a href="https://fableroom.com/collections/hand-tufted-rugs">View Rug</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= START WITH THE ROOM ================= -->
+<section class="room-discovery section" aria-labelledby="room-discovery-title">
+  <div class="container">
+    <div class="room-discovery__head reveal">
+      <div class="room-discovery__intro">
+        <div class="eyebrow">Start with Your Space</div>
+        <h2 id="room-discovery-title">Start with the room.<em>Find the rug that belongs.</em></h2>
+      </div>
+      <p class="room-discovery__copy">Choose the room you are furnishing, then explore rugs suited to its scale, traffic and everyday use.</p>
+    </div>
+    <div class="room-discovery__grid reveal-stagger">
+      <a class="room-discovery__card" href="https://fableroom.com/collections/living-room-rugs">
+        <img src="assets/ai-story-08-room-meadow.webp" alt="Handmade rug styled in a living room" loading="lazy">
+        <span class="room-discovery__shade"></span>
+        <div class="room-discovery__label"><h3>Living Room</h3><span>Anchor the conversation <b>↗</b></span></div>
+      </a>
+      <a class="room-discovery__card" href="https://fableroom.com/collections/bedroom-rugs">
+        <img src="assets/ai-story-10-room-bedroom.webp" alt="Soft handmade rug styled beside a bed" loading="lazy">
+        <span class="room-discovery__shade"></span>
+        <div class="room-discovery__label"><h3>Bedroom</h3><span>Soft landings, every morning <b>↗</b></span></div>
+      </a>
+      <a class="room-discovery__card" href="https://fableroom.com/search?q=hallway+rug&amp;type=product">
+        <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Long patterned rug suitable for a hallway" loading="lazy">
+        <span class="room-discovery__shade"></span>
+        <div class="room-discovery__label"><h3>Hallway</h3><span>Rugs made for the route <b>↗</b></span></div>
+      </a>
+      <a class="room-discovery__card" href="https://fableroom.com/collections/dining-room">
+        <img src="assets/ai-story-06-woven-banner.webp" alt="Hand-woven rug styled beneath a dining table" loading="lazy">
+        <span class="room-discovery__shade"></span>
+        <div class="room-discovery__label"><h3>Dining Room</h3><span>Define the gathering place <b>↗</b></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FIND YOUR RUG ================= -->
+<section class="rug-finder section" aria-labelledby="rug-finder-title" data-rug-finder>
+  <div class="container">
+    <div class="rug-finder__shell reveal">
+      <div class="rug-finder__media"><img src="assets/hero-meadow-room-v2.webp" alt="A patterned rug grounding a light living room" loading="lazy"></div>
+      <div class="rug-finder__body">
+        <div class="eyebrow">Find Your FableRoom Rug</div>
+        <h2 id="rug-finder-title">Your room. Your life. Your rug.</h2>
+        <p>Choose your room, mood and preferred finish to open a focused FableRoom rug edit.</p>
+        <fieldset class="rug-finder__step" data-finder-step="room">
+          <legend>01 · Room</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Living room">Living Room</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bedroom">Bedroom</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Dining room">Dining Room</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Hallway">Hallway</button>
+          </div>
+        </fieldset>
+        <fieldset class="rug-finder__step" data-finder-step="mood">
+          <legend>02 · Mood</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Calm and neutral">Calm &amp; Neutral</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Warm and earthy">Warm &amp; Earthy</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Colourful">Colourful</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bold pattern">Bold Pattern</button>
+          </div>
+        </fieldset>
+        <fieldset class="rug-finder__step" data-finder-step="need">
+          <legend>03 · Everyday Need</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Everyday easy">Everyday Easy</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Soft luxury">Soft Luxury</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Natural texture">Natural Texture</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Heirloom craft">Heirloom Craft</button>
+          </div>
+        </fieldset>
+        <div class="rug-finder__result">
+          <div><small>Your Rug Edit</small><strong data-finder-result>Calm and neutral rugs for the living room</strong></div>
+          <a href="https://fableroom.com/search?q=living+room+calm+neutral+everyday+rug&amp;type=product" data-finder-link>Explore This Edit →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIZE GUIDE STRIP ================= -->
+<section class="size-guide section--tight" hidden aria-hidden="true">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:30px;">
+      <div>
+        <div class="eyebrow" style="margin-bottom:10px;">Rug &amp; Carpet Size Guide</div>
+        <h2 style="font-size:clamp(24px,2.8vw,32px);">Choose the right rug size for every room.</h2>
+      </div>
+    </div>
+    <div class="size-guide__grid reveal-stagger">
+      <div>
+        <h4>Living Room Rugs</h4>
+        <p>Choose a large area rug for the front legs of your sofa and chairs, or one that holds the whole seating arrangement.</p>
+      </div>
+      <div>
+        <h4>Bedroom Rugs</h4>
+        <p>Place a soft wool, hand-tufted or hand-woven rug where your feet land each morning.</p>
+      </div>
+      <div>
+        <h4>Dining Room Rugs</h4>
+        <p>Choose a dining room rug that extends at least 60cm beyond the table so chairs clear the edge.</p>
+      </div>
+      <div>
+        <h4>Hallway Rugs &amp; Runners</h4>
+        <p>Size a runner rug to follow the hallway, leaving a balanced border of bare floor on each side.</p>
+      </div>
+    </div>
+    <p class="reveal" style="font-size:13px; color:var(--ink-soft); margin-top:26px; max-width:60ch;">Not sure which rug or carpet size will fit? Mark the dimensions with masking tape before ordering to remove the guesswork.</p>
+  </div>
+</section>
+
+<!-- ================= RECOMMENDED FOR YOU ================= -->
+<section class="recommended section" hidden aria-hidden="true">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:10px;">Recommended Handmade Rugs</div>
+        <h2>Four rug styles to start with.</h2>
+      </div>
+    </div>
+    <div class="recommended__grid reveal-stagger">
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/fiore-jute-rug.webp" alt="Fiore Jute Rug" loading="lazy"></div>
+        <h4>Fiore Jute Rug</h4>
+        <div class="price-row"><b>£165</b><s>£298</s></div>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/flax-washable-rug.webp" alt="Flax Washable Rug" loading="lazy"></div>
+        <h4>Flax Washable Rug</h4>
+        <div class="price-row"><b>£172</b><s>£310</s></div>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-Tufted Wool Rug" loading="lazy"></div>
+        <h4>Rewa Hand-Tufted Wool Rug</h4>
+        <div class="price-row"><b>£199</b><s>£360</s></div>
+      </div>
+      <div class="edit__card">
+        <div class="edit__card__frame"><img src="assets/zaya-round-hand-knotted-wool-rug.webp" alt="Zaya Round Hand-Knotted Wool Rug" loading="lazy"></div>
+        <h4>Zaya Round Hand-Knotted Wool Rug</h4>
+        <div class="price-row"><b>£265</b><s>£478</s></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPARE RUGS ================= -->
+<section class="compare-shop section" aria-labelledby="compare-shop-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="compare-shop__intro">
+        <div class="eyebrow">Compare Rug Details</div>
+        <h2 id="compare-shop-title">Compare before you choose.</h2>
+        <p>Select up to three rugs to compare price, construction, material, style and current availability.</p>
+      </div>
+    </div>
+    <div class="compare-shop__grid reveal-stagger" data-compare-grid>
+      <article class="compare-card" data-compare-key="zahana">
+        <a class="compare-card__image" href="https://fableroom.com/products/zahana-hand-tufted-wool-rug"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy"></a>
+        <h3>Zahana Hand-tufted Wool Rug</h3>
+        <div class="compare-card__spec">Hand-tufted · Wool and cotton</div>
+        <div class="compare-card__price"><b>£149</b></div>
+        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare</span><span>＋</span></button>
+      </article>
+      <article class="compare-card" data-compare-key="savana">
+        <a class="compare-card__image" href="https://fableroom.com/products/savana-hand-tufted-wool-rug"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy"></a>
+        <h3>Savana Botanical Wool Rug</h3>
+        <div class="compare-card__spec">Hand-tufted · Wool and cotton</div>
+        <div class="compare-card__price"><b>£118</b></div>
+        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare</span><span>＋</span></button>
+      </article>
+      <article class="compare-card" data-compare-key="rewa">
+        <a class="compare-card__image" href="https://fableroom.com/products/rewa-hand-tufted-wool-rug"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy"></a>
+        <h3>Rewa Hand-tufted Wool Rug</h3>
+        <div class="compare-card__spec">Hand-tufted · Wool and cotton</div>
+        <div class="compare-card__price"><b>£185</b></div>
+        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare</span><span>＋</span></button>
+      </article>
+      <article class="compare-card" data-compare-key="amber">
+        <a class="compare-card__image" href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug"><img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy"></a>
+        <h3>Amber Oasis Hand-knotted Rug</h3>
+        <div class="compare-card__spec">Hand-knotted · New Zealand wool and cotton</div>
+        <div class="compare-card__price"><b>£312</b></div>
+        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare</span><span>＋</span></button>
+      </article>
+    </div>
+    <p class="compare-shop__status" aria-live="polite" data-compare-status>Select at least two rugs to build a comparison.</p>
+    <div class="compare-panel" data-compare-panel hidden>
+      <table>
+        <thead data-compare-head></thead>
+        <tbody data-compare-body></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FABLEROOM DIFFERENTIATORS ================= -->
+<section class="why-fableroom section" aria-labelledby="why-fableroom-title">
+  <div class="container">
+    <div class="why-fableroom__shell reveal">
+      <div class="why-fableroom__story">
+        <img src="assets/why-fableroom-story.webp" alt="A handmade rug being styled in a warm living space" loading="lazy">
+        <div class="why-fableroom__copy"><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
+      </div>
+      <div class="why-fableroom__list">
+        <table class="why-fableroom__table">
+          <thead>
+            <tr>
+              <th>Detail</th>
+              <th>FableRoom</th>
+              <th>Other Retailers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Middlemen</td><td class="is-fableroom">0</td><td>Multiple Middlemen</td></tr>
+            <tr><td>Delivery</td><td class="is-fableroom">Free¹</td><td>Often Charged Separately</td></tr>
+            <tr><td>Returns</td><td class="is-fableroom">365-Day Guarantee*</td><td>Typically Shorter Windows</td></tr>
+            <tr><td>Savings</td><td class="is-fableroom">40–50% You Save</td><td>0% Savings</td></tr>
+            <tr><td>Ratings</td><td class="is-fableroom">4.6 Rating</td><td>4.0 &amp; Below</td></tr>
+          </tbody>
+        </table>
+        <p class="why-fableroom__footnote">¹On orders over £500. *Eligible quality defects or deterioration are covered through repair, replacement or refund within the stated guarantee period.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:10px;">FAQ</div>
+        <h2>Rug materials, rug care, sizing and delivery.</h2>
+      </div>
+    </div>
+    <div class="faq reveal">
+      <div class="faq__item">
+        <button class="faq__q">How do I choose the right rug size?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq__a"><p>Mark the dimensions out with masking tape before you order. For living rooms, aim for at least the front legs of your furniture to sit on the rug. For dining spaces, add 60cm around the table.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">What's the difference between hand-knotted and hand-tufted?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq__a"><p>Hand-knotted rugs are denser and longer-lasting, ideal for high-traffic areas. Hand-tufted rugs are softer and better suited to comfort-focused spaces like bedrooms.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">My rug is shedding. Should I be concerned?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq__a"><p>No, shedding is normal in new wool rugs. Vacuum lightly every few days on a low setting, and it should reduce within four to six weeks.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">How should I care for my rug day to day?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq__a"><p>Vacuum once a week on a low suction setting, and avoid a beater-bar attachment on hand-knotted or hand-tufted rugs. Blot spills immediately, working from the outside edge inward, rather than scrubbing.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">Can I return a rug if it doesn't suit my space?<svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq__a"><p>Yes. You can return your rug within 30 days if the size, colour or style doesn't work. We'd rather you find the right fit for your home than keep something that isn't right.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EMAIL CAPTURE ================= -->
+<section class="email-cap">
+  <div class="eyebrow">The FableRoom Rug Edit</div>
+  <h2>New rugs, room ideas and buying guides.</h2>
+  <form onsubmit="return false;">
+    <input type="email" placeholder="Your email address" required />
+    <button type="submit">Join the Edit</button>
+  </form>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="assets/fableroom-logo.svg" alt="FABLEROOM" />
+        <p>Handmade rugs, carpets and thoughtfully made pieces for home.</p>
+      </div>
+      <div>
+        <h5>Rugs</h5>
+        <ul>
+          <li><a href="https://fableroom.com/collections/hand-knotted-rugs">Hand-Knotted</a></li>
+          <li><a href="https://fableroom.com/collections/hand-tufted-rugs">Hand-Tufted</a></li>
+          <li><a href="https://fableroom.com/collections/all-hand-woven-rugs-collection">Hand-Woven</a></li>
+          <li><a href="https://fableroom.com/collections/all-rugs-collection">All Rugs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Customer Care</h5>
+        <ul>
+          <li><a href="https://fableroom.com/pages/delivery-and-shipping">Delivery &amp; Returns</a></li>
+          <li><a href="https://fableroom.com/pages/rugs-sizing-guide">Sizing Guide</a></li>
+          <li><a href="https://fableroom.com/pages/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="https://fableroom.com/pages/about-us">Our Story</a></li>
+          <li><a href="https://fableroom.com/collections/new-arrivals">What's New</a></li>
+          <li><a href="https://fableroom.com/collections/bestsellers-in-stock">Bestsellers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Social</h5>
+        <ul>
+          <li><a href="https://www.instagram.com/fableroomliving/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.pinterest.com/fableroomliving/" target="_blank" rel="noopener">Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>&copy; 2026 FableRoom. FableRoom Limited is a registered company in England &amp; Wales (No. 16249321).</span>
+      <span>Terms &amp; Conditions · Privacy Policy</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= RUG ZOOM LIGHTBOX ================= -->
+<div class="rug-zoom" data-rug-zoom hidden>
+  <button class="rug-zoom__close" type="button" data-rug-zoom-close aria-label="Close zoom view">&times;</button>
+  <img data-rug-zoom-img src="" alt="">
+</div>
+
 <script>
-(async function(){
-  const BASE_COMMIT='c09dc1d5a6a892eb2af04da8084512a77cfebdb8';
-  const SOURCE='https://raw.githubusercontent.com/vinitsingh-del/RUB-Merch-2/'+BASE_COMMIT+'/index.html';
-  const res=await fetch(SOURCE,{cache:'no-store'});
-  if(!res.ok) throw new Error('Unable to load base page');
-  let html=await res.text();
+/* ---------- Scroll reveals ---------- */
+const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+  });
+}, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
+revealEls.forEach(el=>io.observe(el));
 
-  const scopedCss=`
-<style id="requested-compare-rugfinder-patch">
-/* Requested change only: compact Rug Finder (~20% smaller) */
-.rug-finder__shell{max-width:1056px;margin-inline:auto;grid-template-columns:minmax(256px,.75fr) minmax(0,1.25fr)!important}
-.rug-finder__media{min-height:472px!important;overflow:hidden}
-.rug-finder__media picture{display:block;width:100%;height:100%}
-.rug-finder__media img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
-.rug-finder__body{padding:clamp(21px,3.2vw,42px)!important}
-.rug-finder__body h2{font-size:clamp(27px,3.2vw,39px)!important;margin:6px 0!important}
-.rug-finder__body>p{font-size:12px!important;margin-bottom:14px!important}
-.rug-finder__step{padding:10px 0!important}
-.rug-finder__option{min-height:32px!important;padding:6px!important;font-size:9px!important}
-.rug-finder__result{margin-top:10px!important;padding:11px!important}
-.rug-finder__result a{padding:9px 12px!important}
-
-/* Requested change only: compact compare CTA inside product cards */
-.card-compare-cta{display:inline-flex;align-items:center;justify-content:center;gap:5px;margin-top:8px;padding:6px 9px;border:1px solid var(--line-strong);background:transparent;color:var(--ink);font-family:var(--sans);font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1;transition:background .25s ease,color .25s ease,border-color .25s ease}
-.card-compare-cta:hover,.card-compare-cta.is-selected{background:var(--ink);border-color:var(--ink);color:var(--white)}
-.lookaround__card>.card-compare-cta{margin-left:0}
-.style-hub__card .card-compare-cta{margin-left:10px;margin-bottom:10px}
-.edit__card>.card-compare-cta{margin-top:7px}
-
-.compare-dock{position:fixed;z-index:95;left:50%;bottom:16px;transform:translateX(-50%) translateY(20px);display:flex;align-items:center;gap:12px;min-width:min(480px,calc(100vw - 32px));padding:10px 12px;background:rgba(26,26,26,.96);color:#fff;box-shadow:0 12px 36px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:.25s ease}
-.compare-dock.is-open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
-.compare-dock__text{flex:1;font:700 10px/1.3 var(--sans);letter-spacing:.04em}
-.compare-dock__open,.compare-dock__clear{border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;padding:7px 10px;font:700 8.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase}
-.compare-dock__open{background:#fff;color:#1a1a1a;border-color:#fff}
-.compare-dock__open:disabled{opacity:.45;cursor:not-allowed}
-
-.compare-modal{position:fixed;z-index:110;inset:0;display:none;background:rgba(18,16,13,.52);padding:clamp(16px,4vw,48px);align-items:center;justify-content:center}
-.compare-modal.is-open{display:flex}
-.compare-modal__panel{width:min(980px,100%);max-height:min(78vh,720px);overflow:auto;background:var(--cream);border:1px solid var(--line-strong);box-shadow:0 24px 70px rgba(0,0,0,.22)}
-.compare-modal__head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 20px;background:var(--cream);border-bottom:1px solid var(--line)}
-.compare-modal__head h2{font-size:clamp(22px,3vw,32px)}
-.compare-modal__close{border:0;background:transparent;font-size:24px;line-height:1;padding:4px 6px}
-.compare-modal__scroll{overflow:auto}
-.compare-modal table{width:100%;border-collapse:collapse;min-width:620px}
-.compare-modal th,.compare-modal td{padding:13px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:11px}
-.compare-modal th:first-child,.compare-modal td:first-child{position:sticky;left:0;background:var(--cream);z-index:1;width:120px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-size:9px}
-.compare-modal thead th{font-family:var(--serif);font-size:16px;font-weight:400;text-transform:none;letter-spacing:0}
-.compare-modal .compare-note{padding:12px 16px;margin:0;color:var(--ink-soft);font-size:10px}
-
-@media(max-width:760px){
- .rug-finder__shell{max-width:100%;grid-template-columns:1fr!important}
- .rug-finder__media{min-height:256px!important}
- .rug-finder__body{padding:16px 0 2px!important}
- .rug-finder__body h2{font-size:25px!important}
- .rug-finder__option{min-height:34px!important}
- .compare-dock{bottom:10px;gap:7px;padding:9px 10px}
- .compare-dock__clear{display:none}
- .card-compare-cta{font-size:8px;padding:6px 8px}
-}
-</style>`;
-
-  const scopedJs=`
-<script id="requested-compare-rugfinder-script">
-(function(){
-  function initRequestedChanges(){
-    /* 1. Capture factual compare information already present, then remove standalone section. */
-    const factualByName=new Map();
-    const oldCompare=document.querySelector('.compare-shop');
-    if(oldCompare){
-      oldCompare.querySelectorAll('.compare-card').forEach(card=>{
-        const name=(card.querySelector('h3')?.textContent||'').trim();
-        const spec=(card.querySelector('.compare-card__spec')?.textContent||'').trim();
-        const price=(card.querySelector('.compare-card__price')?.textContent||'').trim();
-        if(name){ factualByName.set(normalizeName(name),{spec,price}); }
-      });
-      oldCompare.remove();
-    }
-
-    /* 2. Rename + compact Rug Finder and use the same hero-model artwork as the hero banner. */
-    const finder=document.querySelector('.rug-finder');
-    if(finder){
-      const eyebrow=finder.querySelector('.eyebrow');
-      if(eyebrow) eyebrow.textContent='Rug Finder';
-      const media=finder.querySelector('.rug-finder__media');
-      if(media){
-        media.innerHTML='<picture><source media="(max-width:760px)" srcset="assets/hero-spotlight-01-mobile.webp"><img src="assets/hero-spotlight-01-desktop.webp" alt="FableRoom hero model styling a handmade rug" loading="lazy"></picture>';
-      }
-    }
-
-    function normalizeName(v){
-      return String(v||'').toLowerCase().replace(/&/g,'and').replace(/hand[ -]?tufted/g,'hand tufted').replace(/hand[ -]?knotted/g,'hand knotted').replace(/hand[ -]?woven/g,'hand woven').replace(/[^a-z0-9]+/g,' ').trim();
-    }
-    function moneyNumber(text){
-      const m=String(text||'').replace(/,/g,'').match(/£\s*(\d+(?:\.\d+)?)/);
-      return m?Number(m[1]):null;
-    }
-    function titleFromCard(card){
-      return (card.querySelector('h3,h4')?.textContent||card.querySelector('img')?.alt||'Rug').trim();
-    }
-    function getExistingProductCards(){
-      const nodes=[...document.querySelectorAll('.lookaround__card,.style-hub__card,.edit__card')];
-      return [...new Set(nodes)].filter(card=>titleFromCard(card));
-    }
-
-    /* Build a factual index only from text already on this page. */
-    const aggregate=new Map();
-    getExistingProductCards().forEach(card=>{
-      const name=titleFromCard(card), key=normalizeName(name);
-      if(!aggregate.has(key)) aggregate.set(key,{name,price:'—',saving:'—',technique:'—',material:'—',style:'—',size:'See PDP',thickness:'See PDP'});
-      const data=aggregate.get(key);
-      const txt=card.textContent||'';
-      const priceEl=card.querySelector('.lookaround__price b,.price-row b,small');
-      if(priceEl && /£/.test(priceEl.textContent||'')) data.price=(priceEl.textContent||'').trim().replace(/^From\s*/i,'');
-      const savingMatch=txt.match(/(\d{1,2})%\s*off/i);
-      if(savingMatch) data.saving=savingMatch[1]+'%';
-      if(data.saving==='—'){
-        const current=moneyNumber(card.querySelector('.price-row b,.lookaround__price b')?.textContent);
-        const was=moneyNumber(card.querySelector('.price-row s,.lookaround__price s')?.textContent);
-        if(current&&was&&was>current) data.saving=Math.round((1-current/was)*100)+'%';
-      }
-      const tag=card.querySelector('.style-hub__card span,span')?.textContent?.trim();
-      if(card.matches('.style-hub__card') && tag) data.style=tag;
-      const fact=[...factualByName.entries()].find(([k])=>k===key || k.includes(key) || key.includes(k));
-      if(fact){
-        const spec=fact[1].spec||'';
-        const bits=spec.split('·').map(s=>s.trim()).filter(Boolean);
-        if(bits[0]) data.technique=bits[0];
-        if(bits[1]) data.material=bits[1];
-        if(data.price==='—'&&fact[1].price) data.price=fact[1].price;
-      }
-      if(data.technique==='—'){
-        const m=name.match(/Hand[- ]?(Tufted|Knotted|Woven)|Washable/i);
-        if(m) data.technique=m[0].replace(/Hand\s+/i,'Hand-');
-      }
-      if(data.material==='—'){
-        const mats=[];
-        if(/\bwool\b/i.test(name)) mats.push('Wool');
-        if(/\bjute\b/i.test(name)) mats.push('Jute');
-        if(/bamboo silk/i.test(name)) mats.push('Bamboo silk');
-        if(mats.length) data.material=mats.join(' + ');
-      }
-    });
-
-    /* Cross-fill style/price/savings between repeated instances of the same product. */
-    getExistingProductCards().forEach(card=>{
-      const key=normalizeName(titleFromCard(card));
-      const data=aggregate.get(key);
-      if(!data) return;
-      const tag=card.matches('.style-hub__card') ? card.querySelector('span')?.textContent?.trim() : '';
-      if(tag) data.style=tag;
-    });
-
-    const selected=[];
-    const dock=document.createElement('div');
-    dock.className='compare-dock';
-    dock.innerHTML='<div class="compare-dock__text"><span data-compare-count>0 rugs selected</span></div><button class="compare-dock__clear" type="button">Clear</button><button class="compare-dock__open" type="button" disabled>Compare</button>';
-    document.body.appendChild(dock);
-
-    const modal=document.createElement('div');
-    modal.className='compare-modal';
-    modal.setAttribute('role','dialog');
-    modal.setAttribute('aria-modal','true');
-    modal.setAttribute('aria-label','Compare selected rugs');
-    modal.innerHTML='<div class="compare-modal__panel"><div class="compare-modal__head"><div><div class="eyebrow">Rug Comparison</div><h2>Compare your rugs.</h2></div><button class="compare-modal__close" type="button" aria-label="Close comparison">×</button></div><div class="compare-modal__scroll" data-compare-table></div><p class="compare-note">Only details already available on this page are shown. Size or thickness that is not stated here is marked “See PDP”.</p></div>';
-    document.body.appendChild(modal);
-
-    function sync(){
-      document.querySelectorAll('.card-compare-cta').forEach(btn=>{
-        const active=selected.includes(btn.dataset.compareKey);
-        btn.classList.toggle('is-selected',active);
-        btn.setAttribute('aria-pressed',String(active));
-        btn.textContent=active?'Added ✓':'Compare now +';
-      });
-      dock.classList.toggle('is-open',selected.length>0);
-      dock.querySelector('[data-compare-count]').textContent=selected.length+' rug'+(selected.length===1?'':'s')+' selected';
-      const open=dock.querySelector('.compare-dock__open');
-      open.disabled=selected.length<2;
-      open.textContent=selected.length>=2?'Compare ('+selected.length+')':'Compare';
-    }
-    function toggle(key){
-      const i=selected.indexOf(key);
-      if(i>=0) selected.splice(i,1);
-      else if(selected.length<3) selected.push(key);
-      else return;
-      sync();
-    }
-
-    getExistingProductCards().forEach(card=>{
-      const name=titleFromCard(card), key=normalizeName(name);
-      if(!aggregate.has(key) || card.querySelector('.card-compare-cta')) return;
-      const btn=document.createElement('button');
-      btn.type='button'; btn.className='card-compare-cta'; btn.dataset.compareKey=key; btn.setAttribute('aria-pressed','false'); btn.textContent='Compare now +';
-      btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggle(key);});
-      if(card.matches('.style-hub__card')){
-        const info=card.querySelector('div');
-        if(info) info.appendChild(btn); else card.appendChild(btn);
-      }else{
-        card.appendChild(btn);
-      }
-    });
-
-    function renderTable(){
-      const rows=[['Size','size'],['Technique','technique'],['Material','material'],['Price','price'],['Savings','saving'],['Thickness','thickness'],['Style','style']];
-      const items=selected.map(k=>aggregate.get(k)).filter(Boolean);
-      const head='<thead><tr><th>Detail</th>'+items.map(x=>'<th>'+escapeHtml(x.name)+'</th>').join('')+'</tr></thead>';
-      const body='<tbody>'+rows.map(([label,field])=>'<tr><td>'+label+'</td>'+items.map(x=>'<td>'+escapeHtml(x[field]||'—')+'</td>').join('')+'</tr>').join('')+'</tbody>';
-      modal.querySelector('[data-compare-table]').innerHTML='<table>'+head+body+'</table>';
-    }
-    function escapeHtml(v){return String(v).replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));}
-
-    dock.querySelector('.compare-dock__clear').addEventListener('click',()=>{selected.splice(0);sync();});
-    dock.querySelector('.compare-dock__open').addEventListener('click',()=>{if(selected.length<2)return;renderTable();modal.classList.add('is-open');document.body.style.overflow='hidden';});
-    modal.querySelector('.compare-modal__close').addEventListener('click',closeModal);
-    modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))closeModal();});
-    function closeModal(){modal.classList.remove('is-open');document.body.style.overflow='';}
-    sync();
-  }
-
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initRequestedChanges,{once:true});
-  else initRequestedChanges();
-})();
-<\/script>`;
-
-  html=html.replace('</head>',scopedCss+'\n</head>');
-  html=html.replace('</body>',scopedJs+'\n</body>');
-  document.open();
-  document.write(html);
-  document.close();
-})().catch(function(err){
-  document.getElementById('boot').textContent='Unable to load the page. Please refresh.';
-  console.error(err);
+/* ---------- Hero load-in ---------- */
+window.addEventListener('load', ()=>{
+  document.querySelector('.hero').classList.add('is-loaded');
 });
+
+/* ---------- Hero slideshow: each scroll stage crossfades to the next banner ---------- */
+(function(){
+  const hero = document.querySelector('.hero');
+  const stage = hero && hero.querySelector('.hero__stage');
+  const scenes = hero ? [...hero.querySelectorAll('.hero__scene')] : [];
+  if(!hero || !stage || scenes.length < 2) return;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking = false;
+  const clamp = value => Math.min(1,Math.max(0,value));
+  function update(){
+    const rect = hero.getBoundingClientRect();
+    const distance = Math.max(1,hero.offsetHeight-window.innerHeight);
+    const travelled = Math.min(distance,Math.max(0,-rect.top));
+    const segment = distance/(scenes.length-1);
+    const transitionDistance = segment*.52;
+    let active = 0;
+
+    scenes.forEach((scene,index)=>{
+      let progress = index === 0 ? 1 : clamp((travelled-(index-1)*segment)/transitionDistance);
+      if(reduceMotion && index > 0) progress = progress < .5 ? 0 : 1;
+      const eased = progress*progress*progress*(progress*(progress*6-15)+10);
+      scene.style.setProperty('--hero-scene-opacity',(index === 0 ? 1 : eased).toFixed(3));
+      if(progress > .001) active = index;
+    });
+
+    scenes.forEach((scene,index)=>{
+      const isActive = index === active;
+      scene.classList.toggle('is-active',isActive);
+      scene.setAttribute('aria-hidden',String(!isActive));
+    });
+    ticking = false;
+  }
+  function requestUpdate(){
+    if(!ticking){
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+  update();
+  addEventListener('scroll',requestUpdate,{passive:true});
+  addEventListener('resize',requestUpdate,{passive:true});
+})();
+
+/* ---------- FAQ accordion ---------- */
+document.querySelectorAll('.faq__item').forEach(item=>{
+  const q = item.querySelector('.faq__q');
+  const a = item.querySelector('.faq__a');
+  q.addEventListener('click', ()=>{
+    const isOpen = item.classList.contains('is-open');
+    document.querySelectorAll('.faq__item.is-open').forEach(o=>{
+      o.classList.remove('is-open');
+      o.querySelector('.faq__a').style.maxHeight = null;
+    });
+    if(!isOpen){
+      item.classList.add('is-open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+
+/* ---------- Edit filter pills (visual state only) ---------- */
+document.querySelectorAll('.edit__pills').forEach(group=>{
+  group.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      group.querySelectorAll('button').forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+    });
+  });
+});
+
+/* ---------- Shop the room markers ---------- */
+document.querySelectorAll('[data-room]').forEach(slide=>{
+  const marker = slide.querySelector('.room__marker');
+  const card = slide.querySelector('.room__card');
+  marker.addEventListener('click', ()=>{
+    const open = marker.classList.contains('is-open');
+    document.querySelectorAll('.room__marker.is-open').forEach(m=>m.classList.remove('is-open'));
+    document.querySelectorAll('.room__card.is-open').forEach(c=>c.classList.remove('is-open'));
+    if(!open){ marker.classList.add('is-open'); card.classList.add('is-open'); }
+  });
+});
+
+/* ---------- Scroll-driven rug cycle and review reading ---------- */
+(function(){
+  const section = document.querySelector('[data-rug-reviews]');
+  if(!section) return;
+  const frames = [...section.querySelectorAll('.trust__rug-frame')];
+  let ticking = false;
+  const update = ()=>{
+    const rect = section.getBoundingClientRect();
+    const distance = Math.max(1, section.offsetHeight - window.innerHeight);
+    const progress = Math.min(1, Math.max(0, -rect.top / distance));
+    section.style.setProperty('--review-progress', progress.toFixed(4));
+    section.style.setProperty('--review-remaining', (1-progress).toFixed(4));
+    if(frames.length){
+      const idx = Math.min(frames.length-1, Math.floor(progress * frames.length));
+      frames.forEach((f,i)=> f.classList.toggle('is-active', i===idx));
+    }
+    ticking = false;
+  };
+  const requestUpdate = ()=>{
+    if(!ticking){ requestAnimationFrame(update); ticking = true; }
+  };
+  update();
+  addEventListener('scroll', requestUpdate, {passive:true});
+  addEventListener('resize', requestUpdate, {passive:true});
+})();
+
+/* ---------- Rug zoom lightbox ---------- */
+(function(){
+  const zoom = document.querySelector('[data-rug-zoom]');
+  const zoomImg = document.querySelector('[data-rug-zoom-img]');
+  const closeBtn = document.querySelector('[data-rug-zoom-close]');
+  if(!zoom || !zoomImg) return;
+  document.querySelectorAll('.trust__rug-frame').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const img = btn.querySelector('img');
+      zoomImg.src = img.src;
+      zoomImg.alt = img.alt;
+      zoom.hidden = false;
+    });
+  });
+  const closeZoom = ()=>{ zoom.hidden = true; };
+  if(closeBtn) closeBtn.addEventListener('click', closeZoom);
+  zoom.addEventListener('click', e=>{ if(e.target === zoom) closeZoom(); });
+  document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeZoom(); });
+})();
+
+/* ---------- Original shop-by directory ---------- */
+(function(){
+  const directory = document.querySelector('[data-shop-paths]');
+  if(!directory) return;
+  const panel = directory.querySelector('.shop-paths__panel');
+  const image = directory.querySelector('[data-path-image]');
+  const count = directory.querySelector('[data-path-count]');
+  const title = directory.querySelector('[data-path-title]');
+  const copy = directory.querySelector('[data-path-copy]');
+  const links = directory.querySelector('[data-path-links]');
+  const paths = {
+    room:{count:'01',title:'Find rugs for every room.',copy:'Shop living room rugs, bedroom rugs, dining room carpets and outdoor rugs by space.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[['Living Room','https://fableroom.com/collections/living-room-rugs'],['Bedroom','https://fableroom.com/collections/bedroom-rugs'],['Dining Room','https://fableroom.com/collections/dining-room'],['Outdoor','https://fableroom.com/collections/outdoor-rugs']]},
+    style:{count:'02',title:'Choose a rug style.',copy:'Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.',image:'assets/hero-heritage-sand.webp',alt:'Heritage patterned rug in a warm neutral palette',links:[['Persian','https://fableroom.com/search?q=persian+rug&type=product'],['Modern','https://fableroom.com/search?q=modern+rug&type=product'],['Minimal','https://fableroom.com/search?q=minimal+rug&type=product'],['Bohemian','https://fableroom.com/search?q=bohemian+rug&type=product']]},
+    technique:{count:'03',title:'Compare rug techniques.',copy:'Choose hand-knotted, hand-tufted, hand-woven or washable rugs by pile and feel.',image:'assets/rug-craft-poster.jpg',alt:'Close view of rug craftsmanship',links:[['Hand-Knotted','https://fableroom.com/collections/hand-knotted-rugs'],['Hand-Tufted','https://fableroom.com/collections/hand-tufted-rugs'],['Hand-Woven','https://fableroom.com/collections/all-hand-woven-rugs-collection'],['Washable','https://fableroom.com/search?q=washable+rug&type=product']]},
+    colour:{count:'04',title:'Shop rugs by colour.',copy:'Find neutral, beige, cream, grey, blue, red and multicolour rugs for your palette.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[['Neutral','https://fableroom.com/search?q=neutral+rug&type=product'],['Blue','https://fableroom.com/search?q=blue+rug&type=product'],['Red','https://fableroom.com/search?q=red+rug&type=product'],['Multicolour','https://fableroom.com/search?q=multicolour+rug&type=product']]},
+    material:{count:'05',title:'Choose a rug material.',copy:'Compare wool rugs, jute rugs, bamboo silk carpets and easy-care PET fibres.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[['Wool','https://fableroom.com/search?q=wool+rug&type=product'],['Jute','https://fableroom.com/search?q=jute+rug&type=product'],['Bamboo Silk','https://fableroom.com/search?q=bamboo+silk+rug&type=product'],['PET','https://fableroom.com/search?q=PET+rug&type=product']]},
+    budget:{count:'06',title:'Find a rug for your budget.',copy:'Move from affordable area rugs under £150 to luxury handmade carpets.',image:'assets/ai-story-06-woven-banner.webp',alt:'Hand-woven rug in a styled home',links:[['Under £150','https://fableroom.com/collections/all-rugs-collection'],['£150–£300','https://fableroom.com/collections/all-rugs-collection'],['£300–£600','https://fableroom.com/collections/all-rugs-collection'],['Luxury Rugs','https://fableroom.com/search?q=luxury+rug&type=product']]}
+  };
+  directory.querySelectorAll('.shop-paths__tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      const data = paths[tab.dataset.path];
+      if(!data || tab.classList.contains('is-active')) return;
+      directory.querySelectorAll('.shop-paths__tab').forEach(item=>{
+        const active = item === tab;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-selected', String(active));
+      });
+      panel.classList.add('is-changing');
+      setTimeout(()=>{
+        image.src=data.image; image.alt=data.alt; count.textContent=data.count;
+        title.textContent=data.title; copy.textContent=data.copy;
+        links.replaceChildren(...data.links.map(([label,href])=>{
+          const a=document.createElement('a'); a.href=href; a.textContent=label; return a;
+        }));
+        panel.classList.remove('is-changing');
+      },160);
+    });
+  });
+})();
+
+/* ---------- Take a Look Around filters ---------- */
+(function(){
+  const filters = document.querySelector('[data-lookaround-filters]');
+  const grid = document.querySelector('[data-lookaround-grid]');
+  if(!filters || !grid) return;
+  const applyFilter = value=>{
+    filters.querySelectorAll('[data-lookaround-filter]').forEach(button=>{
+      const active = button.dataset.lookaroundFilter === value;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-selected', String(active));
+    });
+    grid.querySelectorAll('[data-lookaround-groups]').forEach(card=>{
+      card.hidden = !card.dataset.lookaroundGroups.split(' ').includes(value);
+    });
+  };
+  filters.addEventListener('click',event=>{
+    const button = event.target.closest('[data-lookaround-filter]');
+    if(button) applyFilter(button.dataset.lookaroundFilter);
+  });
+  applyFilter('bestsellers');
+})();
+
+/* ---------- Rug style discovery filters ---------- */
+(function(){
+  const filters = document.querySelector('[data-style-filters]');
+  const products = document.querySelector('[data-style-products]');
+  const count = document.querySelector('[data-style-count]');
+  if(!filters || !products) return;
+  filters.addEventListener('click',event=>{
+    const button = event.target.closest('[data-style-filter]');
+    if(!button) return;
+    const value = button.dataset.styleFilter;
+    filters.querySelectorAll('[data-style-filter]').forEach(item=>{
+      const active = item === button;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+    });
+    let visible = 0;
+    products.querySelectorAll('[data-styles]').forEach(card=>{
+      const show = value === 'all' || card.dataset.styles.split(' ').includes(value);
+      card.hidden = !show;
+      if(show) visible += 1;
+    });
+    if(count) count.textContent = `${visible} ${visible === 1 ? 'rug' : 'rugs'} in this edit`;
+    products.scrollTo({left:0,behavior:'smooth'});
+  });
+})();
+
+/* ---------- Product-card comparison ---------- */
+(function(){
+  const grid = document.querySelector('[data-compare-grid]');
+  const panel = document.querySelector('[data-compare-panel]');
+  const head = document.querySelector('[data-compare-head]');
+  const body = document.querySelector('[data-compare-body]');
+  const status = document.querySelector('[data-compare-status]');
+  if(!grid || !panel || !head || !body || !status) return;
+  const products = {
+    zahana:{name:'Zahana Hand-tufted Wool Rug',price:'£149',construction:'Hand-tufted',material:'80% wool, 20% cotton',style:'Botanical, Persian, Traditional',availability:'Ready to Ship',href:'https://fableroom.com/products/zahana-hand-tufted-wool-rug'},
+    savana:{name:'Savana Botanical Wool Rug',price:'£118',construction:'Hand-tufted',material:'80% wool, 20% cotton',style:'Botanical, Persian, Traditional',availability:'Pre Order',href:'https://fableroom.com/products/savana-hand-tufted-wool-rug'},
+    rewa:{name:'Rewa Hand-tufted Wool Rug',price:'£185',construction:'Hand-tufted',material:'80% wool, 20% cotton',style:'Abstract, Modern, Contemporary',availability:'Ready to Ship',href:'https://fableroom.com/products/rewa-hand-tufted-wool-rug'},
+    amber:{name:'Amber Oasis Hand-knotted Rug',price:'£312',construction:'Hand-knotted',material:'80% New Zealand wool, 20% cotton',style:'Bohemian, Persian, Traditional',availability:'Pre Order',href:'https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug'}
+  };
+  const selected = [];
+  const render = ()=>{
+    grid.querySelectorAll('[data-compare-key]').forEach(card=>{
+      const active = selected.includes(card.dataset.compareKey);
+      const button = card.querySelector('.compare-card__toggle');
+      card.classList.toggle('is-selected', active);
+      button.setAttribute('aria-pressed', String(active));
+      button.firstElementChild.textContent = active ? 'Added' : 'Compare';
+      button.lastElementChild.textContent = active ? '−' : '＋';
+    });
+    if(selected.length < 2){
+      panel.hidden = true;
+      status.textContent = selected.length ? '1 rug selected — choose one more to compare.' : 'Select at least two rugs to build a comparison.';
+      return;
+    }
+    status.textContent = `${selected.length} rugs selected. You can compare up to three.`;
+    panel.hidden = false;
+    head.innerHTML = `<tr><th>Detail</th>${selected.map(key=>`<th><a href="${products[key].href}">${products[key].name}</a></th>`).join('')}</tr>`;
+    const rows = [['Price','price'],['Construction','construction'],['Material','material'],['Style','style'],['Availability','availability']];
+    body.innerHTML = rows.map(([label,field])=>`<tr><th>${label}</th>${selected.map(key=>`<td>${products[key][field]}</td>`).join('')}</tr>`).join('');
+  };
+  grid.addEventListener('click',event=>{
+    const button = event.target.closest('.compare-card__toggle');
+    if(!button) return;
+    const card = button.closest('[data-compare-key]');
+    const key = card.dataset.compareKey;
+    const index = selected.indexOf(key);
+    if(index >= 0) selected.splice(index,1);
+    else if(selected.length < 3) selected.push(key);
+    else{
+      status.textContent = 'Remove one rug before adding another; the comparison supports up to three.';
+      return;
+    }
+    render();
+  });
+  render();
+})();
+
+/* ---------- Three-step rug finder ---------- */
+(function(){
+  const finder = document.querySelector('[data-rug-finder]');
+  if(!finder) return;
+  const result = finder.querySelector('[data-finder-result]');
+  const link = finder.querySelector('[data-finder-link]');
+  const state = {room:'Living room',mood:'Calm and neutral',need:'Everyday easy'};
+  const update = ()=>{
+    result.textContent = `${state.mood} rugs for the ${state.room.toLowerCase()}`;
+    const query = encodeURIComponent(`${state.room} ${state.mood} ${state.need} rug`);
+    link.href = `https://fableroom.com/search?q=${query}&type=product`;
+  };
+  finder.querySelectorAll('[data-finder-step]').forEach(step=>{
+    step.addEventListener('click',event=>{
+      const button = event.target.closest('[data-value]');
+      if(!button) return;
+      step.querySelectorAll('[data-value]').forEach(item=>{
+        const active = item === button;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+      state[step.dataset.finderStep] = button.dataset.value;
+      update();
+    });
+  });
+  update();
+})();
 </script>
+
 </body>
 </html>
