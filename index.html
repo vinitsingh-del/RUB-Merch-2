@@ -969,6 +969,205 @@ body > section + section{margin-top:10px;}
   .hero__rooms a{padding:7px 6px; font-size:8.5px;}
 }
 
+/* ============================================================
+   POST-REVIEWS DISCOVERY FLOW
+   Scoped to the requested merchandising sequence only.
+   ============================================================ */
+.lookaround,.style-hub,.room-discovery,.compare-shop,.why-fableroom,.rug-finder{
+  border-top:1px solid var(--line);
+}
+.lookaround__intro,.style-hub__intro,.room-discovery__intro,.compare-shop__intro{
+  max-width:62ch;
+}
+.lookaround__intro p,.style-hub__intro p,.room-discovery__intro p,.compare-shop__intro p{
+  margin:8px 0 0; color:var(--ink-soft); font-size:14px;
+}
+.lookaround__filters{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  border:1px solid var(--line-strong); margin-bottom:24px;
+}
+.lookaround__filter{
+  min-height:58px; border:0; border-right:1px solid var(--line);
+  background:transparent; color:var(--ink-soft); padding:12px 14px;
+  font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  transition:background .3s var(--ease),color .3s var(--ease);
+}
+.lookaround__filter:last-child{border-right:0;}
+.lookaround__filter.is-active{background:var(--ink); color:var(--white);}
+.lookaround__grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px;
+}
+.lookaround__card{min-width:0;}
+.lookaround__card[hidden]{display:none;}
+.lookaround__frame{
+  position:relative; aspect-ratio:3/4; overflow:hidden; margin-bottom:12px; background:var(--white);
+}
+.lookaround__frame img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease-slow);}
+.lookaround__card:hover .lookaround__frame img{transform:scale(1.04);}
+.lookaround__badges{position:absolute; left:10px; top:10px; display:flex; flex-wrap:wrap; gap:5px; max-width:calc(100% - 20px);}
+.lookaround__badge{
+  display:inline-flex; padding:6px 8px; background:rgba(255,255,255,.92); border:1px solid rgba(255,255,255,.75);
+  font-size:8.5px; line-height:1; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+}
+.lookaround__card h3{font-family:var(--sans); font-size:13px; font-weight:700; line-height:1.35; margin-bottom:5px;}
+.lookaround__meta{font-size:11px; color:var(--ink-faint); margin-bottom:3px;}
+.lookaround__price{font-size:13px;}
+.lookaround__price b{margin-right:7px;}
+.lookaround__price s{color:var(--ink-faint);}
+
+.style-hub{background:var(--white);}
+.style-hub__shell{
+  display:grid; grid-template-columns:minmax(250px,.38fr) minmax(0,1fr);
+  border:1px solid var(--line-strong); min-height:620px;
+}
+.style-hub__media{position:relative; overflow:hidden; background:#d8c8b5; min-height:620px;}
+.style-hub__media video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.style-hub__panel{min-width:0; padding:clamp(24px,3.5vw,48px); display:flex; flex-direction:column;}
+.style-hub__intro h2{font-size:clamp(30px,3.6vw,48px); line-height:1.02; margin:8px 0 0;}
+.style-hub__intro h2 em{display:block; color:var(--clay); font-weight:400;}
+.style-hub__filters{display:flex; gap:8px; overflow-x:auto; padding:22px 0 18px; scrollbar-width:none;}
+.style-hub__filters::-webkit-scrollbar{display:none;}
+.style-hub__filter{
+  flex:none; border:1px solid var(--line-strong); border-radius:20px; background:transparent;
+  padding:9px 12px; color:var(--ink-soft); font-size:10px; font-weight:700; letter-spacing:.04em;
+}
+.style-hub__filter.is-active{background:var(--ink); border-color:var(--ink); color:var(--white);}
+.style-hub__products{display:flex; gap:12px; overflow-x:auto; padding-bottom:8px; scroll-snap-type:x proximity; scrollbar-width:none;}
+.style-hub__products::-webkit-scrollbar{display:none;}
+.style-hub__card{flex:0 0 180px; scroll-snap-align:start; border:1px solid var(--line); background:var(--cream);}
+.style-hub__card[hidden]{display:none;}
+.style-hub__card img{width:100%; aspect-ratio:3/4; object-fit:cover;}
+.style-hub__card div{padding:10px;}
+.style-hub__card span{display:block; color:var(--clay); font-size:8px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px;}
+.style-hub__card h3{font-size:15px; line-height:1.05; margin-bottom:5px;}
+.style-hub__card small{font-size:10.5px; color:var(--ink-soft);}
+.style-hub__footer{display:flex; justify-content:space-between; align-items:center; gap:18px; margin-top:auto; padding-top:24px; border-top:1px solid var(--line);}
+.style-hub__footer span{font-size:11px; color:var(--ink-soft);}
+.style-hub__footer a{font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-bottom:1px solid var(--ink);}
+
+.room-discovery__head{display:flex; justify-content:space-between; align-items:flex-end; gap:28px; margin-bottom:28px;}
+.room-discovery__intro h2{font-size:clamp(30px,4vw,50px); line-height:1.02; margin-top:8px;}
+.room-discovery__intro h2 em{display:block; color:var(--clay); font-weight:400;}
+.room-discovery__copy{max-width:39ch; color:var(--ink-soft); font-size:14px; margin:0 0 4px;}
+.room-discovery__grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; align-items:start;}
+.room-discovery__card{position:relative; display:block; overflow:hidden; aspect-ratio:4/5; background:#d8d0c6;}
+.room-discovery__card:nth-child(2),.room-discovery__card:nth-child(3){margin-top:34px;}
+.room-discovery__card img{width:100%; height:100%; object-fit:cover; transition:transform .9s var(--ease-slow);}
+.room-discovery__card:hover img{transform:scale(1.035);}
+.room-discovery__shade{position:absolute; inset:42% 0 0; background:linear-gradient(transparent,rgba(18,15,12,.68));}
+.room-discovery__label{position:absolute; inset:auto 16px 15px; color:var(--white);}
+.room-discovery__label h3{font-size:23px; line-height:1; margin-bottom:6px;}
+.room-discovery__label span{display:flex; justify-content:space-between; gap:12px; font-size:10px; letter-spacing:.04em;}
+
+.compare-shop{background:var(--white);}
+.compare-shop__grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px;}
+.compare-card{position:relative; min-width:0; padding-bottom:12px; border-bottom:1px solid var(--line);}
+.compare-card.is-selected{outline:1px solid var(--ink); outline-offset:7px;}
+.compare-card__image{display:block; overflow:hidden; aspect-ratio:3/4; margin-bottom:12px; background:var(--cream);}
+.compare-card__image img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease-slow);}
+.compare-card:hover .compare-card__image img{transform:scale(1.04);}
+.compare-card h3{font-family:var(--sans); font-size:13px; font-weight:700; line-height:1.35; margin-bottom:4px;}
+.compare-card__spec{font-size:10.5px; color:var(--ink-faint); margin-bottom:7px; min-height:32px;}
+.compare-card__price{font-size:13px; margin-bottom:10px;}
+.compare-card__toggle{
+  width:100%; min-height:42px; border:1px solid var(--line-strong); background:transparent;
+  display:flex; justify-content:space-between; align-items:center; padding:9px 11px;
+  font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+}
+.compare-card__toggle span:last-child{font-size:16px; font-weight:400;}
+.compare-card__toggle[aria-pressed="true"]{background:var(--ink); color:var(--white); border-color:var(--ink);}
+.compare-shop__status{min-height:20px; margin:14px 0 0; font-size:11px; color:var(--ink-soft);}
+.compare-panel{margin-top:22px; border:1px solid var(--line-strong); overflow-x:auto;}
+.compare-panel[hidden]{display:none;}
+.compare-panel table{width:100%; min-width:650px; border-collapse:collapse; font-size:12px;}
+.compare-panel th,.compare-panel td{padding:14px 16px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top;}
+.compare-panel thead th{font-family:var(--serif); font-size:17px; font-weight:400; background:var(--cream);}
+.compare-panel tbody th{width:150px; font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft);}
+.compare-panel tr:last-child th,.compare-panel tr:last-child td{border-bottom:0;}
+
+.why-fableroom__shell{display:grid; grid-template-columns:minmax(300px,.72fr) minmax(0,1.28fr); border:1px solid var(--line-strong);}
+.why-fableroom__story{position:relative; min-height:520px; overflow:hidden; background:#d5cec3; color:var(--white);}
+.why-fableroom__story img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.why-fableroom__story::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(18,15,12,.15),rgba(18,15,12,.7));}
+.why-fableroom__story div{position:absolute; z-index:1; inset:auto 28px 28px;}
+.why-fableroom__story .eyebrow{color:var(--white); margin-bottom:8px;}
+.why-fableroom__story h2{font-size:clamp(31px,4vw,48px); line-height:1.02;}
+.why-fableroom__list{padding:clamp(26px,4vw,52px); display:flex; flex-direction:column; justify-content:center;}
+.why-fableroom__item{display:grid; grid-template-columns:34px minmax(0,1fr); gap:14px; padding:18px 0; border-bottom:1px solid var(--line);}
+.why-fableroom__item:last-child{border-bottom:0;}
+.why-fableroom__check{width:26px; height:26px; border:1px solid var(--sage); border-radius:50%; display:grid; place-items:center; font-size:12px; color:var(--sage);}
+.why-fableroom__item h3{font-family:var(--sans); font-size:14px; font-weight:700; margin-bottom:3px;}
+.why-fableroom__item p{font-size:12.5px; color:var(--ink-soft); margin:0;}
+
+.rug-finder{background:var(--white);}
+.rug-finder__shell{display:grid; grid-template-columns:minmax(320px,.75fr) minmax(0,1.25fr); border:1px solid var(--line-strong);}
+.rug-finder__media{min-height:590px; background:#d9d1c5;}
+.rug-finder__media img{width:100%; height:100%; object-fit:cover;}
+.rug-finder__body{padding:clamp(26px,4vw,52px); display:flex; flex-direction:column; justify-content:center;}
+.rug-finder__body h2{font-size:clamp(31px,4vw,48px); line-height:1; margin:8px 0 8px;}
+.rug-finder__body > p{font-size:13px; color:var(--ink-soft); margin:0 0 18px;}
+.rug-finder__step{min-width:0; margin:0; border:0; border-top:1px solid var(--line); padding:13px 0;}
+.rug-finder__step legend{padding:0 8px 0 0; color:var(--clay); font-size:9px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;}
+.rug-finder__options{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px;}
+.rug-finder__option{min-height:40px; border:1px solid var(--line); background:transparent; padding:8px 6px; font-size:9.5px; color:var(--ink-soft);}
+.rug-finder__option.is-active{background:var(--ink); border-color:var(--ink); color:var(--white);}
+.rug-finder__result{display:flex; align-items:center; justify-content:space-between; gap:18px; margin-top:13px; padding:14px; background:#eee3d1; border:1px solid rgba(168,132,63,.24);}
+.rug-finder__result small{display:block; color:var(--clay); font-size:8px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:3px;}
+.rug-finder__result strong{display:block; font-family:var(--serif); font-size:18px; font-weight:400; line-height:1.15;}
+.rug-finder__result a{flex:none; padding:11px 15px; background:var(--clay); color:var(--white); font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;}
+
+@media (max-width:900px){
+  .lookaround__grid,.compare-shop__grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .style-hub__shell{grid-template-columns:280px minmax(0,1fr);}
+  .why-fableroom__shell,.rug-finder__shell{grid-template-columns:1fr 1.2fr;}
+}
+@media (max-width:760px){
+  .lookaround__intro p,.style-hub__intro p,.room-discovery__intro p,.compare-shop__intro p{font-size:12.5px;}
+  .lookaround__filters{display:flex; overflow-x:auto; margin-bottom:16px; scrollbar-width:none;}
+  .lookaround__filters::-webkit-scrollbar{display:none;}
+  .lookaround__filter{flex:0 0 42%; min-height:48px; padding:10px; font-size:9.5px;}
+  .lookaround__grid{display:flex; overflow-x:auto; gap:12px; padding-bottom:5px; scrollbar-width:none;}
+  .lookaround__grid::-webkit-scrollbar{display:none;}
+  .lookaround__card{flex:0 0 58vw;}
+  .lookaround__card[hidden]{display:none;}
+  .lookaround__card h3{font-size:12.5px;}
+
+  .style-hub__shell{display:block; border-left:0; border-right:0; min-height:0;}
+  .style-hub__media{min-height:360px;}
+  .style-hub__panel{padding:20px 0 4px;}
+  .style-hub__intro h2{font-size:30px;}
+  .style-hub__filters{padding:16px 0 14px;}
+  .style-hub__card{flex-basis:56vw; max-width:205px;}
+  .style-hub__footer{padding-top:17px;}
+
+  .room-discovery__head{display:block; margin-bottom:18px;}
+  .room-discovery__intro h2{font-size:30px;}
+  .room-discovery__copy{font-size:12.5px; margin-top:10px;}
+  .room-discovery__grid{display:flex; overflow-x:auto; gap:10px; scrollbar-width:none; scroll-snap-type:x mandatory;}
+  .room-discovery__grid::-webkit-scrollbar{display:none;}
+  .room-discovery__card{flex:0 0 73vw; max-width:300px; margin-top:0 !important; scroll-snap-align:start;}
+
+  .compare-shop__grid{display:flex; overflow-x:auto; gap:14px; padding:8px 8px 8px 0; scrollbar-width:none;}
+  .compare-shop__grid::-webkit-scrollbar{display:none;}
+  .compare-card{flex:0 0 56vw; max-width:210px;}
+  .compare-card h3{font-size:12.5px;}
+  .compare-panel{margin-top:15px;}
+
+  .why-fableroom__shell,.rug-finder__shell{grid-template-columns:1fr; border-left:0; border-right:0;}
+  .why-fableroom__story{min-height:390px;}
+  .why-fableroom__story div{inset:auto 18px 18px;}
+  .why-fableroom__list{padding:12px 0 2px;}
+  .why-fableroom__item{padding:14px 0;}
+
+  .rug-finder__media{min-height:320px;}
+  .rug-finder__body{padding:20px 0 2px;}
+  .rug-finder__body h2{font-size:30px;}
+  .rug-finder__options{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .rug-finder__option{min-height:42px;}
+  .rug-finder__result{align-items:flex-start; flex-direction:column;}
+  .rug-finder__result a{width:100%; text-align:center;}
+}
+
 /* Mobile reassurance strip only: one swipeable row with an inward-moving sheen. */
 @media (max-width:760px){
   .reassure{overflow:hidden;}
@@ -1264,42 +1463,128 @@ body > section + section{margin-top:10px;}
   </div>
 </section>
 
-<!-- ================= SHOP RUGS YOUR WAY ================= -->
-<section class="shop-paths section" aria-labelledby="shop-paths-title">
+<!-- ================= TAKE A LOOK AROUND ================= -->
+<section class="lookaround section" aria-labelledby="lookaround-title">
   <div class="container">
-    <div class="shop-paths__intro reveal">
-      <div class="eyebrow">Find Your Rug or Carpet</div>
-      <h2 id="shop-paths-title">Shop rugs by style, colour, material, size or room.</h2>
-      <p>Choose the discovery path that matches how you shop for a rug.</p>
-    </div>
-    <div class="shop-paths__directory reveal" data-shop-paths>
-      <div class="shop-paths__tabs" role="tablist" aria-label="Ways to shop rugs">
-        <button class="shop-paths__tab is-active" type="button" role="tab" aria-selected="true" data-path="style"><span>Shop by</span><strong>Style</strong></button>
-        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="colour"><span>Shop by</span><strong>Colour</strong></button>
-        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="material"><span>Shop by</span><strong>Material</strong></button>
-        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="size"><span>Shop by</span><strong>Size</strong></button>
-        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="room"><span>Shop by</span><strong>Room</strong></button>
+    <div class="section-head reveal">
+      <div class="lookaround__intro">
+        <div class="eyebrow">Take a Look Around</div>
+        <h2 id="lookaround-title">Start with what matters today.</h2>
+        <p>Browse bestselling rugs, current discounts, customer favourites and rugs available sooner.</p>
       </div>
-      <div class="shop-paths__panel" role="tabpanel">
-        <div class="shop-paths__image"><img src="assets/hero-heritage-sand.webp" alt="Heritage patterned rug in a warm neutral palette" data-path-image></div>
-        <div class="shop-paths__body">
-          <span class="shop-paths__count" data-path-count>01</span>
-          <h3 data-path-title>Choose a rug style.</h3>
-          <p data-path-copy>Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.</p>
-          <div class="shop-paths__links" data-path-links>
-            <a href="https://fableroom.com/search?q=persian+rug&amp;type=product">Persian</a>
-            <a href="https://fableroom.com/search?q=modern+rug&amp;type=product">Modern</a>
-            <a href="https://fableroom.com/search?q=minimal+rug&amp;type=product">Minimal</a>
-            <a href="https://fableroom.com/search?q=bohemian+rug&amp;type=product">Bohemian</a>
+    </div>
+    <div class="lookaround__filters reveal" role="tablist" aria-label="Ways to browse rugs" data-lookaround-filters>
+      <button class="lookaround__filter is-active" type="button" role="tab" aria-selected="true" data-lookaround-filter="bestsellers">Bestsellers</button>
+      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="discounts">Discounts</button>
+      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="top-rated">Top Rated</button>
+      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="availability">Availability</button>
+    </div>
+    <div class="lookaround__grid reveal-stagger" data-lookaround-grid>
+      <article class="lookaround__card" data-lookaround-groups="bestsellers discounts availability">
+        <a href="https://fableroom.com/products/zahana-hand-tufted-wool-rug">
+          <div class="lookaround__frame">
+            <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy">
+            <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Ready to Ship</span></div>
           </div>
+          <h3>Zahana Hand-tufted Wool Rug</h3>
+          <div class="lookaround__meta">7 reviews · 45% off</div>
+          <div class="lookaround__price"><b>£149</b><s>£270</s></div>
+        </a>
+      </article>
+      <article class="lookaround__card" data-lookaround-groups="bestsellers discounts top-rated">
+        <a href="https://fableroom.com/products/savana-hand-tufted-wool-rug">
+          <div class="lookaround__frame">
+            <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy">
+            <div class="lookaround__badges"><span class="lookaround__badge">Top Rated</span><span class="lookaround__badge">Pre Order</span></div>
+          </div>
+          <h3>Savana Botanical Hand-tufted Wool Rug</h3>
+          <div class="lookaround__meta">11 reviews · 44% off</div>
+          <div class="lookaround__price"><b>£118</b><s>£210</s></div>
+        </a>
+      </article>
+      <article class="lookaround__card" data-lookaround-groups="bestsellers discounts">
+        <a href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug">
+          <div class="lookaround__frame">
+            <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy">
+            <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Pre Order</span></div>
+          </div>
+          <h3>Amber Oasis Hand-knotted Wool Rug</h3>
+          <div class="lookaround__meta">1 review · 59% off</div>
+          <div class="lookaround__price"><b>£312</b><s>£762</s></div>
+        </a>
+      </article>
+      <article class="lookaround__card" data-lookaround-groups="discounts availability">
+        <a href="https://fableroom.com/products/rewa-hand-tufted-wool-rug">
+          <div class="lookaround__frame">
+            <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy">
+            <div class="lookaround__badges"><span class="lookaround__badge">Ready to Ship</span><span class="lookaround__badge">25% Off</span></div>
+          </div>
+          <h3>Rewa Hand-tufted Wool Rug</h3>
+          <div class="lookaround__meta">Ready to Ship · 25% off</div>
+          <div class="lookaround__price"><b>£185</b><s>£247</s></div>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RUG STYLE DISCOVERY ================= -->
+<section class="style-hub section" aria-labelledby="style-hub-title">
+  <div class="container">
+    <div class="style-hub__shell reveal">
+      <div class="style-hub__media">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/rug-craft-poster.jpg" aria-label="Hand-knotting a rug by hand">
+          <source src="assets/rug-craft-story.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="style-hub__panel">
+        <div class="style-hub__intro">
+          <div class="eyebrow">Rug Style Discovery</div>
+          <h2 id="style-hub-title">One rug discovery hub.<em>Find the style that feels like home.</em></h2>
+          <p>Filter the edit by the look you love. Every result opens the matching FableRoom rug.</p>
         </div>
+        <div class="style-hub__filters" role="tablist" aria-label="Filter rugs by style" data-style-filters>
+          <button class="style-hub__filter is-active" type="button" role="tab" aria-selected="true" data-style-filter="all">All Styles</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="persian">Persian</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="modern">Modern</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="botanical">Botanical</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="bohemian">Bohemian</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="natural">Natural</button>
+        </div>
+        <div class="style-hub__products" data-style-products>
+          <a class="style-hub__card" href="https://fableroom.com/products/zahana-hand-tufted-wool-rug" data-styles="persian botanical">
+            <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy">
+            <div><span>Persian · Botanical</span><h3>Zahana Hand-tufted Wool Rug</h3><small>From £149</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/savana-hand-tufted-wool-rug" data-styles="persian botanical">
+            <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy">
+            <div><span>Botanical · Traditional</span><h3>Savana Botanical Wool Rug</h3><small>From £118</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/rewa-hand-tufted-wool-rug" data-styles="modern">
+            <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy">
+            <div><span>Modern · Abstract</span><h3>Rewa Hand-tufted Wool Rug</h3><small>From £185</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug" data-styles="persian bohemian">
+            <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy">
+            <div><span>Bohemian · Persian</span><h3>Amber Oasis Hand-knotted Rug</h3><small>From £312</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/search?q=jute+rug&amp;type=product" data-styles="natural">
+            <img src="assets/fiore-jute-rug.webp" alt="Fiore Jute Rug" loading="lazy">
+            <div><span>Natural · Textured</span><h3>Fiore Jute Rug</h3><small>Shop natural rugs</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/zaya-round-hand-knotted-wool-rug" data-styles="persian">
+            <img src="assets/zaya-round-hand-knotted-wool-rug.webp" alt="Zaya Round Hand-knotted Wool Rug" loading="lazy">
+            <div><span>Persian · Traditional</span><h3>Zaya Round Hand-knotted Rug</h3><small>From £755</small></div>
+          </a>
+        </div>
+        <div class="style-hub__footer"><span data-style-count>6 rugs in this edit</span><a href="https://fableroom.com/collections/all-rugs-collection">View all rugs →</a></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= 01 · THE KNOTTED EDIT ================= -->
-<section class="edit section" id="hand-knotted">
+<section class="edit section" id="hand-knotted" hidden aria-hidden="true">
   <div class="container">
     <div class="edit__head reveal">
       <div class="edit__number">01</div>
@@ -1363,7 +1648,7 @@ body > section + section{margin-top:10px;}
 </section>
 
 <!-- ================= 02 · THE TUFTED EDIT ================= -->
-<section class="edit section" id="hand-tufted">
+<section class="edit section" id="hand-tufted" hidden aria-hidden="true">
   <div class="container">
     <div class="edit__head reveal">
       <div class="edit__number">02</div>
@@ -1408,7 +1693,7 @@ body > section + section{margin-top:10px;}
 </section>
 
 <!-- ================= 03 · THE WOVEN EDIT ================= -->
-<section class="edit section" id="hand-woven">
+<section class="edit section" id="hand-woven" hidden aria-hidden="true">
   <div class="container">
     <div class="edit__head reveal">
       <div class="edit__number">03</div>
@@ -1492,7 +1777,7 @@ body > section + section{margin-top:10px;}
 </section>
 
 <!-- ================= SHOP THE ROOM ================= -->
-<section class="room section">
+<section class="room section" hidden aria-hidden="true">
   <div class="container">
     <div class="section-head reveal">
       <div>
@@ -1532,8 +1817,43 @@ body > section + section{margin-top:10px;}
   </div>
 </section>
 
+<!-- ================= START WITH THE ROOM ================= -->
+<section class="room-discovery section" aria-labelledby="room-discovery-title">
+  <div class="container">
+    <div class="room-discovery__head reveal">
+      <div class="room-discovery__intro">
+        <div class="eyebrow">Start with Your Space</div>
+        <h2 id="room-discovery-title">Start with the room.<em>Find the rug that belongs.</em></h2>
+      </div>
+      <p class="room-discovery__copy">Choose the room you are furnishing, then explore rugs suited to its scale, traffic and everyday use.</p>
+    </div>
+    <div class="room-discovery__grid reveal-stagger">
+      <a class="room-discovery__card" href="https://fableroom.com/collections/living-room-rugs">
+        <img src="assets/ai-story-08-room-meadow.webp" alt="Handmade rug styled in a living room" loading="lazy">
+        <span class="room-discovery__shade"></span>
+        <div class="room-discovery__label"><h3>Living Room</h3><span>Anchor the conversation <b>↗</b></span></div>
+      </a>
+      <a class="room-discovery__card" href="https://fableroom.com/collections/bedroom-rugs">
+        <img src="assets/ai-story-10-room-bedroom.webp" alt="Soft handmade rug styled beside a bed" loading="lazy">
+        <span class="room-discovery__shade"></span>
+        <div class="room-discovery__label"><h3>Bedroom</h3><span>Soft landings, every morning <b>↗</b></span></div>
+      </a>
+      <a class="room-discovery__card" href="https://fableroom.com/search?q=hallway+rug&amp;type=product">
+        <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Long patterned rug suitable for a hallway" loading="lazy">
+        <span class="room-discovery__shade"></span>
+        <div class="room-discovery__label"><h3>Hallway</h3><span>Rugs made for the route <b>↗</b></span></div>
+      </a>
+      <a class="room-discovery__card" href="https://fableroom.com/collections/dining-room">
+        <img src="assets/ai-story-06-woven-banner.webp" alt="Hand-woven rug styled beneath a dining table" loading="lazy">
+        <span class="room-discovery__shade"></span>
+        <div class="room-discovery__label"><h3>Dining Room</h3><span>Define the gathering place <b>↗</b></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= SIZE GUIDE STRIP ================= -->
-<section class="size-guide section--tight">
+<section class="size-guide section--tight" hidden aria-hidden="true">
   <div class="container">
     <div class="section-head reveal" style="margin-bottom:30px;">
       <div>
@@ -1564,7 +1884,7 @@ body > section + section{margin-top:10px;}
 </section>
 
 <!-- ================= RECOMMENDED FOR YOU ================= -->
-<section class="recommended section">
+<section class="recommended section" hidden aria-hidden="true">
   <div class="container">
     <div class="section-head reveal">
       <div>
@@ -1592,6 +1912,119 @@ body > section + section{margin-top:10px;}
         <div class="edit__card__frame"><img src="assets/zaya-round-hand-knotted-wool-rug.webp" alt="Zaya Round Hand-Knotted Wool Rug" loading="lazy"></div>
         <h4>Zaya Round Hand-Knotted Wool Rug</h4>
         <div class="price-row"><b>£265</b><s>£478</s></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPARE RUGS ================= -->
+<section class="compare-shop section" aria-labelledby="compare-shop-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="compare-shop__intro">
+        <div class="eyebrow">Compare Rug Details</div>
+        <h2 id="compare-shop-title">Compare before you choose.</h2>
+        <p>Select up to three rugs to compare price, construction, material, style and current availability.</p>
+      </div>
+    </div>
+    <div class="compare-shop__grid reveal-stagger" data-compare-grid>
+      <article class="compare-card" data-compare-key="zahana">
+        <a class="compare-card__image" href="https://fableroom.com/products/zahana-hand-tufted-wool-rug"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy"></a>
+        <h3>Zahana Hand-tufted Wool Rug</h3>
+        <div class="compare-card__spec">Hand-tufted · Wool and cotton</div>
+        <div class="compare-card__price"><b>£149</b></div>
+        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare</span><span>＋</span></button>
+      </article>
+      <article class="compare-card" data-compare-key="savana">
+        <a class="compare-card__image" href="https://fableroom.com/products/savana-hand-tufted-wool-rug"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy"></a>
+        <h3>Savana Botanical Wool Rug</h3>
+        <div class="compare-card__spec">Hand-tufted · Wool and cotton</div>
+        <div class="compare-card__price"><b>£118</b></div>
+        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare</span><span>＋</span></button>
+      </article>
+      <article class="compare-card" data-compare-key="rewa">
+        <a class="compare-card__image" href="https://fableroom.com/products/rewa-hand-tufted-wool-rug"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy"></a>
+        <h3>Rewa Hand-tufted Wool Rug</h3>
+        <div class="compare-card__spec">Hand-tufted · Wool and cotton</div>
+        <div class="compare-card__price"><b>£185</b></div>
+        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare</span><span>＋</span></button>
+      </article>
+      <article class="compare-card" data-compare-key="amber">
+        <a class="compare-card__image" href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug"><img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy"></a>
+        <h3>Amber Oasis Hand-knotted Rug</h3>
+        <div class="compare-card__spec">Hand-knotted · New Zealand wool and cotton</div>
+        <div class="compare-card__price"><b>£312</b></div>
+        <button class="compare-card__toggle" type="button" aria-pressed="false"><span>Compare</span><span>＋</span></button>
+      </article>
+    </div>
+    <p class="compare-shop__status" aria-live="polite" data-compare-status>Select at least two rugs to build a comparison.</p>
+    <div class="compare-panel" data-compare-panel hidden>
+      <table>
+        <thead data-compare-head></thead>
+        <tbody data-compare-body></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FABLEROOM DIFFERENTIATORS ================= -->
+<section class="why-fableroom section" aria-labelledby="why-fableroom-title">
+  <div class="container">
+    <div class="why-fableroom__shell reveal">
+      <div class="why-fableroom__story">
+        <img src="assets/ai-story-04-knotted-banner.webp" alt="A handmade rug being styled in a warm living space" loading="lazy">
+        <div><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
+      </div>
+      <div class="why-fableroom__list">
+        <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>Direct from skilled makers</h3><p>FableRoom works directly with workshops and artisan networks in India, reducing traditional wholesale and retail layers.</p></div></div>
+        <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>Handmade construction</h3><p>Each rug is made using established hand-knotting, hand-tufting or hand-weaving techniques, depending on the design.</p></div></div>
+        <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>365-day quality guarantee</h3><p>Eligible quality defects or deterioration are covered through repair, replacement or refund within the stated guarantee period.</p></div></div>
+        <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>Clear availability choices</h3><p>Ready to Ship, Standard Shipping and Pre-Order labels make the expected delivery route visible before purchase.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FIND YOUR RUG ================= -->
+<section class="rug-finder section" aria-labelledby="rug-finder-title" data-rug-finder>
+  <div class="container">
+    <div class="rug-finder__shell reveal">
+      <div class="rug-finder__media"><img src="assets/hero-meadow-room-v2.webp" alt="A patterned rug grounding a light living room" loading="lazy"></div>
+      <div class="rug-finder__body">
+        <div class="eyebrow">Find Your FableRoom Rug</div>
+        <h2 id="rug-finder-title">Your room. Your life. Your rug.</h2>
+        <p>Choose your room, mood and preferred finish to open a focused FableRoom rug edit.</p>
+        <fieldset class="rug-finder__step" data-finder-step="room">
+          <legend>01 · Room</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Living room">Living Room</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bedroom">Bedroom</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Dining room">Dining Room</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Hallway">Hallway</button>
+          </div>
+        </fieldset>
+        <fieldset class="rug-finder__step" data-finder-step="mood">
+          <legend>02 · Mood</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Calm and neutral">Calm &amp; Neutral</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Warm and earthy">Warm &amp; Earthy</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Colourful">Colourful</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bold pattern">Bold Pattern</button>
+          </div>
+        </fieldset>
+        <fieldset class="rug-finder__step" data-finder-step="need">
+          <legend>03 · Everyday Need</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Everyday easy">Everyday Easy</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Soft luxury">Soft Luxury</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Natural texture">Natural Texture</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Heirloom craft">Heirloom Craft</button>
+          </div>
+        </fieldset>
+        <div class="rug-finder__result">
+          <div><small>Your Rug Edit</small><strong data-finder-result>Calm and neutral rugs for the living room</strong></div>
+          <a href="https://fableroom.com/search?q=living+room+calm+neutral+everyday+rug&amp;type=product" data-finder-link>Explore This Edit →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1807,43 +2240,132 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
   addEventListener('resize', requestUpdate, {passive:true});
 })();
 
-/* ---------- Original shop-by directory ---------- */
+/* ---------- Take a Look Around filters ---------- */
 (function(){
-  const directory = document.querySelector('[data-shop-paths]');
-  if(!directory) return;
-  const panel = directory.querySelector('.shop-paths__panel');
-  const image = directory.querySelector('[data-path-image]');
-  const count = directory.querySelector('[data-path-count]');
-  const title = directory.querySelector('[data-path-title]');
-  const copy = directory.querySelector('[data-path-copy]');
-  const links = directory.querySelector('[data-path-links]');
-  const paths = {
-    style:{count:'01',title:'Choose a rug style.',copy:'Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.',image:'assets/hero-heritage-sand.webp',alt:'Heritage patterned rug in a warm neutral palette',links:[['Persian','https://fableroom.com/search?q=persian+rug&type=product'],['Modern','https://fableroom.com/search?q=modern+rug&type=product'],['Minimal','https://fableroom.com/search?q=minimal+rug&type=product'],['Bohemian','https://fableroom.com/search?q=bohemian+rug&type=product']]},
-    colour:{count:'02',title:'Shop rugs by colour.',copy:'Find neutral, beige, cream, grey, blue, red and multicolour rugs for your palette.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[['Neutral','https://fableroom.com/search?q=neutral+rug&type=product'],['Blue','https://fableroom.com/search?q=blue+rug&type=product'],['Red','https://fableroom.com/search?q=red+rug&type=product'],['Multicolour','https://fableroom.com/search?q=multicolour+rug&type=product']]},
-    material:{count:'03',title:'Choose a rug material.',copy:'Compare wool rugs, jute rugs, bamboo silk carpets and easy-care PET fibres.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[['Wool','https://fableroom.com/search?q=wool+rug&type=product'],['Jute','https://fableroom.com/search?q=jute+rug&type=product'],['Bamboo Silk','https://fableroom.com/search?q=bamboo+silk+rug&type=product'],['PET','https://fableroom.com/search?q=PET+rug&type=product']]},
-    size:{count:'04',title:'Choose the right rug size.',copy:'Start with small rugs, medium rugs, large area rugs or runners for narrower spaces.',image:'assets/ai-story-10-room-bedroom.webp',alt:'Area rug proportioned within a bedroom',links:[['Small Rugs','https://fableroom.com/search?q=small+rug&type=product'],['Medium Rugs','https://fableroom.com/search?q=medium+rug&type=product'],['Large Rugs','https://fableroom.com/search?q=large+rug&type=product'],['Runners','https://fableroom.com/search?q=runner+rug&type=product']]},
-    room:{count:'05',title:'Find rugs for every room.',copy:'Shop living room rugs, bedroom rugs, dining room carpets and outdoor rugs by space.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[['Living Room','https://fableroom.com/collections/living-room-rugs'],['Bedroom','https://fableroom.com/collections/bedroom-rugs'],['Dining Room','https://fableroom.com/collections/dining-room'],['Outdoor','https://fableroom.com/collections/outdoor-rugs']]}
+  const filters = document.querySelector('[data-lookaround-filters]');
+  const grid = document.querySelector('[data-lookaround-grid]');
+  if(!filters || !grid) return;
+  const applyFilter = value=>{
+    filters.querySelectorAll('[data-lookaround-filter]').forEach(button=>{
+      const active = button.dataset.lookaroundFilter === value;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-selected', String(active));
+    });
+    grid.querySelectorAll('[data-lookaround-groups]').forEach(card=>{
+      card.hidden = !card.dataset.lookaroundGroups.split(' ').includes(value);
+    });
   };
-  directory.querySelectorAll('.shop-paths__tab').forEach(tab=>{
-    tab.addEventListener('click',()=>{
-      const data = paths[tab.dataset.path];
-      if(!data || tab.classList.contains('is-active')) return;
-      directory.querySelectorAll('.shop-paths__tab').forEach(item=>{
-        const active = item === tab;
+  filters.addEventListener('click',event=>{
+    const button = event.target.closest('[data-lookaround-filter]');
+    if(button) applyFilter(button.dataset.lookaroundFilter);
+  });
+  applyFilter('bestsellers');
+})();
+
+/* ---------- Rug style discovery filters ---------- */
+(function(){
+  const filters = document.querySelector('[data-style-filters]');
+  const products = document.querySelector('[data-style-products]');
+  const count = document.querySelector('[data-style-count]');
+  if(!filters || !products) return;
+  filters.addEventListener('click',event=>{
+    const button = event.target.closest('[data-style-filter]');
+    if(!button) return;
+    const value = button.dataset.styleFilter;
+    filters.querySelectorAll('[data-style-filter]').forEach(item=>{
+      const active = item === button;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', String(active));
+    });
+    let visible = 0;
+    products.querySelectorAll('[data-styles]').forEach(card=>{
+      const show = value === 'all' || card.dataset.styles.split(' ').includes(value);
+      card.hidden = !show;
+      if(show) visible += 1;
+    });
+    if(count) count.textContent = `${visible} ${visible === 1 ? 'rug' : 'rugs'} in this edit`;
+    products.scrollTo({left:0,behavior:'smooth'});
+  });
+})();
+
+/* ---------- Product-card comparison ---------- */
+(function(){
+  const grid = document.querySelector('[data-compare-grid]');
+  const panel = document.querySelector('[data-compare-panel]');
+  const head = document.querySelector('[data-compare-head]');
+  const body = document.querySelector('[data-compare-body]');
+  const status = document.querySelector('[data-compare-status]');
+  if(!grid || !panel || !head || !body || !status) return;
+  const products = {
+    zahana:{name:'Zahana Hand-tufted Wool Rug',price:'£149',construction:'Hand-tufted',material:'80% wool, 20% cotton',style:'Botanical, Persian, Traditional',availability:'Ready to Ship',href:'https://fableroom.com/products/zahana-hand-tufted-wool-rug'},
+    savana:{name:'Savana Botanical Wool Rug',price:'£118',construction:'Hand-tufted',material:'80% wool, 20% cotton',style:'Botanical, Persian, Traditional',availability:'Pre Order',href:'https://fableroom.com/products/savana-hand-tufted-wool-rug'},
+    rewa:{name:'Rewa Hand-tufted Wool Rug',price:'£185',construction:'Hand-tufted',material:'80% wool, 20% cotton',style:'Abstract, Modern, Contemporary',availability:'Ready to Ship',href:'https://fableroom.com/products/rewa-hand-tufted-wool-rug'},
+    amber:{name:'Amber Oasis Hand-knotted Rug',price:'£312',construction:'Hand-knotted',material:'80% New Zealand wool, 20% cotton',style:'Bohemian, Persian, Traditional',availability:'Pre Order',href:'https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug'}
+  };
+  const selected = [];
+  const render = ()=>{
+    grid.querySelectorAll('[data-compare-key]').forEach(card=>{
+      const active = selected.includes(card.dataset.compareKey);
+      const button = card.querySelector('.compare-card__toggle');
+      card.classList.toggle('is-selected', active);
+      button.setAttribute('aria-pressed', String(active));
+      button.firstElementChild.textContent = active ? 'Added' : 'Compare';
+      button.lastElementChild.textContent = active ? '−' : '＋';
+    });
+    if(selected.length < 2){
+      panel.hidden = true;
+      status.textContent = selected.length ? '1 rug selected — choose one more to compare.' : 'Select at least two rugs to build a comparison.';
+      return;
+    }
+    status.textContent = `${selected.length} rugs selected. You can compare up to three.`;
+    panel.hidden = false;
+    head.innerHTML = `<tr><th>Detail</th>${selected.map(key=>`<th><a href="${products[key].href}">${products[key].name}</a></th>`).join('')}</tr>`;
+    const rows = [['Price','price'],['Construction','construction'],['Material','material'],['Style','style'],['Availability','availability']];
+    body.innerHTML = rows.map(([label,field])=>`<tr><th>${label}</th>${selected.map(key=>`<td>${products[key][field]}</td>`).join('')}</tr>`).join('');
+  };
+  grid.addEventListener('click',event=>{
+    const button = event.target.closest('.compare-card__toggle');
+    if(!button) return;
+    const card = button.closest('[data-compare-key]');
+    const key = card.dataset.compareKey;
+    const index = selected.indexOf(key);
+    if(index >= 0) selected.splice(index,1);
+    else if(selected.length < 3) selected.push(key);
+    else{
+      status.textContent = 'Remove one rug before adding another; the comparison supports up to three.';
+      return;
+    }
+    render();
+  });
+  render();
+})();
+
+/* ---------- Three-step rug finder ---------- */
+(function(){
+  const finder = document.querySelector('[data-rug-finder]');
+  if(!finder) return;
+  const result = finder.querySelector('[data-finder-result]');
+  const link = finder.querySelector('[data-finder-link]');
+  const state = {room:'Living room',mood:'Calm and neutral',need:'Everyday easy'};
+  const update = ()=>{
+    result.textContent = `${state.mood} rugs for the ${state.room.toLowerCase()}`;
+    const query = encodeURIComponent(`${state.room} ${state.mood} ${state.need} rug`);
+    link.href = `https://fableroom.com/search?q=${query}&type=product`;
+  };
+  finder.querySelectorAll('[data-finder-step]').forEach(step=>{
+    step.addEventListener('click',event=>{
+      const button = event.target.closest('[data-value]');
+      if(!button) return;
+      step.querySelectorAll('[data-value]').forEach(item=>{
+        const active = item === button;
         item.classList.toggle('is-active', active);
-        item.setAttribute('aria-selected', String(active));
+        item.setAttribute('aria-pressed', String(active));
       });
-      panel.classList.add('is-changing');
-      setTimeout(()=>{
-        image.src=data.image; image.alt=data.alt; count.textContent=data.count;
-        title.textContent=data.title; copy.textContent=data.copy;
-        links.replaceChildren(...data.links.map(([label,href])=>{
-          const a=document.createElement('a'); a.href=href; a.textContent=label; return a;
-        }));
-        panel.classList.remove('is-changing');
-      },160);
+      state[step.dataset.finderStep] = button.dataset.value;
+      update();
     });
   });
+  update();
 })();
 </script>
 
