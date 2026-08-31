@@ -1355,9 +1355,9 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .style-hub__card h3{font-size:13px;min-height:0;}
 .style-hub__footer{padding-top:18px;}
 
-/* Reviews: content-height section with no reserved viewport space. */
-.trust{height:auto;min-height:0;}
-.trust__sticky{position:relative;top:auto;height:auto;min-height:0;align-items:flex-start;padding:10px 0;}
+/* Reviews: four full scroll stages, locked smoothly until image four completes. */
+.trust{height:500svh;min-height:500svh;}
+.trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;align-items:flex-start;padding:10px 0;}
 .trust__experience{grid-template-columns:minmax(220px,.66fr) minmax(0,1.34fr);gap:clamp(24px,4vw,52px);}
 .trust__rug-stage{height:clamp(310px,50vh,410px);}
 .trust__rug-caption{left:14px;top:14px;padding:7px 9px;font-size:9px;}
@@ -1413,8 +1413,8 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .style-hub__card div{padding:8px;}
   .style-hub__footer{padding-top:8px;}
 
-  .trust{height:auto;min-height:0;}
-  .trust__sticky{position:relative;top:auto;height:auto;min-height:0;align-items:flex-start;padding:0;}
+  .trust{height:500svh;min-height:500svh;}
+  .trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;align-items:flex-start;padding:0;}
   .trust__experience{grid-template-columns:1fr;grid-template-rows:120px minmax(0,1fr);gap:10px;}
   .trust__rug-stage{height:120px;}
   .trust__rug-frame img{object-position:center 46%;}
@@ -1450,6 +1450,39 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .why-fableroom__table td:nth-child(3)::before{content:'Other retailers';}
   .why-fableroom__table tbody tr:last-child td{border-bottom:0;}
   .why-fableroom__footnote{margin-top:11px;font-size:8.5px;}
+}
+
+/* Rug Style Discovery uses the same stable product-card proportions everywhere. */
+.style-hub__products{width:100%;max-width:100%;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;}
+.style-hub__card{flex:0 0 220px;max-width:220px;scroll-snap-align:start;overflow:hidden;}
+.style-hub__card > div:not(.product-card-actions){padding:12px;min-height:126px;}
+.style-hub__card span{font-size:9px;font-weight:700;letter-spacing:.11em;color:var(--clay);}
+.style-hub__card h3{font-size:15px;line-height:1.18;min-height:36px;}
+.style-hub__card small{font-size:11px;}
+
+@media (max-width:760px){
+  .style-hub__products{padding-right:var(--gutter);scroll-padding-left:0;}
+  .style-hub__card{flex:0 0 72vw;max-width:280px;}
+  .style-hub__card > div:not(.product-card-actions){padding:12px;min-height:122px;}
+  .style-hub__card span{font-size:9px;line-height:1.35;}
+  .style-hub__card h3{font-size:15px;line-height:1.15;min-height:36px;}
+  .style-hub__card small{font-size:11px;}
+
+  /* Why FableRoom only: twenty percent smaller overall on mobile. */
+  .why-fableroom.section{padding-top:22px;padding-bottom:22px;}
+  .why-fableroom__story{min-height:208px;}
+  .why-fableroom__story > .why-fableroom__copy{left:18px;right:18px;bottom:18px;}
+  .why-fableroom__story h2{font-size:20px;}
+  .why-fableroom__list{padding:11px;}
+  .why-fableroom__table td{min-height:43px;padding:7px 8px;}
+  .why-fableroom__table td:first-child{padding:6px 8px;font-size:8px;}
+  .why-fableroom__table td:nth-child(2),.why-fableroom__table td:nth-child(3){padding-top:19px;font-size:9px;}
+  .why-fableroom__table td:nth-child(2)::before,.why-fableroom__table td:nth-child(3)::before{left:8px;top:6px;font-size:6px;}
+  .why-fableroom__footnote{margin-top:9px;font-size:7px;}
+
+  /* One flush separator only between mobile sections. */
+  body > section{margin-top:0 !important;border-top:0 !important;border-bottom:0 !important;}
+  body > section + section{margin-top:0 !important;border-top:1px solid var(--line) !important;}
 }
 
 /* Shared product-card geometry and actions across every rug edit. */
