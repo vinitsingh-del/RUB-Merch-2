@@ -1150,12 +1150,20 @@ body > section + section{margin-top:10px;}
   .lookaround__card h3{font-size:12.5px;}
 
   .style-hub__shell{display:block; border-left:0; border-right:0; min-height:0;}
-  .style-hub__media{min-height:360px;}
-  .style-hub__panel{padding:20px 0 4px;}
-  .style-hub__intro h2{font-size:30px;}
-  .style-hub__filters{padding:16px 0 14px;}
-  .style-hub__card{flex-basis:56vw; max-width:205px;}
-  .style-hub__footer{padding-top:17px;}
+  .style-hub__media{min-height:clamp(178px,28svh,230px);}
+  .style-hub__media img{object-position:center 42%;}
+  .style-hub__panel{padding:14px 0 2px;}
+  .style-hub__intro h2{font-size:clamp(25px,7.2vw,29px);}
+  .style-hub__intro p{margin-top:5px; line-height:1.35;}
+  .style-hub__filters{padding:10px 0 9px;}
+  .style-hub__filter{padding:7px 10px; font-size:9px;}
+  .style-hub__products{gap:9px;}
+  .style-hub__card{flex-basis:30vw; max-width:132px;}
+  .style-hub__card img{aspect-ratio:1.12/1;}
+  .style-hub__card div{padding:7px;}
+  .style-hub__card h3{font-size:12px; margin-bottom:3px;}
+  .style-hub__card small{font-size:9px;}
+  .style-hub__footer{padding-top:10px;}
 
   .room-discovery__head{display:block; margin-bottom:18px;}
   .room-discovery__intro h2{font-size:30px;}
@@ -1176,13 +1184,17 @@ body > section + section{margin-top:10px;}
   .why-fableroom__list{padding:12px 0 2px;}
   .why-fableroom__item{padding:14px 0;}
 
-  .rug-finder__media{min-height:320px;}
-  .rug-finder__body{padding:20px 0 2px;}
-  .rug-finder__body h2{font-size:30px;}
-  .rug-finder__options{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .rug-finder__option{min-height:42px;}
-  .rug-finder__result{align-items:flex-start; flex-direction:column;}
-  .rug-finder__result a{width:100%; text-align:center;}
+  .rug-finder__media{min-height:clamp(170px,27svh,225px);}
+  .rug-finder__media img{object-position:center 48%;}
+  .rug-finder__body{padding:13px 0 2px;}
+  .rug-finder__body h2{font-size:clamp(25px,7.2vw,29px); margin:5px 0;}
+  .rug-finder__body > p{font-size:11px; line-height:1.35; margin-bottom:7px;}
+  .rug-finder__step{padding:7px 0;}
+  .rug-finder__options{grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px;}
+  .rug-finder__option{min-height:32px; padding:5px 3px; font-size:8px;}
+  .rug-finder__result{gap:8px; margin-top:7px; padding:9px;}
+  .rug-finder__result strong{font-size:15px;}
+  .rug-finder__result a{padding:9px 10px; font-size:8px;}
 }
 
 /* Mobile reassurance strip only: one swipeable row with an inward-moving sheen. */
@@ -1490,7 +1502,7 @@ body > section + section{margin-top:10px;}
   <div class="container">
     <div class="style-hub__shell reveal">
       <div class="style-hub__media">
-        <img src="assets/ai-story-02-hero-heritage.webp" alt="A woman placing a hand-knotted heritage rug in a warm living room" loading="lazy">
+        <img src="assets/ai-rug-style-discovery-v1.webp" alt="A woman comparing three handmade rug styles in a warm living room" loading="lazy">
       </div>
       <div class="style-hub__panel">
         <div class="style-hub__intro">
@@ -1909,7 +1921,7 @@ body > section + section{margin-top:10px;}
 <section class="rug-finder section" aria-labelledby="rug-finder-title" data-rug-finder>
   <div class="container">
     <div class="rug-finder__shell reveal">
-      <div class="rug-finder__media"><img src="assets/hero-meadow-room-v2.webp" alt="A patterned rug grounding a light living room" loading="lazy"></div>
+      <div class="rug-finder__media"><img src="assets/ai-rug-finder-v1.webp" alt="A woman measuring a handmade rug and comparing material swatches in a warm living room" loading="lazy"></div>
       <div class="rug-finder__body">
         <div class="eyebrow">Find Your FableRoom Rug</div>
         <h2 id="rug-finder-title">Your room. Your life. Your rug.</h2>
