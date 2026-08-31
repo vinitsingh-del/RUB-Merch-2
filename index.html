@@ -1089,11 +1089,11 @@ body > section + section{margin-top:10px;}
 .why-fableroom__story{position:relative; min-height:520px; overflow:hidden; background:#d5cec3; color:var(--white);}
 .why-fableroom__story img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
 .why-fableroom__story::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(18,15,12,.15),rgba(18,15,12,.7));}
-.why-fableroom__story div{position:absolute; z-index:1; inset:auto 28px 28px;}
+.why-fableroom__story > .why-fableroom__copy{position:absolute; z-index:1; left:28px; right:28px; bottom:28px;}
 .why-fableroom__story .eyebrow{color:var(--white); margin-bottom:8px;}
 .why-fableroom__story h2{font-size:clamp(31px,4vw,48px); line-height:1.02;}
 .why-fableroom__list{padding:clamp(26px,4vw,52px); display:flex; flex-direction:column; justify-content:center;}
-.why-fableroom__item{display:grid; grid-template-columns:34px minmax(0,1fr); gap:14px; padding:18px 0; border-bottom:1px solid var(--line);}
+.why-fableroom__item{display:grid; grid-template-columns:34px minmax(0,1fr); align-items:start; gap:14px; padding:18px 0; border-bottom:1px solid var(--line);}
 .why-fableroom__item:last-child{border-bottom:0;}
 .why-fableroom__check{width:26px; height:26px; border:1px solid var(--sage); border-radius:50%; display:grid; place-items:center; font-size:12px; color:var(--sage);}
 .why-fableroom__item h3{font-family:var(--sans); font-size:14px; font-weight:700; margin-bottom:3px;}
@@ -1155,7 +1155,7 @@ body > section + section{margin-top:10px;}
 
   .why-fableroom__shell,.rug-finder__shell{grid-template-columns:1fr; border-left:0; border-right:0;}
   .why-fableroom__story{min-height:390px;}
-  .why-fableroom__story div{inset:auto 18px 18px;}
+  .why-fableroom__story > .why-fableroom__copy{left:18px; right:18px; bottom:18px;}
   .why-fableroom__list{padding:12px 0 2px;}
   .why-fableroom__item{padding:14px 0;}
 
@@ -1972,8 +1972,8 @@ body > section + section{margin-top:10px;}
   <div class="container">
     <div class="why-fableroom__shell reveal">
       <div class="why-fableroom__story">
-        <img src="assets/ai-story-04-knotted-banner.webp" alt="A handmade rug being styled in a warm living space" loading="lazy">
-        <div><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
+        <img src="assets/why-fableroom-story.webp" alt="A handmade rug being styled in a warm living space" loading="lazy">
+        <div class="why-fableroom__copy"><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
       </div>
       <div class="why-fableroom__list">
         <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>Direct from skilled makers</h3><p>FableRoom works directly with workshops and artisan networks in India, reducing traditional wholesale and retail layers.</p></div></div>
