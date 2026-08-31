@@ -1296,15 +1296,9 @@ body > section + section{margin-top:10px;}
     </div>
     <div class="hero__scrim"></div>
     <div class="hero__content reveal">
-      <div class="hero__eyebrow">Over 300 handmade rugs &amp; carpets</div>
+      <div class="hero__eyebrow">500+ handmade rugs &amp; carpets</div>
       <h1>Handmade Rugs.<br>Honest Prices.</h1>
       <p>Handmade wool, jute and washable rugs for every room.</p>
-      <div class="hero__rooms">
-        <a href="https://fableroom.com/collections/living-room-rugs">Living Room</a>
-        <a href="https://fableroom.com/collections/bedroom-rugs">Bedroom</a>
-        <a href="https://fableroom.com/collections/dining-room">Dining Room</a>
-        <a href="https://fableroom.com/collections/outdoor-rugs">Outdoor &amp; Patio</a>
-      </div>
     </div>
   </div>
 </section>
@@ -1312,10 +1306,55 @@ body > section + section{margin-top:10px;}
 <!-- ================= STAT BAR ================= -->
 <section class="stat-bar">
   <div class="stat-bar__row reveal-stagger">
-    <div><b>300+</b><span>Rug Designs</span></div>
-    <div><b>100%</b><span>Made by Hand</span></div>
+    <div><b>15,000+</b><span>Loved by Homes</span></div>
+    <div><b>500+</b><span>Designs</span></div>
+    <div><b>100%</b><span>Handmade</span></div>
     <div><b>0</b><span>Middlemen</span></div>
-    <div><b>30-Day</b><span>Returns</span></div>
+  </div>
+</section>
+
+<!-- ================= FIND YOUR RUG ================= -->
+<section class="rug-finder section" aria-labelledby="rug-finder-title" data-rug-finder>
+  <div class="container">
+    <div class="rug-finder__shell reveal">
+      <div class="rug-finder__media"><img src="assets/hero-meadow-room-v2.webp" alt="A patterned rug grounding a light living room" loading="lazy"></div>
+      <div class="rug-finder__body">
+        <div class="eyebrow">Find Your FableRoom Rug</div>
+        <h2 id="rug-finder-title">Your room. Your life. Your rug.</h2>
+        <p>Choose your room, mood and preferred finish to open a focused FableRoom rug edit.</p>
+        <fieldset class="rug-finder__step" data-finder-step="room">
+          <legend>01 · Room</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Living room">Living Room</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bedroom">Bedroom</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Dining room">Dining Room</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Hallway">Hallway</button>
+          </div>
+        </fieldset>
+        <fieldset class="rug-finder__step" data-finder-step="mood">
+          <legend>02 · Mood</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Calm and neutral">Calm &amp; Neutral</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Warm and earthy">Warm &amp; Earthy</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Colourful">Colourful</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bold pattern">Bold Pattern</button>
+          </div>
+        </fieldset>
+        <fieldset class="rug-finder__step" data-finder-step="need">
+          <legend>03 · Everyday Need</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Everyday easy">Everyday Easy</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Soft luxury">Soft Luxury</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Natural texture">Natural Texture</button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Heirloom craft">Heirloom Craft</button>
+          </div>
+        </fieldset>
+        <div class="rug-finder__result">
+          <div><small>Your Rug Edit</small><strong data-finder-result>Calm and neutral rugs for the living room</strong></div>
+          <a href="https://fableroom.com/search?q=living+room+calm+neutral+everyday+rug&amp;type=product" data-finder-link>Explore This Edit →</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1505,34 +1544,33 @@ body > section + section{margin-top:10px;}
     </div>
     <div class="lookaround__filters reveal" role="tablist" aria-label="Ways to browse rugs" data-lookaround-filters>
       <button class="lookaround__filter is-active" type="button" role="tab" aria-selected="true" data-lookaround-filter="bestsellers">Bestsellers</button>
-      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="discounts">Discounts</button>
-      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="top-rated">Top Rated</button>
-      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="availability">Availability</button>
+      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="new-arrivals">New Arrivals</button>
+      <button class="lookaround__filter" type="button" role="tab" aria-selected="false" data-lookaround-filter="savings-discount">Savings/Discount</button>
     </div>
     <div class="lookaround__grid reveal-stagger" data-lookaround-grid>
-      <article class="lookaround__card" data-lookaround-groups="bestsellers discounts availability">
+      <article class="lookaround__card" data-lookaround-groups="bestsellers savings-discount">
         <a href="https://fableroom.com/products/zahana-hand-tufted-wool-rug">
           <div class="lookaround__frame">
             <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy">
-            <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Ready to Ship</span></div>
+            <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Express Delivery</span></div>
           </div>
           <h3>Zahana Hand-tufted Wool Rug</h3>
           <div class="lookaround__meta">7 reviews · 45% off</div>
           <div class="lookaround__price"><b>£149</b><s>£270</s></div>
         </a>
       </article>
-      <article class="lookaround__card" data-lookaround-groups="bestsellers discounts top-rated">
+      <article class="lookaround__card" data-lookaround-groups="bestsellers savings-discount">
         <a href="https://fableroom.com/products/savana-hand-tufted-wool-rug">
           <div class="lookaround__frame">
             <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy">
-            <div class="lookaround__badges"><span class="lookaround__badge">Top Rated</span><span class="lookaround__badge">Pre Order</span></div>
+            <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Pre Order</span></div>
           </div>
           <h3>Savana Botanical Hand-tufted Wool Rug</h3>
           <div class="lookaround__meta">11 reviews · 44% off</div>
           <div class="lookaround__price"><b>£118</b><s>£210</s></div>
         </a>
       </article>
-      <article class="lookaround__card" data-lookaround-groups="bestsellers discounts">
+      <article class="lookaround__card" data-lookaround-groups="bestsellers savings-discount">
         <a href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug">
           <div class="lookaround__frame">
             <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy">
@@ -1543,14 +1581,14 @@ body > section + section{margin-top:10px;}
           <div class="lookaround__price"><b>£312</b><s>£762</s></div>
         </a>
       </article>
-      <article class="lookaround__card" data-lookaround-groups="discounts availability">
+      <article class="lookaround__card" data-lookaround-groups="savings-discount">
         <a href="https://fableroom.com/products/rewa-hand-tufted-wool-rug">
           <div class="lookaround__frame">
             <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy">
-            <div class="lookaround__badges"><span class="lookaround__badge">Ready to Ship</span><span class="lookaround__badge">25% Off</span></div>
+            <div class="lookaround__badges"><span class="lookaround__badge">Express Delivery</span><span class="lookaround__badge">25% Off</span></div>
           </div>
           <h3>Rewa Hand-tufted Wool Rug</h3>
-          <div class="lookaround__meta">Ready to Ship · 25% off</div>
+          <div class="lookaround__meta">Express Delivery · 25% off</div>
           <div class="lookaround__price"><b>£185</b><s>£247</s></div>
         </a>
       </article>
@@ -2010,51 +2048,6 @@ body > section + section{margin-top:10px;}
         <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>Handmade construction</h3><p>Each rug is made using established hand-knotting, hand-tufting or hand-weaving techniques, depending on the design.</p></div></div>
         <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>365-day quality guarantee</h3><p>Eligible quality defects or deterioration are covered through repair, replacement or refund within the stated guarantee period.</p></div></div>
         <div class="why-fableroom__item"><span class="why-fableroom__check">✓</span><div><h3>Clear availability choices</h3><p>Ready to Ship, Standard Shipping and Pre-Order labels make the expected delivery route visible before purchase.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FIND YOUR RUG ================= -->
-<section class="rug-finder section" aria-labelledby="rug-finder-title" data-rug-finder>
-  <div class="container">
-    <div class="rug-finder__shell reveal">
-      <div class="rug-finder__media"><img src="assets/hero-meadow-room-v2.webp" alt="A patterned rug grounding a light living room" loading="lazy"></div>
-      <div class="rug-finder__body">
-        <div class="eyebrow">Find Your FableRoom Rug</div>
-        <h2 id="rug-finder-title">Your room. Your life. Your rug.</h2>
-        <p>Choose your room, mood and preferred finish to open a focused FableRoom rug edit.</p>
-        <fieldset class="rug-finder__step" data-finder-step="room">
-          <legend>01 · Room</legend>
-          <div class="rug-finder__options">
-            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Living room">Living Room</button>
-            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bedroom">Bedroom</button>
-            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Dining room">Dining Room</button>
-            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Hallway">Hallway</button>
-          </div>
-        </fieldset>
-        <fieldset class="rug-finder__step" data-finder-step="mood">
-          <legend>02 · Mood</legend>
-          <div class="rug-finder__options">
-            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Calm and neutral">Calm &amp; Neutral</button>
-            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Warm and earthy">Warm &amp; Earthy</button>
-            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Colourful">Colourful</button>
-            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bold pattern">Bold Pattern</button>
-          </div>
-        </fieldset>
-        <fieldset class="rug-finder__step" data-finder-step="need">
-          <legend>03 · Everyday Need</legend>
-          <div class="rug-finder__options">
-            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Everyday easy">Everyday Easy</button>
-            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Soft luxury">Soft Luxury</button>
-            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Natural texture">Natural Texture</button>
-            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Heirloom craft">Heirloom Craft</button>
-          </div>
-        </fieldset>
-        <div class="rug-finder__result">
-          <div><small>Your Rug Edit</small><strong data-finder-result>Calm and neutral rugs for the living room</strong></div>
-          <a href="https://fableroom.com/search?q=living+room+calm+neutral+everyday+rug&amp;type=product" data-finder-link>Explore This Edit →</a>
-        </div>
       </div>
     </div>
   </div>
