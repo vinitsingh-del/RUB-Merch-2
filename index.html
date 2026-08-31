@@ -1016,7 +1016,7 @@ body > section + section{margin-top:10px;}
   border:1px solid var(--line-strong); min-height:620px;
 }
 .style-hub__media{position:relative; overflow:hidden; background:#d8c8b5; min-height:620px;}
-.style-hub__media video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.style-hub__media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
 .style-hub__panel{min-width:0; padding:clamp(24px,3.5vw,48px); display:flex; flex-direction:column;}
 .style-hub__intro h2{font-size:clamp(30px,3.6vw,48px); line-height:1.02; margin:8px 0 0;}
 .style-hub__intro h2 em{display:block; color:var(--clay); font-weight:400;}
@@ -1380,40 +1380,6 @@ body > section + section{margin-top:10px;}
   </div>
 </section>
 
-<!-- ================= PROOF / TECHNIQUE CARDS ================= -->
-<section class="section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <div class="eyebrow" style="margin-bottom:10px;">Handmade rug &amp; carpet craft</div>
-        <h2>Four ways to make a rug.</h2>
-      </div>
-    </div>
-    <div class="proof__grid reveal-stagger">
-      <div class="proof__card">
-        <div class="proof__frame"><img src="assets/hero-bidjar-red.webp" alt="Close detail of a hand-knotted wool rug showing dense, tightly tied knots" loading="lazy"></div>
-        <h3>Hand-Knotted Rugs</h3>
-        <p>Hand-knotted wool rugs, tied row by row for dense detail and lasting character in high-traffic rooms.</p>
-      </div>
-      <div class="proof__card">
-        <div class="proof__frame"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="A hand-tufted wool rug with a soft, even pile" loading="lazy"></div>
-        <h3>Hand-Tufted Rugs</h3>
-        <p>Hand-tufted wool rugs with a softer pile underfoot, made for bedrooms, lounges and everyday comfort.</p>
-      </div>
-      <div class="proof__card">
-        <div class="proof__frame"><img src="assets/arcadia-heritage-hand-woven-wool-rug.webp" alt="A flat hand-woven wool rug with a geometric pattern" loading="lazy"></div>
-        <h3>Hand-Woven Rugs</h3>
-        <p>Flatweave wool and jute rugs, loomed without pile for dining rooms, kitchens and hallway spaces.</p>
-      </div>
-      <div class="proof__card">
-        <div class="proof__frame"><img src="assets/elm-washable-rug.webp" alt="A washable rug styled in a living room, shown underfoot near a sofa" loading="lazy"></div>
-        <h3>Washable Rugs</h3>
-        <p>Easy-care washable rugs for living rooms, kitchens, family homes and everyday spills.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= TRUSTPILOT STRIP ================= -->
 <section class="trust" data-rug-reviews>
   <div class="trust__sticky">
@@ -1492,6 +1458,93 @@ body > section + section{margin-top:10px;}
             <span>30-Day Returns</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RUG STYLE DISCOVERY ================= -->
+<section class="style-hub section" aria-labelledby="style-hub-title">
+  <div class="container">
+    <div class="style-hub__shell reveal">
+      <div class="style-hub__media">
+        <img src="assets/rug-craft-poster.jpg" alt="Hand-knotting a rug by hand" loading="lazy">
+      </div>
+      <div class="style-hub__panel">
+        <div class="style-hub__intro">
+          <div class="eyebrow">Rug Style Discovery</div>
+          <h2 id="style-hub-title">One rug discovery hub.<em>Find the style that feels like home.</em></h2>
+          <p>Filter the edit by the look you love. Every result opens the matching FableRoom rug.</p>
+        </div>
+        <div class="style-hub__filters" role="tablist" aria-label="Filter rugs by style" data-style-filters>
+          <button class="style-hub__filter is-active" type="button" role="tab" aria-selected="true" data-style-filter="all">All Styles</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="persian">Persian</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="modern">Modern</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="botanical">Botanical</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="bohemian">Bohemian</button>
+          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="natural">Natural</button>
+        </div>
+        <div class="style-hub__products" data-style-products>
+          <a class="style-hub__card" href="https://fableroom.com/products/zahana-hand-tufted-wool-rug" data-styles="persian botanical">
+            <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy">
+            <div><span>Persian · Botanical</span><h3>Zahana Hand-tufted Wool Rug</h3><small>From £149</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/savana-hand-tufted-wool-rug" data-styles="persian botanical">
+            <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy">
+            <div><span>Botanical · Traditional</span><h3>Savana Botanical Wool Rug</h3><small>From £118</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/rewa-hand-tufted-wool-rug" data-styles="modern">
+            <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy">
+            <div><span>Modern · Abstract</span><h3>Rewa Hand-tufted Wool Rug</h3><small>From £185</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug" data-styles="persian bohemian">
+            <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy">
+            <div><span>Bohemian · Persian</span><h3>Amber Oasis Hand-knotted Rug</h3><small>From £312</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/search?q=jute+rug&amp;type=product" data-styles="natural">
+            <img src="assets/fiore-jute-rug.webp" alt="Fiore Jute Rug" loading="lazy">
+            <div><span>Natural · Textured</span><h3>Fiore Jute Rug</h3><small>Shop natural rugs</small></div>
+          </a>
+          <a class="style-hub__card" href="https://fableroom.com/products/zaya-round-hand-knotted-wool-rug" data-styles="persian">
+            <img src="assets/zaya-round-hand-knotted-wool-rug.webp" alt="Zaya Round Hand-knotted Wool Rug" loading="lazy">
+            <div><span>Persian · Traditional</span><h3>Zaya Round Hand-knotted Rug</h3><small>From £755</small></div>
+          </a>
+        </div>
+        <div class="style-hub__footer"><span data-style-count>6 rugs in this edit</span><a href="https://fableroom.com/collections/all-rugs-collection">View all rugs →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROOF / TECHNIQUE CARDS ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:10px;">Handmade rug &amp; carpet craft</div>
+        <h2>Four ways to make a rug.</h2>
+      </div>
+    </div>
+    <div class="proof__grid reveal-stagger">
+      <div class="proof__card">
+        <div class="proof__frame"><img src="assets/hero-bidjar-red.webp" alt="Close detail of a hand-knotted wool rug showing dense, tightly tied knots" loading="lazy"></div>
+        <h3>Hand-Knotted Rugs</h3>
+        <p>Hand-knotted wool rugs, tied row by row for dense detail and lasting character in high-traffic rooms.</p>
+      </div>
+      <div class="proof__card">
+        <div class="proof__frame"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="A hand-tufted wool rug with a soft, even pile" loading="lazy"></div>
+        <h3>Hand-Tufted Rugs</h3>
+        <p>Hand-tufted wool rugs with a softer pile underfoot, made for bedrooms, lounges and everyday comfort.</p>
+      </div>
+      <div class="proof__card">
+        <div class="proof__frame"><img src="assets/arcadia-heritage-hand-woven-wool-rug.webp" alt="A flat hand-woven wool rug with a geometric pattern" loading="lazy"></div>
+        <h3>Hand-Woven Rugs</h3>
+        <p>Flatweave wool and jute rugs, loomed without pile for dining rooms, kitchens and hallway spaces.</p>
+      </div>
+      <div class="proof__card">
+        <div class="proof__frame"><img src="assets/elm-washable-rug.webp" alt="A washable rug styled in a living room, shown underfoot near a sofa" loading="lazy"></div>
+        <h3>Washable Rugs</h3>
+        <p>Easy-care washable rugs for living rooms, kitchens, family homes and everyday spills.</p>
       </div>
     </div>
   </div>
@@ -1592,61 +1645,6 @@ body > section + section{margin-top:10px;}
           <div class="lookaround__price"><b>£185</b><s>£247</s></div>
         </a>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= RUG STYLE DISCOVERY ================= -->
-<section class="style-hub section" aria-labelledby="style-hub-title">
-  <div class="container">
-    <div class="style-hub__shell reveal">
-      <div class="style-hub__media">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/rug-craft-poster.jpg" aria-label="Hand-knotting a rug by hand">
-          <source src="assets/rug-craft-story.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="style-hub__panel">
-        <div class="style-hub__intro">
-          <div class="eyebrow">Rug Style Discovery</div>
-          <h2 id="style-hub-title">One rug discovery hub.<em>Find the style that feels like home.</em></h2>
-          <p>Filter the edit by the look you love. Every result opens the matching FableRoom rug.</p>
-        </div>
-        <div class="style-hub__filters" role="tablist" aria-label="Filter rugs by style" data-style-filters>
-          <button class="style-hub__filter is-active" type="button" role="tab" aria-selected="true" data-style-filter="all">All Styles</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="persian">Persian</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="modern">Modern</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="botanical">Botanical</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="bohemian">Bohemian</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="natural">Natural</button>
-        </div>
-        <div class="style-hub__products" data-style-products>
-          <a class="style-hub__card" href="https://fableroom.com/products/zahana-hand-tufted-wool-rug" data-styles="persian botanical">
-            <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy">
-            <div><span>Persian · Botanical</span><h3>Zahana Hand-tufted Wool Rug</h3><small>From £149</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/products/savana-hand-tufted-wool-rug" data-styles="persian botanical">
-            <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy">
-            <div><span>Botanical · Traditional</span><h3>Savana Botanical Wool Rug</h3><small>From £118</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/products/rewa-hand-tufted-wool-rug" data-styles="modern">
-            <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy">
-            <div><span>Modern · Abstract</span><h3>Rewa Hand-tufted Wool Rug</h3><small>From £185</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug" data-styles="persian bohemian">
-            <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy">
-            <div><span>Bohemian · Persian</span><h3>Amber Oasis Hand-knotted Rug</h3><small>From £312</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/search?q=jute+rug&amp;type=product" data-styles="natural">
-            <img src="assets/fiore-jute-rug.webp" alt="Fiore Jute Rug" loading="lazy">
-            <div><span>Natural · Textured</span><h3>Fiore Jute Rug</h3><small>Shop natural rugs</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/products/zaya-round-hand-knotted-wool-rug" data-styles="persian">
-            <img src="assets/zaya-round-hand-knotted-wool-rug.webp" alt="Zaya Round Hand-knotted Wool Rug" loading="lazy">
-            <div><span>Persian · Traditional</span><h3>Zaya Round Hand-knotted Rug</h3><small>From £755</small></div>
-          </a>
-        </div>
-        <div class="style-hub__footer"><span data-style-count>6 rugs in this edit</span><a href="https://fableroom.com/collections/all-rugs-collection">View all rugs →</a></div>
-      </div>
     </div>
   </div>
 </section>
