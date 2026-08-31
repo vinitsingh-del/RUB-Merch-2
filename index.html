@@ -1332,7 +1332,8 @@ body > section + section{margin-top:10px;}
 }
 
 /* Final alignment pass — hero geometry and zoom are intentionally untouched. */
-html,body{max-width:100%;overflow-x:hidden;}
+html{max-width:100%;overflow-x:clip;}
+body{max-width:100%;overflow-x:visible;}
 body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:clamp(28px,3.2vw,44px);}
 .section:not(.trust) .section-head{align-items:flex-start;margin-bottom:28px;gap:18px;}
 .section:not(.trust) .section-head h2{line-height:1.06;}
