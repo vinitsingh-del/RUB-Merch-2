@@ -1355,9 +1355,9 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .style-hub__card h3{font-size:13px;min-height:0;}
 .style-hub__footer{padding-top:18px;}
 
-/* Reviews: four full scroll stages, locked smoothly until image four completes. */
-.trust{height:500svh;min-height:500svh;}
-.trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;align-items:flex-start;padding:10px 0;}
+/* Reviews: four smooth parallax stages without an oversized blank runway. */
+.trust{height:180svh;min-height:180svh;}
+.trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;align-items:flex-start;padding:0;}
 .trust__experience{grid-template-columns:minmax(220px,.66fr) minmax(0,1.34fr);gap:clamp(24px,4vw,52px);}
 .trust__rug-stage{height:clamp(310px,50vh,410px);}
 .trust__rug-caption{left:14px;top:14px;padding:7px 9px;font-size:9px;}
@@ -1413,7 +1413,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .style-hub__card div{padding:8px;}
   .style-hub__footer{padding-top:8px;}
 
-  .trust{height:500svh;min-height:500svh;}
+  .trust{height:180svh;min-height:180svh;}
   .trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;align-items:flex-start;padding:0;}
   .trust__experience{grid-template-columns:1fr;grid-template-rows:120px minmax(0,1fr);gap:10px;}
   .trust__rug-stage{height:120px;}
@@ -1456,7 +1456,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .style-hub__products{width:100%;max-width:100%;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;}
 .style-hub__card{flex:0 0 220px;max-width:220px;scroll-snap-align:start;overflow:hidden;}
 .style-hub__card > div:not(.product-card-actions){padding:12px;min-height:126px;}
-.style-hub__card span{font-size:9px;font-weight:700;letter-spacing:.11em;color:var(--clay);}
+.style-hub__card > div:not(.product-card-actions) > span{font-size:9px;font-weight:700;letter-spacing:.11em;color:var(--clay);}
 .style-hub__card h3{font-size:15px;line-height:1.18;min-height:36px;}
 .style-hub__card small{font-size:11px;}
 
@@ -1464,7 +1464,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .style-hub__products{padding-right:var(--gutter);scroll-padding-left:0;}
   .style-hub__card{flex:0 0 72vw;max-width:280px;}
   .style-hub__card > div:not(.product-card-actions){padding:12px;min-height:122px;}
-  .style-hub__card span{font-size:9px;line-height:1.35;}
+  .style-hub__card > div:not(.product-card-actions) > span{font-size:9px;line-height:1.35;}
   .style-hub__card h3{font-size:15px;line-height:1.15;min-height:36px;}
   .style-hub__card small{font-size:11px;}
 
@@ -1497,6 +1497,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 }
 .product-card-actions svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.6;flex:none;}
 .product-atc-cta{background:var(--ink);color:var(--white);}
+.product-atc-cta span{color:var(--white) !important;}
 .product-atc-cta:hover{background:var(--sage);border-color:var(--sage);}
 
 /* Exactly one separator between adjacent page sections. */
@@ -1505,6 +1506,7 @@ body > section + section{border-top:1px solid var(--line) !important;}
 
 /* Align the 15,000+ trust strip with the same left/right content borders. */
 .stat-bar{width:min(calc(100% - (2 * var(--gutter))),var(--container));margin-left:auto;margin-right:auto;}
+.hero + .stat-bar{margin-top:0 !important;}
 
 /* One shared comparison action for every priced rug card. */
 .product-compare-cta{
@@ -1535,6 +1537,10 @@ body > section + section{border-top:1px solid var(--line) !important;}
 .compare-dialog thead th{font-family:var(--serif);font-size:17px;font-weight:400;background:var(--cream);}
 .compare-dialog tbody th{width:130px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
 @media (max-width:640px){
+  .lookaround__card{flex-basis:46.4vw;max-width:184px;}
+  .edit__row .edit__card{width:43.2vw;max-width:168px;}
+  .washable-edit .edit__row .edit__card{flex-basis:36.8vw;width:36.8vw;max-width:141px;}
+  .style-hub__card{flex-basis:57.6vw;max-width:224px;}
   .product-card-actions{gap:5px;padding-top:9px;}
   .product-card-actions button{min-height:36px;padding:8px 5px;font-size:7px;letter-spacing:.05em;gap:4px;}
   .product-card-actions svg{width:11px;height:11px;}
