@@ -891,12 +891,12 @@ body > section + section{margin-top:10px;}
   opacity:0;
   z-index:0;
   clip-path:none;
-  transition:opacity 1.6s ease-in-out;
+  transition:opacity 1.2s ease-in-out;
   will-change:opacity;
   backface-visibility:hidden;
 }
 .hero__scene.is-active{opacity:1;z-index:2;}
-.hero__scene img{transform:scale(1) !important;transition:transform 7.2s linear !important;will-change:transform;}
+.hero__scene img{transform:scale(1) !important;transition:transform 5.5s linear !important;will-change:transform;}
 .hero__scene.is-active img{transform:scale(1.075) !important;}
 .hero__scrim{z-index:8;}
 .hero__content{z-index:9;}
@@ -1356,7 +1356,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .style-hub__footer{padding-top:18px;}
 
 /* Reviews: compact visual UI inside a four-scroll locked parallax story. */
-.trust{height:500svh;min-height:500svh;}
+.trust{height:180svh;min-height:180svh;}
 .trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;padding:20px 0;}
 .trust__experience{grid-template-columns:minmax(220px,.66fr) minmax(0,1.34fr);gap:clamp(24px,4vw,52px);}
 .trust__rug-stage{height:clamp(310px,50vh,410px);}
@@ -1413,7 +1413,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .style-hub__card div{padding:8px;}
   .style-hub__footer{padding-top:8px;}
 
-  .trust{height:500svh;min-height:500svh;}
+  .trust{height:180svh;min-height:180svh;}
   .trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;padding:12px 0;}
   .trust__experience{grid-template-columns:1fr;grid-template-rows:120px minmax(0,1fr);gap:10px;}
   .trust__rug-stage{height:120px;}
@@ -1452,12 +1452,31 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .why-fableroom__footnote{margin-top:11px;font-size:8.5px;}
 }
 
+/* Shared product-card geometry and actions across every rug edit. */
+.proof__frame,.lookaround__frame,.edit__card__frame,.style-hub__card img{aspect-ratio:3/4 !important;}
+.lookaround__card,.edit__card,.style-hub__card{min-height:0;}
+.product-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto;padding-top:12px;}
+.style-hub__card .product-card-actions{padding:12px 8px 8px;}
+.product-card-actions button{
+  width:100%;min-height:40px;padding:9px 8px;border:1px solid var(--ink);
+  font:700 8px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;transition:background .25s var(--ease),color .25s var(--ease);
+}
+.product-card-actions svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.6;flex:none;}
+.product-atc-cta{background:var(--ink);color:var(--white);}
+.product-atc-cta:hover{background:var(--sage);border-color:var(--sage);}
+
+/* Exactly one separator between adjacent page sections. */
+body > section{border-bottom:0 !important;}
+body > section + section{border-top:1px solid var(--line) !important;}
+
+/* Align the 15,000+ trust strip with the same left/right content borders. */
+.stat-bar{width:min(calc(100% - (2 * var(--gutter))),var(--container));margin-left:auto;margin-right:auto;}
+
 /* One shared comparison action for every priced rug card. */
 .product-compare-cta{
-  width:100%;min-height:40px;margin-top:12px;padding:10px 14px;
+  margin:0;
   border:1px solid var(--ink);background:transparent;color:var(--ink);
-  font:700 9px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase;
-  cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease);
 }
 .product-compare-cta:hover,.product-compare-cta[aria-pressed="true"]{background:var(--ink);color:var(--white);}
 .lookaround__card .product-compare-cta,.edit__card .product-compare-cta{margin-top:auto;}
@@ -1483,7 +1502,9 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .compare-dialog thead th{font-family:var(--serif);font-size:17px;font-weight:400;background:var(--cream);}
 .compare-dialog tbody th{width:130px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
 @media (max-width:640px){
-  .product-compare-cta{min-height:36px;margin-top:9px;padding:9px 8px;font-size:8px;}
+  .product-card-actions{gap:5px;padding-top:9px;}
+  .product-card-actions button{min-height:36px;padding:8px 5px;font-size:7px;letter-spacing:.05em;gap:4px;}
+  .product-card-actions svg{width:11px;height:11px;}
   .compare-tray{bottom:10px;gap:8px;padding:9px 9px 9px 12px;}
   .compare-tray__status{font-size:9px;}
   .compare-tray button{padding:7px 8px;font-size:8px;}
@@ -1792,22 +1813,22 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
     </div>
     <div class="proof__grid reveal-stagger">
       <div class="proof__card">
-        <div class="proof__frame"><img src="assets/hero-bidjar-red.webp" alt="Close detail of a hand-knotted wool rug showing dense, tightly tied knots" loading="lazy"></div>
+        <div class="proof__frame"><img src="assets/craft-hand-knotted-v2.webp" alt="Artisan hands tying dense wool knots on a traditional rug loom" loading="lazy"></div>
         <h3>Hand-Knotted Rugs</h3>
         <p>Hand-knotted wool rugs, tied row by row for dense detail and lasting character in high-traffic rooms.</p>
       </div>
       <div class="proof__card">
-        <div class="proof__frame"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="A hand-tufted wool rug with a soft, even pile" loading="lazy"></div>
+        <div class="proof__frame"><img src="assets/craft-hand-tufted-v2.webp" alt="Artisan hands building the soft pile of a hand-tufted wool rug" loading="lazy"></div>
         <h3>Hand-Tufted Rugs</h3>
         <p>Hand-tufted wool rugs with a softer pile underfoot, made for bedrooms, lounges and everyday comfort.</p>
       </div>
       <div class="proof__card">
-        <div class="proof__frame"><img src="assets/arcadia-heritage-hand-woven-wool-rug.webp" alt="A flat hand-woven wool rug with a geometric pattern" loading="lazy"></div>
+        <div class="proof__frame"><img src="assets/craft-hand-woven-v2.webp" alt="Artisan hands weaving natural wool across a traditional hand loom" loading="lazy"></div>
         <h3>Hand-Woven Rugs</h3>
         <p>Flatweave wool and jute rugs, loomed without pile for dining rooms, kitchens and hallway spaces.</p>
       </div>
       <div class="proof__card">
-        <div class="proof__frame"><img src="assets/elm-washable-rug.webp" alt="A washable rug styled in a living room, shown underfoot near a sofa" loading="lazy"></div>
+        <div class="proof__frame"><img src="assets/craft-washable-finish-v2.webp" alt="Artisan hands trimming and finishing the edge of a washable rug" loading="lazy"></div>
         <h3>Washable Rugs</h3>
         <p>Easy-care washable rugs for living rooms, kitchens, family homes and everyday spills.</p>
       </div>
@@ -2428,7 +2449,7 @@ window.addEventListener('load', ()=>{
     });
   };
   show(0);
-  if(!reduceMotion) setInterval(()=>{active=(active+1)%scenes.length;show(active);},6200);
+  if(!reduceMotion) setInterval(()=>{active=(active+1)%scenes.length;show(active);},4800);
 })();
 
 /* ---------- FAQ accordion ---------- */
@@ -2611,15 +2632,15 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
 
 /* ---------- Product-card comparison ---------- */
 (function(){
-  const cards = [...document.querySelectorAll('.lookaround__card,.edit__card')].filter(card=>card.querySelector('h3,h4') && card.querySelector('.lookaround__price,.price-row'));
+  const cards = [...document.querySelectorAll('.lookaround__card,.edit__card,.style-hub__card')].filter(card=>card.querySelector('h3,h4') && card.querySelector('.lookaround__price,.price-row,small'));
   if(!cards.length) return;
   const selected = new Map();
   const money = value=>Number((value || '').replace(/[^0-9.]/g,'')) || 0;
   const productFrom = card=>{
     const name = card.querySelector('h3,h4').textContent.trim();
     const lower = name.toLowerCase();
-    const priceBox = card.querySelector('.lookaround__price,.price-row');
-    const current = priceBox.querySelector('b')?.textContent.trim() || '—';
+    const priceBox = card.querySelector('.lookaround__price,.price-row,small');
+    const current = priceBox.querySelector('b')?.textContent.trim() || priceBox.textContent.trim() || '—';
     const previous = priceBox.querySelector('s')?.textContent.trim() || '';
     const saving = previous && money(previous) > money(current) ? `${Math.round((1-money(current)/money(previous))*100)}%` : '—';
     const technique = lower.includes('hand-knotted') ? 'Hand-knotted' : lower.includes('hand-tufted') ? 'Hand-tufted' : lower.includes('hand-woven') ? 'Hand-woven' : lower.includes('washable') ? 'Washable construction' : lower.includes('jute') ? 'Hand-woven' : 'Handmade';
@@ -2627,7 +2648,7 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     const thickness = technique === 'Hand-knotted' ? '10–12 mm' : technique === 'Hand-tufted' ? '12–15 mm' : technique === 'Hand-woven' ? '6–8 mm' : technique === 'Washable construction' ? '5–7 mm' : '8–12 mm';
     const styles = {zahana:'Botanical · Traditional',savana:'Botanical · Traditional',rewa:'Abstract · Contemporary',amber:'Bohemian · Traditional',clara:'Modern · Refined',preston:'Traditional',vaayu:'Abstract · Modern',rovira:'Persian · Traditional',zaya:'Round · Traditional',arcadia:'Geometric · Heritage',fiore:'Natural · Textural',elm:'Contemporary',flax:'Minimal · Contemporary',maren:'Modern · Contemporary'};
     const styleKey = Object.keys(styles).find(key=>lower.includes(key));
-    const href = card.querySelector('a[href]')?.href || '#';
+    const href = card.matches('a[href]') ? card.href : (card.querySelector('a[href]')?.href || '#');
     const key = name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     return {key,name,size:'Multiple sizes',technique,material,price:current,savings:saving,thickness,style:styles[styleKey] || 'Artisan · Contemporary',href};
   };
@@ -2636,12 +2657,10 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     const product = productFrom(card);
     products.set(product.key,product);
     card.dataset.compareKey = product.key;
-    const button = document.createElement('button');
-    button.className = 'product-compare-cta';
-    button.type = 'button';
-    button.setAttribute('aria-pressed','false');
-    button.textContent = 'Compare';
-    card.append(button);
+    const actions = document.createElement('div');
+    actions.className = 'product-card-actions';
+    actions.innerHTML = `<button class="product-compare-cta" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M17 4v16M3 8l4-4 4 4M13 16l4 4 4-4"/></svg><span>Compare</span></button><button class="product-atc-cta" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Add to Cart</span></button>`;
+    card.append(actions);
   });
   document.body.insertAdjacentHTML('beforeend',`
     <aside class="compare-tray" data-common-compare-tray hidden aria-live="polite">
@@ -2665,7 +2684,7 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
       const active = selected.has(card.dataset.compareKey);
       const button = card.querySelector('.product-compare-cta');
       button.setAttribute('aria-pressed', String(active));
-      button.textContent = active ? 'Added to Compare ✓' : 'Compare';
+      button.querySelector('span').textContent = active ? 'Added ✓' : 'Compare';
     });
     tray.hidden = selected.size === 0;
     status.textContent = selected.size === 1 ? '1 rug selected · choose one more' : `${selected.size} rugs selected`;
@@ -2674,12 +2693,24 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
   document.addEventListener('click',event=>{
     const button = event.target.closest('.product-compare-cta');
     if(!button) return;
-    const card = button.closest('.lookaround__card,.edit__card');
+    event.preventDefault();
+    event.stopPropagation();
+    const card = button.closest('.lookaround__card,.edit__card,.style-hub__card');
     const key = card.dataset.compareKey;
     if(selected.has(key)) selected.delete(key);
     else if(selected.size < 3) selected.set(key,products.get(key));
     else status.textContent = 'Three rugs maximum · remove one to add another';
     render();
+  });
+  document.addEventListener('click',event=>{
+    const button = event.target.closest('.product-atc-cta');
+    if(!button) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const label = button.querySelector('span');
+    label.textContent = 'Added ✓';
+    button.setAttribute('aria-pressed','true');
+    setTimeout(()=>{label.textContent='Add to Cart';button.setAttribute('aria-pressed','false');},1800);
   });
   const close = ()=>{dialog.hidden=true;document.body.style.overflow='';};
   view.addEventListener('click',()=>{
