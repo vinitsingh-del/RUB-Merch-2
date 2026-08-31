@@ -1357,7 +1357,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 
 /* Reviews: four smooth parallax stages without an oversized blank runway. */
 .trust{height:180svh;min-height:180svh;}
-.trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;align-items:flex-start;padding:0;}
+.trust__sticky{position:sticky;top:0;height:min(100svh,640px);min-height:min(100svh,640px);align-items:center;padding:0;}
 .trust__experience{grid-template-columns:minmax(220px,.66fr) minmax(0,1.34fr);gap:clamp(24px,4vw,52px);}
 .trust__rug-stage{height:clamp(310px,50vh,410px);}
 .trust__rug-caption{left:14px;top:14px;padding:7px 9px;font-size:9px;}
@@ -1414,7 +1414,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .style-hub__footer{padding-top:8px;}
 
   .trust{height:180svh;min-height:180svh;}
-  .trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;align-items:flex-start;padding:0;}
+  .trust__sticky{position:sticky;top:0;height:min(100svh,560px);min-height:min(100svh,560px);align-items:center;padding:0;}
   .trust__experience{grid-template-columns:1fr;grid-template-rows:120px minmax(0,1fr);gap:10px;}
   .trust__rug-stage{height:120px;}
   .trust__rug-frame img{object-position:center 46%;}
@@ -1488,14 +1488,14 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 /* Shared product-card geometry and actions across every rug edit. */
 .proof__frame,.lookaround__frame,.edit__card__frame,.style-hub__card img{aspect-ratio:3/4 !important;}
 .lookaround__card,.edit__card,.style-hub__card{min-height:0;}
-.product-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto;padding-top:12px;}
-.style-hub__card .product-card-actions{padding:12px 8px 8px;}
+.product-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:auto;padding-top:10px;}
+.style-hub__card .product-card-actions{padding:9px 6px 6px;}
 .product-card-actions button{
-  width:100%;min-height:40px;padding:9px 8px;border:1px solid var(--ink);
-  font:700 8px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:6px;transition:background .25s var(--ease),color .25s var(--ease);
+  width:100%;min-height:33px;padding:7px 6px;border:1px solid var(--ink);
+  font:700 7.5px/1 var(--sans);letter-spacing:.07em;text-transform:uppercase;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:4px;transition:background .25s var(--ease),color .25s var(--ease);
 }
-.product-card-actions svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.6;flex:none;}
+.product-card-actions svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.6;flex:none;}
 .product-atc-cta{background:var(--ink);color:var(--white);}
 .product-atc-cta span{color:var(--white) !important;}
 .product-atc-cta:hover{background:var(--sage);border-color:var(--sage);}
@@ -1506,7 +1506,7 @@ body > section + section{border-top:1px solid var(--line) !important;}
 
 /* Align the 15,000+ trust strip with the same left/right content borders. */
 .stat-bar{width:min(calc(100% - (2 * var(--gutter))),var(--container));margin-left:auto;margin-right:auto;}
-.hero + .stat-bar{margin-top:0 !important;}
+.hero + .stat-bar{margin-top:10px !important;}
 
 /* One shared comparison action for every priced rug card. */
 .product-compare-cta{
@@ -1515,6 +1515,16 @@ body > section + section{border-top:1px solid var(--line) !important;}
 }
 .product-compare-cta:hover,.product-compare-cta[aria-pressed="true"]{background:var(--ink);color:var(--white);}
 .lookaround__card .product-compare-cta,.edit__card .product-compare-cta{margin-top:auto;}
+/* Style-hub category tags use clay, but the shared Compare/Add to Cart actions must stay strictly black-and-white. */
+.style-hub__card .product-compare-cta,
+.style-hub__card .product-compare-cta span,
+.style-hub__card .product-compare-cta svg{color:var(--ink) !important;}
+.style-hub__card .product-compare-cta:hover,
+.style-hub__card .product-compare-cta:hover span,
+.style-hub__card .product-compare-cta:hover svg,
+.style-hub__card .product-compare-cta[aria-pressed="true"],
+.style-hub__card .product-compare-cta[aria-pressed="true"] span,
+.style-hub__card .product-compare-cta[aria-pressed="true"] svg{color:var(--white) !important;}
 .compare-tray{
   position:fixed;z-index:180;left:50%;bottom:18px;transform:translateX(-50%);
   width:min(620px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;gap:18px;
@@ -1540,9 +1550,9 @@ body > section + section{border-top:1px solid var(--line) !important;}
   .lookaround__card{flex-basis:46.4vw;max-width:184px;}
   .edit__row .edit__card{width:43.2vw;max-width:168px;}
   .washable-edit .edit__row .edit__card{flex-basis:36.8vw;width:36.8vw;max-width:141px;}
-  .style-hub__card{flex-basis:57.6vw;max-width:224px;}
+  .style-hub__card{flex-basis:49vw;max-width:190px;}
   .product-card-actions{gap:5px;padding-top:9px;}
-  .product-card-actions button{min-height:36px;padding:8px 5px;font-size:7px;letter-spacing:.05em;gap:4px;}
+  .product-card-actions button{min-height:31px;padding:6px 5px;font-size:6.5px;letter-spacing:.05em;gap:3px;}
   .product-card-actions svg{width:11px;height:11px;}
   .compare-tray{bottom:10px;gap:8px;padding:9px 9px 9px 12px;}
   .compare-tray__status{font-size:9px;}
