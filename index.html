@@ -891,12 +891,12 @@ body > section + section{margin-top:10px;}
   opacity:0;
   z-index:0;
   clip-path:none;
-  transition:opacity 1.2s ease-in-out;
+  transition:opacity .9s ease-in-out;
   will-change:opacity;
   backface-visibility:hidden;
 }
 .hero__scene.is-active{opacity:1;z-index:2;}
-.hero__scene img{transform:scale(1) !important;transition:transform 5.5s linear !important;will-change:transform;}
+.hero__scene img{transform:scale(1) !important;transition:transform 4.2s linear !important;will-change:transform;}
 .hero__scene.is-active img{transform:scale(1.075) !important;}
 .hero__scrim{z-index:8;}
 .hero__content{z-index:9;}
@@ -1355,9 +1355,9 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .style-hub__card h3{font-size:13px;min-height:0;}
 .style-hub__footer{padding-top:18px;}
 
-/* Reviews: compact visual UI inside a four-scroll locked parallax story. */
-.trust{height:180svh;min-height:180svh;}
-.trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;padding:20px 0;}
+/* Reviews: content-height section with no reserved viewport space. */
+.trust{height:auto;min-height:0;}
+.trust__sticky{position:relative;top:auto;height:auto;min-height:0;align-items:flex-start;padding:10px 0;}
 .trust__experience{grid-template-columns:minmax(220px,.66fr) minmax(0,1.34fr);gap:clamp(24px,4vw,52px);}
 .trust__rug-stage{height:clamp(310px,50vh,410px);}
 .trust__rug-caption{left:14px;top:14px;padding:7px 9px;font-size:9px;}
@@ -1413,8 +1413,8 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .style-hub__card div{padding:8px;}
   .style-hub__footer{padding-top:8px;}
 
-  .trust{height:180svh;min-height:180svh;}
-  .trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;padding:12px 0;}
+  .trust{height:auto;min-height:0;}
+  .trust__sticky{position:relative;top:auto;height:auto;min-height:0;align-items:flex-start;padding:0;}
   .trust__experience{grid-template-columns:1fr;grid-template-rows:120px minmax(0,1fr);gap:10px;}
   .trust__rug-stage{height:120px;}
   .trust__rug-frame img{object-position:center 46%;}
@@ -2449,7 +2449,7 @@ window.addEventListener('load', ()=>{
     });
   };
   show(0);
-  if(!reduceMotion) setInterval(()=>{active=(active+1)%scenes.length;show(active);},4800);
+  if(!reduceMotion) setInterval(()=>{active=(active+1)%scenes.length;show(active);},3700);
 })();
 
 /* ---------- FAQ accordion ---------- */
