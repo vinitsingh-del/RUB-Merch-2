@@ -1052,9 +1052,9 @@ body > section + section{margin-top:10px;}
 .style-hub__card span{display:block; color:var(--clay); font-size:8px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px;}
 .style-hub__card h3{font-size:15px; line-height:1.05; margin-bottom:5px;}
 .style-hub__card small{font-size:10.5px; color:var(--ink-soft);}
-.style-hub__footer{display:flex; justify-content:space-between; align-items:center; gap:18px; margin-top:auto; padding-top:24px; border-top:1px solid var(--line);}
+.style-hub__footer{display:flex; justify-content:flex-end; align-items:center; gap:18px; margin-top:auto; padding-top:24px; border-top:1px solid var(--line);}
 .style-hub__footer span{font-size:11px; color:var(--ink-soft);}
-.style-hub__footer a{font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-bottom:1px solid var(--ink);}
+.style-hub__footer a{font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-bottom:1px solid var(--ink); padding-bottom:1px;}
 
 .room-discovery__head{display:flex; justify-content:space-between; align-items:flex-end; gap:28px; margin-bottom:28px;}
 .room-discovery__intro h2{font-size:clamp(30px,4vw,50px); line-height:1.02; margin-top:8px;}
@@ -1356,10 +1356,10 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .style-hub__footer{padding-top:18px;}
 
 /* Reviews: four smooth parallax stages without an oversized blank runway. */
-.trust{height:180svh;min-height:180svh;}
-.trust__sticky{position:sticky;top:0;height:min(100svh,640px);min-height:min(100svh,640px);align-items:center;padding:0;}
-.trust__experience{grid-template-columns:minmax(220px,.66fr) minmax(0,1.34fr);gap:clamp(24px,4vw,52px);}
-.trust__rug-stage{height:clamp(310px,50vh,410px);}
+.trust{height:calc(100svh + 760px);min-height:calc(100svh + 760px);}
+.trust__sticky{position:sticky;top:0;height:min(100svh,830px);min-height:min(100svh,830px);align-items:center;padding:0;}
+.trust__experience{grid-template-columns:minmax(240px,.78fr) minmax(0,1.22fr);gap:clamp(28px,4.5vw,60px);}
+.trust__rug-stage{height:clamp(400px,62vh,600px);}
 .trust__rug-caption{left:14px;top:14px;padding:7px 9px;font-size:9px;}
 .trust__hint{margin-bottom:12px;}
 .trust__row{gap:28px;}
@@ -1413,10 +1413,10 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .style-hub__card div{padding:8px;}
   .style-hub__footer{padding-top:8px;}
 
-  .trust{height:180svh;min-height:180svh;}
-  .trust__sticky{position:sticky;top:0;height:min(100svh,560px);min-height:min(100svh,560px);align-items:center;padding:0;}
-  .trust__experience{grid-template-columns:1fr;grid-template-rows:120px minmax(0,1fr);gap:10px;}
-  .trust__rug-stage{height:120px;}
+  .trust{height:calc(100svh + 560px);min-height:calc(100svh + 560px);}
+  .trust__sticky{position:sticky;top:0;height:min(100svh,672px);min-height:min(100svh,672px);align-items:center;padding:0;}
+  .trust__experience{grid-template-columns:1fr;grid-template-rows:168px minmax(0,1fr);gap:10px;}
+  .trust__rug-stage{height:168px;}
   .trust__rug-frame img{object-position:center 46%;}
   .trust__rug-caption{left:9px;top:9px;padding:5px 7px;font-size:7px;}
   .trust__hint{margin-bottom:5px;font-size:7px;gap:6px;}
@@ -1507,6 +1507,7 @@ body > section + section{border-top:1px solid var(--line) !important;}
 /* Align the 15,000+ trust strip with the same left/right content borders. */
 .stat-bar{width:min(calc(100% - (2 * var(--gutter))),var(--container));margin-left:auto;margin-right:auto;}
 .hero + .stat-bar{margin-top:10px !important;}
+.stat-bar + .reassure{margin-top:10px !important;}
 
 /* One shared comparison action for every priced rug card. */
 .product-compare-cta{
@@ -1845,7 +1846,7 @@ body > section + section{border-top:1px solid var(--line) !important;}
             <div><span>Persian · Traditional</span><h3>Zaya Round Hand-knotted Rug</h3><small>From £755</small></div>
           </a>
         </div>
-        <div class="style-hub__footer"><span data-style-count>6 rugs in this edit</span><a href="https://fableroom.com/collections/all-rugs-collection">View all rugs →</a></div>
+        <div class="style-hub__footer"><a href="https://fableroom.com/collections/all-rugs-collection">View all rugs →</a></div>
       </div>
     </div>
   </div>
