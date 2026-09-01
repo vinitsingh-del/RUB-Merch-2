@@ -1425,8 +1425,8 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 
   .trust{height:calc(100svh + 560px);min-height:calc(100svh + 560px);}
   .trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;align-items:center;padding:0;}
-  .trust__experience{grid-template-columns:1fr;grid-template-rows:168px minmax(0,1fr);gap:10px;}
-  .trust__rug-stage{height:168px;}
+  .trust__experience{grid-template-columns:1fr;grid-template-rows:202px minmax(0,1fr);gap:10px;}
+  .trust__rug-stage{height:202px;}
   .trust__rug-frame img{object-position:center 46%;}
   .trust__rug-caption{left:9px;top:9px;padding:5px 7px;font-size:7px;}
   .trust__hint{margin-bottom:5px;font-size:7px;gap:6px;}
@@ -1526,6 +1526,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 /* Exactly one separator between adjacent page sections. */
 body > section{border-bottom:0 !important;}
 body > section + section{border-top:1px solid var(--line) !important;}
+.style-hub.section + section{border-top:0 !important;}
 
 /* Align the 15,000+ trust strip with the same left/right content borders. */
 .stat-bar{width:min(calc(100% - (2 * var(--gutter))),var(--container));margin-left:auto;margin-right:auto;}
