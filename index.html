@@ -204,6 +204,16 @@ body > section + section{margin-top:10px;}
   color:var(--white);
   text-shadow:0 4px 24px rgba(0,0,0,.45), 0 1px 4px rgba(0,0,0,.4);
 }
+.hero-title-line{
+  display:inline-block; opacity:0; transform:translateY(26px);
+  animation:heroTitleReveal .95s cubic-bezier(.16,.68,.24,1) forwards;
+  animation-delay:.15s;
+}
+.hero-title-line--2{animation-delay:.32s;}
+@keyframes heroTitleReveal{to{opacity:1; transform:translateY(0);}}
+@media (prefers-reduced-motion:reduce){
+  .hero-title-line{animation:none; opacity:1; transform:none;}
+}
 .hero p{
   font-size:clamp(15px, 1.6vw, 18px); max-width:46ch; margin:20px 0 30px;
   opacity:.92; line-height:1.55;
@@ -1500,6 +1510,19 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .product-atc-cta span{color:var(--white) !important;}
 .product-atc-cta:hover{background:var(--sage);border-color:var(--sage);}
 
+/* CTA shine — periodic light sweep on primary action buttons. */
+.product-atc-cta,.rug-finder__result a{position:relative;overflow:hidden;}
+.product-atc-cta::after,.rug-finder__result a::after{
+  content:'';position:absolute;top:0;left:-160%;width:55%;height:100%;
+  background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.28) 45%,rgba(255,255,255,.5) 50%,rgba(255,255,255,.28) 55%,transparent 100%);
+  transform:skewX(-20deg);animation:ctaShine 3.6s ease-in-out infinite;pointer-events:none;
+}
+.rug-finder__result a::after{animation-delay:.6s;}
+@keyframes ctaShine{0%{left:-160%;}30%{left:160%;}100%{left:160%;}}
+@media (prefers-reduced-motion:reduce){
+  .product-atc-cta::after,.rug-finder__result a::after{animation:none;display:none;}
+}
+
 /* Exactly one separator between adjacent page sections. */
 body > section{border-bottom:0 !important;}
 body > section + section{border-top:1px solid var(--line) !important;}
@@ -1633,7 +1656,7 @@ body > section + section{border-top:1px solid var(--line) !important;}
     <div class="hero__scrim"></div>
     <div class="hero__content reveal">
       <div class="hero__eyebrow">500+ handmade rugs &amp; carpets</div>
-      <h1>Handmade Rugs.<br>Honest Prices.</h1>
+      <h1><span class="hero-title-line">Handmade Rugs.</span><br><span class="hero-title-line hero-title-line--2">Honest Prices.</span></h1>
       <p>Handmade wool, jute and washable rugs for every room.</p>
     </div>
   </div>
@@ -1642,10 +1665,10 @@ body > section + section{border-top:1px solid var(--line) !important;}
 <!-- ================= STAT BAR ================= -->
 <section class="stat-bar">
   <div class="stat-bar__row reveal-stagger">
-    <div><b>15,000+</b><span>Loved by Homes</span></div>
-    <div><b>500+</b><span>Designs</span></div>
-    <div><b>100%</b><span>Handmade</span></div>
-    <div><b>0</b><span>Middlemen</span></div>
+    <div><b data-count-to="15000" data-suffix="+">15,000+</b><span>Loved by Homes</span></div>
+    <div><b data-count-to="500" data-suffix="+">500+</b><span>Designs</span></div>
+    <div><b data-count-to="100" data-suffix="%">100%</b><span>Handmade</span></div>
+    <div><b data-count-to="0" data-suffix="">0</b><span>Middlemen</span></div>
   </div>
 </section>
 
@@ -2478,6 +2501,38 @@ const io = new IntersectionObserver((entries)=>{
   });
 }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
 revealEls.forEach(el=>io.observe(el));
+
+/* ---------- Trust badges: smooth continuous count-up ---------- */
+(function(){
+  const nums = document.querySelectorAll('[data-count-to]');
+  if(!nums.length) return;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const animateCount = (el)=>{
+    const target = parseInt(el.dataset.countTo, 10) || 0;
+    const suffix = el.dataset.suffix || '';
+    if(prefersReduced || target === 0){
+      el.textContent = target.toLocaleString('en-GB') + suffix;
+      return;
+    }
+    const duration = 1700;
+    const start = performance.now();
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const step = (now)=>{
+      const elapsed = Math.min(1, (now - start) / duration);
+      const value = Math.round(target * ease(elapsed));
+      el.textContent = value.toLocaleString('en-GB') + suffix;
+      if(elapsed < 1){ requestAnimationFrame(step); }
+      else { el.textContent = target.toLocaleString('en-GB') + suffix; }
+    };
+    requestAnimationFrame(step);
+  };
+  const countIo = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ animateCount(entry.target); countIo.unobserve(entry.target); }
+    });
+  }, {threshold:0.4});
+  nums.forEach(el=>countIo.observe(el));
+})();
 
 /* ---------- Hero load-in ---------- */
 window.addEventListener('load', ()=>{
