@@ -1541,6 +1541,75 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   }
 }
 
+/* Circular rug-thumbnail discovery controls: five items, no empty grid cell. */
+.shop-paths__tabs{
+  width:min(410px,calc(68% - 56px));
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+}
+.shop-paths__tab{
+  aspect-ratio:1;
+  min-height:0;
+  justify-content:center;
+  padding:8px;
+  border:3px solid rgba(255,255,255,.94);
+  border-radius:50%;
+  background-color:var(--ink);
+  background-image:linear-gradient(180deg,rgba(24,22,18,.14),rgba(24,22,18,.68)),var(--path-rug);
+  background-position:center;
+  background-size:cover;
+  color:var(--white);
+  text-align:center;
+  font-size:8px;
+  line-height:1.05;
+  letter-spacing:.07em;
+  text-shadow:0 1px 5px rgba(0,0,0,.72);
+  box-shadow:0 3px 12px rgba(31,29,25,.2);
+}
+.shop-paths__tab::after{display:none;}
+.shop-paths__tab.is-active{
+  color:var(--white);
+  background-image:linear-gradient(180deg,rgba(24,22,18,.28),rgba(24,22,18,.78)),var(--path-rug);
+  box-shadow:0 0 0 2px var(--ink),0 4px 14px rgba(31,29,25,.28);
+}
+.shop-paths__tab[data-path="style"]{--path-rug:url('assets/zahana-hand-tufted-wool-rug.webp');}
+.shop-paths__tab[data-path="technique"]{--path-rug:url('assets/amber-oasis-hand-knotted-wool-rug.webp');}
+.shop-paths__tab[data-path="colour"]{--path-rug:url('assets/rovira-hand-knotted-wool-bamboo-silk-rug-burgundy.webp');}
+.shop-paths__tab[data-path="material"]{--path-rug:url('assets/fiore-jute-rug.webp');}
+.shop-paths__tab[data-path="budget"]{--path-rug:url('assets/savana-hand-tufted-wool-rug.webp');}
+.shop-paths__tab[data-path="style"]{background-position:center 70%;}
+.shop-paths__tab[data-path="material"]{background-position:center 76%;}
+.shop-paths__tab[data-path="budget"]{background-position:center 78%;}
+@media (max-width:760px){
+  .shop-paths__tabs{
+    top:calc(clamp(154px,26svh,210px) - 25px);
+    width:calc(100% - 28px);
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:6px;
+    border:0;
+  }
+  .shop-paths__tab,
+  .shop-paths__tab:nth-last-child(-n+2){
+    grid-column:auto;
+    min-height:0;
+    padding:5px;
+    border:2px solid rgba(255,255,255,.94);
+    font-size:clamp(6px,1.8vw,7px);
+    letter-spacing:.03em;
+  }
+  .shop-paths__tab:nth-child(4),
+  .shop-paths__tab:last-child{border-right:2px solid rgba(255,255,255,.94);}
+  .shop-paths__body{padding-top:38px;}
+}
+@supports not (height:1svh){
+  @media (max-width:760px){
+    .shop-paths__tabs{top:calc(clamp(154px,26vh,210px) - 25px);}
+  }
+}
+
 /* Exactly one separator between adjacent page sections. */
 body > section{border-bottom:0 !important;}
 body > section + section{border-top:1px solid var(--line) !important;}
