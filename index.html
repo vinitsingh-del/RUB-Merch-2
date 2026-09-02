@@ -1672,6 +1672,131 @@ body > section + section{border-top:1px solid var(--line) !important;}
   .compare-dialog{padding:10px;}
   .compare-dialog__panel{padding:22px 16px;max-height:90vh;}
 }
+
+/* ============================================================
+   RESPONSIVE ALIGNMENT GUARDRAILS
+   Deliberately excludes every hero selector so its approved
+   desktop/mobile viewport, crop and zoom remain unchanged.
+   ============================================================ */
+body > section:not(.hero),
+.promo-bar,
+.site-header,
+.site-footer{
+  width:100%;
+  max-width:100%;
+}
+
+body > .section:not(.trust) > .container,
+.trust > .container,
+.reassure__row,
+.site-footer > .container{
+  width:100%;
+  min-width:0;
+}
+
+.section-head > *,
+.shop-paths__panel > *,
+.style-hub__shell > *,
+.room-discovery__head > *,
+.room-discovery__grid > *,
+.compare-shop__grid > *,
+.rug-finder__shell > *,
+.why-fableroom__shell > *,
+.site-footer__grid > *{
+  min-width:0;
+}
+
+@media (min-width:761px){
+  .proof__grid,
+  .lookaround__grid,
+  .room-discovery__grid,
+  .compare-shop__grid,
+  .recommended__grid{
+    grid-auto-rows:1fr;
+  }
+
+  .proof__card,
+  .lookaround__card,
+  .room-discovery__card,
+  .compare-card,
+  .recommended__grid > *{
+    min-width:0;
+    width:100%;
+  }
+}
+
+@media (max-width:760px){
+  html,
+  body{
+    width:100%;
+    max-width:100%;
+    overflow-x:clip;
+  }
+
+  body > section:not(.hero),
+  .promo-bar,
+  .site-header,
+  .site-footer{
+    overflow-x:clip;
+  }
+
+  .container,
+  .site-header__row,
+  .stat-bar__row,
+  .reassure__row,
+  .trust__content,
+  .shop-paths__directory,
+  .shop-paths__panel,
+  .style-hub__shell,
+  .style-hub__panel,
+  .room-discovery__head,
+  .compare-shop__grid,
+  .rug-finder__shell,
+  .rug-finder__body,
+  .why-fableroom__shell,
+  .why-fableroom__list,
+  .site-footer__grid{
+    min-width:0;
+    max-width:100%;
+  }
+
+  .edit__pills,
+  .edit__row,
+  .proof__grid,
+  .lookaround__filters,
+  .lookaround__grid,
+  .style-hub__filters,
+  .style-hub__products,
+  .room__slides,
+  .room-discovery__grid,
+  .compare-shop__grid,
+  .compare-panel,
+  .trust__marquee,
+  .reassure__row{
+    max-width:100%;
+    overscroll-behavior-inline:contain;
+  }
+
+  .site-header__icons button,
+  .site-header__menu-btn.site-header__menu-btn,
+  .lookaround__filter,
+  .style-hub__filter,
+  .edit__pills button,
+  .compare-card__toggle,
+  .rug-finder__option,
+  .product-card-actions button,
+  .compare-tray button,
+  .compare-dialog__close,
+  .email-cap button{
+    min-height:44px;
+  }
+
+  .site-header__icons button,
+  .site-header__menu-btn.site-header__menu-btn,
+  .compare-dialog__close{
+    min-width:44px;
+  }
+}
 </style>
 </head>
 <body>
