@@ -1501,6 +1501,46 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .shop-paths__body{padding:116px 0 4px;}
 }
 
+/* Mobile only: keep the complete Find Your Rug discovery block inside one phone viewport. */
+@media (max-width:760px){
+  .shop-paths.section{padding-top:8px;padding-bottom:8px;min-height:0;}
+  .shop-paths__intro{margin-bottom:6px;}
+  .shop-paths__intro .eyebrow{font-size:8px;line-height:1.1;}
+  .shop-paths__intro h2{font-size:22px;line-height:1;margin:3px 0;}
+  .shop-paths__intro p{font-size:10.5px;line-height:1.25;margin:0;}
+  .shop-paths__directory{min-height:0;}
+  .shop-paths__panel{grid-template-columns:1fr;}
+  .shop-paths__image{height:clamp(154px,26svh,210px);min-height:0;}
+  .shop-paths__tabs{
+    top:calc(clamp(154px,26svh,210px) - 30px);
+    width:calc(100% - 20px);
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    border-width:4px;
+  }
+  .shop-paths__tab{grid-column:span 2;min-height:50px;padding:7px 9px;font-size:8px;}
+  .shop-paths__tab:nth-last-child(-n+2){grid-column:span 3;}
+  .shop-paths__tab:nth-child(4){border-right:1px solid var(--line);}
+  .shop-paths__tab:last-child{border-right:0;}
+  .shop-paths__body{padding:72px 0 0;}
+  .shop-paths__count{font-size:10px;line-height:1;}
+  .shop-paths__body h3{font-size:20px;line-height:1;margin:4px 0 3px;}
+  .shop-paths__body > p{max-width:none;font-size:10.5px;line-height:1.25;margin:0 0 7px;}
+  .shop-paths__links{flex-wrap:nowrap;gap:4px;}
+  .shop-paths__links a{padding:5px 6px;font-size:8px;line-height:1;white-space:nowrap;}
+  .shop-paths__sku-label{margin:8px 0 4px;font-size:8px;line-height:1;}
+  .shop-paths__skus{gap:5px;}
+  .shop-paths__sku{grid-template-columns:34px minmax(0,1fr);gap:5px;padding:4px;}
+  .shop-paths__sku img{width:34px;height:44px;}
+  .shop-paths__sku b{font-size:7.5px;line-height:1.2;}
+  .shop-paths__sku small{margin-top:2px;font-size:8px;line-height:1;}
+}
+@supports not (height:1svh){
+  @media (max-width:760px){
+    .shop-paths__image{height:clamp(154px,26vh,210px);}
+    .shop-paths__tabs{top:calc(clamp(154px,26vh,210px) - 30px);}
+  }
+}
+
 /* Exactly one separator between adjacent page sections. */
 body > section{border-bottom:0 !important;}
 body > section + section{border-top:1px solid var(--line) !important;}
