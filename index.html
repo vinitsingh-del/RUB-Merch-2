@@ -879,9 +879,9 @@ body > section + section{margin-top:10px;}
 
 /* Reviews geometry remains on its approved desktop/mobile measurements. */
 .trust .container{
-  max-width:1320px;
-  padding-left:clamp(20px,5vw,64px);
-  padding-right:clamp(20px,5vw,64px);
+  max-width:var(--container);
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
 }
 
 /* Hero video: one normal viewport with identical media scaling at every width. */
@@ -1029,9 +1029,9 @@ body > section + section{margin-top:10px;}
 .lookaround__filter:last-child{border-right:0;}
 .lookaround__filter.is-active{background:var(--ink); color:var(--white);}
 .lookaround__grid{
-  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px;
+  display:flex; flex-wrap:wrap; align-items:stretch; gap:18px;
 }
-.lookaround__card{min-width:0;}
+.lookaround__card{min-width:0; flex:0 0 calc((100% - 54px)/4);}
 .lookaround__card[hidden]{display:none;}
 .lookaround__frame{
   position:relative; aspect-ratio:3/4; overflow:hidden; margin-bottom:12px; background:var(--white);
@@ -1087,7 +1087,7 @@ body > section + section{margin-top:10px;}
 .room-discovery__copy{max-width:39ch; color:var(--ink-soft); font-size:14px; margin:0 0 4px;}
 .room-discovery__grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; align-items:start;}
 .room-discovery__card{position:relative; display:block; overflow:hidden; aspect-ratio:4/5; background:#d8d0c6;}
-.room-discovery__card:nth-child(2),.room-discovery__card:nth-child(3){margin-top:34px;}
+.room-discovery__card:nth-child(2),.room-discovery__card:nth-child(3){margin-top:0;}
 .room-discovery__card img{width:100%; height:100%; object-fit:cover; transition:transform .9s var(--ease-slow);}
 .room-discovery__card:hover img{transform:scale(1.035);}
 .room-discovery__shade{position:absolute; inset:42% 0 0; background:linear-gradient(transparent,rgba(18,15,12,.68));}
@@ -1155,7 +1155,8 @@ body > section + section{margin-top:10px;}
 .rug-finder__result a{flex:none; padding:11px 15px; background:var(--clay); color:var(--white); font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;}
 
 @media (max-width:900px){
-  .lookaround__grid,.compare-shop__grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .compare-shop__grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .lookaround__card{flex-basis:calc((100% - 18px)/2);}
   .style-hub__shell{grid-template-columns:280px minmax(0,1fr);}
   .why-fableroom__shell,.rug-finder__shell{grid-template-columns:1fr 1.2fr;}
 }
@@ -1164,7 +1165,7 @@ body > section + section{margin-top:10px;}
   .lookaround__filters{display:flex; overflow-x:auto; margin-bottom:16px; scrollbar-width:none;}
   .lookaround__filters::-webkit-scrollbar{display:none;}
   .lookaround__filter{flex:0 0 42%; min-height:48px; padding:10px; font-size:9.5px;}
-  .lookaround__grid{display:flex; overflow-x:auto; gap:12px; padding-bottom:5px; scrollbar-width:none;}
+  .lookaround__grid{display:flex; flex-wrap:nowrap; overflow-x:auto; gap:12px; padding-bottom:5px; scrollbar-width:none;}
   .lookaround__grid::-webkit-scrollbar{display:none;}
   .lookaround__card{flex:0 0 58vw;}
   .lookaround__card[hidden]{display:none;}
@@ -1347,7 +1348,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .section:not(.trust) .eyebrow{line-height:1.25;}
 .lookaround__grid,.compare-shop__grid,.proof__grid,.recommended__grid{align-items:stretch;}
 .lookaround__card,.compare-card,.edit__card,.style-hub__card{display:flex;flex-direction:column;}
-.lookaround__card > a{display:flex;flex-direction:column;height:100%;}
+.lookaround__card > a{display:flex;flex:1 1 auto;flex-direction:column;min-width:0;}
 .lookaround__card h3,.compare-card h3{min-height:36px;}
 .compare-card__spec{min-height:32px;}
 .edit__card h4{min-height:38px;}
@@ -1846,6 +1847,17 @@ body > section:not(.hero){
   max-width:calc(100% - 20px);
   margin-left:auto;
   margin-right:auto;
+}
+
+@media (min-width:761px){
+  .why-fableroom{margin-top:10px;}
+}
+
+@media (max-width:760px){
+  .site-footer > .container{
+    padding-left:calc(var(--gutter) + 10px);
+    padding-right:calc(var(--gutter) + 10px);
+  }
 }
 </style>
 </head>
