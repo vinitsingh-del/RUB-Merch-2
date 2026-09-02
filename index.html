@@ -435,6 +435,82 @@ body > section + section{margin-top:10px;}
   .shop-paths__body h3{font-size:28px;}
 }
 
+/* Shop-paths reference rebuild: editorial image, overlaid discovery filters and real SKU results. */
+.shop-paths__directory{
+  position:relative;
+  display:block;
+  min-height:0;
+  border:1px solid var(--line-strong);
+}
+.shop-paths__panel{grid-template-columns:minmax(0,1.7fr) minmax(310px,.78fr);}
+.shop-paths__image{min-height:470px;}
+.shop-paths__tabs{
+  position:absolute;
+  z-index:3;
+  left:28px;
+  bottom:28px;
+  width:min(460px,calc(68% - 56px));
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  border:9px solid rgba(255,255,255,.94);
+  background:var(--white);
+  box-shadow:0 4px 18px rgba(31,29,25,.08);
+}
+.shop-paths__tab{
+  min-height:76px;
+  padding:15px 17px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.shop-paths__tab:nth-child(3n){border-right:0;}
+.shop-paths__tab:nth-last-child(-n+2){border-bottom:0;}
+.shop-paths__tab:last-child{border-bottom:0;}
+.shop-paths__body{min-width:0;}
+.shop-paths__sku-label{
+  display:block;
+  margin:20px 0 8px;
+  color:var(--ink-faint);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.shop-paths__skus{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+.shop-paths__sku{
+  min-width:0;
+  display:grid;
+  grid-template-columns:46px minmax(0,1fr);
+  align-items:center;
+  gap:9px;
+  padding:6px;
+  border:1px solid var(--line);
+  background:var(--white);
+}
+.shop-paths__sku img{width:46px;height:58px;object-fit:cover;}
+.shop-paths__sku span{min-width:0;}
+.shop-paths__sku b{display:block;font-size:9px;line-height:1.3;font-weight:700;}
+.shop-paths__sku small{display:block;margin-top:4px;color:var(--ink-soft);font-size:9.5px;}
+@media (max-width:760px){
+  .shop-paths__directory{border:0;}
+  .shop-paths__panel{grid-template-columns:1fr;}
+  .shop-paths__image{height:clamp(280px,68vw,370px);min-height:0;}
+  .shop-paths__tabs{
+    top:calc(clamp(280px,68vw,370px) - 45px);
+    bottom:auto;
+    left:50%;
+    width:calc(100% - 44px);
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    transform:translateX(-50%);
+    border-width:7px;
+  }
+  .shop-paths__tab{min-height:72px;padding:12px 11px;font-size:9px;}
+  .shop-paths__body{padding:116px 0 4px;}
+  .shop-paths__sku-label{margin-top:16px;}
+  .shop-paths__sku{grid-template-columns:42px minmax(0,1fr);gap:7px;}
+  .shop-paths__sku img{width:42px;height:52px;}
+  .shop-paths__sku b{font-size:8.5px;}
+}
+
 /* ============================================================
    EDIT SECTIONS (the core merchandising blocks)
    ============================================================ */
@@ -1415,6 +1491,16 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .product-atc-cta::after,.rug-finder__result a::after{animation:none;display:none;}
 }
 
+/* Keep the shop-paths reference geometry after the global responsive scale pass. */
+@media (min-width:761px){
+  .shop-paths__tab{min-height:76px;padding:15px 17px;}
+}
+@media (max-width:760px){
+  .shop-paths__image{min-height:0;}
+  .shop-paths__tab{min-height:72px;padding:12px 11px;font-size:9px;}
+  .shop-paths__body{padding:116px 0 4px;}
+}
+
 /* Exactly one separator between adjacent page sections. */
 body > section{border-bottom:0 !important;}
 body > section + section{border-top:1px solid var(--line) !important;}
@@ -1572,8 +1658,7 @@ body > section + section{border-top:1px solid var(--line) !important;}
     </div>
     <div class="shop-paths__directory reveal" data-shop-paths>
       <div class="shop-paths__tabs" role="tablist" aria-label="Ways to shop rugs">
-        <button class="shop-paths__tab is-active" type="button" role="tab" aria-selected="true" data-path="room">Room</button>
-        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="style">Style</button>
+        <button class="shop-paths__tab is-active" type="button" role="tab" aria-selected="true" data-path="style">Style</button>
         <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="technique">Technique</button>
         <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="colour">Colour</button>
         <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="material">Material</button>
@@ -1583,13 +1668,18 @@ body > section + section{border-top:1px solid var(--line) !important;}
         <div class="shop-paths__image"><img src="assets/ai-story-08-room-meadow.webp" alt="Rug styled in a living room" data-path-image></div>
         <div class="shop-paths__body">
           <span class="shop-paths__count" data-path-count>01</span>
-          <h3 data-path-title>Find rugs for every room.</h3>
-          <p data-path-copy>Shop living room rugs, bedroom rugs, dining room carpets and outdoor rugs by space.</p>
+          <h3 data-path-title>Choose a rug style.</h3>
+          <p data-path-copy>Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.</p>
           <div class="shop-paths__links" data-path-links>
-            <a href="https://fableroom.com/collections/living-room-rugs">Living Room</a>
-            <a href="https://fableroom.com/collections/bedroom-rugs">Bedroom</a>
-            <a href="https://fableroom.com/collections/dining-room">Dining Room</a>
-            <a href="https://fableroom.com/collections/outdoor-rugs">Outdoor</a>
+            <a href="https://fableroom.com/search?q=persian+rug&amp;type=product">Persian</a>
+            <a href="https://fableroom.com/search?q=modern+rug&amp;type=product">Modern</a>
+            <a href="https://fableroom.com/search?q=minimal+rug&amp;type=product">Minimal</a>
+            <a href="https://fableroom.com/search?q=bohemian+rug&amp;type=product">Bohemian</a>
+          </div>
+          <span class="shop-paths__sku-label">Selected SKUs</span>
+          <div class="shop-paths__skus" data-path-skus>
+            <a class="shop-paths__sku" href="https://fableroom.com/products/zahana-hand-tufted-wool-rug"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy"><span><b>Zahana Hand-tufted Wool Rug</b><small>£149</small></span></a>
+            <a class="shop-paths__sku" href="https://fableroom.com/products/savana-hand-tufted-wool-rug"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy"><span><b>Savana Botanical Hand-tufted Wool Rug</b><small>£118</small></span></a>
           </div>
         </div>
       </div>
@@ -2450,13 +2540,22 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
   const title = directory.querySelector('[data-path-title]');
   const copy = directory.querySelector('[data-path-copy]');
   const links = directory.querySelector('[data-path-links]');
+  const skus = directory.querySelector('[data-path-skus]');
+  const inventory = {
+    zahana:{name:'Zahana Hand-tufted Wool Rug',price:'£149',image:'assets/zahana-hand-tufted-wool-rug.webp',href:'https://fableroom.com/products/zahana-hand-tufted-wool-rug'},
+    savana:{name:'Savana Botanical Hand-tufted Wool Rug',price:'£118',image:'assets/savana-hand-tufted-wool-rug.webp',href:'https://fableroom.com/products/savana-hand-tufted-wool-rug'},
+    amber:{name:'Amber Oasis Hand-knotted Wool Rug',price:'£312',image:'assets/amber-oasis-hand-knotted-wool-rug.webp',href:'https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug'},
+    rewa:{name:'Rewa Hand-tufted Wool Rug',price:'£185',image:'assets/rewa-hand-tufted-wool-rug.webp',href:'https://fableroom.com/products/rewa-hand-tufted-wool-rug'},
+    rovira:{name:'Rovira Hand-knotted Wool & Bamboo Silk Rug',price:'£355',image:'assets/rovira-hand-knotted-wool-bamboo-silk-rug-burgundy.webp',href:'https://fableroom.com/search?q=rovira+rug&type=product'},
+    clara:{name:'Clara Hand-knotted Wool & Bamboo Silk Rug',price:'£340',image:'assets/clara-hand-knotted-wool-bamboo-silk-rug.webp',href:'https://fableroom.com/search?q=clara+rug&type=product'},
+    fiore:{name:'Fiore Jute Rug',price:'£165',image:'assets/fiore-jute-rug.webp',href:'https://fableroom.com/search?q=fiore+jute+rug&type=product'}
+  };
   const paths = {
-    room:{count:'01',title:'Find rugs for every room.',copy:'Shop living room rugs, bedroom rugs, dining room carpets and outdoor rugs by space.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[['Living Room','https://fableroom.com/collections/living-room-rugs'],['Bedroom','https://fableroom.com/collections/bedroom-rugs'],['Dining Room','https://fableroom.com/collections/dining-room'],['Outdoor','https://fableroom.com/collections/outdoor-rugs']]},
-    style:{count:'02',title:'Choose a rug style.',copy:'Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.',image:'assets/hero-heritage-sand.webp',alt:'Heritage patterned rug in a warm neutral palette',links:[['Persian','https://fableroom.com/search?q=persian+rug&type=product'],['Modern','https://fableroom.com/search?q=modern+rug&type=product'],['Minimal','https://fableroom.com/search?q=minimal+rug&type=product'],['Bohemian','https://fableroom.com/search?q=bohemian+rug&type=product']]},
-    technique:{count:'03',title:'Compare rug techniques.',copy:'Choose hand-knotted, hand-tufted, hand-woven or washable rugs by pile and feel.',image:'assets/rug-craft-poster.jpg',alt:'Close view of rug craftsmanship',links:[['Hand-Knotted','https://fableroom.com/collections/hand-knotted-rugs'],['Hand-Tufted','https://fableroom.com/collections/hand-tufted-rugs'],['Hand-Woven','https://fableroom.com/collections/all-hand-woven-rugs-collection'],['Washable','https://fableroom.com/search?q=washable+rug&type=product']]},
-    colour:{count:'04',title:'Shop rugs by colour.',copy:'Find neutral, beige, cream, grey, blue, red and multicolour rugs for your palette.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[['Neutral','https://fableroom.com/search?q=neutral+rug&type=product'],['Blue','https://fableroom.com/search?q=blue+rug&type=product'],['Red','https://fableroom.com/search?q=red+rug&type=product'],['Multicolour','https://fableroom.com/search?q=multicolour+rug&type=product']]},
-    material:{count:'05',title:'Choose a rug material.',copy:'Compare wool rugs, jute rugs, bamboo silk carpets and easy-care PET fibres.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[['Wool','https://fableroom.com/search?q=wool+rug&type=product'],['Jute','https://fableroom.com/search?q=jute+rug&type=product'],['Bamboo Silk','https://fableroom.com/search?q=bamboo+silk+rug&type=product'],['PET','https://fableroom.com/search?q=PET+rug&type=product']]},
-    budget:{count:'06',title:'Find a rug for your budget.',copy:'Move from affordable area rugs under £150 to luxury handmade carpets.',image:'assets/ai-story-06-woven-banner.webp',alt:'Hand-woven rug in a styled home',links:[['Under £150','https://fableroom.com/collections/all-rugs-collection'],['£150–£300','https://fableroom.com/collections/all-rugs-collection'],['£300–£600','https://fableroom.com/collections/all-rugs-collection'],['Luxury Rugs','https://fableroom.com/search?q=luxury+rug&type=product']]}
+    style:{count:'01',title:'Choose a rug style.',copy:'Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[['Persian','https://fableroom.com/search?q=persian+rug&type=product'],['Modern','https://fableroom.com/search?q=modern+rug&type=product'],['Minimal','https://fableroom.com/search?q=minimal+rug&type=product'],['Bohemian','https://fableroom.com/search?q=bohemian+rug&type=product']],products:['zahana','savana']},
+    technique:{count:'02',title:'Compare rug techniques.',copy:'Choose hand-knotted, hand-tufted, hand-woven or washable rugs by pile and feel.',image:'assets/rug-craft-poster.jpg',alt:'Close view of rug craftsmanship',links:[['Hand-Knotted','https://fableroom.com/collections/hand-knotted-rugs'],['Hand-Tufted','https://fableroom.com/collections/hand-tufted-rugs'],['Hand-Woven','https://fableroom.com/collections/all-hand-woven-rugs-collection'],['Washable','https://fableroom.com/search?q=washable+rug&type=product']],products:['amber','rewa']},
+    colour:{count:'03',title:'Shop rugs by colour.',copy:'Find neutral, beige, cream, grey, blue, red and multicolour rugs for your palette.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[['Neutral','https://fableroom.com/search?q=neutral+rug&type=product'],['Blue','https://fableroom.com/search?q=blue+rug&type=product'],['Red','https://fableroom.com/search?q=red+rug&type=product'],['Multicolour','https://fableroom.com/search?q=multicolour+rug&type=product']],products:['rovira','savana']},
+    material:{count:'04',title:'Choose a rug material.',copy:'Compare wool rugs, jute rugs, bamboo silk carpets and easy-care PET fibres.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[['Wool','https://fableroom.com/search?q=wool+rug&type=product'],['Jute','https://fableroom.com/search?q=jute+rug&type=product'],['Bamboo Silk','https://fableroom.com/search?q=bamboo+silk+rug&type=product'],['PET','https://fableroom.com/search?q=PET+rug&type=product']],products:['fiore','clara']},
+    budget:{count:'05',title:'Find a rug for your budget.',copy:'Move from affordable area rugs under £150 to luxury handmade carpets.',image:'assets/ai-story-06-woven-banner.webp',alt:'Hand-woven rug in a styled home',links:[['Under £150','https://fableroom.com/collections/all-rugs-collection'],['£150–£300','https://fableroom.com/collections/all-rugs-collection'],['£300–£600','https://fableroom.com/collections/all-rugs-collection'],['Luxury Rugs','https://fableroom.com/search?q=luxury+rug&type=product']],products:['savana','amber']}
   };
   directory.querySelectorAll('.shop-paths__tab').forEach(tab=>{
     tab.addEventListener('click',()=>{
@@ -2473,6 +2572,15 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
         title.textContent=data.title; copy.textContent=data.copy;
         links.replaceChildren(...data.links.map(([label,href])=>{
           const a=document.createElement('a'); a.href=href; a.textContent=label; return a;
+        }));
+        skus.replaceChildren(...data.products.map(key=>{
+          const product=inventory[key];
+          const a=document.createElement('a'); a.className='shop-paths__sku'; a.href=product.href;
+          const productImage=document.createElement('img'); productImage.src=product.image; productImage.alt=product.name; productImage.loading='lazy';
+          const details=document.createElement('span');
+          const name=document.createElement('b'); name.textContent=product.name;
+          const price=document.createElement('small'); price.textContent=product.price;
+          details.append(name,price); a.append(productImage,details); return a;
         }));
         panel.classList.remove('is-changing');
       },160);
