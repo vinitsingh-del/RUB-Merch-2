@@ -1797,6 +1797,15 @@ body > .section:not(.trust) > .container,
     min-width:44px;
   }
 }
+
+/* 10px page-edge padding adapted from the selected CSS foundations reference.
+   The hero remains full-bleed and completely untouched at every breakpoint. */
+body > section:not(.hero){
+  width:calc(100% - 20px);
+  max-width:calc(100% - 20px);
+  margin-left:auto;
+  margin-right:auto;
+}
 </style>
 </head>
 <body>
