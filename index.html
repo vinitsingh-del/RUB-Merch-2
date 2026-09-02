@@ -1859,6 +1859,72 @@ body > section:not(.hero){
     padding-right:calc(var(--gutter) + 10px);
   }
 }
+
+/* Mobile product-card normalization — desktop and hero remain untouched. */
+@media (max-width:760px){
+  .edit__card h4,
+  .lookaround__card h3,
+  .style-hub__card h3{
+    min-height:3.9em;
+    font-size:12.5px;
+    font-weight:700;
+    line-height:1.3;
+  }
+
+  .edit__card .price-row,
+  .lookaround__price,
+  .style-hub__card small{
+    font-size:12px;
+    line-height:1.3;
+  }
+
+  .edit__card .price-row s,
+  .edit__card .other-retailers,
+  .lookaround__price s{
+    font-size:10px;
+    line-height:1.3;
+  }
+
+  .edit__pills button,
+  .lookaround__filter,
+  .style-hub__filters button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:44px;
+    min-height:44px;
+    padding:0 12px;
+    border-radius:20px;
+    font-size:9.5px;
+    line-height:1;
+  }
+
+  .product-card-actions{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:5px;
+  }
+
+  .product-card-actions button{
+    width:100%;
+    height:44px;
+    min-height:44px;
+    padding:0 5px;
+    border-radius:20px;
+    font-size:6.5px;
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  .product-card-actions button span{
+    display:inline;
+    margin:0;
+    color:inherit !important;
+    font-size:inherit;
+    line-height:inherit;
+    letter-spacing:inherit;
+    text-transform:inherit;
+  }
+}
 </style>
 </head>
 <body>
