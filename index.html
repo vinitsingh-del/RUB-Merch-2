@@ -1541,24 +1541,48 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   }
 }
 
-/* Circular rug-thumbnail discovery controls: five items, no empty grid cell. */
+/* Refined shop-paths UI: one clean circular discovery row and a quieter content panel. */
+.shop-paths__directory{
+  overflow:hidden;
+  border-color:var(--line);
+  background:var(--white);
+}
+.shop-paths__panel{grid-template-columns:minmax(0,2.05fr) minmax(340px,.95fr);}
+.shop-paths__image{min-height:470px;}
+.shop-paths__body{
+  padding:clamp(30px,3.25vw,52px);
+  background:var(--white);
+}
+.shop-paths__links{
+  flex-wrap:nowrap;
+  gap:8px;
+  overflow-x:auto;
+  padding:1px 1px 4px;
+  scrollbar-width:none;
+}
+.shop-paths__links::-webkit-scrollbar{display:none;}
+.shop-paths__links a{flex:0 0 auto;white-space:nowrap;}
 .shop-paths__tabs{
-  width:min(410px,calc(68% - 56px));
+  left:38px;
+  bottom:30px;
+  width:min(520px,calc(68% - 76px));
   grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:10px;
+  align-items:center;
+  gap:14px;
   border:0;
   background:transparent;
   box-shadow:none;
 }
 .shop-paths__tab{
   aspect-ratio:1;
+  min-width:0;
   min-height:0;
   justify-content:center;
   padding:8px;
-  border:3px solid rgba(255,255,255,.94);
+  border:3px solid rgba(255,255,255,.96);
   border-radius:50%;
   background-color:var(--ink);
-  background-image:linear-gradient(180deg,rgba(24,22,18,.14),rgba(24,22,18,.68)),var(--path-rug);
+  background-image:linear-gradient(180deg,rgba(24,22,18,.12),rgba(24,22,18,.7)),var(--path-rug);
   background-position:center;
   background-size:cover;
   color:var(--white);
@@ -1566,14 +1590,14 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   font-size:8px;
   line-height:1.05;
   letter-spacing:.07em;
-  text-shadow:0 1px 5px rgba(0,0,0,.72);
-  box-shadow:0 3px 12px rgba(31,29,25,.2);
+  text-shadow:0 1px 5px rgba(0,0,0,.78);
+  box-shadow:0 0 0 1px rgba(31,29,25,.28),0 5px 14px rgba(31,29,25,.2);
 }
 .shop-paths__tab::after{display:none;}
 .shop-paths__tab.is-active{
   color:var(--white);
-  background-image:linear-gradient(180deg,rgba(24,22,18,.28),rgba(24,22,18,.78)),var(--path-rug);
-  box-shadow:0 0 0 2px var(--ink),0 4px 14px rgba(31,29,25,.28);
+  background-image:linear-gradient(180deg,rgba(24,22,18,.24),rgba(24,22,18,.8)),var(--path-rug);
+  box-shadow:0 0 0 3px var(--ink),0 5px 16px rgba(31,29,25,.26);
 }
 .shop-paths__tab[data-path="style"]{--path-rug:url('assets/zahana-hand-tufted-wool-rug.webp');}
 .shop-paths__tab[data-path="technique"]{--path-rug:url('assets/amber-oasis-hand-knotted-wool-rug.webp');}
@@ -1584,24 +1608,33 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .shop-paths__tab[data-path="material"]{background-position:center 76%;}
 .shop-paths__tab[data-path="budget"]{background-position:center 78%;}
 @media (max-width:760px){
+  .shop-paths__directory{overflow:visible;}
+  .shop-paths__panel{grid-template-columns:1fr;}
+  .shop-paths__image{min-height:0;}
+  .shop-paths__body{padding-left:0;padding-right:0;background:transparent;}
   .shop-paths__tabs{
     top:calc(clamp(154px,26svh,210px) - 25px);
-    width:calc(100% - 28px);
+    left:50%;
+    bottom:auto;
+    width:min(370px,calc(100% - 24px));
     grid-template-columns:repeat(5,minmax(0,1fr));
-    gap:6px;
+    gap:7px;
     border:0;
+    transform:translateX(-50%);
   }
   .shop-paths__tab,
   .shop-paths__tab:nth-last-child(-n+2){
     grid-column:auto;
     min-height:0;
     padding:5px;
-    border:2px solid rgba(255,255,255,.94);
-    font-size:clamp(6px,1.8vw,7px);
+    border:2px solid rgba(255,255,255,.96);
+    font-size:clamp(6.5px,1.9vw,7.5px);
     letter-spacing:.03em;
+    box-shadow:0 0 0 1px rgba(31,29,25,.24),0 3px 9px rgba(31,29,25,.18);
   }
+  .shop-paths__tab.is-active{box-shadow:0 0 0 2px var(--ink),0 3px 10px rgba(31,29,25,.24);}
   .shop-paths__tab:nth-child(4),
-  .shop-paths__tab:last-child{border-right:2px solid rgba(255,255,255,.94);}
+  .shop-paths__tab:last-child{border-right:2px solid rgba(255,255,255,.96);}
   .shop-paths__body{padding-top:38px;}
 }
 @supports not (height:1svh){
@@ -1895,7 +1928,6 @@ body > section:not(.hero){
 <section class="shop-paths section" aria-labelledby="shop-paths-title">
   <div class="container">
     <div class="shop-paths__intro reveal">
-      <div class="eyebrow">Find Your Rug or Carpet</div>
       <h2 id="shop-paths-title">Shop by room, style or craft.</h2>
       <p>Explore area rugs by size, colour, material, technique and budget.</p>
     </div>
@@ -2014,7 +2046,6 @@ body > section:not(.hero){
       </div>
       <div class="style-hub__panel">
         <div class="style-hub__intro">
-          <div class="eyebrow">Rug Style Discovery</div>
           <h2 id="style-hub-title">One rug discovery hub.<em>Find the style that feels like home.</em></h2>
           <p>Filter the edit by the look you love. Every result opens the matching FableRoom rug.</p>
         </div>
@@ -2063,7 +2094,6 @@ body > section:not(.hero){
   <div class="container">
     <div class="section-head reveal">
       <div>
-        <div class="eyebrow" style="margin-bottom:10px;">Handmade rug &amp; carpet craft</div>
         <h2>Four ways to make a rug.</h2>
       </div>
     </div>
@@ -2097,7 +2127,6 @@ body > section:not(.hero){
   <div class="container">
     <div class="section-head reveal">
       <div class="lookaround__intro">
-        <div class="eyebrow">Take a Look Around</div>
         <h2 id="lookaround-title">Start with what matters today.</h2>
         <p>Browse bestselling rugs, current discounts, customer favourites and rugs available sooner.</p>
       </div>
@@ -2395,7 +2424,6 @@ body > section:not(.hero){
   <div class="container">
     <div class="room-discovery__head reveal">
       <div class="room-discovery__intro">
-        <div class="eyebrow">Start with Your Space</div>
         <h2 id="room-discovery-title">Start with the room.<em>Find the rug that belongs.</em></h2>
       </div>
       <p class="room-discovery__copy">Choose the room you are furnishing, then explore rugs suited to its scale, traffic and everyday use.</p>
