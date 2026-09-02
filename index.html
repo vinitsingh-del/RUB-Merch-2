@@ -306,158 +306,84 @@ body > section + section{margin-top:10px;}
 }
 
 /* ============================================================
-   SCROLL-LED REVIEWS — the rug unfolds as the visitor reads
+   CUSTOMER REVIEWS — compact continuous proof strip
    ============================================================ */
 .trust{
-  --review-progress:0;
-  --review-remaining:1;
-  position:relative; isolation:isolate;
-  height:clamp(860px, 165vh, 1320px);
+  position:relative;
+  min-height:0;
+  height:auto;
+  overflow:hidden;
+  padding:34px 0;
   border-top:1px solid var(--line); border-bottom:1px solid var(--line);
   background:rgba(255,255,255,.82);
 }
-.trust__sticky{
-  position:sticky; top:76px;
-  min-height:calc(100vh - 76px);
-  display:flex; align-items:center;
-  overflow:hidden; padding:5px 0;
-}
-.trust__experience{
-  width:100%; display:grid;
-  grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);
-  gap:clamp(30px,5vw,72px); align-items:center;
-}
-.trust__rug-stage{
-  position:relative; height:clamp(390px,66vh,620px);
-  overflow:hidden; border-radius:2px;
-  background:#e7dfd2;
-  box-shadow:0 18px 50px rgba(26,26,26,.12);
-}
-.trust__rug-frame{
-  position:absolute; inset:0; width:100%; height:100%; border:0; padding:0; margin:0;
-  background:none; cursor:zoom-in; opacity:0; z-index:0;
-  transition:opacity .6s ease;
-}
-.trust__rug-frame.is-active{opacity:1; z-index:1;}
-.trust__rug-frame img{width:100%; height:calc(100% + 18px); object-fit:cover; object-position:center top; display:block; transform:translateY(var(--rug-parallax,-7px)) scale(1.025); transition:transform .18s linear; will-change:transform;}
-.trust__rug-caption{
-  position:absolute; z-index:3; left:18px; top:18px;
-  padding:8px 11px; background:rgba(255,255,255,.9);
-  border:1px solid rgba(255,255,255,.65);
-  font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-  pointer-events:none;
-}
+.trust__experience{width:100%;}
 .trust__content{min-width:0;}
-
-/* ---------- Rug zoom lightbox ---------- */
-.rug-zoom{
-  position:fixed; inset:0; z-index:500;
-  background:rgba(18,15,12,.92);
-  display:flex; align-items:center; justify-content:center;
-  padding:56px;
-}
-.rug-zoom[hidden]{display:none;}
-.rug-zoom img{
-  max-width:min(900px,90vw); max-height:88vh; width:auto; height:auto;
-  object-fit:contain; border-radius:2px;
-  box-shadow:0 30px 80px rgba(0,0,0,.5);
-}
-.rug-zoom__close{
-  position:absolute; top:22px; right:22px; z-index:1;
-  width:44px; height:44px; border-radius:50%;
-  border:1px solid rgba(255,255,255,.4); background:rgba(255,255,255,.08);
-  color:#fff; font-size:22px; line-height:1; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition:background .3s var(--ease);
-}
-.rug-zoom__close:hover{background:rgba(255,255,255,.18);}
-@media (max-width:640px){
-  .rug-zoom{padding:20px;}
-  .rug-zoom__close{top:14px; right:14px; width:40px; height:40px;}
-}
-.trust__hint{
-  display:flex; align-items:center; gap:9px; margin-bottom:24px;
-  font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
-}
-.trust__hint::before{content:'↓'; font-size:15px; color:var(--ink);}
-.trust__hint span{display:block; height:1px; width:44px; background:var(--line-strong);}
-.trust__progress{
-  flex:1; height:1px; background:var(--line);
-  position:relative; overflow:hidden;
-}
-.trust__progress::after{
-  content:''; position:absolute; inset:0; background:var(--ink);
-  transform:scaleX(var(--review-progress)); transform-origin:left center;
-}
 .trust__row{
-  display:flex; gap:42px; align-items:flex-start; flex-wrap:nowrap;
+  display:grid;
+  grid-template-columns:170px minmax(0,1fr);
+  gap:28px;
+  align-items:center;
 }
-.trust__score{flex:none; width:200px;}
+.trust__score{min-width:0;}
 .trust__score .eyebrow{margin-bottom:10px;}
-.trust__score b{font-family:var(--serif); font-size:44px; font-weight:400; display:block;}
+.trust__score b{font-family:var(--serif); font-size:38px; font-weight:400; display:block;}
 .trust__stars{color:var(--gold); letter-spacing:2px; font-size:15px; margin:4px 0 8px;}
 .trust__score span{font-size:12px; color:var(--ink-soft); display:block; line-height:1.5;}
 .trust__score a{display:inline-block; margin-top:14px; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-bottom:1px solid var(--ink);}
 
 .trust__marquee{
-  flex:1; min-width:0; overflow:hidden;
+  min-width:0; overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
   mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
 }
 .trust__track{
   display:flex; gap:14px; width:max-content;
-  transform:translateX(calc(var(--review-progress) * -47%));
+  animation:trust-marquee 30s linear infinite;
   will-change:transform;
 }
+@keyframes trust-marquee{to{transform:translateX(calc(-50% - 7px));}}
 .trust__quote{
-  flex:none; width:188px; padding:14px;
+  flex:none; width:172px; min-height:124px; padding:12px;
   border:1px solid var(--line); border-radius:2px;
-  background:rgba(255,255,255,.82); backdrop-filter:blur(3px);
+  background:rgba(255,255,255,.82);
 }
-.trust__quote .trust__stars{font-size:10px; margin-bottom:6px;}
+.trust__quote .trust__stars{font-size:10px; margin:0 0 6px;}
 .trust__quote p{font-size:11.5px; line-height:1.5; margin:0 0 6px; color:var(--ink);}
 .trust__quote cite{font-style:normal; font-size:9.5px; letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase;}
 
 .trust__badges{
-  display:flex; gap:12px; flex-wrap:wrap;
-  margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
+  display:flex; gap:8px; flex-wrap:wrap;
+  margin:14px 0 0 198px; padding-top:12px; border-top:1px solid var(--line);
 }
 .trust__badge{
   display:flex; align-items:center; gap:8px;
-  padding:9px 16px; border-radius:20px;
+  padding:7px 11px; border-radius:20px;
   border:1px solid var(--line-strong);
   background:rgba(255,255,255,.82); backdrop-filter:blur(4px);
-  font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft);
+  font-size:9px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft);
 }
 .trust__badge svg{width:15px; height:15px; stroke:var(--ink); flex:none;}
 @media (max-width:760px){
-  .trust{height:max(900px, 172vh);}
-  .trust__sticky{top:64px; min-height:calc(100vh - 64px); padding:10px 0;}
-  .trust__experience{grid-template-columns:1fr; grid-template-rows:190px auto; gap:18px;}
-  .trust__rug-stage{height:190px; width:100%;}
-  .trust__rug-frame img{object-position:center 38%;}
-  .trust__rug-caption{left:12px; top:12px; padding:6px 9px; font-size:9px;}
-  .trust__hint{margin-bottom:12px;}
+  .trust{padding:26px 0;}
   .trust__row{display:block;}
-  .trust__score{width:auto; display:grid; grid-template-columns:auto 1fr; column-gap:14px; align-items:center; margin-bottom:14px;}
+  .trust__score{display:grid; grid-template-columns:48px 1fr; column-gap:9px; align-items:center; margin-bottom:7px;}
   .trust__score .eyebrow,.trust__score a{grid-column:1 / -1;}
   .trust__score .eyebrow{margin-bottom:3px;}
-  .trust__score b{font-size:36px;}
+  .trust__score b{font-size:29px;}
   .trust__score .trust__stars{margin:0;}
-  .trust__score span{grid-column:2;}
-  .trust__score a{margin-top:8px; width:max-content;}
-  .trust__marquee{-webkit-mask-image:linear-gradient(90deg,black 92%,transparent); mask-image:linear-gradient(90deg,black 92%,transparent);}
-  .trust__track{transform:translateX(calc(var(--review-progress) * -52%));}
-  .trust__quote{width:210px; padding:12px;}
-  .trust__badges{flex-wrap:nowrap; overflow-x:auto; margin-top:14px; padding-top:14px; scrollbar-width:none;}
-  .trust__badges::-webkit-scrollbar{display:none;}
-  .trust__badge{flex:none; padding:8px 12px;}
+  .trust__score span{grid-column:2; font-size:9px;}
+  .trust__score a{margin-top:4px; width:max-content; font-size:8px;}
+  .trust__marquee{margin-right:calc(var(--gutter) * -1); -webkit-mask-image:linear-gradient(90deg,black 94%,transparent); mask-image:linear-gradient(90deg,black 94%,transparent);}
+  .trust__track{animation-duration:26s;}
+  .trust__quote{width:172px; min-height:112px; padding:9px;}
+  .trust__quote p{font-size:10px; line-height:1.35;}
+  .trust__badges{margin:7px 0 0; padding-top:7px;}
 }
 @media (prefers-reduced-motion:reduce){
-  .trust{height:auto;}
-  .trust__sticky{position:relative; top:auto; min-height:auto; padding:30px 0;}
-  .trust__rug-frame{transition:none;}
-  .trust__track{transform:none;}
+  .trust__marquee{overflow-x:auto; -webkit-mask-image:none; mask-image:none; scrollbar-width:none;}
+  .trust__marquee::-webkit-scrollbar{display:none;}
+  .trust__track{animation:none; transform:none;}
 }
 
 /* ============================================================
@@ -1302,12 +1228,6 @@ body > section + section{margin-top:10px;}
 .style-hub__card h3{font-size:12px;}
 .style-hub__footer{padding-top:16px;}
 
-.trust{height:clamp(690px,108vh,860px);}
-.trust__sticky{min-height:calc(100vh - 76px);padding:0;}
-.trust__rug-stage{height:clamp(350px,57vh,520px);}
-.trust__hint{margin-bottom:16px;}
-.trust__badges{margin-top:20px;padding-top:18px;}
-
 .washable-edit.section{padding-top:calc(var(--section-space) * .8);padding-bottom:calc(var(--section-space) * .8);}
 .washable-edit .edit__head{margin-bottom:18px;}
 .washable-edit .edit__pills{margin:14px 0 18px;}
@@ -1331,14 +1251,6 @@ body > section + section{margin-top:10px;}
   .proof__grid{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
   .proof__grid::-webkit-scrollbar{display:none;}
   .proof__card{flex:0 0 74vw;max-width:286px;scroll-snap-align:start;scroll-snap-stop:always;}
-
-  .trust{height:max(690px,100svh);}
-  .trust__sticky{top:64px;min-height:calc(100svh - 64px);padding:0;}
-  .trust__experience{grid-template-rows:180px auto;gap:14px;}
-  .trust__rug-stage{height:180px;}
-  .trust__hint{margin-bottom:8px;}
-  .trust__score{margin-bottom:10px;}
-  .trust__badges{margin-top:10px;padding-top:10px;}
 
   .washable-edit.section{padding-top:calc(var(--section-space) * .8);padding-bottom:calc(var(--section-space) * .8);}
   .washable-edit .edit__head{margin-bottom:12px;}
@@ -1375,20 +1287,6 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
 .style-hub__card div{padding:8px;}
 .style-hub__card h3{font-size:13px;min-height:0;}
 .style-hub__footer{padding-top:18px;}
-
-/* Reviews: four smooth parallax stages without an oversized blank runway. */
-.trust{height:calc(100svh + 760px);min-height:calc(100svh + 760px);}
-.trust__sticky{position:sticky;top:0;height:min(100svh,830px);min-height:min(100svh,830px);align-items:center;padding:0;}
-.trust__experience{grid-template-columns:minmax(240px,.78fr) minmax(0,1.22fr);gap:clamp(28px,4.5vw,60px);}
-.trust__rug-stage{height:clamp(400px,62vh,600px);}
-.trust__rug-caption{left:14px;top:14px;padding:7px 9px;font-size:9px;}
-.trust__hint{margin-bottom:12px;}
-.trust__row{gap:28px;}
-.trust__score{width:170px;}
-.trust__score b{font-size:38px;}
-.trust__quote{width:172px;padding:12px;}
-.trust__badges{margin-top:14px;padding-top:12px;gap:8px;}
-.trust__badge{padding:7px 11px;font-size:9px;}
 
 /* Compare controls: explicit CTA, equal card baselines and symmetrical selection state. */
 .compare-card{padding:8px 8px 14px;border:1px solid var(--line);background:var(--cream);}
@@ -1433,23 +1331,6 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   .style-hub__card{flex-basis:116px;max-width:116px;}
   .style-hub__card div{padding:8px;}
   .style-hub__footer{padding-top:8px;}
-
-  .trust{height:calc(100svh + 560px);min-height:calc(100svh + 560px);}
-  .trust__sticky{position:sticky;top:0;height:100svh;min-height:100svh;align-items:center;padding:0;}
-  .trust__experience{grid-template-columns:1fr;grid-template-rows:202px minmax(0,1fr);gap:10px;}
-  .trust__rug-stage{height:202px;}
-  .trust__rug-frame img{object-position:center 46%;}
-  .trust__rug-caption{left:9px;top:9px;padding:5px 7px;font-size:7px;}
-  .trust__hint{margin-bottom:5px;font-size:7px;gap:6px;}
-  .trust__row{display:block;}
-  .trust__score{width:auto;margin-bottom:7px;grid-template-columns:48px 1fr;column-gap:9px;}
-  .trust__score b{font-size:29px;}
-  .trust__score span{font-size:9px;}
-  .trust__score a{margin-top:4px;font-size:8px;}
-  .trust__quote{width:172px;padding:9px;}
-  .trust__quote p{font-size:10px;line-height:1.35;}
-  .trust__badges{margin-top:7px;padding-top:7px;gap:3px;}
-  .trust__badge{padding:5px 2px;font-size:clamp(5.7px,1.65vw,7px);}
 
   .compare-shop__grid{scroll-snap-type:x mandatory;padding:8px 1px 10px;}
   .compare-card{flex:0 0 62vw;max-width:230px;scroll-snap-align:start;}
@@ -1717,26 +1598,9 @@ body > section + section{border-top:1px solid var(--line) !important;}
 </section>
 
 <!-- ================= TRUSTPILOT STRIP ================= -->
-<section class="trust" data-rug-reviews>
-  <div class="trust__sticky">
-    <div class="container trust__experience">
-      <div class="trust__rug-stage" data-rug-cycle>
-        <button class="trust__rug-frame is-active" type="button" data-rug-index="0" aria-label="Zoom in on cream and sage handmade rug">
-          <img src="assets/review-rug-01.webp" alt="The FableRoom model showcasing a cream and sage handmade rug">
-        </button>
-        <button class="trust__rug-frame" type="button" data-rug-index="1" aria-label="Zoom in on rust and navy handmade rug">
-          <img src="assets/review-rug-02.webp" alt="The FableRoom model showcasing a rust and navy handmade rug">
-        </button>
-        <button class="trust__rug-frame" type="button" data-rug-index="2" aria-label="Zoom in on modern abstract handmade rug">
-          <img src="assets/review-rug-03.webp" alt="The FableRoom model showcasing a modern abstract handmade rug">
-        </button>
-        <button class="trust__rug-frame" type="button" data-rug-index="3" aria-label="Zoom in on natural geometric woven rug">
-          <img src="assets/review-rug-04.webp" alt="The FableRoom model showcasing a natural geometric woven rug">
-        </button>
-        <div class="trust__rug-caption">Tap a rug to zoom in</div>
-      </div>
-      <div class="trust__content">
-        <div class="trust__hint" aria-hidden="true">Your scroll reveals the story <span></span><i class="trust__progress"></i></div>
+<section class="trust">
+  <div class="container trust__experience">
+    <div class="trust__content">
         <div class="trust__row">
           <div class="trust__score">
             <div class="eyebrow">Customer Reviews</div>
@@ -1745,7 +1609,7 @@ body > section + section{border-top:1px solid var(--line) !important;}
             <span>EXCELLENT · 1,260 TRUSTPILOT REVIEWS</span>
             <a href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">Read Verified Reviews</a>
           </div>
-          <div class="trust__marquee">
+          <div class="trust__marquee" aria-label="Customer reviews">
             <div class="trust__track">
         <div class="trust__quote">
           <div class="trust__stars">★★★★★</div>
@@ -1804,7 +1668,6 @@ body > section + section{border-top:1px solid var(--line) !important;}
             <span>30-Day Returns</span>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </section>
@@ -2473,12 +2336,6 @@ body > section + section{border-top:1px solid var(--line) !important;}
   </div>
 </footer>
 
-<!-- ================= RUG ZOOM LIGHTBOX ================= -->
-<div class="rug-zoom" data-rug-zoom hidden>
-  <button class="rug-zoom__close" type="button" data-rug-zoom-close aria-label="Close zoom view">&times;</button>
-  <img data-rug-zoom-img src="" alt="">
-</div>
-
 <script>
 /* ---------- Scroll reveals ---------- */
 const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
@@ -2582,57 +2439,6 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     if(!open){ marker.classList.add('is-open'); card.classList.add('is-open'); }
   });
 });
-
-/* ---------- Scroll-driven rug cycle and review reading ---------- */
-(function(){
-  const section = document.querySelector('[data-rug-reviews]');
-  if(!section) return;
-  const frames = [...section.querySelectorAll('.trust__rug-frame')];
-  let ticking = false;
-  const update = ()=>{
-    const rect = section.getBoundingClientRect();
-    const distance = Math.max(1, section.offsetHeight - window.innerHeight);
-    const progress = Math.min(1, Math.max(0, -rect.top / distance));
-    section.style.setProperty('--review-progress', progress.toFixed(4));
-    section.style.setProperty('--review-remaining', (1-progress).toFixed(4));
-    if(frames.length){
-      const idx = Math.min(frames.length-1, Math.floor(progress * frames.length));
-      const step = progress * frames.length;
-      frames.forEach((f,i)=>{
-        f.classList.toggle('is-active', i===idx);
-        const local = Math.min(1,Math.max(0,step-i));
-        f.style.setProperty('--rug-parallax',`${(local*14-7).toFixed(2)}px`);
-      });
-    }
-    ticking = false;
-  };
-  const requestUpdate = ()=>{
-    if(!ticking){ requestAnimationFrame(update); ticking = true; }
-  };
-  update();
-  addEventListener('scroll', requestUpdate, {passive:true});
-  addEventListener('resize', requestUpdate, {passive:true});
-})();
-
-/* ---------- Rug zoom lightbox ---------- */
-(function(){
-  const zoom = document.querySelector('[data-rug-zoom]');
-  const zoomImg = document.querySelector('[data-rug-zoom-img]');
-  const closeBtn = document.querySelector('[data-rug-zoom-close]');
-  if(!zoom || !zoomImg) return;
-  document.querySelectorAll('.trust__rug-frame').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const img = btn.querySelector('img');
-      zoomImg.src = img.src;
-      zoomImg.alt = img.alt;
-      zoom.hidden = false;
-    });
-  });
-  const closeZoom = ()=>{ zoom.hidden = true; };
-  if(closeBtn) closeBtn.addEventListener('click', closeZoom);
-  zoom.addEventListener('click', e=>{ if(e.target === zoom) closeZoom(); });
-  document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeZoom(); });
-})();
 
 /* ---------- Original shop-by directory ---------- */
 (function(){
