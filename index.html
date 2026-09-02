@@ -287,7 +287,7 @@ body > section + section{margin-top:10px;}
    PROOF CARDS — "the proof is in the detail"
    ============================================================ */
 .proof__grid{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gutter);
+  display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:var(--gutter);
 }
 .proof__card{}
 .proof__frame{
@@ -1029,7 +1029,7 @@ body > section + section{margin-top:10px;}
 .lookaround__filter:last-child{border-right:0;}
 .lookaround__filter.is-active{background:var(--ink); color:var(--white);}
 .lookaround__grid{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px;
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px;
 }
 .lookaround__card{min-width:0;}
 .lookaround__card[hidden]{display:none;}
@@ -1082,6 +1082,8 @@ body > section + section{margin-top:10px;}
 .room-discovery__head{display:flex; justify-content:space-between; align-items:flex-end; gap:28px; margin-bottom:28px;}
 .room-discovery__intro h2{font-size:clamp(30px,4vw,50px); line-height:1.02; margin-top:8px;}
 .room-discovery__intro h2 em{display:block; color:var(--clay); font-weight:400;}
+.room-discovery__intro h2,
+.room-discovery__intro h2 em{text-align:left;margin-left:0;padding-left:0;}
 .room-discovery__copy{max-width:39ch; color:var(--ink-soft); font-size:14px; margin:0 0 4px;}
 .room-discovery__grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; align-items:start;}
 .room-discovery__card{position:relative; display:block; overflow:hidden; aspect-ratio:4/5; background:#d8d0c6;}
@@ -1682,15 +1684,21 @@ body > section + section{border-top:1px solid var(--line) !important;}
 .compare-tray button:disabled{opacity:.45;cursor:not-allowed;}
 .compare-tray__view:not(:disabled){background:var(--white);color:var(--ink);}
 .compare-dialog{position:fixed;inset:0;z-index:220;display:grid;place-items:center;padding:24px;background:rgba(20,18,15,.72);}
-.compare-dialog__panel{position:relative;width:min(980px,100%);max-height:min(760px,88vh);overflow:auto;background:var(--white);padding:34px;box-shadow:0 24px 70px rgba(0,0,0,.28);}
+.compare-dialog__panel{position:relative;width:min(1240px,100%);max-height:min(760px,88vh);overflow:auto;background:var(--white);padding:34px;box-shadow:0 24px 70px rgba(0,0,0,.28);}
 .compare-dialog__head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:22px;}
 .compare-dialog__head h2{font-size:clamp(26px,3vw,38px);margin:0;}
 .compare-dialog__close{width:38px;height:38px;border:1px solid var(--line-strong);background:transparent;font-size:22px;cursor:pointer;}
 .compare-dialog__table-wrap{overflow-x:auto;}
-.compare-dialog table{width:100%;min-width:650px;border-collapse:collapse;font-size:12px;}
+.compare-dialog table{width:100%;min-width:1050px;border-collapse:collapse;font-size:12px;}
 .compare-dialog th,.compare-dialog td{padding:13px 15px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
 .compare-dialog thead th{font-family:var(--serif);font-size:17px;font-weight:400;background:var(--cream);}
 .compare-dialog tbody th{width:130px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
+.compare-dialog__actions-row th,.compare-dialog__actions-row td{padding-top:16px;border-bottom:0;}
+.compare-dialog__atc{
+  display:flex;align-items:center;justify-content:center;width:100%;min-height:38px;padding:10px 12px;border:1px solid var(--ink);
+  background:var(--ink);color:var(--white);font:700 9px/1 var(--sans);
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;
+}
 @media (max-width:640px){
   .lookaround__card{flex-basis:46.4vw;max-width:184px;}
   .edit__row .edit__card{width:43.2vw;max-width:168px;}
@@ -2094,7 +2102,7 @@ body > section:not(.hero){
   <div class="container">
     <div class="section-head reveal">
       <div>
-        <h2>Four ways to make a rug.</h2>
+        <h2>Five ways to make a rug.</h2>
       </div>
     </div>
     <div class="proof__grid reveal-stagger">
@@ -2114,9 +2122,14 @@ body > section:not(.hero){
         <p>Flatweave wool and jute rugs, loomed without pile for dining rooms, kitchens and hallway spaces.</p>
       </div>
       <div class="proof__card">
-        <div class="proof__frame"><img src="assets/craft-washable-finish-v2.webp" alt="Artisan hands trimming and finishing the edge of a washable rug" loading="lazy"></div>
-        <h3>Washable Rugs</h3>
-        <p>Easy-care washable rugs for living rooms, kitchens, family homes and everyday spills.</p>
+        <div class="proof__frame"><img src="assets/fiore-jute-rug.webp" alt="Low-profile Fiore flatweave jute rug" loading="lazy"></div>
+        <h3>Flatweave Rugs</h3>
+        <p>Flatweave rugs are woven without pile for a low-profile finish that works neatly in busy, high-traffic spaces.</p>
+      </div>
+      <div class="proof__card">
+        <div class="proof__frame"><img src="assets/nuvara-handloom-rug.webp" alt="Nuvara wool and viscose handloom rug" loading="lazy"></div>
+        <h3>Handloom Rugs</h3>
+        <p>Handloom rugs are woven on traditional looms in natural fibres, creating tactile texture with durable everyday structure.</p>
       </div>
     </div>
   </div>
@@ -2698,6 +2711,24 @@ body > section:not(.hero){
 </footer>
 
 <script>
+/* ---------- Requested section order ---------- */
+(()=>{
+  const styleHub = document.querySelector('.style-hub');
+  const lookAround = document.querySelector('.lookaround');
+  if(styleHub && lookAround){
+    const marker = document.createComment('style-hub-position');
+    styleHub.replaceWith(marker);
+    lookAround.replaceWith(styleHub);
+    marker.replaceWith(lookAround);
+  }
+  const whyFableRoom = document.querySelector('.why-fableroom');
+  const rugFinder = document.querySelector('.rug-finder');
+  if(whyFableRoom && rugFinder) rugFinder.insertAdjacentElement('beforebegin',whyFableRoom);
+  const trustBadges = document.querySelector('.reassure');
+  const footer = document.querySelector('.site-footer');
+  if(trustBadges && footer) footer.insertAdjacentElement('beforebegin',trustBadges);
+})();
+
 /* ---------- Scroll reveals ---------- */
 const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
 const io = new IntersectionObserver((entries)=>{
@@ -2911,6 +2942,7 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
 (function(){
   const cards = [...document.querySelectorAll('.lookaround__card,.edit__card,.style-hub__card')].filter(card=>card.querySelector('h3,h4') && card.querySelector('.lookaround__price,.price-row,small'));
   if(!cards.length) return;
+  const MAX_COMPARE = 5;
   const selected = new Map();
   const money = value=>Number((value || '').replace(/[^0-9.]/g,'')) || 0;
   const productFrom = card=>{
@@ -2925,8 +2957,8 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     const thickness = technique === 'Hand-knotted' ? '10–12 mm' : technique === 'Hand-tufted' ? '12–15 mm' : technique === 'Hand-woven' ? '6–8 mm' : technique === 'Washable construction' ? '5–7 mm' : '8–12 mm';
     const styles = {zahana:'Botanical · Traditional',savana:'Botanical · Traditional',rewa:'Abstract · Contemporary',amber:'Bohemian · Traditional',clara:'Modern · Refined',preston:'Traditional',vaayu:'Abstract · Modern',rovira:'Persian · Traditional',zaya:'Round · Traditional',arcadia:'Geometric · Heritage',fiore:'Natural · Textural',elm:'Contemporary',flax:'Minimal · Contemporary',maren:'Modern · Contemporary'};
     const styleKey = Object.keys(styles).find(key=>lower.includes(key));
-    const href = card.matches('a[href]') ? card.href : (card.querySelector('a[href]')?.href || '#');
     const key = name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    const href = card.matches('a[href]') ? card.href : (card.querySelector('a[href]')?.href || `https://fableroom.com/products/${key}`);
     return {key,name,size:'Multiple sizes',technique,material,price:current,savings:saving,thickness,style:styles[styleKey] || 'Artisan · Contemporary',href};
   };
   const products = new Map();
@@ -2964,7 +2996,11 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
       button.querySelector('span').textContent = active ? 'Added ✓' : 'Compare';
     });
     tray.hidden = selected.size === 0;
-    status.textContent = selected.size === 1 ? '1 rug selected · choose one more' : `${selected.size} rugs selected`;
+    status.textContent = selected.size === 1
+      ? '1 rug selected · choose one more'
+      : selected.size === MAX_COMPARE
+        ? `${MAX_COMPARE} rugs selected · maximum reached`
+        : `${selected.size} rugs selected · add up to ${MAX_COMPARE - selected.size} more`;
     view.disabled = selected.size < 2;
   };
   document.addEventListener('click',event=>{
@@ -2975,8 +3011,8 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     const card = button.closest('.lookaround__card,.edit__card,.style-hub__card');
     const key = card.dataset.compareKey;
     if(selected.has(key)) selected.delete(key);
-    else if(selected.size < 3) selected.set(key,products.get(key));
-    else status.textContent = 'Three rugs maximum · remove one to add another';
+    else if(selected.size < MAX_COMPARE) selected.set(key,products.get(key));
+    else status.textContent = `${MAX_COMPARE} rugs maximum · remove one to add another`;
     render();
   });
   document.addEventListener('click',event=>{
@@ -2994,7 +3030,8 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     const chosen = [...selected.values()];
     head.innerHTML = `<tr><th>Detail</th>${chosen.map(product=>`<th><a href="${product.href}">${product.name}</a></th>`).join('')}</tr>`;
     const rows = [['Size','size'],['Technique','technique'],['Material','material'],['Price','price'],['Savings','savings'],['Thickness','thickness'],['Style','style']];
-    body.innerHTML = rows.map(([label,field])=>`<tr><th>${label}</th>${chosen.map(product=>`<td>${product[field]}</td>`).join('')}</tr>`).join('');
+    const actions = `<tr class="compare-dialog__actions-row"><th>Action</th>${chosen.map(product=>`<td><a class="compare-dialog__atc" href="${product.href}">Add to Cart</a></td>`).join('')}</tr>`;
+    body.innerHTML = rows.map(([label,field])=>`<tr><th>${label}</th>${chosen.map(product=>`<td>${product[field]}</td>`).join('')}</tr>`).join('') + actions;
     dialog.hidden=false;document.body.style.overflow='hidden';dialog.querySelector('.compare-dialog__close').focus();
   });
   tray.querySelector('.compare-tray__clear').addEventListener('click',()=>{selected.clear();close();render();});
