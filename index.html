@@ -1526,7 +1526,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   bottom:auto;
   width:100%;
   display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
+  grid-template-columns:repeat(4,minmax(0,1fr));
   align-items:end;
   gap:0;
   margin:0 0 clamp(18px,2vw,28px);
@@ -1659,22 +1659,11 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   border:0;
   border-radius:16px;
   background-color:#f8f4ee;
+  background-image:var(--path-icon);
   background-repeat:no-repeat;
   background-position:center;
   background-size:contain;
   box-shadow:inset 0 0 0 1px rgba(31,29,25,.08);
-}
-.shop-paths__links a:nth-child(2)::before{
-  background-image:url('assets/style-modern-emblem.webp');
-}
-.shop-paths__links a:nth-child(3)::before{
-  background-image:url('assets/style-minimal-emblem.webp');
-}
-.shop-paths__links a:nth-child(4)::before{
-  background-image:url('assets/style-bohemian-emblem.webp');
-}
-.shop-paths__links a:nth-child(1)::before{
-  background-image:url('assets/style-persian-emblem.webp');
 }
 @media (max-width:960px){
   .shop-paths__body{
@@ -1698,7 +1687,7 @@ body > .section:not(.trust){padding-top:clamp(28px,3.2vw,44px);padding-bottom:cl
   }
   .shop-paths__tabs{
     display:grid;
-    grid-template-columns:repeat(5,minmax(0,1fr));
+    grid-template-columns:repeat(4,minmax(0,1fr));
     gap:0;
     margin:0 0 13px;
   }
@@ -2169,7 +2158,6 @@ body > section:not(.hero){
         <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="technique">Technique</button>
         <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="colour">Colour</button>
         <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="material">Material</button>
-        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="budget">Budget</button>
       </div>
       <div class="shop-paths__panel" role="tabpanel">
         <div class="shop-paths__image"><img src="assets/ai-story-08-room-meadow.webp" alt="Rug styled in a living room" data-path-image></div>
@@ -2178,10 +2166,14 @@ body > section:not(.hero){
           <h3 data-path-title>Choose a rug style.</h3>
           <p data-path-copy>Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.</p>
           <div class="shop-paths__links" data-path-links>
-            <a href="https://fableroom.com/search?q=persian+rug&amp;type=product">Persian</a>
-            <a href="https://fableroom.com/search?q=modern+rug&amp;type=product">Modern</a>
-            <a href="https://fableroom.com/search?q=minimal+rug&amp;type=product">Minimal</a>
-            <a href="https://fableroom.com/search?q=bohemian+rug&amp;type=product">Bohemian</a>
+            <a href="https://fableroom.com/collections/persian-rugs" style="--path-icon:url('assets/style-persian-emblem.webp')">Persian</a>
+            <a href="https://fableroom.com/collections/modern-rugs" style="--path-icon:url('assets/style-modern-emblem.webp')">Modern</a>
+            <a href="https://fableroom.com/collections/minimal-rugs" style="--path-icon:url('assets/style-minimal-emblem.webp')">Minimal</a>
+            <a href="https://fableroom.com/collections/bohemian-rugs" style="--path-icon:url('assets/style-bohemian-emblem.webp')">Bohemian</a>
+            <a href="https://fableroom.com/collections/traditional-rugs" style="--path-icon:url('assets/style-traditional-emblem.webp')">Traditional</a>
+            <a href="https://fableroom.com/collections/botanical-floral-rugs" style="--path-icon:url('assets/style-floral-emblem.webp')">Floral</a>
+            <a href="https://fableroom.com/collections/checkerboard-rugs" style="--path-icon:url('assets/style-checkered-emblem.webp')">Checkered</a>
+            <a href="https://fableroom.com/search?q=geometric+rug&amp;type=product" style="--path-icon:url('assets/style-geometric-emblem.webp')">Geometric</a>
           </div>
         </div>
       </div>
@@ -3062,11 +3054,42 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
   const copy = directory.querySelector('[data-path-copy]');
   const links = directory.querySelector('[data-path-links]');
   const paths = {
-    style:{count:'01',title:'Choose a rug style.',copy:'Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[['Persian','https://fableroom.com/search?q=persian+rug&type=product'],['Modern','https://fableroom.com/search?q=modern+rug&type=product'],['Minimal','https://fableroom.com/search?q=minimal+rug&type=product'],['Bohemian','https://fableroom.com/search?q=bohemian+rug&type=product']]},
-    technique:{count:'02',title:'Compare rug techniques.',copy:'Choose hand-knotted, hand-tufted, hand-woven or washable rugs by pile and feel.',image:'assets/rug-craft-poster.jpg',alt:'Close view of rug craftsmanship',links:[['Hand-Knotted','https://fableroom.com/collections/hand-knotted-rugs'],['Hand-Tufted','https://fableroom.com/collections/hand-tufted-rugs'],['Hand-Woven','https://fableroom.com/collections/all-hand-woven-rugs-collection'],['Washable','https://fableroom.com/search?q=washable+rug&type=product']]},
-    colour:{count:'03',title:'Shop rugs by colour.',copy:'Find neutral, beige, cream, grey, blue, red and multicolour rugs for your palette.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[['Neutral','https://fableroom.com/search?q=neutral+rug&type=product'],['Blue','https://fableroom.com/search?q=blue+rug&type=product'],['Red','https://fableroom.com/search?q=red+rug&type=product'],['Multicolour','https://fableroom.com/search?q=multicolour+rug&type=product']]},
-    material:{count:'04',title:'Choose a rug material.',copy:'Compare wool rugs, jute rugs, bamboo silk carpets and easy-care PET fibres.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[['Wool','https://fableroom.com/search?q=wool+rug&type=product'],['Jute','https://fableroom.com/search?q=jute+rug&type=product'],['Bamboo Silk','https://fableroom.com/search?q=bamboo+silk+rug&type=product'],['PET','https://fableroom.com/search?q=PET+rug&type=product']]},
-    budget:{count:'05',title:'Find a rug for your budget.',copy:'Move from affordable area rugs under £150 to luxury handmade carpets.',image:'assets/ai-story-06-woven-banner.webp',alt:'Hand-woven rug in a styled home',links:[['Under £150','https://fableroom.com/collections/all-rugs-collection'],['£150–£300','https://fableroom.com/collections/all-rugs-collection'],['£300–£600','https://fableroom.com/collections/all-rugs-collection'],['Luxury Rugs','https://fableroom.com/search?q=luxury+rug&type=product']]}
+    style:{count:'01',title:'Choose a rug style.',copy:'Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[
+      ['Persian','https://fableroom.com/collections/persian-rugs','assets/style-persian-emblem.webp'],
+      ['Modern','https://fableroom.com/collections/modern-rugs','assets/style-modern-emblem.webp'],
+      ['Minimal','https://fableroom.com/collections/minimal-rugs','assets/style-minimal-emblem.webp'],
+      ['Bohemian','https://fableroom.com/collections/bohemian-rugs','assets/style-bohemian-emblem.webp'],
+      ['Traditional','https://fableroom.com/collections/traditional-rugs','assets/style-traditional-emblem.webp'],
+      ['Floral','https://fableroom.com/collections/botanical-floral-rugs','assets/style-floral-emblem.webp'],
+      ['Checkered','https://fableroom.com/collections/checkerboard-rugs','assets/style-checkered-emblem.webp'],
+      ['Geometric','https://fableroom.com/search?q=geometric+rug&type=product','assets/style-geometric-emblem.webp']
+    ]},
+    technique:{count:'02',title:'Compare rug techniques.',copy:'Choose hand-knotted, hand-tufted, hand-woven, flatweave or handloom rugs by pile and feel.',image:'assets/rug-craft-poster.jpg',alt:'Close view of rug craftsmanship',links:[
+      ['Hand-Knotted','https://fableroom.com/collections/hand-knotted-rugs','assets/technique-hand-knotted-emblem.webp'],
+      ['Hand-Tufted','https://fableroom.com/collections/hand-tufted-rugs','assets/technique-hand-tufted-emblem.webp'],
+      ['Hand-Woven','https://fableroom.com/collections/all-hand-woven-rugs-collection','assets/technique-hand-woven-emblem.webp'],
+      ['Flatweave','https://fableroom.com/collections/flatweave-rugs','assets/technique-flatweave-emblem.webp'],
+      ['Handloom','https://fableroom.com/collections/handloom-rugs/Handloom','assets/technique-handloom-emblem.webp']
+    ]},
+    colour:{count:'03',title:'Shop rugs by colour.',copy:'Find beige, grey, ivory, blue, brown, cream, white, red and multicolour rugs for your palette.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[
+      ['Beige','https://fableroom.com/collections/beige-rugs','assets/colour-beige-emblem.webp'],
+      ['Grey','https://fableroom.com/collections/grey-rugs','assets/colour-grey-emblem.webp'],
+      ['Ivory','https://fableroom.com/collections/ivory-rugs','assets/colour-ivory-emblem.webp'],
+      ['Blue','https://fableroom.com/collections/blue-rugs','assets/colour-blue-emblem.webp'],
+      ['Brown','https://fableroom.com/collections/brown-rugs','assets/colour-brown-emblem.webp'],
+      ['Cream','https://fableroom.com/collections/cream-rugs','assets/colour-cream-emblem.webp'],
+      ['White','https://fableroom.com/collections/white-rugs','assets/colour-white-emblem.webp'],
+      ['Red','https://fableroom.com/search?q=red+rug&type=product','assets/colour-red-emblem.webp'],
+      ['Multicolour','https://fableroom.com/collections/multicolour-rugs','assets/colour-multicolour-emblem.webp']
+    ]},
+    material:{count:'04',title:'Choose a rug material.',copy:'Compare wool, jute, silk, recycled fibre, New Zealand wool and viscose rugs.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[
+      ['Wool','https://fableroom.com/search?q=wool+rug&type=product','assets/material-wool-emblem.webp'],
+      ['Jute','https://fableroom.com/collections/jute-rugs-collection','assets/material-jute-emblem.webp'],
+      ['Silk','https://fableroom.com/collections/silk-rugs','assets/material-silk-emblem.webp'],
+      ['Recycled Fibre','https://fableroom.com/collections/pet-rugs','assets/material-recycled-fibre-emblem.webp'],
+      ['New Zealand Wool','https://fableroom.com/collections/new-zealand-wool-rugs','assets/material-new-zealand-wool-emblem.webp'],
+      ['Viscose','https://fableroom.com/collections/viscose-rugs','assets/material-viscose-emblem.webp']
+    ]}
   };
   directory.querySelectorAll('.shop-paths__tab').forEach(tab=>{
     tab.addEventListener('click',()=>{
@@ -3081,8 +3104,8 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
       setTimeout(()=>{
         image.src=data.image; image.alt=data.alt; count.textContent=data.count;
         title.textContent=data.title; copy.textContent=data.copy;
-        links.replaceChildren(...data.links.map(([label,href])=>{
-          const a=document.createElement('a'); a.href=href; a.textContent=label; return a;
+        links.replaceChildren(...data.links.map(([label,href,icon])=>{
+          const a=document.createElement('a'); a.href=href; a.textContent=label; a.style.setProperty('--path-icon',`url('${icon}')`); return a;
         }));
         panel.classList.remove('is-changing');
       },160);
