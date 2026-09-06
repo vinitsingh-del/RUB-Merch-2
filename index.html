@@ -2060,6 +2060,97 @@ body > section:not(.hero){
     text-transform:inherit;
   }
 }
+
+/* ============================================================
+   NOT SURE ABOUT SIZE — compact selector + visual guide
+   ============================================================ */
+.size-guide{background:var(--white);}
+.size-guide__head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:28px;
+  margin-bottom:22px;
+}
+.size-guide__head h2{font-size:clamp(30px,4vw,46px);line-height:1;margin-top:8px;}
+.size-guide__visual-trigger{
+  display:inline-flex;align-items:center;gap:12px;padding:0 0 6px;border:0;border-bottom:1px solid var(--ink);
+  background:transparent;color:var(--ink);font:700 12px/1 var(--sans);letter-spacing:.04em;cursor:pointer;white-space:nowrap;
+}
+.size-guide__visual-trigger svg{width:30px;height:30px;padding:7px;border-radius:50%;background:#ead0d3;}
+.size-guide__controls{display:flex;align-items:center;justify-content:flex-start;margin-bottom:16px;}
+.size-guide__unit-toggle{display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid #2d6479;border-radius:999px;overflow:hidden;background:var(--cream);}
+.size-guide__unit-toggle button{
+  min-width:76px;height:38px;padding:0 18px;border:0;background:transparent;color:var(--ink);font:400 14px/1 var(--sans);cursor:pointer;
+}
+.size-guide__unit-toggle button.is-active{background:#2d6479;color:var(--white);font-weight:700;}
+.size-guide__size-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.size-guide__size{
+  position:relative;display:flex;align-items:center;justify-content:center;min-height:82px;padding:18px 12px 20px;border:1px solid var(--line-strong);border-radius:8px;background:var(--cream);color:var(--ink);
+  font:400 clamp(15px,1.8vw,22px)/1.25 var(--sans);text-align:center;cursor:pointer;transition:border-color .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease);
+}
+.size-guide__size:hover{border-color:#2d6479;}
+.size-guide__size.is-active{border:2px solid #2d6479;box-shadow:0 0 0 1px rgba(45,100,121,.08);}
+.size-guide__size span[data-size-ft]{display:none;}
+.size-guide__size small{
+  position:absolute;left:0;right:0;bottom:0;padding:4px 8px;background:#2d6479;color:var(--white);font:400 11px/1.1 var(--sans);letter-spacing:.02em;
+}
+.size-guide[data-size-unit="ft"] .size-guide__size span[data-size-cm]{display:none;}
+.size-guide[data-size-unit="ft"] .size-guide__size span[data-size-ft]{display:block;}
+.size-guide-trigger{
+  appearance:none;text-align:left;background:transparent;color:inherit;font:inherit;width:100%;border-top:0;border-right:0;border-bottom:0;cursor:pointer;
+}
+.size-guide-trigger:focus-visible,.size-guide__visual-trigger:focus-visible,.size-guide__size:focus-visible,.size-guide__unit-toggle button:focus-visible{outline:2px solid #2d6479;outline-offset:3px;}
+
+.size-guide-modal[hidden]{display:none;}
+.size-guide-modal{position:fixed;inset:0;z-index:240;display:grid;place-items:center;padding:18px;background:rgba(51,33,27,.78);}
+.size-guide-modal__panel{width:min(760px,100%);max-height:min(900px,calc(100vh - 36px));overflow:auto;background:var(--white);color:#4c0d28;box-shadow:0 24px 70px rgba(0,0,0,.26);}
+.size-guide-modal__head{display:flex;align-items:center;justify-content:space-between;padding:26px 30px 18px;}
+.size-guide-modal__head h2{font-size:clamp(32px,5vw,54px);color:#4c0d28;}
+.size-guide-modal__close{display:grid;place-items:center;width:46px;height:46px;border:0;background:transparent;color:#8e6170;cursor:pointer;}
+.size-guide-modal__close svg{width:34px;height:34px;}
+.size-guide-modal__tabs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid #dfd8d5;}
+.size-guide-modal__tabs button{position:relative;min-height:64px;border:0;background:transparent;color:#4c0d28;font:400 clamp(16px,2.2vw,24px)/1 var(--sans);cursor:pointer;}
+.size-guide-modal__tabs button::after{content:"";position:absolute;left:14%;right:14%;bottom:-1px;height:4px;background:transparent;}
+.size-guide-modal__tabs button.is-active::after{background:#4c0d28;}
+.size-guide-modal__content{padding:30px 30px 34px;}
+.size-guide-modal__dimension{margin:0 0 18px;text-align:center;font:400 clamp(24px,3.2vw,34px)/1.1 var(--serif);color:#4c0d28;}
+.size-guide-modal__stage{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1.22;border-radius:10px;background:#f8f4ef;}
+.size-guide-modal__stage::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0));pointer-events:none;}
+.size-guide-modal__stage img{position:absolute;z-index:0;left:50%;bottom:5%;width:var(--rug-w,72%);height:var(--rug-h,58%);transform:translateX(-50%);object-fit:cover;border:2px solid rgba(76,13,40,.5);box-shadow:0 12px 24px rgba(76,13,40,.12);}
+.size-guide-modal__furniture{position:absolute;z-index:2;inset:0;width:100%;height:100%;color:#a46f72;}
+.size-guide-modal__furniture g[hidden]{display:none;}
+.size-guide-modal__furniture rect,.size-guide-modal__furniture circle{vector-effect:non-scaling-stroke;}
+.size-guide-modal__scale{display:grid;grid-template-columns:54px 1fr 1px 1fr 54px;align-items:center;gap:14px;margin:24px 0 26px;color:#4c0d28;}
+.size-guide-modal__scale button{display:grid;place-items:center;width:54px;height:54px;border:1px solid #4c0d28;border-radius:50%;background:transparent;color:#4c0d28;cursor:pointer;}
+.size-guide-modal__scale button:disabled{opacity:.35;cursor:not-allowed;}
+.size-guide-modal__scale button svg{width:22px;height:22px;}
+.size-guide-modal__scale span{font:400 20px/1 var(--sans);}
+.size-guide-modal__scale span:nth-of-type(2){text-align:right;}
+.size-guide-modal__scale i{display:block;width:1px;height:54px;background:#d5a8b6;}
+.size-guide-modal__tip{border-top:1px solid #dfd8d5;padding-top:20px;}
+.size-guide-modal__tip h3{font-size:clamp(22px,3vw,30px);color:#4c0d28;margin:0 0 7px;}
+.size-guide-modal__tip p{margin:0;color:#6e6262;font-size:14px;line-height:1.55;}
+@media (max-width:760px){
+  .size-guide.section{padding-top:24px;padding-bottom:24px;}
+  .size-guide__head{display:block;margin-bottom:16px;}
+  .size-guide__head h2{font-size:30px;margin-top:6px;}
+  .size-guide__visual-trigger{margin-top:16px;font-size:11px;}
+  .size-guide__visual-trigger svg{width:28px;height:28px;}
+  .size-guide__size-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
+  .size-guide__size{min-height:68px;padding:15px 7px 19px;font-size:15px;}
+  .size-guide__size small{font-size:9px;padding:4px 5px;}
+  .size-guide-modal{padding:0;place-items:stretch;}
+  .size-guide-modal__panel{width:100%;max-height:100%;}
+  .size-guide-modal__head{padding:22px 20px 14px;}
+  .size-guide-modal__head h2{font-size:36px;}
+  .size-guide-modal__close{width:42px;height:42px;}
+  .size-guide-modal__tabs button{min-height:56px;font-size:17px;}
+  .size-guide-modal__content{padding:24px 20px 28px;}
+  .size-guide-modal__dimension{font-size:27px;margin-bottom:16px;}
+  .size-guide-modal__stage{aspect-ratio:1/1;}
+  .size-guide-modal__scale{grid-template-columns:48px 1fr 1px 1fr 48px;gap:9px;margin:20px 0 24px;}
+  .size-guide-modal__scale button{width:48px;height:48px;}
+  .size-guide-modal__scale span{font-size:16px;}
+  .size-guide-modal__scale i{height:48px;}
+}
 </style>
 </head>
 <body>
@@ -2126,10 +2217,10 @@ body > section:not(.hero){
 <!-- ================= REASSURANCE STRIP ================= -->
 <section class="reassure">
   <div class="reassure__row">
-    <div class="reassure__item">
+    <button class="reassure__item size-guide-trigger" type="button" data-size-guide-open aria-controls="size-guide-modal">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
       <div><b>Not sure on size?</b><span>Room-by-room sizing guide</span></div>
-    </div>
+    </button>
     <div class="reassure__item">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
       <div><b>Free UK delivery</b><span>On orders over £500</span></div>
@@ -2733,36 +2824,101 @@ body > section:not(.hero){
   </div>
 </section>
 
-<!-- ================= SIZE GUIDE STRIP ================= -->
-<section class="size-guide section--tight" hidden aria-hidden="true">
+<!-- ================= NOT SURE ABOUT SIZE ================= -->
+<section class="size-guide section" aria-labelledby="size-guide-title">
   <div class="container">
-    <div class="section-head reveal" style="margin-bottom:30px;">
+    <div class="size-guide__head">
       <div>
-        <div class="eyebrow" style="margin-bottom:10px;">Rug &amp; Carpet Size Guide</div>
-        <h2 style="font-size:clamp(24px,2.8vw,32px);">Choose the right rug size for every room.</h2>
+        <div class="eyebrow">Not Sure about size</div>
+        <h2 id="size-guide-title">Select size</h2>
+      </div>
+      <button class="size-guide__visual-trigger" type="button" data-size-guide-open aria-controls="size-guide-modal">
+        <span>Visual size guide</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 4H4v4M4 4l7 7M16 20h4v-4M20 20l-7-7"/><path d="M20 8V4h-4M20 4l-7 7M4 16v4h4M4 20l7-7"/></svg>
+      </button>
+    </div>
+    <div class="size-guide__controls">
+      <div class="size-guide__unit-toggle" role="group" aria-label="Select measurement units">
+        <button type="button" class="is-active" data-size-unit="cm" aria-pressed="true">cm</button>
+        <button type="button" data-size-unit="ft" aria-pressed="false">ft</button>
       </div>
     </div>
-    <div class="size-guide__grid reveal-stagger">
-      <div>
-        <h4>Living Room Rugs</h4>
-        <p>Choose a large area rug for the front legs of your sofa and chairs, or one that holds the whole seating arrangement.</p>
-      </div>
-      <div>
-        <h4>Bedroom Rugs</h4>
-        <p>Place a soft wool, hand-tufted or hand-woven rug where your feet land each morning.</p>
-      </div>
-      <div>
-        <h4>Dining Room Rugs</h4>
-        <p>Choose a dining room rug that extends at least 60cm beyond the table so chairs clear the edge.</p>
-      </div>
-      <div>
-        <h4>Hallway Rugs &amp; Runners</h4>
-        <p>Size a runner rug to follow the hallway, leaving a balanced border of bare floor on each side.</p>
-      </div>
+    <div class="size-guide__size-grid" data-size-grid aria-label="Available rug sizes">
+      <button type="button" class="size-guide__size" data-size-index="0" aria-pressed="false"><span data-size-cm>80cm x 150cm</span><span data-size-ft>2'7&quot; x 4'11&quot;</span></button>
+      <button type="button" class="size-guide__size" data-size-index="1" aria-pressed="false"><span data-size-cm>115cm x 163cm</span><span data-size-ft>3'9&quot; x 5'4&quot;</span></button>
+      <button type="button" class="size-guide__size" data-size-index="2" aria-pressed="false"><span data-size-cm>153cm x 215cm</span><span data-size-ft>5' x 7'1&quot;</span></button>
+      <button type="button" class="size-guide__size is-active" data-size-index="3" aria-pressed="true"><span data-size-cm>191cm x 277cm</span><span data-size-ft>6'3&quot; x 9'1&quot;</span><small>Most popular</small></button>
+      <button type="button" class="size-guide__size" data-size-index="4" aria-pressed="false"><span data-size-cm>226cm x 311cm</span><span data-size-ft>7'5&quot; x 10'2&quot;</span></button>
+      <button type="button" class="size-guide__size" data-size-index="5" aria-pressed="false"><span data-size-cm>60cm x 240cm Runner</span><span data-size-ft>2' x 7'10&quot; Runner</span></button>
+      <button type="button" class="size-guide__size" data-size-index="6" aria-pressed="false"><span data-size-cm>80cm x 300cm Wide Runner</span><span data-size-ft>2'7&quot; x 9'10&quot; Wide Runner</span></button>
     </div>
-    <p class="reveal" style="font-size:13px; color:var(--ink-soft); margin-top:26px; max-width:60ch;">Not sure which rug or carpet size will fit? Mark the dimensions with masking tape before ordering to remove the guesswork.</p>
   </div>
 </section>
+
+<!-- ================= VISUAL SIZE GUIDE MODAL ================= -->
+<div class="size-guide-modal" id="size-guide-modal" data-size-guide-modal hidden role="dialog" aria-modal="true" aria-labelledby="size-guide-modal-title">
+  <div class="size-guide-modal__panel">
+    <div class="size-guide-modal__head">
+      <h2 id="size-guide-modal-title">Size Guide</h2>
+      <button class="size-guide-modal__close" type="button" data-size-guide-close aria-label="Close size guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"/></svg>
+      </button>
+    </div>
+    <div class="size-guide-modal__tabs" role="tablist" aria-label="Choose a room">
+      <button class="is-active" type="button" role="tab" aria-selected="true" data-size-room="living">Living Room</button>
+      <button type="button" role="tab" aria-selected="false" data-size-room="kitchen">Kitchen</button>
+      <button type="button" role="tab" aria-selected="false" data-size-room="bedroom">Bedroom</button>
+    </div>
+    <div class="size-guide-modal__content">
+      <div class="size-guide-modal__dimension" data-modal-dimension>280cm x 380cm</div>
+      <div class="size-guide-modal__stage">
+        <img src="assets/hero-bidjar-red.webp" alt="Persian rug texture used in the size guide" data-size-rug>
+        <svg class="size-guide-modal__furniture" viewBox="0 0 600 420" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <g data-size-room-visual="living">
+            <rect x="112" y="190" width="376" height="164" rx="5" opacity=".45"/>
+            <rect x="158" y="84" width="284" height="102" rx="24" fill="var(--white)"/>
+            <rect x="176" y="102" width="116" height="34" rx="16" fill="var(--white)"/>
+            <rect x="308" y="102" width="116" height="34" rx="16" fill="var(--white)"/>
+            <rect x="176" y="146" width="116" height="30" rx="15" fill="var(--white)"/>
+            <rect x="308" y="146" width="116" height="30" rx="15" fill="var(--white)"/>
+            <rect x="258" y="238" width="84" height="38" rx="12" fill="var(--white)"/>
+            <circle cx="102" cy="134" r="18" fill="var(--white)"/><path d="M102 106v-16M102 162v16M74 134H58M146 134h16M82 114l-12-12M122 154l12 12M122 114l12-12M82 154l-12 12"/>
+            <circle cx="484" cy="134" r="19" fill="var(--white)"/><circle cx="484" cy="134" r="5"/>
+          </g>
+          <g data-size-room-visual="kitchen" hidden>
+            <rect x="82" y="112" width="436" height="226" rx="4" opacity=".45"/>
+            <rect x="174" y="114" width="252" height="76" rx="28" fill="var(--white)"/>
+            <rect x="200" y="134" width="88" height="34" rx="15" fill="var(--white)"/>
+            <rect x="312" y="134" width="88" height="34" rx="15" fill="var(--white)"/>
+            <rect x="232" y="242" width="136" height="34" rx="5" fill="var(--white)"/>
+            <circle cx="160" cy="260" r="26" fill="var(--white)"/><circle cx="440" cy="260" r="26" fill="var(--white)"/>
+            <path d="M130 260h-28M470 260h28M150 230v-26M450 230v-26"/>
+          </g>
+          <g data-size-room-visual="bedroom" hidden>
+            <rect x="96" y="82" width="408" height="258" rx="4" opacity=".45"/>
+            <rect x="214" y="72" width="172" height="250" rx="18" fill="var(--white)"/>
+            <rect x="232" y="88" width="64" height="42" rx="14" fill="var(--white)"/>
+            <rect x="304" y="88" width="64" height="42" rx="14" fill="var(--white)"/>
+            <path d="M232 152h136M232 152v148M368 152v148"/>
+            <rect x="146" y="98" width="44" height="44" rx="7" fill="var(--white)"/><rect x="410" y="98" width="44" height="44" rx="7" fill="var(--white)"/>
+            <circle cx="168" cy="120" r="7"/><circle cx="432" cy="120" r="7"/>
+          </g>
+        </svg>
+      </div>
+      <div class="size-guide-modal__scale" aria-label="Change room rug size">
+        <button type="button" data-size-larger aria-label="Choose a larger rug"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span>Larger</span>
+        <i aria-hidden="true"></i>
+        <span>Smaller</span>
+        <button type="button" data-size-smaller aria-label="Choose a smaller rug"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="size-guide-modal__tip">
+        <h3>Measuring Tip Below:</h3>
+        <p>Use masking tape to mark the rug dimensions on your floor before ordering.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ================= RECOMMENDED FOR YOU ================= -->
 <section class="recommended section" hidden aria-hidden="true">
@@ -2938,6 +3094,9 @@ body > section:not(.hero){
   const trustBadges = document.querySelector('.reassure');
   const footer = document.querySelector('.site-footer');
   if(trustBadges && footer) footer.insertAdjacentElement('beforebegin',trustBadges);
+  const sizeGuide = document.querySelector('.size-guide');
+  const washableSection = document.getElementById('washable');
+  if(sizeGuide && washableSection) washableSection.insertAdjacentElement('afterend',sizeGuide);
 })();
 
 /* ---------- Scroll reveals ---------- */
@@ -3290,6 +3449,127 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     });
   });
   update();
+})();
+
+/* ---------- Not sure about size: units, room guide and rug scale ---------- */
+(function(){
+  const guide = document.querySelector('.size-guide');
+  const modal = document.querySelector('[data-size-guide-modal]');
+  if(!guide || !modal) return;
+
+  const sizes = [
+    {cm:'80cm x 150cm',ft:'2\'7" x 4\'11"'},
+    {cm:'115cm x 163cm',ft:'3\'9" x 5\'4"'},
+    {cm:'153cm x 215cm',ft:'5\' x 7\'1"'},
+    {cm:'191cm x 277cm',ft:'6\'3" x 9\'1"'},
+    {cm:'226cm x 311cm',ft:'7\'5" x 10\'2"'},
+    {cm:'60cm x 240cm Runner',ft:'2\' x 7\'10" Runner'},
+    {cm:'80cm x 300cm Wide Runner',ft:'2\'7" x 9\'10" Wide Runner'}
+  ];
+  const roomSizes = {
+    living:[
+      {cm:'280cm x 380cm',w:'84%',h:'66%'},
+      {cm:'240cm x 330cm',w:'76%',h:'61%'},
+      {cm:'200cm x 290cm',w:'67%',h:'55%'},
+      {cm:'160cm x 230cm',w:'57%',h:'48%'}
+    ],
+    kitchen:[
+      {cm:'80cm x 150cm',w:'50%',h:'64%'},
+      {cm:'60cm x 240cm Runner',w:'32%',h:'76%'},
+      {cm:'80cm x 300cm Wide Runner',w:'68%',h:'42%'}
+    ],
+    bedroom:[
+      {cm:'280cm x 380cm',w:'84%',h:'66%'},
+      {cm:'240cm x 330cm',w:'76%',h:'61%'},
+      {cm:'160cm x 230cm',w:'57%',h:'48%'}
+    ]
+  };
+  const state = {unit:'cm', room:'living', roomIndex:{living:0,kitchen:0,bedroom:0}};
+  const modalDimension = modal.querySelector('[data-modal-dimension]');
+  const rug = modal.querySelector('[data-size-rug]');
+  const larger = modal.querySelector('[data-size-larger]');
+  const smaller = modal.querySelector('[data-size-smaller]');
+  let lastTrigger = null;
+
+  const updateUnit = unit=>{
+    state.unit = unit;
+    guide.dataset.sizeUnit = unit;
+    guide.querySelectorAll('[data-size-unit]').forEach(button=>{
+      const active = button.dataset.sizeUnit === unit;
+      button.classList.toggle('is-active',active);
+      button.setAttribute('aria-pressed',String(active));
+    });
+  };
+  const updateSelected = index=>{
+    guide.querySelectorAll('[data-size-index]').forEach(button=>{
+      const active = Number(button.dataset.sizeIndex) === index;
+      button.classList.toggle('is-active',active);
+      button.setAttribute('aria-pressed',String(active));
+    });
+  };
+  const updateRoom = room=>{
+    state.room = room;
+    const options = roomSizes[room];
+    const index = state.roomIndex[room];
+    const option = options[index];
+    modalDimension.textContent = option.cm;
+    rug.style.setProperty('--rug-w',option.w);
+    rug.style.setProperty('--rug-h',option.h);
+    modal.querySelectorAll('[data-size-room]').forEach(button=>{
+      const active = button.dataset.sizeRoom === room;
+      button.classList.toggle('is-active',active);
+      button.setAttribute('aria-selected',String(active));
+    });
+    modal.querySelectorAll('[data-size-room-visual]').forEach(visual=>{
+      const active = visual.dataset.sizeRoomVisual === room;
+      visual.hidden = !active;
+    });
+    larger.disabled = index <= 0;
+    smaller.disabled = index >= options.length - 1;
+  };
+  const moveRoomSize = direction=>{
+    const options = roomSizes[state.room];
+    const next = Math.max(0,Math.min(options.length - 1,state.roomIndex[state.room] + direction));
+    state.roomIndex[state.room] = next;
+    updateRoom(state.room);
+  };
+  const open = trigger=>{
+    lastTrigger = trigger || null;
+    modal.hidden = false;
+    modal.setAttribute('aria-hidden','false');
+    document.body.dataset.sizeGuideOpen = 'true';
+    document.body.style.overflow = 'hidden';
+    updateRoom(state.room);
+    modal.querySelector('[data-size-guide-close]').focus();
+  };
+  const close = ()=>{
+    modal.hidden = true;
+    modal.setAttribute('aria-hidden','true');
+    document.body.removeAttribute('data-size-guide-open');
+    document.body.style.overflow = '';
+    if(lastTrigger) lastTrigger.focus();
+  };
+
+  guide.querySelectorAll('[data-size-unit]').forEach(button=>button.addEventListener('click',()=>{
+    updateUnit(button.dataset.sizeUnit);
+    updateRoom(state.room);
+  }));
+  guide.querySelectorAll('[data-size-index]').forEach(button=>button.addEventListener('click',()=>updateSelected(Number(button.dataset.sizeIndex))));
+  modal.querySelectorAll('[data-size-room]').forEach(button=>button.addEventListener('click',()=>{
+    state.roomIndex[button.dataset.sizeRoom] = 0;
+    updateRoom(button.dataset.sizeRoom);
+  }));
+  larger.addEventListener('click',()=>moveRoomSize(-1));
+  smaller.addEventListener('click',()=>moveRoomSize(1));
+  document.querySelectorAll('[data-size-guide-open]').forEach(trigger=>trigger.addEventListener('click',()=>open(trigger)));
+  modal.querySelector('[data-size-guide-close]').addEventListener('click',close);
+  modal.addEventListener('click',event=>{ if(event.target === modal) close(); });
+  addEventListener('keydown',event=>{ if(event.key === 'Escape' && !modal.hidden) close(); });
+
+  updateUnit('cm');
+  updateSelected(3);
+  updateRoom('living');
+  modal.setAttribute('aria-hidden','true');
 })();
 </script>
 
