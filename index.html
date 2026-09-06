@@ -3571,15 +3571,6 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
   const modal = document.querySelector('[data-size-guide-modal]');
   if(!guide || !modal) return;
 
-  const sizes = [
-    {cm:'80cm x 150cm',ft:'2\'7" x 4\'11"'},
-    {cm:'115cm x 163cm',ft:'3\'9" x 5\'4"'},
-    {cm:'153cm x 215cm',ft:'5\' x 7\'1"'},
-    {cm:'191cm x 277cm',ft:'6\'3" x 9\'1"'},
-    {cm:'226cm x 311cm',ft:'7\'5" x 10\'2"'},
-    {cm:'60cm x 240cm Runner',ft:'2\' x 7\'10" Runner'},
-    {cm:'80cm x 300cm Wide Runner',ft:'2\'7" x 9\'10" Wide Runner'}
-  ];
   const roomSizes = {
     living:[
       {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'62%',h:'30%'},
@@ -3607,34 +3598,12 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
   const smaller = modal.querySelector('[data-size-smaller]');
   let lastTrigger = null;
 
-  sizes.forEach((size,index)=>{
-    const link = document.createElement('a');
-    link.className = 'size-guide-modal__size-choice';
-    link.href = `https://fableroom.com/search?q=${encodeURIComponent(`${size.cm} rug`)}&type=product`;
-    link.setAttribute('data-size-choice-index',String(index));
-    const cm = document.createElement('span');
-    cm.dataset.sizeChoiceCm = '';
-    cm.textContent = size.cm;
-    const ft = document.createElement('span');
-    ft.dataset.sizeChoiceFt = '';
-    ft.textContent = size.ft;
-    link.append(cm,ft);
-    modalSizeGrid.append(link);
-  });
-
   const updateUnit = unit=>{
     state.unit = unit;
     guide.dataset.sizeUnit = unit;
     modal.dataset.sizeUnit = unit;
     document.querySelectorAll('[data-size-unit]').forEach(button=>{
       const active = button.dataset.sizeUnit === unit;
-      button.classList.toggle('is-active',active);
-      button.setAttribute('aria-pressed',String(active));
-    });
-  };
-  const updateSelected = index=>{
-    guide.querySelectorAll('[data-size-index]').forEach(button=>{
-      const active = Number(button.dataset.sizeIndex) === index;
       button.classList.toggle('is-active',active);
       button.setAttribute('aria-pressed',String(active));
     });
@@ -3655,6 +3624,21 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     });
     modal.querySelectorAll('[data-size-room-scene]').forEach(scene=>{
       scene.hidden = scene.dataset.sizeRoomScene !== room;
+    });
+    modalSizeGrid.replaceChildren();
+    options.forEach(option=>{
+      const link = document.createElement('a');
+      link.className = 'size-guide-modal__size-choice';
+      link.href = `https://fableroom.com/search?q=${encodeURIComponent(`${option.cm} rug`)}&type=product`;
+      link.setAttribute('aria-label',`Shop rugs in ${option.cm}`);
+      const cm = document.createElement('span');
+      cm.dataset.sizeChoiceCm = '';
+      cm.textContent = option.cm;
+      const ft = document.createElement('span');
+      ft.dataset.sizeChoiceFt = '';
+      ft.textContent = option.ft;
+      link.append(cm,ft);
+      modalSizeGrid.append(link);
     });
     larger.disabled = index <= 0;
     smaller.disabled = index >= options.length - 1;
@@ -3686,7 +3670,6 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     updateUnit(button.dataset.sizeUnit);
     updateRoom(state.room);
   }));
-  guide.querySelectorAll('[data-size-index]').forEach(button=>button.addEventListener('click',()=>updateSelected(Number(button.dataset.sizeIndex))));
   modal.querySelectorAll('[data-size-room]').forEach(button=>button.addEventListener('click',()=>{
     state.roomIndex[button.dataset.sizeRoom] = 0;
     updateRoom(button.dataset.sizeRoom);
@@ -3698,3 +3681,11 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
   modal.addEventListener('click',event=>{ if(event.target === modal) close(); });
   addEventListener('keydown',event=>{ if(event.key === 'Escape' && !modal.hidden) close(); });
 
+  updateUnit('cm');
+  updateRoom('living');
+  modal.setAttribute('aria-hidden','true');
+})();
+</script>
+
+</body>
+</html>
