@@ -1836,7 +1836,7 @@ body > section + section{border-top:1px solid var(--line) !important;}
   letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;
 }
 @media (max-width:640px){
-  .lookaround__card{flex-basis:calc((100% - 8px)/2);width:calc((100% - 8px)/2);max-width:none;}
+  .lookaround__card{flex-basis:46.4vw;max-width:184px;}
   .edit__row .edit__card{width:43.2vw;max-width:168px;}
   .washable-edit .edit__row .edit__card{flex-basis:36.8vw;width:36.8vw;max-width:141px;}
   .style-hub__card{flex-basis:49vw;max-width:190px;}
@@ -1848,40 +1848,6 @@ body > section + section{border-top:1px solid var(--line) !important;}
   .compare-tray button{padding:7px 8px;font-size:8px;}
   .compare-dialog{padding:10px;}
   .compare-dialog__panel{padding:22px 16px;max-height:90vh;}
-}
-
-/* Mobile lookaround rail: two complete cards, with no clipped edge card. */
-@media (max-width:760px){
-  .lookaround__filters{
-    width:100%;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:0;
-    overflow:visible;
-  }
-  .lookaround__filter{
-    width:100%;
-    min-width:0;
-    padding:0 4px;
-    font-size:clamp(7px,2.1vw,9px);
-    letter-spacing:.02em;
-    white-space:nowrap;
-    overflow:visible;
-  }
-  .lookaround__grid{
-    width:100%;
-    gap:8px;
-    padding-right:0;
-    overflow-x:auto;
-    overflow-y:hidden;
-    scroll-padding-left:0;
-  }
-  .lookaround__card{
-    flex:0 0 calc((100% - 8px)/2);
-    width:calc((100% - 8px)/2);
-    max-width:none;
-  }
-  .lookaround__badges{left:8px;right:8px;top:8px;max-width:none;gap:4px;}
-  .lookaround__badge{padding:5px 6px;font-size:7.5px;}
 }
 
 /* ============================================================
