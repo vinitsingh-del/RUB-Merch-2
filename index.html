@@ -2151,6 +2151,62 @@ body > section:not(.hero){
   .size-guide-modal__scale span{font-size:16px;}
   .size-guide-modal__scale i{height:48px;}
 }
+
+/* Flexible shop-path choices: equal cards, centered final row, no clipped options. */
+.shop-paths__directory,
+.shop-paths__body{overflow:visible;}
+.shop-paths__links{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:stretch;
+  justify-content:center;
+  align-content:flex-start;
+  gap:12px;
+  overflow:visible;
+}
+.shop-paths__links a{
+  flex:0 1 calc((100% - 36px) / 4);
+  width:auto;
+  max-width:calc((100% - 36px) / 4);
+}
+@media (max-width:960px){
+  .shop-paths__links a{
+    flex-basis:calc((100% - 18px) / 3);
+    max-width:calc((100% - 18px) / 3);
+  }
+}
+@media (max-width:760px){
+  .shop-paths__links{
+    gap:9px;
+    padding:0;
+  }
+  .shop-paths__links a{
+    flex-basis:calc((100% - 9px) / 2);
+    max-width:calc((100% - 9px) / 2);
+    min-height:88px;
+    padding:10px 7px 9px;
+  }
+}
+
+/* Compact size selector in the existing page rhythm. The modal keeps its reference scale. */
+.size-guide.section{padding-top:24px;padding-bottom:24px;}
+.size-guide__head{margin-bottom:14px;}
+.size-guide__head h2{font-size:clamp(28px,3.4vw,40px);}
+.size-guide__controls{margin-bottom:12px;}
+.size-guide__unit-toggle button{height:34px;min-width:68px;padding:0 14px;font-size:13px;}
+.size-guide__size-grid{gap:9px;}
+.size-guide__size{min-height:66px;padding:14px 10px 17px;font-size:clamp(14px,1.5vw,19px);}
+@media (max-width:760px){
+  .size-guide.section{padding-top:18px;padding-bottom:18px;}
+  .size-guide__head{margin-bottom:12px;}
+  .size-guide__head h2{font-size:28px;}
+  .size-guide__visual-trigger{margin-top:12px;}
+  .size-guide__controls{margin-bottom:10px;}
+  .size-guide__unit-toggle button{height:32px;min-width:62px;padding:0 12px;font-size:12px;}
+  .size-guide__size-grid{gap:8px;}
+  .size-guide__size{min-height:60px;padding:12px 6px 16px;font-size:13px;}
+  .size-guide__size small{font-size:8px;padding:3px 4px;}
+}
 </style>
 </head>
 <body>
@@ -2886,20 +2942,24 @@ body > section:not(.hero){
             <circle cx="484" cy="134" r="19" fill="var(--white)"/><circle cx="484" cy="134" r="5"/>
           </g>
           <g data-size-room-visual="kitchen" hidden>
-            <rect x="82" y="112" width="436" height="226" rx="4" opacity=".45"/>
-            <rect x="174" y="114" width="252" height="76" rx="28" fill="var(--white)"/>
-            <rect x="200" y="134" width="88" height="34" rx="15" fill="var(--white)"/>
-            <rect x="312" y="134" width="88" height="34" rx="15" fill="var(--white)"/>
-            <rect x="232" y="242" width="136" height="34" rx="5" fill="var(--white)"/>
-            <circle cx="160" cy="260" r="26" fill="var(--white)"/><circle cx="440" cy="260" r="26" fill="var(--white)"/>
-            <path d="M130 260h-28M470 260h28M150 230v-26M450 230v-26"/>
+            <rect x="64" y="64" width="472" height="292" rx="10" opacity=".45"/>
+            <rect x="82" y="82" width="436" height="54" rx="8" fill="var(--white)"/>
+            <rect x="82" y="136" width="76" height="184" rx="8" fill="var(--white)"/>
+            <rect x="442" y="136" width="76" height="184" rx="8" fill="var(--white)"/>
+            <rect x="214" y="174" width="172" height="94" rx="10" fill="var(--white)"/>
+            <circle cx="250" cy="220" r="14" fill="var(--white)"/><path d="M241 220h18M250 211v18"/>
+            <circle cx="350" cy="220" r="14" fill="var(--white)"/><circle cx="343" cy="213" r="2"/><circle cx="357" cy="213" r="2"/><circle cx="343" cy="227" r="2"/><circle cx="357" cy="227" r="2"/>
+            <circle cx="194" cy="190" r="16" fill="var(--white)"/><circle cx="406" cy="190" r="16" fill="var(--white)"/>
+            <circle cx="194" cy="252" r="16" fill="var(--white)"/><circle cx="406" cy="252" r="16" fill="var(--white)"/>
+            <path d="M112 162h36M112 182h36M112 202h36M456 162h28M456 182h28M456 202h28"/>
           </g>
           <g data-size-room-visual="bedroom" hidden>
             <rect x="96" y="82" width="408" height="258" rx="4" opacity=".45"/>
             <rect x="214" y="72" width="172" height="250" rx="18" fill="var(--white)"/>
+            <rect x="214" y="72" width="172" height="52" rx="18" fill="var(--white)"/>
             <rect x="232" y="88" width="64" height="42" rx="14" fill="var(--white)"/>
             <rect x="304" y="88" width="64" height="42" rx="14" fill="var(--white)"/>
-            <path d="M232 152h136M232 152v148M368 152v148"/>
+            <path d="M232 152h136M232 152v148M368 152v148M232 224h136"/>
             <rect x="146" y="98" width="44" height="44" rx="7" fill="var(--white)"/><rect x="410" y="98" width="44" height="44" rx="7" fill="var(--white)"/>
             <circle cx="168" cy="120" r="7"/><circle cx="432" cy="120" r="7"/>
           </g>
@@ -3266,10 +3326,13 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
         links.replaceChildren(...data.links.map(([label,href,icon])=>{
           const a=document.createElement('a'); a.href=href; a.textContent=label; a.style.setProperty('--path-icon',`url('${icon}')`); return a;
         }));
+        links.dataset.optionCount = String(data.links.length);
         panel.classList.remove('is-changing');
       },160);
     });
   });
+  const initialPath = paths[directory.querySelector('.shop-paths__tab.is-active')?.dataset.path || 'style'];
+  if(initialPath) links.dataset.optionCount = String(initialPath.links.length);
 })();
 
 /* ---------- Take a Look Around filters ---------- */
