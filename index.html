@@ -1836,7 +1836,7 @@ body > section + section{border-top:1px solid var(--line) !important;}
   letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;
 }
 @media (max-width:640px){
-  .lookaround__card{flex-basis:46.4vw;max-width:184px;}
+  .lookaround__card{flex-basis:calc((100% - 8px)/2);width:calc((100% - 8px)/2);max-width:none;}
   .edit__row .edit__card{width:43.2vw;max-width:168px;}
   .washable-edit .edit__row .edit__card{flex-basis:36.8vw;width:36.8vw;max-width:141px;}
   .style-hub__card{flex-basis:49vw;max-width:190px;}
@@ -1848,6 +1848,40 @@ body > section + section{border-top:1px solid var(--line) !important;}
   .compare-tray button{padding:7px 8px;font-size:8px;}
   .compare-dialog{padding:10px;}
   .compare-dialog__panel{padding:22px 16px;max-height:90vh;}
+}
+
+/* Mobile lookaround rail: two complete cards, with no clipped edge card. */
+@media (max-width:760px){
+  .lookaround__filters{
+    width:100%;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:0;
+    overflow:visible;
+  }
+  .lookaround__filter{
+    width:100%;
+    min-width:0;
+    padding:0 4px;
+    font-size:clamp(7px,2.1vw,9px);
+    letter-spacing:.02em;
+    white-space:nowrap;
+    overflow:visible;
+  }
+  .lookaround__grid{
+    width:100%;
+    gap:8px;
+    padding-right:0;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-padding-left:0;
+  }
+  .lookaround__card{
+    flex:0 0 calc((100% - 8px)/2);
+    width:calc((100% - 8px)/2);
+    max-width:none;
+  }
+  .lookaround__badges{left:8px;right:8px;top:8px;max-width:none;gap:4px;}
+  .lookaround__badge{padding:5px 6px;font-size:7.5px;}
 }
 
 /* ============================================================
@@ -2115,9 +2149,6 @@ body > section:not(.hero){
 .size-guide-modal__stage{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1.22;border-radius:10px;background:#f8f4ef;}
 .size-guide-modal__stage::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0));pointer-events:none;}
 .size-guide-modal__stage img{position:absolute;z-index:0;left:50%;bottom:5%;width:var(--rug-w,72%);height:var(--rug-h,58%);transform:translateX(-50%);object-fit:cover;border:2px solid rgba(76,13,40,.5);box-shadow:0 12px 24px rgba(76,13,40,.12);}
-.size-guide-modal__furniture{position:absolute;z-index:2;inset:0;width:100%;height:100%;color:#a46f72;}
-.size-guide-modal__furniture g[hidden]{display:none;}
-.size-guide-modal__furniture rect,.size-guide-modal__furniture circle{vector-effect:non-scaling-stroke;}
 .size-guide-modal__scale{display:grid;grid-template-columns:54px 1fr 1px 1fr 54px;align-items:center;gap:14px;margin:24px 0 26px;color:#4c0d28;}
 .size-guide-modal__scale button{display:grid;place-items:center;width:54px;height:54px;border:1px solid #4c0d28;border-radius:50%;background:transparent;color:#4c0d28;cursor:pointer;}
 .size-guide-modal__scale button:disabled{opacity:.35;cursor:not-allowed;}
@@ -2206,6 +2237,60 @@ body > section:not(.hero){
   .size-guide__size-grid{gap:8px;}
   .size-guide__size{min-height:60px;padding:12px 6px 16px;font-size:13px;}
   .size-guide__size small{font-size:8px;padding:3px 4px;}
+}
+
+/* Final mobile card fit: preserve complete pills, badges and two-card framing. */
+@media (max-width:760px){
+  .lookaround__filters{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    width:100%;
+    margin-bottom:14px;
+    overflow:visible;
+  }
+  .lookaround__filter{
+    width:100%;
+    min-width:0;
+    height:44px;
+    min-height:44px;
+    padding:0 4px;
+    font-size:clamp(7px,2.1vw,9px);
+    letter-spacing:.02em;
+    line-height:1;
+    white-space:nowrap;
+    overflow:visible;
+  }
+  .lookaround__grid{
+    display:flex;
+    flex-wrap:nowrap;
+    width:100%;
+    max-width:100%;
+    gap:8px;
+    padding:0 0 5px;
+    overflow-x:auto;
+    overflow-y:hidden;
+  }
+  .lookaround__card{
+    flex:0 0 calc((100% - 8px)/2);
+    width:calc((100% - 8px)/2);
+    max-width:none;
+  }
+  .lookaround__badges{left:8px;right:8px;top:8px;max-width:none;gap:4px;}
+  .lookaround__badge{padding:5px 6px;font-size:7.5px;}
+}
+
+/* The visual guide uses one complete Persian rug product, never a furniture layout. */
+.size-guide-modal__stage img{
+  top:50%;
+  bottom:auto;
+  width:var(--rug-w,62%);
+  height:var(--rug-h,82%);
+  transform:translate(-50%,-50%);
+  object-fit:contain;
+  background:#f8f4ef;
+}
+@media (max-width:760px){
+  .size-guide-modal__stage img{width:var(--rug-w,62%);height:var(--rug-h,82%);}
 }
 </style>
 </head>
@@ -2928,42 +3013,7 @@ body > section:not(.hero){
     <div class="size-guide-modal__content">
       <div class="size-guide-modal__dimension" data-modal-dimension>280cm x 380cm</div>
       <div class="size-guide-modal__stage">
-        <img src="assets/hero-bidjar-red.webp" alt="Persian rug texture used in the size guide" data-size-rug>
-        <svg class="size-guide-modal__furniture" viewBox="0 0 600 420" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <g data-size-room-visual="living">
-            <rect x="112" y="190" width="376" height="164" rx="5" opacity=".45"/>
-            <rect x="158" y="84" width="284" height="102" rx="24" fill="var(--white)"/>
-            <rect x="176" y="102" width="116" height="34" rx="16" fill="var(--white)"/>
-            <rect x="308" y="102" width="116" height="34" rx="16" fill="var(--white)"/>
-            <rect x="176" y="146" width="116" height="30" rx="15" fill="var(--white)"/>
-            <rect x="308" y="146" width="116" height="30" rx="15" fill="var(--white)"/>
-            <rect x="258" y="238" width="84" height="38" rx="12" fill="var(--white)"/>
-            <circle cx="102" cy="134" r="18" fill="var(--white)"/><path d="M102 106v-16M102 162v16M74 134H58M146 134h16M82 114l-12-12M122 154l12 12M122 114l12-12M82 154l-12 12"/>
-            <circle cx="484" cy="134" r="19" fill="var(--white)"/><circle cx="484" cy="134" r="5"/>
-          </g>
-          <g data-size-room-visual="kitchen" hidden>
-            <rect x="64" y="64" width="472" height="292" rx="10" opacity=".45"/>
-            <rect x="82" y="82" width="436" height="54" rx="8" fill="var(--white)"/>
-            <rect x="82" y="136" width="76" height="184" rx="8" fill="var(--white)"/>
-            <rect x="442" y="136" width="76" height="184" rx="8" fill="var(--white)"/>
-            <rect x="214" y="174" width="172" height="94" rx="10" fill="var(--white)"/>
-            <circle cx="250" cy="220" r="14" fill="var(--white)"/><path d="M241 220h18M250 211v18"/>
-            <circle cx="350" cy="220" r="14" fill="var(--white)"/><circle cx="343" cy="213" r="2"/><circle cx="357" cy="213" r="2"/><circle cx="343" cy="227" r="2"/><circle cx="357" cy="227" r="2"/>
-            <circle cx="194" cy="190" r="16" fill="var(--white)"/><circle cx="406" cy="190" r="16" fill="var(--white)"/>
-            <circle cx="194" cy="252" r="16" fill="var(--white)"/><circle cx="406" cy="252" r="16" fill="var(--white)"/>
-            <path d="M112 162h36M112 182h36M112 202h36M456 162h28M456 182h28M456 202h28"/>
-          </g>
-          <g data-size-room-visual="bedroom" hidden>
-            <rect x="96" y="82" width="408" height="258" rx="4" opacity=".45"/>
-            <rect x="214" y="72" width="172" height="250" rx="18" fill="var(--white)"/>
-            <rect x="214" y="72" width="172" height="52" rx="18" fill="var(--white)"/>
-            <rect x="232" y="88" width="64" height="42" rx="14" fill="var(--white)"/>
-            <rect x="304" y="88" width="64" height="42" rx="14" fill="var(--white)"/>
-            <path d="M232 152h136M232 152v148M368 152v148M232 224h136"/>
-            <rect x="146" y="98" width="44" height="44" rx="7" fill="var(--white)"/><rect x="410" y="98" width="44" height="44" rx="7" fill="var(--white)"/>
-            <circle cx="168" cy="120" r="7"/><circle cx="432" cy="120" r="7"/>
-          </g>
-        </svg>
+        <img src="assets/rovira-hand-knotted-wool-bamboo-silk-rug-burgundy.webp" alt="Persian hand-knotted rug product" data-size-rug>
       </div>
       <div class="size-guide-modal__scale" aria-label="Change room rug size">
         <button type="button" data-size-larger aria-label="Choose a larger rug"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -3531,20 +3581,20 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
   ];
   const roomSizes = {
     living:[
-      {cm:'280cm x 380cm',w:'84%',h:'66%'},
-      {cm:'240cm x 330cm',w:'76%',h:'61%'},
-      {cm:'200cm x 290cm',w:'67%',h:'55%'},
-      {cm:'160cm x 230cm',w:'57%',h:'48%'}
+      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'62%',h:'82%'},
+      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'58%',h:'76%'},
+      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'53%',h:'70%'},
+      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'48%',h:'64%'}
     ],
     kitchen:[
-      {cm:'80cm x 150cm',w:'50%',h:'64%'},
-      {cm:'60cm x 240cm Runner',w:'32%',h:'76%'},
-      {cm:'80cm x 300cm Wide Runner',w:'68%',h:'42%'}
+      {cm:'80cm x 150cm',ft:'2\'7" x 4\'11"',w:'48%',h:'76%'},
+      {cm:'60cm x 240cm Runner',ft:'2\' x 7\'10" Runner',w:'34%',h:'84%'},
+      {cm:'80cm x 300cm Wide Runner',ft:'2\'7" x 9\'10" Wide Runner',w:'56%',h:'70%'}
     ],
     bedroom:[
-      {cm:'280cm x 380cm',w:'84%',h:'66%'},
-      {cm:'240cm x 330cm',w:'76%',h:'61%'},
-      {cm:'160cm x 230cm',w:'57%',h:'48%'}
+      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'62%',h:'82%'},
+      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'58%',h:'76%'},
+      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'48%',h:'64%'}
     ]
   };
   const state = {unit:'cm', room:'living', roomIndex:{living:0,kitchen:0,bedroom:0}};
@@ -3575,17 +3625,13 @@ document.querySelectorAll('[data-room]').forEach(slide=>{
     const options = roomSizes[room];
     const index = state.roomIndex[room];
     const option = options[index];
-    modalDimension.textContent = option.cm;
+    modalDimension.textContent = option[state.unit] || option.cm;
     rug.style.setProperty('--rug-w',option.w);
     rug.style.setProperty('--rug-h',option.h);
     modal.querySelectorAll('[data-size-room]').forEach(button=>{
       const active = button.dataset.sizeRoom === room;
       button.classList.toggle('is-active',active);
       button.setAttribute('aria-selected',String(active));
-    });
-    modal.querySelectorAll('[data-size-room-visual]').forEach(visual=>{
-      const active = visual.dataset.sizeRoomVisual === room;
-      visual.hidden = !active;
     });
     larger.disabled = index <= 0;
     smaller.disabled = index >= options.length - 1;
