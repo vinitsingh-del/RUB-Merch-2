@@ -2410,6 +2410,14 @@ body > section:not(.hero){
 @keyframes productBadgePulse{0%,100%{opacity:.56;transform:translateY(1px)}50%{opacity:1;transform:translateY(0)}}
 @media(max-width:760px){.shop-paths__directory{min-height:0}.shop-paths__tabs{overflow:hidden}.shop-paths__tab{min-height:52px;padding:9px 3px;font-size:9px}.shop-paths__body{height:auto;padding:22px 0;display:block}.shop-paths__body>p{margin-bottom:18px}.shop-paths__links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,104px);gap:8px}.shop-paths__links a{background-size:42px}.washable-edit .edit__row,.lookaround__grid,.style-hub__products{display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:0}.washable-edit .edit__row .edit__card,.lookaround__card,.style-hub__card{flex:0 0 calc((100% - 10px)/2);width:calc((100% - 10px)/2);max-width:none;scroll-snap-align:start}.washable-edit__badges{inset:9px 9px auto;gap:5px}.washable-edit__badge{min-height:20px;padding:3px 5px;font-size:7px}}
 @media(prefers-reduced-motion:reduce){.washable-edit__badge,.lookaround__badge{animation:none}}
+/* Shop by room: a fixed desktop grid becomes a touch carousel on mobile. */
+.room-discovery__grid{padding:12px;border:1px solid var(--line);}
+.room-discovery__card{min-width:0;}
+@media(max-width:760px){
+  .room-discovery__grid{display:flex;gap:12px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;padding:0 0 8px;border:0;-webkit-overflow-scrolling:touch;}
+  .room-discovery__card{flex:0 0 min(82vw,320px);max-width:none;scroll-snap-align:start;scroll-snap-stop:always;}
+  .room-discovery__grid::after{content:'';flex:0 0 1px;}
+}
 </style>
 </head>
 <body>
@@ -3001,7 +3009,7 @@ body > section:not(.hero){
   <div class="container">
     <div class="room-discovery__head reveal">
       <div class="room-discovery__intro">
-        <h2 id="room-discovery-title">Start with the room.<em>Find the rug that belongs.</em></h2>
+        <h2 id="room-discovery-title">Shop by room.<em>Find the rug that belongs.</em></h2>
       </div>
       <p class="room-discovery__copy">Choose the room you are furnishing, then explore rugs suited to its scale, traffic and everyday use.</p>
     </div>
