@@ -2280,15 +2280,29 @@ body > section:not(.hero){
 .shop-paths__panel{display:block;min-height:328px;}
 .shop-paths__body{height:328px;padding:32px 40px;display:grid;grid-template-columns:minmax(210px,.62fr) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:42px;align-items:center;}
 .shop-paths__count,.shop-paths__body h3,.shop-paths__body>p{grid-column:1;}.shop-paths__body>p{margin:0;}
-.shop-paths__links{grid-column:2;grid-row:1 / span 2;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:16px;}
-.shop-paths__links a{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 1 calc((100% - 3 * 16px) / 4);max-width:calc((100% - 3 * 16px) / 4);padding:0;border:0;background:none;color:var(--ink);text-align:center;font-size:11.5px;font-weight:700;letter-spacing:.02em;line-height:1.25;}
-.shop-paths__links a::before{content:"";width:64px;height:64px;border-radius:16px;background-color:#f8f4ee;background-image:var(--path-icon);background-repeat:no-repeat;background-position:center;background-size:cover;box-shadow:inset 0 0 0 1px rgba(31,29,25,.08);transition:transform .25s ease,box-shadow .25s ease;}
-.shop-paths__links a:hover::before{transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(31,29,25,.08),0 10px 20px rgba(31,29,25,.12);}
+.shop-paths__rail-wrap{grid-column:2;grid-row:1 / span 2;align-self:center;position:relative;width:100%;min-width:0;}
+.shop-paths__links{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px 2px 6px;}
+.shop-paths__links::-webkit-scrollbar{display:none;}
+.shop-paths__links.is-centered{justify-content:center;}
+.shop-paths__links a{flex:0 0 auto;width:80px;display:flex;flex-direction:column;align-items:center;gap:9px;padding:0;border:0;background:none;color:var(--ink);text-align:center;font-size:10.5px;font-weight:700;letter-spacing:.02em;line-height:1.2;}
+.shop-paths__links a::before{content:"";width:80px;height:80px;border-radius:9px;background-color:#f2ede6;background-image:var(--path-icon);background-repeat:no-repeat;background-position:center;background-size:cover;box-shadow:inset 0 0 0 1px rgba(31,29,25,.08);transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
+.shop-paths__links a:hover::before{transform:translateY(-3px);box-shadow:inset 0 0 0 1px rgba(31,29,25,.08),0 12px 20px rgba(31,29,25,.14);}
 .shop-paths__placeholder{display:none;}
+.shop-paths__fade{position:absolute;top:0;bottom:6px;width:40px;pointer-events:none;z-index:2;opacity:0;transition:opacity .25s ease;}
+.shop-paths__fade--left{left:0;background:linear-gradient(to right,var(--cream),rgba(255,255,255,0));}
+.shop-paths__fade--right{right:0;background:linear-gradient(to left,var(--cream),rgba(255,255,255,0));}
+.shop-paths__rail-wrap.has-scroll-left .shop-paths__fade--left{opacity:1;}
+.shop-paths__rail-wrap.has-scroll-right .shop-paths__fade--right{opacity:1;}
+.shop-paths__arrow{position:absolute;top:calc(50% - 8px);transform:translateY(-50%);width:30px;height:30px;border-radius:50%;border:1px solid var(--ink);background:var(--cream);color:var(--ink);display:grid;place-items:center;font-size:12px;line-height:1;padding:0;cursor:pointer;z-index:3;opacity:0;pointer-events:none;transition:opacity .2s ease,background .2s ease,color .2s ease;}
+.shop-paths__arrow:hover{background:var(--ink);color:var(--white);}
+.shop-paths__arrow--prev{left:-2px;}
+.shop-paths__arrow--next{right:-2px;}
+.shop-paths__rail-wrap.has-scroll-left .shop-paths__arrow--prev{opacity:1;pointer-events:auto;}
+.shop-paths__rail-wrap.has-scroll-right .shop-paths__arrow--next{opacity:1;pointer-events:auto;}
 @media (max-width:900px){
-  .shop-paths__links{gap:12px;}
-  .shop-paths__links a{flex-basis:calc((100% - 2 * 12px) / 3);max-width:calc((100% - 2 * 12px) / 3);font-size:11px;}
-  .shop-paths__links a::before{width:56px;height:56px;}
+  .shop-paths__links{gap:10px;}
+  .shop-paths__links a{width:72px;font-size:10px;}
+  .shop-paths__links a::before{width:72px;height:72px;}
 }
 .washable-edit__badges{position:absolute;z-index:2;inset:14px 14px auto;display:flex;gap:7px;flex-wrap:wrap;pointer-events:none;}
 .washable-edit__badge,.lookaround__badge{display:inline-flex;align-items:center;min-height:24px;padding:5px 8px;border:1px solid var(--white);border-radius:0;background:var(--ink);color:var(--white);font-size:9px;letter-spacing:.08em;text-transform:uppercase;animation:productBadgePulse 2.8s ease-in-out infinite;}
@@ -2297,9 +2311,12 @@ body > section:not(.hero){
 @media(max-width:760px){.shop-paths__directory{min-height:0}.shop-paths__tabs{overflow:hidden}.shop-paths__tab{min-height:52px;padding:9px 3px;font-size:9px}.shop-paths__body{height:auto;padding:22px 0;display:block}.shop-paths__body>p{margin-bottom:18px}.washable-edit .edit__row,.lookaround__grid,.style-hub__products{display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:0}.washable-edit .edit__row .edit__card,.lookaround__card,.style-hub__card{flex:0 0 calc((100% - 10px)/2);width:calc((100% - 10px)/2);max-width:none;scroll-snap-align:start}.washable-edit__badges{inset:9px 9px auto;gap:5px}.washable-edit__badge{min-height:20px;padding:3px 5px;font-size:7px}}
 @media(prefers-reduced-motion:reduce){.washable-edit__badge,.lookaround__badge{animation:none}}
 @media(max-width:760px){
-  .shop-paths__links{grid-column:auto;grid-row:auto;gap:14px 10px;margin-top:6px;}
-  .shop-paths__links a{flex-basis:calc((100% - 10px) / 2);max-width:calc((100% - 10px) / 2);font-size:11px;}
-  .shop-paths__links a::before{width:56px;height:56px;}
+  .shop-paths__rail-wrap{grid-column:auto;grid-row:auto;margin-top:6px;}
+  .shop-paths__links{gap:10px;padding:2px 2px 6px;}
+  .shop-paths__links a{width:76px;font-size:9.5px;}
+  .shop-paths__links a::before{width:76px;height:76px;border-radius:8px;}
+  .shop-paths__arrow{display:none;}
+  .shop-paths__fade{width:28px;}
 }
 
 /* Trust badges: three equal, contained pills with aligned icon/text pairs. */
@@ -2323,30 +2340,6 @@ body > section:not(.hero){
   .trust__badge{display:flex;width:100%;min-width:0;min-height:44px;flex-direction:column;justify-content:center;gap:3px;padding:5px 3px;font-size:clamp(6.4px,1.75vw,8px);line-height:1.12;letter-spacing:0;white-space:normal;overflow:visible;}
   .trust__badge svg{flex:0 0 9px;width:9px;height:9px;}
   .trust__badge span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center;}
-}
-
-/* Craft cards: stable title and subtitle baselines, aligned with the carousel frame. */
-body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
-.proof__grid{align-items:stretch;}
-.proof__card{display:flex;flex-direction:column;min-width:0;}
-.proof__card h3{min-height:46px;margin:0 0 7px;line-height:1.16;}
-.proof__card p{min-height:82px;margin:0;}
-/* Product-card controls: slimmer, with the same footprint in every card. */
-.product-card-actions{gap:5px;padding-top:8px;}
-.product-card-actions button{min-height:34px;height:34px;padding:6px 7px;border-radius:17px;font-size:7px;letter-spacing:.06em;}
-.product-card-actions svg{width:10px;height:10px;}
-/* Product tags such as Bestseller: compact and fully contained within product imagery. */
-.lookaround__badges{gap:4px;}
-.lookaround__badge{min-height:20px;padding:3px 6px;font-size:7px;letter-spacing:.07em;line-height:1;}
-@media(max-width:760px){
-  body > section:has(.proof__carousel) .section-head{margin:0 32px 18px;}
-  .proof__card h3{min-height:44px;margin-bottom:6px;}
-  .proof__card p{min-height:76px;}
-  .product-card-actions{gap:5px;padding-top:8px;}
-  .product-card-actions button{height:36px;min-height:36px;padding:6px 5px;border-radius:18px;font-size:6.25px;letter-spacing:.045em;}
-  .product-card-actions svg{width:9px;height:9px;}
-  .lookaround__badges{left:7px;right:7px;top:7px;gap:3px;}
-  .lookaround__badge{min-height:18px;padding:3px 5px;font-size:6.5px;letter-spacing:.06em;}
 }
 </style>
 </head>
@@ -2453,7 +2446,8 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
           <span class="shop-paths__count" data-path-count>01</span>
           <h3 data-path-title>Choose a rug style.</h3>
           <p data-path-copy>Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.</p>
-          <div class="shop-paths__links" data-path-links>
+          <div class="shop-paths__rail-wrap">
+            <div class="shop-paths__links" data-path-links>
             <a href="https://fableroom.com/collections/persian-rugs" style="--path-icon:url('assets/style-persian-emblem.webp')">Persian</a>
             <a href="https://fableroom.com/collections/modern-rugs" style="--path-icon:url('assets/style-modern-emblem.webp')">Modern</a>
             <a href="https://fableroom.com/collections/minimal-rugs" style="--path-icon:url('assets/style-minimal-emblem.webp')">Minimal</a>
@@ -2462,6 +2456,11 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
             <a href="https://fableroom.com/collections/botanical-floral-rugs" style="--path-icon:url('assets/style-floral-emblem.webp')">Floral</a>
             <a href="https://fableroom.com/collections/checkerboard-rugs" style="--path-icon:url('assets/style-checkered-emblem.webp')">Checkered</a>
             <a href="https://fableroom.com/search?q=geometric+rug&amp;type=product" style="--path-icon:url('assets/style-geometric-emblem.webp')">Geometric</a>
+          </div>
+            <div class="shop-paths__fade shop-paths__fade--left" data-rail-fade-left aria-hidden="true"></div>
+            <div class="shop-paths__fade shop-paths__fade--right" data-rail-fade-right aria-hidden="true"></div>
+            <button class="shop-paths__arrow shop-paths__arrow--prev" type="button" data-rail-prev aria-label="Scroll options left">&#8592;</button>
+            <button class="shop-paths__arrow shop-paths__arrow--next" type="button" data-rail-next aria-label="Scroll options right">&#8594;</button>
           </div>
         </div>
       </div>
@@ -3418,6 +3417,29 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
   const title = directory.querySelector('[data-path-title]');
   const copy = directory.querySelector('[data-path-copy]');
   const links = directory.querySelector('[data-path-links]');
+  const railWrap = directory.querySelector('.shop-paths__rail-wrap');
+  const arrowPrev = directory.querySelector('[data-rail-prev]');
+  const arrowNext = directory.querySelector('[data-rail-next]');
+  const updateRailEdges = ()=>{
+    if(!railWrap) return;
+    const max = links.scrollWidth - links.clientWidth;
+    railWrap.classList.toggle('has-scroll-left', links.scrollLeft > 4);
+    railWrap.classList.toggle('has-scroll-right', links.scrollLeft < max - 4);
+  };
+  const updateRailState = ()=>{
+    if(!railWrap) return;
+    const overflowing = links.scrollWidth > links.clientWidth + 1;
+    links.classList.toggle('is-centered', !overflowing);
+    if(!overflowing){
+      railWrap.classList.remove('has-scroll-left','has-scroll-right');
+      links.scrollLeft = 0;
+    } else {
+      updateRailEdges();
+    }
+  };
+  if(arrowPrev) arrowPrev.addEventListener('click', ()=> links.scrollBy({left:-(links.clientWidth*0.8), behavior:'smooth'}));
+  if(arrowNext) arrowNext.addEventListener('click', ()=> links.scrollBy({left: links.clientWidth*0.8, behavior:'smooth'}));
+  links.addEventListener('scroll', updateRailEdges, {passive:true});
   const paths = {
     style:{count:'01',title:'Choose a rug style.',copy:'Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[
       ['Persian','https://fableroom.com/collections/persian-rugs','assets/style-persian-emblem.webp'],
@@ -3473,6 +3495,7 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
           const a=document.createElement('a'); a.href=href; a.textContent=label; a.style.setProperty('--path-icon',`url('${icon}')`); return a;
         }));
         links.dataset.optionCount = String(data.links.length);
+        updateRailState();
         panel.classList.remove('is-changing');
       },160);
     });
@@ -3500,10 +3523,11 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
     if(maxHeight > 0){ panel.style.minHeight = maxHeight + 'px'; }
   };
   normaliseHeight();
+  updateRailState();
   let resizeTimer;
   window.addEventListener('resize', ()=>{
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(normaliseHeight, 150);
+    resizeTimer = setTimeout(()=>{ normaliseHeight(); updateRailState(); }, 150);
   });
 })();
 
