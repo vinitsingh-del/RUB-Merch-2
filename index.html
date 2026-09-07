@@ -2267,6 +2267,8 @@ body > section:not(.hero){
 
 /* Fixed furniture sits over one independently resizing Persian rug. */
 .size-guide-modal__panel{width:min(608px,100%);color:var(--ink);}
+.size-guide-modal__panel,
+.size-guide-modal__content{background:#fff;}
 .size-guide-modal__head{padding:21px 24px 14px;}
 .size-guide-modal__head h2,
 .size-guide-modal__tabs button,
@@ -2274,13 +2276,17 @@ body > section:not(.hero){
 .size-guide-modal__scale,
 .size-guide-modal__tip h3{color:var(--ink);}
 .size-guide-modal__tabs button.is-active::after{background:var(--ink);}
+.size-guide-modal__tabs{border-color:#d8d8d8;}
+.size-guide-modal__close{color:var(--ink);}
 .size-guide-modal__content{padding:24px 24px 27px;}
+.size-guide-modal__stage{background:#f7f7f7;border:1px solid #e2e2e2;}
 .size-guide-modal__scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
 .size-guide-modal__scene[hidden]{display:none;}
-.size-guide-modal__scene img{position:absolute;inset:0;width:100%;height:100%;max-width:none;transform:none;object-fit:cover;border:0;box-shadow:none;background:transparent;}
-.size-guide-modal__scene svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
-.size-guide-modal__rug-layer{position:absolute;z-index:2;left:50%;bottom:9%;width:var(--rug-w,62%);height:var(--rug-h,30%);transform:translateX(-50%);overflow:hidden;border:1px solid rgba(17,17,17,.45);box-shadow:0 10px 20px rgba(0,0,0,.16);transition:width .35s var(--ease),height .35s var(--ease),bottom .35s var(--ease);}
-.size-guide-modal__rug-layer img{position:absolute;inset:0;left:0;top:0;bottom:auto;width:100%;height:100%;max-width:none;transform:none;object-fit:cover;border:0;box-shadow:none;background:transparent;}
+.size-guide-modal__scene svg{position:absolute;inset:0;z-index:3;width:100%;height:100%;display:block;color:var(--ink);}
+.size-guide-modal__rug-layer{position:absolute;z-index:2;left:50%;bottom:9%;width:var(--rug-w,62%);height:var(--rug-h,30%);transform:translateX(-50%);border:2px solid var(--ink);background:#fff;box-shadow:0 8px 18px rgba(0,0,0,.11);transition:width .38s var(--ease),height .38s var(--ease),bottom .38s var(--ease);}
+.size-guide-modal__rug-layer::before{content:"";position:absolute;inset:8px;border:1px solid var(--ink);}
+.size-guide-modal__rug-layer::after{content:"";position:absolute;inset:14px;background:repeating-linear-gradient(90deg,transparent 0 16px,rgba(17,17,17,.06) 16px 17px);}
+.size-guide-modal__rug-surface{position:absolute;inset:0;}
 .size-guide-modal__stage[data-room="kitchen"] .size-guide-modal__rug-layer{bottom:8%;}
 .size-guide-modal__stage[data-room="bedroom"] .size-guide-modal__rug-layer{bottom:10%;}
 .size-guide-modal__shop-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:16px 0 8px;color:var(--ink);font:700 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;}
@@ -2290,15 +2296,20 @@ body > section:not(.hero){
 .size-guide-modal__size-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:20px;}
 .size-guide-modal__size-choice{position:relative;display:flex;align-items:center;justify-content:center;min-height:43px;padding:8px 6px;border:1px solid var(--line-strong);background:var(--white);color:var(--ink);font:400 10px/1.2 var(--sans);text-align:center;transition:border-color .25s var(--ease),background .25s var(--ease);}
 .size-guide-modal__size-choice:hover{border-color:var(--ink);background:#f4f4f4;}
+.size-guide-modal__scale button{border-color:var(--ink);color:var(--ink);}
+.size-guide-modal__scale i{background:#b9b9b9;}
+.size-guide-modal__tip{border-color:#d8d8d8;}
+.size-guide-modal__tip p{color:#333;}
 .size-guide-modal__size-choice span[data-size-choice-ft]{display:none;}
 .size-guide-modal[data-size-unit="ft"] .size-guide-modal__size-choice span[data-size-choice-cm]{display:none;}
 .size-guide-modal[data-size-unit="ft"] .size-guide-modal__size-choice span[data-size-choice-ft]{display:inline;}
+.size-guide-modal__shop-head,
+.size-guide-modal__size-grid{display:none;}
 @media (max-width:760px){
   .size-guide__head{display:flex;align-items:flex-end;gap:14px;}
   .size-guide__visual-trigger{margin-left:0;margin-top:0;}
   .size-guide-modal__head{padding:18px 16px 11px;}
   .size-guide-modal__content{padding:19px 16px 22px;}
-  .size-guide-modal__scene img{object-position:center;}
   .size-guide-modal__shop-head{margin-top:16px;font-size:9px;}
   .size-guide-modal__size-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:16px;}
   .size-guide-modal__size-choice{min-height:48px;padding:8px 6px;font-size:10px;}
@@ -3099,16 +3110,44 @@ body > section:not(.hero){
       <div class="size-guide-modal__dimension" data-modal-dimension>280cm x 380cm</div>
         <div class="size-guide-modal__stage" data-size-stage data-room="living">
           <div class="size-guide-modal__scene" data-size-room-scene="living">
-          <img src="assets/size-guide-living-furniture.webp" alt="Three-seat sofa" loading="eager">
+          <svg viewBox="0 0 600 490" role="img" aria-label="Top view illustration of a sofa and coffee table">
+            <g fill="#fff" stroke="currentColor" stroke-width="3">
+              <rect x="160" y="105" width="280" height="104" rx="24"/>
+              <rect x="168" y="112" width="32" height="90" rx="16"/>
+              <rect x="400" y="112" width="32" height="90" rx="16"/>
+              <rect x="205" y="120" width="91" height="34" rx="13"/>
+              <rect x="304" y="120" width="91" height="34" rx="13"/>
+              <rect x="205" y="160" width="91" height="39" rx="13"/>
+              <rect x="304" y="160" width="91" height="39" rx="13"/>
+              <rect x="248" y="262" width="104" height="56" rx="18"/>
+              <circle cx="128" cy="179" r="22"/><circle cx="470" cy="179" r="22"/>
+            </g>
+          </svg>
         </div>
         <div class="size-guide-modal__scene" data-size-room-scene="kitchen" hidden>
-          <img src="assets/size-guide-kitchen-furniture.webp" alt="Kitchen island" loading="eager">
+          <svg viewBox="0 0 600 490" role="img" aria-label="Top view illustration of a dining table and chairs">
+            <g fill="#fff" stroke="currentColor" stroke-width="3">
+              <rect x="190" y="145" width="220" height="145" rx="18"/>
+              <rect x="216" y="91" width="62" height="40" rx="12"/><rect x="322" y="91" width="62" height="40" rx="12"/>
+              <rect x="216" y="304" width="62" height="40" rx="12"/><rect x="322" y="304" width="62" height="40" rx="12"/>
+              <rect x="132" y="172" width="42" height="62" rx="12"/><rect x="426" y="172" width="42" height="62" rx="12"/>
+            </g>
+          </svg>
         </div>
         <div class="size-guide-modal__scene" data-size-room-scene="bedroom" hidden>
-          <img src="assets/size-guide-bedroom-furniture.webp" alt="Double bed" loading="eager">
+          <svg viewBox="0 0 600 490" role="img" aria-label="Top view illustration of a bed and bedside tables">
+            <g fill="#fff" stroke="currentColor" stroke-width="3">
+              <rect x="205" y="92" width="190" height="238" rx="22"/>
+              <rect x="212" y="98" width="176" height="38" rx="16"/>
+              <rect x="220" y="143" width="75" height="58" rx="16"/><rect x="305" y="143" width="75" height="58" rx="16"/>
+              <path d="M218 212h164v101H218z"/>
+              <rect x="146" y="116" width="46" height="55" rx="12"/><rect x="408" y="116" width="46" height="55" rx="12"/>
+              <circle cx="169" cy="143" r="9"/><circle cx="431" cy="143" r="9"/>
+            </g>
+          </svg>
         </div>
         <div class="size-guide-modal__rug-layer">
-          <img src="assets/hero-bidjar-red.webp" alt="Persian rug product shown in the room guide" data-size-rug>
+          <div class="size-guide-modal__rug-surface" role="img" aria-label="Rug footprint shown beneath the furniture" data-size-rug></div>
         </div>
       </div>
       <div class="size-guide-modal__shop-head">
