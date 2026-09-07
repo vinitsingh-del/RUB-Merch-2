@@ -2102,31 +2102,31 @@ body > section:not(.hero){
 .size-guide-trigger:focus-visible,.size-guide__visual-trigger:focus-visible,.size-guide__size:focus-visible,.size-guide__unit-toggle button:focus-visible{outline:2px solid #2d6479;outline-offset:3px;}
 
 .size-guide-modal[hidden]{display:none;}
-.size-guide-modal{position:fixed;inset:0;z-index:240;display:grid;place-items:center;padding:18px;background:rgba(51,33,27,.78);}
-.size-guide-modal__panel{width:min(760px,100%);max-height:min(900px,calc(100vh - 36px));overflow:auto;background:var(--white);color:#4c0d28;box-shadow:0 24px 70px rgba(0,0,0,.26);}
-.size-guide-modal__head{display:flex;align-items:center;justify-content:space-between;padding:26px 30px 18px;}
-.size-guide-modal__head h2{font-size:clamp(32px,5vw,54px);color:#4c0d28;}
-.size-guide-modal__close{display:grid;place-items:center;width:46px;height:46px;border:0;background:transparent;color:#8e6170;cursor:pointer;}
-.size-guide-modal__close svg{width:34px;height:34px;}
-.size-guide-modal__tabs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid #dfd8d5;}
-.size-guide-modal__tabs button{position:relative;min-height:64px;border:0;background:transparent;color:#4c0d28;font:400 clamp(16px,2.2vw,24px)/1 var(--sans);cursor:pointer;}
-.size-guide-modal__tabs button::after{content:"";position:absolute;left:14%;right:14%;bottom:-1px;height:4px;background:transparent;}
-.size-guide-modal__tabs button.is-active::after{background:#4c0d28;}
-.size-guide-modal__content{padding:30px 30px 34px;}
-.size-guide-modal__dimension{margin:0 0 18px;text-align:center;font:400 clamp(24px,3.2vw,34px)/1.1 var(--serif);color:#4c0d28;}
+.size-guide-modal{position:fixed;inset:0;z-index:240;display:grid;place-items:center;padding:18px;background:rgba(26,26,26,.72);}
+.size-guide-modal__panel{width:min(608px,100%);max-height:min(720px,calc(100vh - 36px));overflow:auto;background:var(--white);color:var(--ink);box-shadow:0 24px 70px rgba(0,0,0,.26);}
+.size-guide-modal__head{display:flex;align-items:center;justify-content:space-between;padding:21px 24px 14px;}
+.size-guide-modal__head h2{font-size:clamp(26px,4vw,43px);color:var(--ink);}
+.size-guide-modal__close{display:grid;place-items:center;width:37px;height:37px;border:0;background:transparent;color:var(--ink-soft);cursor:pointer;}
+.size-guide-modal__close svg{width:27px;height:27px;}
+.size-guide-modal__tabs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line-strong);}
+.size-guide-modal__tabs button{position:relative;min-height:51px;border:0;background:transparent;color:var(--ink-soft);font:400 clamp(13px,1.8vw,19px)/1 var(--sans);cursor:pointer;}
+.size-guide-modal__tabs button::after{content:"";position:absolute;left:14%;right:14%;bottom:-1px;height:3px;background:transparent;}
+.size-guide-modal__tabs button.is-active::after{background:var(--ink);}
+.size-guide-modal__content{padding:24px 24px 27px;}
+.size-guide-modal__dimension{margin:0 0 14px;text-align:center;font:400 clamp(19px,2.6vw,27px)/1.1 var(--serif);color:var(--ink);}
 .size-guide-modal__stage{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1.22;border-radius:10px;background:#f8f4ef;}
 .size-guide-modal__stage::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0));pointer-events:none;}
-.size-guide-modal__stage img{position:absolute;z-index:0;left:50%;bottom:5%;width:var(--rug-w,72%);height:var(--rug-h,58%);transform:translateX(-50%);object-fit:cover;border:2px solid rgba(76,13,40,.5);box-shadow:0 12px 24px rgba(76,13,40,.12);}
-.size-guide-modal__scale{display:grid;grid-template-columns:54px 1fr 1px 1fr 54px;align-items:center;gap:14px;margin:24px 0 26px;color:#4c0d28;}
-.size-guide-modal__scale button{display:grid;place-items:center;width:54px;height:54px;border:1px solid #4c0d28;border-radius:50%;background:transparent;color:#4c0d28;cursor:pointer;}
+.size-guide-modal__stage img{position:absolute;z-index:0;left:50%;bottom:5%;width:var(--rug-w,72%);height:var(--rug-h,58%);transform:translateX(-50%);object-fit:cover;border:2px solid rgba(26,26,26,.4);box-shadow:0 12px 24px rgba(0,0,0,.1);}
+.size-guide-modal__scale{display:grid;grid-template-columns:43px 1fr 1px 1fr 43px;align-items:center;gap:11px;margin:19px 0 21px;color:var(--ink);}
+.size-guide-modal__scale button{display:grid;place-items:center;width:43px;height:43px;border:1px solid var(--ink);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;}
 .size-guide-modal__scale button:disabled{opacity:.35;cursor:not-allowed;}
-.size-guide-modal__scale button svg{width:22px;height:22px;}
-.size-guide-modal__scale span{font:400 20px/1 var(--sans);}
+.size-guide-modal__scale button svg{width:18px;height:18px;}
+.size-guide-modal__scale span{font:400 16px/1 var(--sans);}
 .size-guide-modal__scale span:nth-of-type(2){text-align:right;}
-.size-guide-modal__scale i{display:block;width:1px;height:54px;background:#d5a8b6;}
-.size-guide-modal__tip{border-top:1px solid #dfd8d5;padding-top:20px;}
-.size-guide-modal__tip h3{font-size:clamp(22px,3vw,30px);color:#4c0d28;margin:0 0 7px;}
-.size-guide-modal__tip p{margin:0;color:#6e6262;font-size:14px;line-height:1.55;}
+.size-guide-modal__scale i{display:block;width:1px;height:43px;background:var(--line-strong);}
+.size-guide-modal__tip{border-top:1px solid var(--line-strong);padding-top:16px;}
+.size-guide-modal__tip h3{font-size:clamp(18px,2.4vw,24px);color:var(--ink);margin:0 0 6px;}
+.size-guide-modal__tip p{margin:0;color:var(--ink-soft);font-size:12px;line-height:1.55;}
 @media (max-width:760px){
   .size-guide.section{padding-top:24px;padding-bottom:24px;}
   .size-guide__head{display:block;margin-bottom:16px;}
@@ -2138,17 +2138,17 @@ body > section:not(.hero){
   .size-guide__size small{font-size:9px;padding:4px 5px;}
   .size-guide-modal{padding:0;place-items:stretch;}
   .size-guide-modal__panel{width:100%;max-height:100%;}
-  .size-guide-modal__head{padding:22px 20px 14px;}
-  .size-guide-modal__head h2{font-size:36px;}
-  .size-guide-modal__close{width:42px;height:42px;}
-  .size-guide-modal__tabs button{min-height:56px;font-size:17px;}
-  .size-guide-modal__content{padding:24px 20px 28px;}
-  .size-guide-modal__dimension{font-size:27px;margin-bottom:16px;}
+  .size-guide-modal__head{padding:18px 16px 11px;}
+  .size-guide-modal__head h2{font-size:29px;}
+  .size-guide-modal__close{width:34px;height:34px;}
+  .size-guide-modal__tabs button{min-height:45px;font-size:14px;}
+  .size-guide-modal__content{padding:19px 16px 22px;}
+  .size-guide-modal__dimension{font-size:22px;margin-bottom:13px;}
   .size-guide-modal__stage{aspect-ratio:1/1;}
-  .size-guide-modal__scale{grid-template-columns:48px 1fr 1px 1fr 48px;gap:9px;margin:20px 0 24px;}
-  .size-guide-modal__scale button{width:48px;height:48px;}
-  .size-guide-modal__scale span{font-size:16px;}
-  .size-guide-modal__scale i{height:48px;}
+  .size-guide-modal__scale{grid-template-columns:38px 1fr 1px 1fr 38px;gap:7px;margin:16px 0 19px;}
+  .size-guide-modal__scale button{width:38px;height:38px;}
+  .size-guide-modal__scale span{font-size:13px;}
+  .size-guide-modal__scale i{height:38px;}
 }
 
 /* Flexible shop-path choices: equal cards, centered final row, no clipped options. */
@@ -2265,22 +2265,25 @@ body > section:not(.hero){
 .size-guide__head{align-items:center;margin-bottom:0;}
 .size-guide__visual-trigger{margin-left:auto;}
 
-/* Room scenes use real room photography; the same Persian rug is layered in every room. */
+/* Room scenes use a simple room-tone background; the same Persian rug is layered behind fixed furniture in every room. */
 .size-guide-modal__scene{position:absolute;inset:0;z-index:0;overflow:hidden;}
 .size-guide-modal__scene[hidden]{display:none;}
 .size-guide-modal__scene img{position:absolute;inset:0;width:100%;height:100%;max-width:none;transform:none;object-fit:cover;border:0;box-shadow:none;background:transparent;}
 .size-guide-modal__scene svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
-.size-guide-modal__rug-layer{position:absolute;z-index:2;left:50%;bottom:7%;width:var(--rug-w,62%);height:var(--rug-h,30%);transform:translateX(-50%);overflow:hidden;border:2px solid rgba(76,13,40,.55);box-shadow:0 12px 24px rgba(76,13,40,.2);transition:width .35s var(--ease),height .35s var(--ease),bottom .35s var(--ease);}
+.size-guide-modal__rug-layer{position:absolute;z-index:1;left:50%;top:34%;width:var(--rug-w,62%);height:var(--rug-h,30%);transform:translateX(-50%);overflow:hidden;border:2px solid rgba(26,26,26,.5);box-shadow:0 10px 22px rgba(0,0,0,.16);transition:width .35s var(--ease),height .35s var(--ease),top .35s var(--ease);}
 .size-guide-modal__rug-layer img{position:absolute;inset:0;left:0;top:0;bottom:auto;width:100%;height:100%;max-width:none;transform:none;object-fit:cover;border:0;box-shadow:none;background:transparent;}
-.size-guide-modal__stage[data-room="kitchen"] .size-guide-modal__rug-layer{bottom:8%;}
-.size-guide-modal__stage[data-room="bedroom"] .size-guide-modal__rug-layer{bottom:10%;}
-.size-guide-modal__shop-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 0 10px;color:#4c0d28;font:700 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;}
-.size-guide-modal__unit-toggle{display:inline-grid;grid-template-columns:1fr 1fr;overflow:hidden;border:1px solid #2d6479;border-radius:999px;background:var(--cream);}
+.size-guide-modal__stage[data-room="kitchen"] .size-guide-modal__rug-layer{top:40%;}
+.size-guide-modal__stage[data-room="bedroom"] .size-guide-modal__rug-layer{top:38%;}
+.size-guide-modal__furniture{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;}
+.size-guide-modal__furniture[hidden]{display:none;}
+.size-guide-modal__furniture svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.size-guide-modal__shop-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 0 10px;color:var(--ink);font:700 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;}
+.size-guide-modal__unit-toggle{display:inline-grid;grid-template-columns:1fr 1fr;overflow:hidden;border:1px solid var(--ink);border-radius:999px;background:var(--cream);}
 .size-guide-modal__unit-toggle button{min-width:54px;height:28px;padding:0 12px;border:0;background:transparent;color:var(--ink);font:700 10px/1 var(--sans);cursor:pointer;}
-.size-guide-modal__unit-toggle button.is-active{background:#2d6479;color:var(--white);}
+.size-guide-modal__unit-toggle button.is-active{background:var(--ink);color:var(--white);}
 .size-guide-modal__size-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:20px;}
 .size-guide-modal__size-choice{position:relative;display:flex;align-items:center;justify-content:center;min-height:54px;padding:10px 8px;border:1px solid var(--line-strong);background:var(--cream);color:var(--ink);font:400 11px/1.2 var(--sans);text-align:center;transition:border-color .25s var(--ease),background .25s var(--ease);}
-.size-guide-modal__size-choice:hover{border-color:#2d6479;background:#f1ebe2;}
+.size-guide-modal__size-choice:hover{border-color:var(--ink);background:var(--white);}
 .size-guide-modal__size-choice span[data-size-choice-ft]{display:none;}
 .size-guide-modal[data-size-unit="ft"] .size-guide-modal__size-choice span[data-size-choice-cm]{display:none;}
 .size-guide-modal[data-size-unit="ft"] .size-guide-modal__size-choice span[data-size-choice-ft]{display:inline;}
@@ -2999,13 +3002,30 @@ body > section:not(.hero){
       <div class="size-guide-modal__dimension" data-modal-dimension>280cm x 380cm</div>
       <div class="size-guide-modal__stage" data-size-stage data-room="living">
         <div class="size-guide-modal__scene" data-size-room-scene="living">
-          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a living room with a three-seat sofa">
-            <rect width="400" height="400" fill="#f5ece6"/>
-            <circle cx="52" cy="60" r="20" fill="none" stroke="#4c0d28" stroke-width="2"/>
-            <path d="M52 44v8M52 68v8M36 60h8M60 60h8M40 48l6 6M64 72l-6-6M64 48l-6 6M40 72l6-6" stroke="#4c0d28" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="348" cy="62" r="16" fill="none" stroke="#4c0d28" stroke-width="2"/>
-            <circle cx="348" cy="62" r="5" fill="#4c0d28"/>
-            <g stroke="#4c0d28" stroke-width="2.5" fill="#fbf5f1">
+          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Living room floor">
+            <rect width="400" height="400" fill="#f6f6f4"/>
+            <circle cx="52" cy="60" r="20" fill="none" stroke="var(--ink)" stroke-width="2"/>
+            <path d="M52 44v8M52 68v8M36 60h8M60 60h8M40 48l6 6M64 72l-6-6M64 48l-6 6M40 72l6-6" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="348" cy="62" r="16" fill="none" stroke="var(--ink)" stroke-width="2"/>
+            <circle cx="348" cy="62" r="5" fill="var(--ink)"/>
+          </svg>
+        </div>
+        <div class="size-guide-modal__scene" data-size-room-scene="kitchen" hidden>
+          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Dining room floor">
+            <rect width="400" height="400" fill="#f6f6f4"/>
+          </svg>
+        </div>
+        <div class="size-guide-modal__scene" data-size-room-scene="bedroom" hidden>
+          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bedroom floor">
+            <rect width="400" height="400" fill="#f6f6f4"/>
+          </svg>
+        </div>
+        <div class="size-guide-modal__rug-layer">
+          <img src="assets/hero-bidjar-red.webp" alt="Persian rug product shown in the room guide" data-size-rug>
+        </div>
+        <div class="size-guide-modal__furniture" data-size-room-furniture="living">
+          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Three-seat sofa">
+            <g stroke="var(--ink)" stroke-width="2.5" fill="#fff">
               <rect x="70" y="90" width="260" height="95" rx="18"/>
               <rect x="70" y="90" width="34" height="95" rx="16"/>
               <rect x="296" y="90" width="34" height="95" rx="16"/>
@@ -3014,10 +3034,9 @@ body > section:not(.hero){
             </g>
           </svg>
         </div>
-        <div class="size-guide-modal__scene" data-size-room-scene="kitchen" hidden>
-          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a dining table with four chairs">
-            <rect width="400" height="400" fill="#f5ece6"/>
-            <g stroke="#4c0d28" stroke-width="2.5" fill="#fbf5f1">
+        <div class="size-guide-modal__furniture" data-size-room-furniture="kitchen" hidden>
+          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Dining table with four chairs">
+            <g stroke="var(--ink)" stroke-width="2.5" fill="#fff">
               <rect x="120" y="120" width="160" height="100" rx="14"/>
               <rect x="150" y="82" width="46" height="30" rx="8"/>
               <rect x="204" y="82" width="46" height="30" rx="8"/>
@@ -3028,10 +3047,9 @@ body > section:not(.hero){
             </g>
           </svg>
         </div>
-        <div class="size-guide-modal__scene" data-size-room-scene="bedroom" hidden>
-          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a bed with two bedside tables">
-            <rect width="400" height="400" fill="#f5ece6"/>
-            <g stroke="#4c0d28" stroke-width="2.5" fill="#fbf5f1">
+        <div class="size-guide-modal__furniture" data-size-room-furniture="bedroom" hidden>
+          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bed with two bedside tables">
+            <g stroke="var(--ink)" stroke-width="2.5" fill="#fff">
               <rect x="120" y="66" width="160" height="34" rx="8"/>
               <rect x="108" y="96" width="184" height="150" rx="16"/>
               <rect x="122" y="112" width="70" height="42" rx="12"/>
@@ -3039,12 +3057,9 @@ body > section:not(.hero){
               <rect x="62" y="130" width="34" height="34" rx="8"/>
               <rect x="304" y="130" width="34" height="34" rx="8"/>
             </g>
-            <circle cx="79" cy="120" r="9" fill="none" stroke="#4c0d28" stroke-width="2"/>
-            <circle cx="321" cy="120" r="9" fill="none" stroke="#4c0d28" stroke-width="2"/>
+            <circle cx="79" cy="120" r="9" fill="none" stroke="var(--ink)" stroke-width="2"/>
+            <circle cx="321" cy="120" r="9" fill="none" stroke="var(--ink)" stroke-width="2"/>
           </svg>
-        </div>
-        <div class="size-guide-modal__rug-layer">
-          <img src="assets/hero-bidjar-red.webp" alt="Persian rug product shown in the room guide" data-size-rug>
         </div>
       </div>
       <div class="size-guide-modal__shop-head">
@@ -3690,6 +3705,9 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
     });
     modal.querySelectorAll('[data-size-room-scene]').forEach(scene=>{
       scene.hidden = scene.dataset.sizeRoomScene !== room;
+    });
+    modal.querySelectorAll('[data-size-room-furniture]').forEach(furniture=>{
+      furniture.hidden = furniture.dataset.sizeRoomFurniture !== room;
     });
     modalSizeGrid.replaceChildren();
     options.forEach(option=>{
