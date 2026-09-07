@@ -617,7 +617,7 @@ body > section + section{margin-top:10px;}
 /* ============================================================
    FAQ
    ============================================================ */
-.faq{max-width:840px;}
+.faq{width:100%;}
 .faq__item{border-top:1px solid var(--line);}
 .faq__item:last-child{border-bottom:1px solid var(--line);}
 .faq__q{
@@ -741,7 +741,6 @@ body > section + section{margin-top:10px;}
   .room__slide{width:min(480px,78vw);}
   .size-guide__grid,.recommended__grid{gap:32px;}
   .size-guide__grid p{font-size:12.5px;}
-  .faq{max-width:760px;}
   .faq__q{padding:18px 0; font-size:17px;}
   .faq__a p{font-size:13.5px;}
   .email-cap h2{font-size:clamp(26px,2.8vw,36px); margin-bottom:20px;}
@@ -2384,19 +2383,6 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .why-fableroom__footnote{margin-top:10px;font-size:7.5px;}
 }
 @media(prefers-reduced-motion:reduce){.why-fableroom__copy .eyebrow,#why-fableroom-title{animation:none;}}
-
-/* Mobile craft title: one balanced line. */
-@media(max-width:760px){body > section:has(.proof__carousel) .section-head h2{font-size:clamp(19px,5.65vw,24px);line-height:1;white-space:nowrap;letter-spacing:-.045em;}}
-/* Washable banner labels: white, prominent and continuously blinking. */
-.washable-edit__badge{background:var(--white)!important;color:var(--ink)!important;border-color:var(--white)!important;font-weight:800;animation:washableBadgeBlink 1.25s ease-in-out infinite!important;}
-.washable-edit__badge:nth-child(2){animation-delay:.22s!important}.washable-edit__badge:nth-child(3){animation-delay:.44s!important}.washable-edit__badge:nth-child(4){animation-delay:.66s!important}
-@keyframes washableBadgeBlink{0%,100%{opacity:.35;transform:scale(.96)}50%{opacity:1;transform:scale(1)}}
-/* Discovery panel: uninterrupted white surface through to the enclosing border. */
-.shop-paths__directory,.shop-paths__panel,.shop-paths__body{background:var(--white)!important;}
-.shop-paths__fade--left{background:linear-gradient(to right,var(--white),rgba(255,255,255,0));}.shop-paths__fade--right{background:linear-gradient(to left,var(--white),rgba(255,255,255,0));}
-.shop-paths__arrow{background:var(--white);}
-@media(max-width:760px){.shop-paths__directory{background:var(--white);}.shop-paths__panel{min-height:0;background:var(--white);}.shop-paths__body{background:var(--white);padding-bottom:22px;}.shop-paths__rail-wrap{background:var(--white);}.shop-paths__links{scroll-snap-type:x mandatory;scroll-padding-left:0;}.shop-paths__links a{scroll-snap-align:start;scroll-snap-stop:always;}}
-@media(prefers-reduced-motion:reduce){.washable-edit__badge{animation:none!important;}}
 </style>
 </head>
 <body>
@@ -3204,7 +3190,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   <div class="container">
     <div class="why-fableroom__shell reveal">
       <div class="why-fableroom__story">
-        <img src="data:image/webp;base64,undefined" alt="A couple unrolling a handmade rug together in a warm living space" loading="lazy">
+        <img src="assets/why-fableroom-rug-story-v3.webp" alt="A couple unrolling a handmade rug together in a warm living space" loading="lazy">
         <div class="why-fableroom__copy"><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
       </div>
       <div class="why-fableroom__list">
