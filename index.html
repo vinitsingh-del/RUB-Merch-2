@@ -2341,6 +2341,49 @@ body > section:not(.hero){
   .trust__badge svg{flex:0 0 9px;width:9px;height:9px;}
   .trust__badge span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center;}
 }
+
+/* Requested craft-carousel alignment. */
+body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
+.proof__grid{align-items:stretch;}
+.proof__card{display:flex;flex-direction:column;min-width:0;}
+.proof__card h3{min-height:46px;margin:0 0 7px;line-height:1.16;}
+.proof__card p{min-height:82px;margin:0;}
+/* Slim shared product actions: two equal controls, no bleed. */
+.product-card-actions{gap:5px;padding-top:8px;min-width:0;}
+.product-card-actions button{min-width:0;height:34px;min-height:34px;padding:6px 7px;border-radius:17px;font-size:7px;letter-spacing:.06em;overflow:hidden;}
+.product-card-actions button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.product-card-actions svg{width:10px;height:10px;}
+/* Product badges are a compact information row beneath each product title. */
+.lookaround__badges{position:static!important;display:flex;flex-wrap:wrap;gap:4px;max-width:none;margin:6px 0 7px;}
+.lookaround__badge{display:inline-flex;align-items:center;min-height:20px;padding:3px 6px;border:1px solid var(--ink);border-radius:0;background:transparent!important;color:var(--ink)!important;font-size:7px;line-height:1;letter-spacing:.07em;white-space:nowrap;animation:none!important;}
+/* One Rug Discovery Hub: remove its enclosing border only. */
+.style-hub__shell{border:0!important;}
+/* Why Choose FableRoom: editorial image, a restrained continuous title glow and an aligned comparison table. */
+.why-fableroom__story img{object-position:center center;}
+.why-fableroom__copy .eyebrow,#why-fableroom-title{animation:whyFableRoomGlow 2.8s ease-in-out infinite;}
+@keyframes whyFableRoomGlow{0%,100%{text-shadow:0 0 0 rgba(255,255,255,0)}50%{text-shadow:0 0 15px rgba(255,255,255,.42),0 0 28px rgba(239,218,185,.18)}}
+.why-fableroom__shell{overflow:hidden;}
+.why-fableroom__table{width:100%;table-layout:fixed;border-collapse:collapse;}
+.why-fableroom__table th{height:46px;padding:12px 14px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--line);}
+.why-fableroom__table td{height:58px;padding:12px 14px;vertical-align:middle;line-height:1.34;border-top:1px solid var(--line);overflow-wrap:anywhere;}
+.why-fableroom__table th:nth-child(1),.why-fableroom__table td:nth-child(1){width:27%;}
+.why-fableroom__table th:nth-child(2),.why-fableroom__table td:nth-child(2){width:29%;}
+.why-fableroom__table th:nth-child(3),.why-fableroom__table td:nth-child(3){width:44%;}
+.why-fableroom__table th:nth-child(2),.why-fableroom__table td:nth-child(2){background:rgba(124,130,104,.09);}
+.why-fableroom__footnote{margin-top:14px;line-height:1.45;}
+@media(max-width:760px){
+  body > section:has(.proof__carousel) .section-head{margin:0 32px 18px;}
+  .proof__card h3{min-height:44px;margin-bottom:6px;}
+  .proof__card p{min-height:76px;}
+  .product-card-actions button{height:34px;min-height:34px;padding:6px 4px;border-radius:17px;font-size:6.15px;letter-spacing:.035em;}
+  .product-card-actions svg{width:9px;height:9px;}
+  .lookaround__badges{gap:3px;margin:5px 0 6px;}
+  .lookaround__badge{min-height:18px;padding:3px 5px;font-size:6.25px;letter-spacing:.055em;}
+  .why-fableroom__table th{height:auto;padding:9px 7px;font-size:7.5px;}
+  .why-fableroom__table td{height:auto;min-height:47px;padding:9px 7px;font-size:9px;line-height:1.28;}
+  .why-fableroom__footnote{margin-top:10px;font-size:7.5px;}
+}
+@media(prefers-reduced-motion:reduce){.why-fableroom__copy .eyebrow,#why-fableroom-title{animation:none;}}
 </style>
 </head>
 <body>
@@ -3023,22 +3066,6 @@ body > section:not(.hero){
   </div>
 </section>
 
-<!-- ================= NOT SURE ABOUT SIZE ================= -->
-<section class="size-guide section" aria-labelledby="size-guide-title">
-  <div class="container">
-    <div class="size-guide__head">
-      <div>
-        <div class="eyebrow">Not Sure about size</div>
-        <h2 id="size-guide-title">Size Guide</h2>
-      </div>
-      <button class="size-guide__visual-trigger" type="button" data-size-guide-open aria-controls="size-guide-modal">
-        <span>Open size guide</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 4H4v4M4 4l7 7M16 20h4v-4M20 20l-7-7"/><path d="M20 8V4h-4M20 4l-7 7M4 16v4h4M4 20l7-7"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
 <!-- ================= VISUAL SIZE GUIDE MODAL ================= -->
 <div class="size-guide-modal" id="size-guide-modal" data-size-guide-modal hidden role="dialog" aria-modal="true" aria-labelledby="size-guide-modal-title">
   <div class="size-guide-modal__panel">
@@ -3164,7 +3191,7 @@ body > section:not(.hero){
   <div class="container">
     <div class="why-fableroom__shell reveal">
       <div class="why-fableroom__story">
-        <img src="assets/why-fableroom-couple-v2.webp" alt="A couple unrolling a handmade rug together in a warm living space" loading="lazy">
+        <img src="assets/why-fableroom-rug-story-v3.webp" alt="A couple unrolling a handmade rug together in a warm living space" loading="lazy">
         <div class="why-fableroom__copy"><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
       </div>
       <div class="why-fableroom__list">
@@ -3867,5 +3894,14 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
 })();
 </script>
 
+
+<script>
+/* Place existing product labels below their product titles, never over imagery. */
+document.querySelectorAll('.lookaround__card .lookaround__badges').forEach(badges=>{
+  const card=badges.closest('.lookaround__card');
+  const title=card?.querySelector('h3');
+  if(title && badges.parentElement !== title.parentElement.nextElementSibling) title.insertAdjacentElement('afterend',badges);
+});
+</script>
 </body>
 </html>
