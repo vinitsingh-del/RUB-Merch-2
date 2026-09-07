@@ -2283,10 +2283,8 @@ body > section:not(.hero){
 .size-guide-modal__scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
 .size-guide-modal__scene[hidden]{display:none;}
 .size-guide-modal__scene svg{position:absolute;inset:0;z-index:3;width:100%;height:100%;display:block;color:var(--ink);}
-.size-guide-modal__rug-layer{position:absolute;z-index:2;left:50%;bottom:9%;width:var(--rug-w,62%);height:var(--rug-h,30%);transform:translateX(-50%);border:2px solid var(--ink);background:#fff;box-shadow:0 8px 18px rgba(0,0,0,.11);transition:width .38s var(--ease),height .38s var(--ease),bottom .38s var(--ease);}
-.size-guide-modal__rug-layer::before{content:"";position:absolute;inset:8px;border:1px solid var(--ink);}
-.size-guide-modal__rug-layer::after{content:"";position:absolute;inset:14px;background:repeating-linear-gradient(90deg,transparent 0 16px,rgba(17,17,17,.06) 16px 17px);}
-.size-guide-modal__rug-surface{position:absolute;inset:0;}
+.size-guide-modal__rug-layer{position:absolute;z-index:2;left:50%;bottom:8%;width:var(--rug-w,86%);height:var(--rug-h,64%);transform:translateX(-50%);overflow:hidden;background:#fff;box-shadow:0 8px 18px rgba(0,0,0,.16);transition:width .42s var(--ease),height .42s var(--ease),bottom .42s var(--ease);}
+.size-guide-modal__rug-layer img{position:absolute;inset:0;width:100%;height:100%;max-width:none;transform:none;object-fit:cover;border:0;box-shadow:none;}
 .size-guide-modal__stage[data-room="kitchen"] .size-guide-modal__rug-layer{bottom:8%;}
 .size-guide-modal__stage[data-room="bedroom"] .size-guide-modal__rug-layer{bottom:10%;}
 .size-guide-modal__shop-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:16px 0 8px;color:var(--ink);font:700 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;}
@@ -3147,7 +3145,7 @@ body > section:not(.hero){
           </svg>
         </div>
         <div class="size-guide-modal__rug-layer">
-          <div class="size-guide-modal__rug-surface" role="img" aria-label="Rug footprint shown beneath the furniture" data-size-rug></div>
+          <img src="assets/hero-bidjar-red.webp" alt="Persian rug shown beneath the furniture" data-size-rug>
         </div>
       </div>
       <div class="size-guide-modal__shop-head">
@@ -3772,20 +3770,22 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
 
   const roomSizes = {
     living:[
-      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'62%',h:'30%'},
-      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'56%',h:'27%'},
-      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'50%',h:'24%'},
-      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'44%',h:'21%'}
+      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'86%',h:'64%'},
+      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'76%',h:'54%'},
+      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'64%',h:'45%'},
+      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'50%',h:'34%'}
     ],
     kitchen:[
-      {cm:'80cm x 150cm',ft:'2\'7" x 4\'11"',w:'42%',h:'34%'},
-      {cm:'60cm x 240cm Runner',ft:'2\' x 7\'10" Runner',w:'28%',h:'54%'},
-      {cm:'80cm x 300cm Wide Runner',ft:'2\'7" x 9\'10" Wide Runner',w:'50%',h:'28%'}
+      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'86%',h:'70%'},
+      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'74%',h:'59%'},
+      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'62%',h:'49%'},
+      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'48%',h:'37%'}
     ],
     bedroom:[
-      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'58%',h:'28%'},
-      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'52%',h:'25%'},
-      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'44%',h:'21%'}
+      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'86%',h:'72%'},
+      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'74%',h:'61%'},
+      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'62%',h:'50%'},
+      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'50%',h:'39%'}
     ]
   };
   const state = {unit:'cm', room:'living', roomIndex:{living:0,kitchen:0,bedroom:0}};
