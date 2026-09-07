@@ -2324,6 +2324,30 @@ body > section:not(.hero){
   .trust__badge svg{flex:0 0 9px;width:9px;height:9px;}
   .trust__badge span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center;}
 }
+
+/* Craft cards: stable title and subtitle baselines, aligned with the carousel frame. */
+body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
+.proof__grid{align-items:stretch;}
+.proof__card{display:flex;flex-direction:column;min-width:0;}
+.proof__card h3{min-height:46px;margin:0 0 7px;line-height:1.16;}
+.proof__card p{min-height:82px;margin:0;}
+/* Product-card controls: slimmer, with the same footprint in every card. */
+.product-card-actions{gap:5px;padding-top:8px;}
+.product-card-actions button{min-height:34px;height:34px;padding:6px 7px;border-radius:17px;font-size:7px;letter-spacing:.06em;}
+.product-card-actions svg{width:10px;height:10px;}
+/* Product tags such as Bestseller: compact and fully contained within product imagery. */
+.lookaround__badges{gap:4px;}
+.lookaround__badge{min-height:20px;padding:3px 6px;font-size:7px;letter-spacing:.07em;line-height:1;}
+@media(max-width:760px){
+  body > section:has(.proof__carousel) .section-head{margin:0 32px 18px;}
+  .proof__card h3{min-height:44px;margin-bottom:6px;}
+  .proof__card p{min-height:76px;}
+  .product-card-actions{gap:5px;padding-top:8px;}
+  .product-card-actions button{height:36px;min-height:36px;padding:6px 5px;border-radius:18px;font-size:6.25px;letter-spacing:.045em;}
+  .product-card-actions svg{width:9px;height:9px;}
+  .lookaround__badges{left:7px;right:7px;top:7px;gap:3px;}
+  .lookaround__badge{min-height:18px;padding:3px 5px;font-size:6.5px;letter-spacing:.06em;}
+}
 </style>
 </head>
 <body>
