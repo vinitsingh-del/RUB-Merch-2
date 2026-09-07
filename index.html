@@ -2393,6 +2393,44 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .shop-paths__links a::before{width:100%!important;height:auto!important;aspect-ratio:1/1;background-size:cover!important;}
   .shop-paths__fade{display:none!important;}
 }
+
+/* One Rug Discovery Hub product-card details and actions. */
+.style-hub__card{border:0!important;background:var(--white)!important;display:flex;flex-direction:column;min-width:0;}
+.style-hub__card img{display:block;}
+.style-hub__card > div:not(.product-card-actions){padding:13px 0 0!important;min-height:104px;}
+.style-hub__card > div:not(.product-card-actions) > span{display:none!important;}
+.style-hub__card h3{margin:0 0 13px!important;min-height:36px;font-family:var(--sans);font-size:15px!important;font-weight:700;line-height:1.2!important;color:var(--ink);}
+.style-hub__card small{display:block;margin-top:auto;font-size:17px!important;font-weight:700;line-height:1.1;color:var(--ink)!important;}
+.style-hub__card .product-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;padding:0!important;}
+.style-hub__card .product-card-actions button{height:42px;min-height:42px;padding:7px 8px;border-radius:22px;font-size:7.5px;letter-spacing:.065em;}
+/* Mobile: the entire discovery hub is a single, contained viewport. */
+@media(max-width:760px){
+  .style-hub.section{min-height:100svh;padding:18px 0!important;display:flex;align-items:stretch;}
+  .style-hub.section>.container{display:flex;width:100%;}
+  .style-hub__shell{width:100%;min-height:calc(100svh - 36px);display:flex!important;flex-direction:column;overflow:hidden;}
+  .style-hub__media{min-height:150px!important;height:22svh;flex:none;}
+  .style-hub__panel{flex:1;padding:16px 0 0!important;display:flex;flex-direction:column;}
+  .style-hub__intro h2{font-size:24px!important;}
+  .style-hub__products{flex:1;gap:10px!important;padding-bottom:4px!important;align-items:flex-start;}
+  .style-hub__card{flex:0 0 calc((100% - 10px)/2)!important;max-width:none!important;}
+  .style-hub__card img{aspect-ratio:3/4!important;}
+  .style-hub__card > div:not(.product-card-actions){padding-top:10px!important;min-height:86px;}
+  .style-hub__card h3{min-height:32px;margin-bottom:9px!important;font-size:12px!important;}
+  .style-hub__card small{font-size:14px!important;}
+  .style-hub__card .product-card-actions{gap:6px;margin-top:10px;}
+  .style-hub__card .product-card-actions button{height:36px;min-height:36px;padding:5px 3px;border-radius:18px;font-size:6px;letter-spacing:.035em;}
+  .style-hub__footer{margin-top:12px!important;padding-top:10px!important;}
+}
+/* Budget Edit: a light, text-led price navigation, deliberately without card boxes. */
+.budget-edit__head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:24px;}
+.budget-edit__head h2{margin:7px 0 0;font-size:clamp(30px,3.5vw,44px);line-height:1.02;}
+.budget-edit__head p{max-width:38ch;margin:0;color:var(--ink-soft);}
+.budget-edit__links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.budget-edit__links a{min-width:0;padding:18px 18px 18px 0;color:var(--ink);display:flex;flex-direction:column;gap:5px;border-right:1px solid var(--line);}
+.budget-edit__links a+ a{padding-left:18px;}.budget-edit__links a:last-child{border-right:0;}
+.budget-edit__links span{font-family:var(--serif);font-size:25px;line-height:1;}.budget-edit__links small{font-size:11px;color:var(--ink-soft);}.budget-edit__links b{margin-top:10px;font-size:9px;letter-spacing:.09em;text-transform:uppercase;}
+.budget-edit__links a:hover span,.budget-edit__links a:hover b{color:var(--clay);}
+@media(max-width:760px){.budget-edit__head{display:block;margin-bottom:17px;}.budget-edit__head h2{font-size:30px;}.budget-edit__head p{margin-top:9px;font-size:12px;}.budget-edit__links{display:flex;overflow-x:auto;gap:16px;padding:0 0 9px;border-bottom:0;scroll-snap-type:x mandatory;}.budget-edit__links a,.budget-edit__links a+ a{flex:0 0 42vw;padding:14px 0;border-right:0;scroll-snap-align:start;}.budget-edit__links span{font-size:22px;}.budget-edit__links small{font-size:10px;}}
 </style>
 </head>
 <body>
@@ -2904,7 +2942,20 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   </div>
 </section>
 
-<!-- ================= 04 · THE WASHABLE EDIT ================= -->
+
+<!-- ================= BUDGET EDIT ================= -->
+<section class="budget-edit section" aria-labelledby="budget-edit-title">
+  <div class="container">
+    <div class="budget-edit__head reveal"><div><div class="eyebrow">Shop by budget</div><h2 id="budget-edit-title">The Budget Edit.</h2></div><p>Find a handmade rug at the price point that feels right for your home.</p></div>
+    <nav class="budget-edit__links reveal-stagger" aria-label="Shop rugs by budget">
+      <a href="https://fableroom.com/collections/all-rugs-collection?filter.v.price.lte=200"><span>Under £200</span><small>Everyday favourites</small><b>Shop edit →</b></a>
+      <a href="https://fableroom.com/collections/all-rugs-collection?filter.v.price.gte=200&amp;filter.v.price.lte=350"><span>£200–£350</span><small>Made for more</small><b>Shop edit →</b></a>
+      <a href="https://fableroom.com/collections/all-rugs-collection?filter.v.price.gte=350&amp;filter.v.price.lte=500"><span>£350–£500</span><small>Heirloom detail</small><b>Shop edit →</b></a>
+      <a href="https://fableroom.com/collections/all-rugs-collection?filter.v.price.gte=500"><span>£500+</span><small>Collector pieces</small><b>Shop edit →</b></a>
+    </nav>
+  </div>
+</section>
+\n<!-- ================= 04 · THE WASHABLE EDIT ================= -->
 <section class="edit section washable-edit" id="washable">
   <div class="container">
     <div class="edit__head reveal">
@@ -3911,6 +3962,11 @@ document.querySelectorAll('.lookaround__card .lookaround__badges').forEach(badge
   const title=card?.querySelector('h3');
   if(title && badges.parentElement !== title.parentElement.nextElementSibling) title.insertAdjacentElement('afterend',badges);
 });
+</script>
+
+<script>
+/* Keep the Budget Edit directly before the Washable Rug Edit after page ordering scripts run. */
+(()=>{const budget=document.querySelector('.budget-edit');const washable=document.getElementById('washable');if(budget&&washable)washable.insertAdjacentElement('beforebegin',budget);})();
 </script>
 </body>
 </html>
