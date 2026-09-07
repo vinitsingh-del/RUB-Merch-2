@@ -2415,6 +2415,30 @@ body > section:not(.hero){
   .shop-paths__links a{flex:0 0 calc((100% - 8px)/2);height:104px;scroll-snap-align:start;scroll-snap-stop:always;}
   .shop-paths__placeholder{display:none!important;}
 }
+/* Final page alignment: shared rhythm and baselines. The hero is intentionally excluded. */
+body > .section:not(.trust):not(.hero){padding-block:clamp(30px,3.2vw,46px);}
+.section:not(.trust):not(.hero) .container{width:min(var(--container),calc(100% - (2 * var(--gutter)));margin-inline:auto;}
+.section:not(.trust):not(.hero) .section-head,.shop-paths__intro,.room-discovery__head,.edit__head{margin-bottom:clamp(18px,2vw,28px);}
+.section:not(.trust):not(.hero) h2,.shop-paths__body h3{line-height:1.06;text-wrap:balance;}
+.section:not(.trust):not(.hero) p{line-height:1.5;}
+.lookaround__grid,.style-hub__products,.room-discovery__grid,.compare-shop__grid,.edit__row{align-items:stretch;}
+.lookaround__card,.style-hub__card,.compare-card,.edit__card{min-width:0;}
+.lookaround__card h3,.style-hub__card h3,.compare-card h3{margin-top:0;}
+.shop-paths__tabs{align-items:stretch;}
+.shop-paths__tab{min-width:0;}
+/* Shared compare tray: lighter glass, stronger readable labels. */
+.compare-tray{background:rgba(20,20,20,.38);border-color:rgba(255,255,255,.34);box-shadow:0 16px 42px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.18);backdrop-filter:blur(26px) saturate(150%);-webkit-backdrop-filter:blur(26px) saturate(150%);}
+.compare-tray__status{font-size:10px;font-weight:800;letter-spacing:.065em;}
+.compare-tray button{min-height:30px;padding:7px 12px;font-size:8.5px;font-weight:800;letter-spacing:.09em;}
+@media(max-width:760px){
+  body > .section:not(.trust):not(.hero){padding-block:28px;}
+  .section:not(.trust):not(.hero) .container{width:calc(100% - (2 * var(--gutter)));}
+  .section:not(.trust):not(.hero) .section-head,.shop-paths__intro,.room-discovery__head,.edit__head{margin-bottom:18px;}
+  .section:not(.trust):not(.hero) h2,.shop-paths__body h3{text-wrap:initial;}
+  .compare-tray{bottom:12px;width:calc(100% - 24px);gap:8px;padding:9px 10px 9px 12px;}
+  .compare-tray__status{font-size:8.5px;line-height:1.35;}
+  .compare-tray button{min-height:29px;padding:7px 9px;font-size:7.5px;}
+}
 </style>
 </head>
 <body>
