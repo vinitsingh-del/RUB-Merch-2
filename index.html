@@ -2316,6 +2316,14 @@ body > section:not(.hero){
   .trust__badge{flex:0 0 auto;width:auto;min-width:max-content;min-height:40px;padding:7px 10px;font-size:9px;white-space:nowrap;scroll-snap-align:start;overflow:visible;}
   .trust__badge span{overflow:visible;text-overflow:clip;}
 }
+
+/* Mobile trust badges: compact, all visible and never horizontally scrollable. */
+@media(max-width:760px){
+  .trust__badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;overflow:visible;padding:8px 0;margin-top:8px;}
+  .trust__badge{display:flex;width:100%;min-width:0;min-height:44px;flex-direction:column;justify-content:center;gap:3px;padding:5px 3px;font-size:clamp(6.4px,1.75vw,8px);line-height:1.12;letter-spacing:0;white-space:normal;overflow:visible;}
+  .trust__badge svg{flex:0 0 9px;width:9px;height:9px;}
+  .trust__badge span{min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:center;}
+}
 </style>
 </head>
 <body>
