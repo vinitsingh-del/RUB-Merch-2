@@ -2383,6 +2383,16 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .why-fableroom__footnote{margin-top:10px;font-size:7.5px;}
 }
 @media(prefers-reduced-motion:reduce){.why-fableroom__copy .eyebrow,#why-fableroom-title{animation:none;}}
+
+/* Mobile discovery rail: three complete tiles at rest, never a clipped fourth tile. */
+@media(max-width:760px){
+  .shop-paths__directory,.shop-paths__panel,.shop-paths__body,.shop-paths__rail-wrap{background:var(--white)!important;}
+  .shop-paths__body{padding:14px 14px 20px!important;}
+  .shop-paths__links{gap:10px!important;padding:2px 0 8px!important;overflow-x:auto;overflow-y:hidden;background:var(--white);}
+  .shop-paths__links a{flex:0 0 calc((100% - 20px)/3)!important;width:calc((100% - 20px)/3)!important;gap:7px!important;}
+  .shop-paths__links a::before{width:100%!important;height:auto!important;aspect-ratio:1/1;background-size:cover!important;}
+  .shop-paths__fade{display:none!important;}
+}
 </style>
 </head>
 <body>
@@ -3190,7 +3200,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   <div class="container">
     <div class="why-fableroom__shell reveal">
       <div class="why-fableroom__story">
-        <img src="assets/why-fableroom-rug-story-v3.webp" alt="A couple unrolling a handmade rug together in a warm living space" loading="lazy">
+        <img src="data:image/webp;base64,undefined" alt="A couple unrolling a handmade rug together in a warm living space" loading="lazy">
         <div class="why-fableroom__copy"><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
       </div>
       <div class="why-fableroom__list">
