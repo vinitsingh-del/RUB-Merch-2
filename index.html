@@ -3386,6 +3386,32 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
   });
   const initialPath = paths[directory.querySelector('.shop-paths__tab.is-active')?.dataset.path || 'style'];
   if(initialPath) links.dataset.optionCount = String(initialPath.links.length);
+
+  /* Normalise panel height across all categories so switching tabs never jumps or crops. */
+  const normaliseHeight = ()=>{
+    const activeTab = directory.querySelector('.shop-paths__tab.is-active');
+    const activeKey = activeTab ? activeTab.dataset.path : 'style';
+    const originalCount = count.textContent, originalTitle = title.textContent, originalCopy = copy.textContent;
+    const originalLinksHTML = links.innerHTML;
+    let maxHeight = 0;
+    Object.entries(paths).forEach(([key, data])=>{
+      count.textContent = data.count; title.textContent = data.title; copy.textContent = data.copy;
+      links.replaceChildren(...data.links.map(([label])=>{
+        const a=document.createElement('a'); a.textContent=label; return a;
+      }));
+      const h = panel.getBoundingClientRect().height;
+      if(h > maxHeight) maxHeight = h;
+    });
+    count.textContent = originalCount; title.textContent = originalTitle; copy.textContent = originalCopy;
+    links.innerHTML = originalLinksHTML;
+    if(maxHeight > 0){ panel.style.minHeight = maxHeight + 'px'; }
+  };
+  normaliseHeight();
+  let resizeTimer;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(normaliseHeight, 150);
+  });
 })();
 
 /* ---------- Take a Look Around filters ---------- */
