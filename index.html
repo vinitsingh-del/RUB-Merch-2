@@ -3680,8 +3680,9 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
     const option = options[index];
     modalDimension.textContent = option[state.unit] || option.cm;
     stage.dataset.room = room;
-    rug.style.setProperty('--rug-w',option.w);
-    rug.style.setProperty('--rug-h',option.h);
+    const rugLayer = rug.closest('.size-guide-modal__rug-layer') || rug;
+    rugLayer.style.setProperty('--rug-w',option.w);
+    rugLayer.style.setProperty('--rug-h',option.h);
     modal.querySelectorAll('[data-size-room]').forEach(button=>{
       const active = button.dataset.sizeRoom === room;
       button.classList.toggle('is-active',active);
