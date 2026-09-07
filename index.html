@@ -2301,6 +2301,13 @@ body > section:not(.hero){
   .shop-paths__links a{flex-basis:calc((100% - 10px) / 2);max-width:calc((100% - 10px) / 2);font-size:11px;}
   .shop-paths__links a::before{width:56px;height:56px;}
 }
+
+/* Trust badges: three equal, contained pills with aligned icon/text pairs. */
+.trust__badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 0;padding-top:12px;}
+.trust__badge{width:100%;min-width:0;min-height:46px;justify-content:center;gap:7px;padding:8px 10px;overflow:hidden;text-align:center;}
+.trust__badge svg{display:block;flex:0 0 14px;width:14px;height:14px;}
+.trust__badge span{min-width:0;white-space:nowrap;}
+@media(max-width:760px){.trust__badges{gap:6px;margin-top:8px;padding-top:8px;}.trust__badge{min-height:42px;gap:5px;padding:7px 6px;font-size:clamp(7px,1.55vw,9px);}.trust__badge svg{flex-basis:11px;width:11px;height:11px;}}
 </style>
 </head>
 <body>
