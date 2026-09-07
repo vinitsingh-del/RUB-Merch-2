@@ -2280,13 +2280,11 @@ body > section:not(.hero){
 .size-guide-modal__close{color:var(--ink);}
 .size-guide-modal__content{padding:24px 24px 27px;}
 .size-guide-modal__stage{background:#f7f7f7;border:1px solid #e2e2e2;}
-.size-guide-modal__scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.size-guide-modal__scene{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;}
 .size-guide-modal__scene[hidden]{display:none;}
 .size-guide-modal__scene svg{position:absolute;inset:0;z-index:3;width:100%;height:100%;display:block;color:var(--ink);}
-.size-guide-modal__rug-layer{position:absolute;z-index:2;left:50%;bottom:8%;width:var(--rug-w,86%);height:var(--rug-h,64%);transform:translateX(-50%);overflow:hidden;background:#fff;box-shadow:0 8px 18px rgba(0,0,0,.16);transition:width .42s var(--ease),height .42s var(--ease),bottom .42s var(--ease);}
+.size-guide-modal__rug-layer{position:absolute;z-index:2;left:50%;top:var(--rug-top,21%);bottom:auto;width:var(--rug-w,86%);height:var(--rug-h,69%);transform:translateX(-50%);overflow:hidden;background:#fff;box-shadow:0 8px 18px rgba(0,0,0,.16);transition:width .42s var(--ease),height .42s var(--ease),top .42s var(--ease);}
 .size-guide-modal__rug-layer img{position:absolute;inset:0;width:100%;height:100%;max-width:none;transform:none;object-fit:cover;border:0;box-shadow:none;}
-.size-guide-modal__stage[data-room="kitchen"] .size-guide-modal__rug-layer{bottom:8%;}
-.size-guide-modal__stage[data-room="bedroom"] .size-guide-modal__rug-layer{bottom:10%;}
 .size-guide-modal__shop-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:16px 0 8px;color:var(--ink);font:700 10px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;}
 .size-guide-modal__unit-toggle{display:inline-grid;grid-template-columns:1fr 1fr;overflow:hidden;border:1px solid var(--ink);border-radius:999px;background:var(--white);}
 .size-guide-modal__unit-toggle button{min-width:54px;height:28px;padding:0 12px;border:0;background:transparent;color:var(--ink);font:700 10px/1 var(--sans);cursor:pointer;}
@@ -3108,39 +3106,44 @@ body > section:not(.hero){
       <div class="size-guide-modal__dimension" data-modal-dimension>280cm x 380cm</div>
         <div class="size-guide-modal__stage" data-size-stage data-room="living">
           <div class="size-guide-modal__scene" data-size-room-scene="living">
-          <svg viewBox="0 0 600 490" role="img" aria-label="Top view illustration of a sofa and coffee table">
-            <g fill="#fff" stroke="currentColor" stroke-width="3">
-              <rect x="160" y="105" width="280" height="104" rx="24"/>
-              <rect x="168" y="112" width="32" height="90" rx="16"/>
-              <rect x="400" y="112" width="32" height="90" rx="16"/>
-              <rect x="205" y="120" width="91" height="34" rx="13"/>
-              <rect x="304" y="120" width="91" height="34" rx="13"/>
-              <rect x="205" y="160" width="91" height="39" rx="13"/>
-              <rect x="304" y="160" width="91" height="39" rx="13"/>
-              <rect x="248" y="262" width="104" height="56" rx="18"/>
-              <circle cx="128" cy="179" r="22"/><circle cx="470" cy="179" r="22"/>
+          <svg viewBox="0 0 600 490" role="img" aria-label="Top view illustration of a sofa, lamps and coffee table">
+            <g fill="#fff" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round">
+              <rect x="138" y="78" width="324" height="132" rx="42"/>
+              <rect x="150" y="92" width="42" height="103" rx="20"/>
+              <rect x="408" y="92" width="42" height="103" rx="20"/>
+              <rect x="199" y="97" width="100" height="42" rx="17"/>
+              <rect x="301" y="97" width="100" height="42" rx="17"/>
+              <rect x="199" y="144" width="100" height="54" rx="17"/>
+              <rect x="301" y="144" width="100" height="54" rx="17"/>
+              <rect x="242" y="263" width="116" height="61" rx="23"/>
+              <rect x="258" y="279" width="84" height="29" rx="12"/>
+              <circle cx="103" cy="160" r="27"/><circle cx="497" cy="160" r="27"/>
+              <path d="M103 133v-30m-18 0h36m-24 0-16-21m16 21 16-21M497 133v-30m-18 0h36m-24 0-16-21m16 21 16-21" fill="none"/>
+              <circle cx="103" cy="103" r="11"/><circle cx="497" cy="103" r="11"/>
             </g>
           </svg>
         </div>
         <div class="size-guide-modal__scene" data-size-room-scene="kitchen" hidden>
           <svg viewBox="0 0 600 490" role="img" aria-label="Top view illustration of a dining table and chairs">
-            <g fill="#fff" stroke="currentColor" stroke-width="3">
-              <rect x="190" y="145" width="220" height="145" rx="18"/>
-              <rect x="216" y="91" width="62" height="40" rx="12"/><rect x="322" y="91" width="62" height="40" rx="12"/>
-              <rect x="216" y="304" width="62" height="40" rx="12"/><rect x="322" y="304" width="62" height="40" rx="12"/>
-              <rect x="132" y="172" width="42" height="62" rx="12"/><rect x="426" y="172" width="42" height="62" rx="12"/>
+            <g fill="#fff" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round">
+              <rect x="176" y="154" width="248" height="142" rx="22"/>
+              <rect x="202" y="96" width="76" height="44" rx="14"/><rect x="322" y="96" width="76" height="44" rx="14"/>
+              <rect x="202" y="310" width="76" height="44" rx="14"/><rect x="322" y="310" width="76" height="44" rx="14"/>
+              <rect x="116" y="184" width="46" height="82" rx="14"/><rect x="438" y="184" width="46" height="82" rx="14"/>
+              <circle cx="300" cy="225" r="22"/><path d="M300 203v-34m-22 0h44" fill="none"/>
             </g>
           </svg>
         </div>
         <div class="size-guide-modal__scene" data-size-room-scene="bedroom" hidden>
-          <svg viewBox="0 0 600 490" role="img" aria-label="Top view illustration of a bed and bedside tables">
-            <g fill="#fff" stroke="currentColor" stroke-width="3">
-              <rect x="205" y="92" width="190" height="238" rx="22"/>
-              <rect x="212" y="98" width="176" height="38" rx="16"/>
-              <rect x="220" y="143" width="75" height="58" rx="16"/><rect x="305" y="143" width="75" height="58" rx="16"/>
-              <path d="M218 212h164v101H218z"/>
-              <rect x="146" y="116" width="46" height="55" rx="12"/><rect x="408" y="116" width="46" height="55" rx="12"/>
-              <circle cx="169" cy="143" r="9"/><circle cx="431" cy="143" r="9"/>
+          <svg viewBox="0 0 600 490" role="img" aria-label="Top view illustration of a bed, bedside tables and lamps">
+            <g fill="#fff" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round">
+              <rect x="190" y="54" width="220" height="266" rx="28"/>
+              <rect x="200" y="62" width="200" height="42" rx="17"/>
+              <rect x="210" y="112" width="85" height="62" rx="18"/><rect x="305" y="112" width="85" height="62" rx="18"/>
+              <path d="M205 185h190v120H205z"/>
+              <rect x="123" y="96" width="54" height="70" rx="14"/><rect x="423" y="96" width="54" height="70" rx="14"/>
+              <circle cx="150" cy="132" r="12"/><circle cx="450" cy="132" r="12"/>
+              <path d="M150 120v-23m-14 0h28m286 23v-23m-14 0h28" fill="none"/>
             </g>
           </svg>
         </div>
@@ -3770,22 +3773,22 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
 
   const roomSizes = {
     living:[
-      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'86%',h:'64%'},
-      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'76%',h:'54%'},
-      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'64%',h:'45%'},
-      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'50%',h:'34%'}
+      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'88%',h:'69%',top:'21%'},
+      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'76%',h:'56%',top:'30%'},
+      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'63%',h:'43%',top:'43%'},
+      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'48%',h:'30%',top:'52%'}
     ],
     kitchen:[
-      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'86%',h:'70%'},
-      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'74%',h:'59%'},
-      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'62%',h:'49%'},
-      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'48%',h:'37%'}
+      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'88%',h:'70%',top:'18%'},
+      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'76%',h:'58%',top:'27%'},
+      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'63%',h:'46%',top:'40%'},
+      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'48%',h:'33%',top:'51%'}
     ],
     bedroom:[
-      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'86%',h:'72%'},
-      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'74%',h:'61%'},
-      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'62%',h:'50%'},
-      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'50%',h:'39%'}
+      {cm:'280cm x 380cm',ft:'9\'2" x 12\'6"',w:'88%',h:'80%',top:'10%'},
+      {cm:'240cm x 330cm',ft:'7\'10" x 10\'10"',w:'76%',h:'67%',top:'20%'},
+      {cm:'200cm x 290cm',ft:'6\'7" x 9\'6"',w:'63%',h:'49%',top:'36%'},
+      {cm:'160cm x 230cm',ft:'5\'3" x 7\'7"',w:'48%',h:'32%',top:'53%'}
     ]
   };
   const state = {unit:'cm', room:'living', roomIndex:{living:0,kitchen:0,bedroom:0}};
@@ -3817,6 +3820,7 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
     const rugLayer = rug.closest('.size-guide-modal__rug-layer') || rug;
     rugLayer.style.setProperty('--rug-w',option.w);
     rugLayer.style.setProperty('--rug-h',option.h);
+    rugLayer.style.setProperty('--rug-top',option.top);
     modal.querySelectorAll('[data-size-room]').forEach(button=>{
       const active = button.dataset.sizeRoom === room;
       button.classList.toggle('is-active',active);
