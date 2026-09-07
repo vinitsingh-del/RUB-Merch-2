@@ -2274,9 +2274,6 @@ body > section:not(.hero){
 .size-guide-modal__rug-layer img{position:absolute;inset:0;left:0;top:0;bottom:auto;width:100%;height:100%;max-width:none;transform:none;object-fit:cover;border:0;box-shadow:none;background:transparent;}
 .size-guide-modal__stage[data-room="kitchen"] .size-guide-modal__rug-layer{top:40%;}
 .size-guide-modal__stage[data-room="bedroom"] .size-guide-modal__rug-layer{top:38%;}
-.size-guide-modal__furniture{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;}
-.size-guide-modal__furniture[hidden]{display:none;}
-.size-guide-modal__furniture svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
 .size-guide-modal__shop-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 0 10px;color:var(--ink);font:700 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;}
 .size-guide-modal__unit-toggle{display:inline-grid;grid-template-columns:1fr 1fr;overflow:hidden;border:1px solid var(--ink);border-radius:999px;background:var(--cream);}
 .size-guide-modal__unit-toggle button{min-width:54px;height:28px;padding:0 12px;border:0;background:transparent;color:var(--ink);font:700 10px/1 var(--sans);cursor:pointer;}
@@ -2295,6 +2292,88 @@ body > section:not(.hero){
   .size-guide-modal__size-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:16px;}
   .size-guide-modal__size-choice{min-height:48px;padding:8px 6px;font-size:10px;}
 }
+
+/* Requested technique carousel: the video keeps the exact proof-card frame. */
+.proof__carousel{position:relative;min-width:0;}
+.proof__frame video{display:block;width:100%;height:100%;object-fit:cover;}
+.proof__arrow{display:none;}
+@media (max-width:760px){
+  .proof__carousel{padding:0 32px;}
+  .proof__grid{
+    display:flex;
+    width:100%;
+    max-width:100%;
+    flex-wrap:nowrap;
+    gap:12px;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:0;
+  }
+  .proof__card{flex:0 0 100%;width:100%;max-width:none;scroll-snap-align:start;}
+  .proof__arrow{
+    position:absolute;
+    top:50%;
+    z-index:2;
+    display:grid;
+    place-items:center;
+    width:28px;
+    height:28px;
+    padding:0;
+    border:1px solid var(--ink);
+    border-radius:50%;
+    background:var(--white);
+    color:var(--ink);
+    transform:translateY(-50%);
+    cursor:pointer;
+  }
+  .proof__arrow svg{width:14px;height:14px;}
+  .proof__arrow--prev{left:0;}
+  .proof__arrow--next{right:0;}
+  .proof__arrow:disabled{opacity:.3;cursor:not-allowed;}
+}
+
+/* Mobile comparison: keep one readable table with its headers and aligned columns. */
+@media (max-width:760px){
+  .why-fableroom__list{min-width:0;overflow-x:auto;overflow-y:hidden;padding:11px;}
+  .why-fableroom__table{display:table;width:100%;min-width:560px;table-layout:fixed;border-collapse:collapse;}
+  .why-fableroom__table thead{display:table-header-group;}
+  .why-fableroom__table tbody{display:table-row-group;}
+  .why-fableroom__table tr{display:table-row;border:0;}
+  .why-fableroom__table th,
+  .why-fableroom__table td{display:table-cell;vertical-align:middle;}
+  .why-fableroom__table th{padding:10px 8px;font-size:8px;line-height:1.2;}
+  .why-fableroom__table td{height:auto;min-height:0;padding:10px 8px;font-size:10px;line-height:1.3;border:0;border-top:1px solid var(--line);}
+  .why-fableroom__table td:first-child{display:table-cell;grid-column:auto;min-height:0;padding:10px 8px;background:transparent;font-size:10px;letter-spacing:normal;text-transform:none;border-bottom:0;}
+  .why-fableroom__table td:nth-child(2),
+  .why-fableroom__table td:nth-child(3){position:static;padding:10px 8px;font-size:10px;}
+  .why-fableroom__table td:nth-child(2)::before,
+  .why-fableroom__table td:nth-child(3)::before{content:none;}
+  .why-fableroom__table tbody tr:last-child td{border-bottom:1px solid var(--line);}
+}
+
+/* Lookaround controls are individual pills; the straight outer rule is removed. */
+.lookaround__filters{display:flex;flex-wrap:wrap;gap:8px;border:0;margin-bottom:24px;}
+.lookaround__filter,
+.lookaround__filter:last-child{
+  flex:0 0 auto;
+  min-height:44px;
+  padding:0 20px;
+  border:1px solid var(--line-strong);
+  border-right:1px solid var(--line-strong);
+  border-radius:999px;
+  background:transparent;
+}
+.lookaround__filter.is-active{background:var(--ink);border-color:var(--ink);color:var(--white);}
+@media (max-width:760px){
+  .lookaround__filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-bottom:16px;}
+  .lookaround__filter,
+  .lookaround__filter:last-child{width:100%;min-width:0;padding:0 4px;white-space:nowrap;}
+}
+
+/* The visual guide uses room photography behind one shared Persian rug product. */
+.size-guide-modal__scene picture{position:absolute;inset:0;display:block;}
+.size-guide-modal__rug-layer{z-index:2;}
 </style>
 </head>
 <body>
@@ -2551,9 +2630,13 @@ body > section:not(.hero){
         <h2>Five ways to make a rug.</h2>
       </div>
     </div>
-    <div class="proof__grid reveal-stagger">
+    <div class="proof__carousel">
+      <button class="proof__arrow proof__arrow--prev" type="button" data-proof-prev aria-label="Previous rug technique" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+      </button>
+      <div class="proof__grid reveal-stagger">
       <div class="proof__card">
-        <div class="proof__frame"><img src="assets/craft-hand-knotted-v2.webp" alt="Artisan hands tying dense wool knots on a traditional rug loom" loading="lazy"></div>
+        <div class="proof__frame"><video autoplay muted loop playsinline preload="metadata" poster="assets/craft-hand-knotted-v2.webp" aria-label="Artisan hands tying dense wool knots on a traditional rug loom"><source src="assets/hand-knotted-rug-video.mp4" type="video/mp4"></video></div>
         <h3>Hand-Knotted Rugs</h3>
         <p>Hand-knotted wool rugs, tied row by row for dense detail and lasting character in high-traffic rooms.</p>
       </div>
@@ -2577,6 +2660,10 @@ body > section:not(.hero){
         <h3>Handloom Rugs</h3>
         <p>Handloom rugs are woven on traditional looms in natural fibres, creating tactile texture with durable everyday structure.</p>
       </div>
+      </div>
+      <button class="proof__arrow proof__arrow--next" type="button" data-proof-next aria-label="Next rug technique">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -3002,64 +3089,19 @@ body > section:not(.hero){
       <div class="size-guide-modal__dimension" data-modal-dimension>280cm x 380cm</div>
       <div class="size-guide-modal__stage" data-size-stage data-room="living">
         <div class="size-guide-modal__scene" data-size-room-scene="living">
-          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Living room floor">
-            <rect width="400" height="400" fill="#f6f6f4"/>
-            <circle cx="52" cy="60" r="20" fill="none" stroke="var(--ink)" stroke-width="2"/>
-            <path d="M52 44v8M52 68v8M36 60h8M60 60h8M40 48l6 6M64 72l-6-6M64 48l-6 6M40 72l6-6" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="348" cy="62" r="16" fill="none" stroke="var(--ink)" stroke-width="2"/>
-            <circle cx="348" cy="62" r="5" fill="var(--ink)"/>
-          </svg>
+          <img src="assets/hero-meadow-room-v2.webp" alt="Living room with a sofa" loading="eager">
         </div>
         <div class="size-guide-modal__scene" data-size-room-scene="kitchen" hidden>
-          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Dining room floor">
-            <rect width="400" height="400" fill="#f6f6f4"/>
-          </svg>
+          <picture>
+            <source media="(max-width:760px)" srcset="assets/hero-spotlight-04-mobile.webp">
+            <img src="assets/hero-spotlight-04-desktop.webp" alt="Kitchen dining room with a table and chairs" loading="eager">
+          </picture>
         </div>
         <div class="size-guide-modal__scene" data-size-room-scene="bedroom" hidden>
-          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bedroom floor">
-            <rect width="400" height="400" fill="#f6f6f4"/>
-          </svg>
+          <img src="assets/mobile-bedroom-rug-v1.webp" alt="Bedroom with a bed and bedside table" loading="eager">
         </div>
         <div class="size-guide-modal__rug-layer">
           <img src="assets/hero-bidjar-red.webp" alt="Persian rug product shown in the room guide" data-size-rug>
-        </div>
-        <div class="size-guide-modal__furniture" data-size-room-furniture="living">
-          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Three-seat sofa">
-            <g stroke="var(--ink)" stroke-width="2.5" fill="#fff">
-              <rect x="70" y="90" width="260" height="95" rx="18"/>
-              <rect x="70" y="90" width="34" height="95" rx="16"/>
-              <rect x="296" y="90" width="34" height="95" rx="16"/>
-              <rect x="112" y="100" width="82" height="46" rx="12"/>
-              <rect x="206" y="100" width="82" height="46" rx="12"/>
-            </g>
-          </svg>
-        </div>
-        <div class="size-guide-modal__furniture" data-size-room-furniture="kitchen" hidden>
-          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Dining table with four chairs">
-            <g stroke="var(--ink)" stroke-width="2.5" fill="#fff">
-              <rect x="120" y="120" width="160" height="100" rx="14"/>
-              <rect x="150" y="82" width="46" height="30" rx="8"/>
-              <rect x="204" y="82" width="46" height="30" rx="8"/>
-              <rect x="150" y="228" width="46" height="30" rx="8"/>
-              <rect x="204" y="228" width="46" height="30" rx="8"/>
-              <rect x="82" y="150" width="30" height="46" rx="8"/>
-              <rect x="288" y="150" width="30" height="46" rx="8"/>
-            </g>
-          </svg>
-        </div>
-        <div class="size-guide-modal__furniture" data-size-room-furniture="bedroom" hidden>
-          <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bed with two bedside tables">
-            <g stroke="var(--ink)" stroke-width="2.5" fill="#fff">
-              <rect x="120" y="66" width="160" height="34" rx="8"/>
-              <rect x="108" y="96" width="184" height="150" rx="16"/>
-              <rect x="122" y="112" width="70" height="42" rx="12"/>
-              <rect x="208" y="112" width="70" height="42" rx="12"/>
-              <rect x="62" y="130" width="34" height="34" rx="8"/>
-              <rect x="304" y="130" width="34" height="34" rx="8"/>
-            </g>
-            <circle cx="79" cy="120" r="9" fill="none" stroke="var(--ink)" stroke-width="2"/>
-            <circle cx="321" cy="120" r="9" fill="none" stroke="var(--ink)" stroke-width="2"/>
-          </svg>
         </div>
       </div>
       <div class="size-guide-modal__shop-head">
@@ -3511,6 +3553,37 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
     });
     if(count) count.textContent = `${visible} ${visible === 1 ? 'rug' : 'rugs'} in this edit`;
     products.scrollTo({left:0,behavior:'smooth'});
+  });
+})();
+
+(function(){
+  document.querySelectorAll('.proof__carousel').forEach(carousel=>{
+    const grid = carousel.querySelector('.proof__grid');
+    const cards = [...carousel.querySelectorAll('.proof__card')];
+    const previous = carousel.querySelector('[data-proof-prev]');
+    const next = carousel.querySelector('[data-proof-next]');
+    if(!grid || !cards.length || !previous || !next) return;
+    let index = 0;
+    const update = ()=>{
+      const mobile = matchMedia('(max-width: 760px)').matches;
+      previous.disabled = !mobile || index <= 0;
+      next.disabled = !mobile || index >= cards.length - 1;
+    };
+    const move = direction=>{
+      if(!matchMedia('(max-width: 760px)').matches) return;
+      index = Math.max(0, Math.min(cards.length - 1, index + direction));
+      grid.scrollTo({left:index * (grid.clientWidth + 12), behavior:'smooth'});
+      update();
+    };
+    previous.addEventListener('click',()=>move(-1));
+    next.addEventListener('click',()=>move(1));
+    grid.addEventListener('scroll',()=>{
+      if(!grid.clientWidth) return;
+      index = Math.max(0, Math.min(cards.length - 1, Math.round(grid.scrollLeft / (grid.clientWidth + 12))));
+      update();
+    },{passive:true});
+    addEventListener('resize',update);
+    update();
   });
 })();
 
