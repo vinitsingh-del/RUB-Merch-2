@@ -2438,7 +2438,9 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .budget-edit__intro p{margin-top:9px;font-size:13px;}
   .budget-edit__scale{padding-top:14px;}
   .budget-edit__scale-label{margin-bottom:10px;font-size:9px;}
-  .budget-edit__scale ol{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;}
+  .budget-edit__scale ol{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:11px;scroll-snap-type:x proximity;scrollbar-width:none;padding-bottom:2px;}
+  .budget-edit__scale ol::-webkit-scrollbar{display:none;}
+  .budget-edit__scale li{flex:0 0 72vw;max-width:280px;scroll-snap-align:start;}
   .budget-edit__index{margin:12px 13px 0;}
   .budget-edit__scale strong{font-size:21px;margin:4px 13px 0;}
   .budget-edit__scale small{font-size:10px;margin:5px 13px 14px;}
