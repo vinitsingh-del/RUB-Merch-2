@@ -2473,7 +2473,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .budget-edit__scale a:hover .budget-edit__arrow{transform:translate(2px,-2px);}
 @media(max-width:760px){
   .budget-edit__intro{display:block;padding-bottom:17px;}
-  .budget-edit__intro h2{font-size:31px;max-width:12ch;}
+  .budget-edit__intro h2{font-size:31px;max-width:none;}
   .budget-edit__intro p{margin-top:9px;font-size:13px;}
   .budget-edit__scale{padding-top:14px;}
   .budget-edit__scale-label{margin-bottom:10px;font-size:9px;}
@@ -3104,6 +3104,11 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
         height: 18px !important;
       }
     }
+
+/* Requested Budget and Washable heading refinements */
+@media (max-width:760px){
+  .washable-edit .edit__head{grid-template-columns:minmax(0,1fr);gap:0;}
+}
 </style>
 </head>
 <body>
@@ -3599,25 +3604,25 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
         <li>
           <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.lte=200">
             <div class="budget-edit__thumb"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="" loading="lazy"></div>
-            <span class="budget-edit__index">01</span><strong>Under £200</strong><small>Large-rug introductions</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+            <strong>Under £200</strong><small>Large-rug introductions</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
           </a>
         </li>
         <li>
           <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=200&amp;filter.v.price.lte=350">
             <div class="budget-edit__thumb"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="" loading="lazy"></div>
-            <span class="budget-edit__index">02</span><strong>£200–£350</strong><small>Large everyday favourites</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+            <strong>£200–£350</strong><small>Large everyday favourites</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
           </a>
         </li>
         <li>
           <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=350&amp;filter.v.price.lte=500">
             <div class="budget-edit__thumb"><img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="" loading="lazy"></div>
-            <span class="budget-edit__index">03</span><strong>£350–£500</strong><small>More room for detail</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+            <strong>£350–£500</strong><small>More room for detail</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
           </a>
         </li>
         <li>
           <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=500">
             <div class="budget-edit__thumb"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="" loading="lazy"></div>
-            <span class="budget-edit__index">04</span><strong>£500+</strong><small>Large statement pieces</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+            <strong>£500+</strong><small>Large statement pieces</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
           </a>
         </li>
       </ol>
@@ -3629,9 +3634,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 <section class="edit section washable-edit" id="washable">
   <div class="container">
     <div class="edit__head reveal">
-      <div class="edit__number">04</div>
       <div>
-        <div class="eyebrow">Washable &amp; Easy-Care Rugs</div>
         <h2>The Washable Rug Edit</h2>
         <p>Easy-care washable rugs for busy living rooms and family spaces, without losing the handmade look.</p>
       </div>
