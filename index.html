@@ -2746,6 +2746,68 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .why-fableroom__footnote{margin-top:11px!important;font-size:8px;line-height:1.35;}
 }
 
+
+/* Find Your FableRoom Rug: compact two-layer discovery, rebuilt from the ground up. */
+.rug-finder__finder{
+  display:grid;
+  grid-template-columns:minmax(250px,.65fr) minmax(0,1.35fr);
+  align-items:start;
+  gap:clamp(28px,5vw,88px);
+  padding:clamp(28px,4vw,52px) 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.rug-finder__intro{max-width:31ch;}
+.rug-finder__intro .eyebrow{margin:0 0 11px;}
+.rug-finder__intro h2{margin:0;font-size:clamp(32px,3.7vw,50px);line-height:.98;letter-spacing:-.04em;}
+.rug-finder__intro p{margin:13px 0 0;color:var(--ink-soft);font-size:14px;line-height:1.48;}
+.rug-finder__workbench{min-width:0;}
+.rug-finder__paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line);}
+.rug-finder__path{position:relative;min-height:47px;padding:0 0 12px;border:0;background:transparent;color:var(--ink-faint);font-size:10px;font-weight:700;letter-spacing:.07em;text-align:left;text-transform:uppercase;}
+.rug-finder__path span{display:inline-block;margin-right:8px;color:var(--clay);font-size:9px;}
+.rug-finder__path::after{content:'';position:absolute;right:0;bottom:-1px;left:0;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .24s ease;}
+.rug-finder__path:hover,.rug-finder__path.is-active{color:var(--ink);}
+.rug-finder__path.is-active::after{transform:scaleX(1);}
+.rug-finder__path:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+.rug-finder__panels{padding:24px 0 18px;}
+.rug-finder__panel{min-width:0;margin:0;padding:0;border:0;}
+.rug-finder__panel[hidden]{display:none;}
+.rug-finder__sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.rug-finder__options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.6vw,18px);}
+.rug-finder__option{display:flex;min-width:0;min-height:0;flex-direction:column;align-items:center;gap:9px;padding:0;border:0!important;border-radius:0!important;background:transparent!important;color:var(--ink-soft);font-size:10px;font-weight:700;line-height:1.2;text-align:center;transition:color .2s ease;}
+.rug-finder__option img{display:block;width:clamp(58px,6vw,82px);height:clamp(58px,6vw,82px);border:1px solid var(--line);border-radius:50%;object-fit:cover;filter:saturate(.82);transition:transform .25s ease,border-color .25s ease,filter .25s ease;}
+.rug-finder__option span{display:block;min-height:2.4em;}
+.rug-finder__option:hover,.rug-finder__option.is-active{color:var(--ink);}
+.rug-finder__option:hover img{transform:translateY(-2px);}
+.rug-finder__option.is-active img{border-color:var(--ink);box-shadow:0 0 0 3px var(--paper),0 0 0 4px var(--ink);filter:saturate(1);}
+.rug-finder__option:focus-visible{outline:2px solid var(--ink);outline-offset:4px;}
+.rug-finder__result{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-top:19px;border-top:1px solid var(--line);background:transparent!important;}
+.rug-finder__result small{display:block;margin-bottom:5px;color:var(--clay);font-size:9px;letter-spacing:.13em;text-transform:uppercase;}
+.rug-finder__result strong{display:block;max-width:25ch;font-family:var(--serif);font-size:clamp(20px,2.2vw,29px);font-weight:400;line-height:1.02;letter-spacing:-.025em;}
+.rug-finder__result a{flex:none;min-height:43px;padding:11px 15px;border:1px solid var(--ink);background:var(--ink);color:var(--white);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+@media(max-width:760px){
+  .rug-finder__finder{display:block;padding:26px 0 24px;}
+  .rug-finder__intro{max-width:34ch;}
+  .rug-finder__intro .eyebrow{margin-bottom:8px;}
+  .rug-finder__intro h2{font-size:29px;line-height:1;}
+  .rug-finder__intro p{margin-top:8px;font-size:12px;line-height:1.38;}
+  .rug-finder__workbench{margin-top:18px;}
+  .rug-finder__path{min-height:39px;padding-bottom:9px;font-size:8.5px;letter-spacing:.035em;white-space:nowrap;}
+  .rug-finder__path span{margin-right:4px;font-size:8px;}
+  .rug-finder__panels{padding:16px 0 13px;}
+  .rug-finder__options{gap:10px;}
+  .rug-finder__option{gap:6px;font-size:8.5px;}
+  .rug-finder__option img{width:58px;height:58px;}
+  .rug-finder__option span{min-height:2.5em;}
+  .rug-finder__result{gap:12px;padding-top:14px;}
+  .rug-finder__result small{margin-bottom:4px;font-size:8px;}
+  .rug-finder__result strong{max-width:16ch;font-size:19px;}
+  .rug-finder__result a{min-height:40px;padding:9px 10px;font-size:7.5px;white-space:nowrap;}
+}
+@media(prefers-reduced-motion:reduce){
+  .rug-finder__path::after,.rug-finder__option img{transition:none;}
+}
+
 </style>
 </head>
 <body>
@@ -3383,47 +3445,51 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 </script>
 <section class="rug-finder section" aria-labelledby="rug-finder-title" data-rug-finder>
   <div class="container">
-    <div class="rug-finder__shell reveal">
-      <div class="rug-finder__media"><img src="assets/ai-rug-finder-v1.webp" alt="A woman measuring a handmade rug and comparing material swatches in a warm living room" loading="lazy"></div>
-      <div class="rug-finder__body">
-        <div class="rug-finder__head">
-          <div class="eyebrow">Find Your FableRoom Rug</div>
-          <h2 id="rug-finder-title">Your room. Your life. Your rug.</h2>
-          <p>Choose your room, mood and preferred finish to open a focused FableRoom rug edit.</p>
+    <div class="rug-finder__finder reveal">
+      <div class="rug-finder__intro">
+        <div class="eyebrow">Find Your FableRoom Rug</div>
+        <h2 id="rug-finder-title">Your room. Your life. Your rug.</h2>
+        <p>Choose your room, mood and preferred finish to open a focused FableRoom rug edit.</p>
+      </div>
+      <div class="rug-finder__workbench">
+        <div class="rug-finder__paths" role="tablist" aria-label="Rug finder paths">
+          <button class="rug-finder__path is-active" id="rug-finder-path-room" type="button" role="tab" aria-selected="true" aria-controls="rug-finder-panel-room" data-finder-path="room"><span>01</span> Room</button>
+          <button class="rug-finder__path" id="rug-finder-path-mood" type="button" role="tab" aria-selected="false" aria-controls="rug-finder-panel-mood" data-finder-path="mood"><span>02</span> Mood</button>
+          <button class="rug-finder__path" id="rug-finder-path-need" type="button" role="tab" aria-selected="false" aria-controls="rug-finder-panel-need" data-finder-path="need"><span>03</span> Everyday Need</button>
         </div>
-        <div class="rug-finder__step-list">
-          <fieldset class="rug-finder__step" data-finder-step="room">
-                    <legend>01 · Room</legend>
-                    <div class="rug-finder__options">
-                      <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Living room">Living Room</button>
-                      <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bedroom">Bedroom</button>
-                      <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Dining room">Dining Room</button>
-                      <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Hallway">Hallway</button>
-                    </div>
-                  </fieldset>
-          <fieldset class="rug-finder__step" data-finder-step="mood">
-                    <legend>02 · Mood</legend>
-                    <div class="rug-finder__options">
-                      <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Calm and neutral">Calm &amp; Neutral</button>
-                      <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Warm and earthy">Warm &amp; Earthy</button>
-                      <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Colourful">Colourful</button>
-                      <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bold pattern">Bold Pattern</button>
-                    </div>
-                  </fieldset>
-          <fieldset class="rug-finder__step" data-finder-step="need">
-                    <legend>03 · Everyday Need</legend>
-                    <div class="rug-finder__options">
-                      <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Everyday easy">Everyday Easy</button>
-                      <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Soft luxury">Soft Luxury</button>
-                      <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Natural texture">Natural Texture</button>
-                      <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Heirloom craft">Heirloom Craft</button>
-                    </div>
-                  </fieldset>
+        <div class="rug-finder__panels">
+<fieldset class="rug-finder__panel" id="rug-finder-panel-room" role="tabpanel" aria-labelledby="rug-finder-path-room" data-finder-step="room">
+          <legend class="rug-finder__sr-only">Room</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Living room"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="" loading="lazy"><span>Living Room</span></button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bedroom"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="" loading="lazy"><span>Bedroom</span></button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Dining room"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="" loading="lazy"><span>Dining Room</span></button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Hallway"><img src="assets/fiore-jute-rug.webp" alt="" loading="lazy"><span>Hallway</span></button>
+          </div>
+        </fieldset>
+<fieldset class="rug-finder__panel" id="rug-finder-panel-mood" role="tabpanel" aria-labelledby="rug-finder-path-mood" data-finder-step="mood" hidden>
+          <legend class="rug-finder__sr-only">Mood</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Calm and neutral"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="" loading="lazy"><span>Calm &amp; Neutral</span></button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Warm and earthy"><img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="" loading="lazy"><span>Warm &amp; Earthy</span></button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Colourful"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="" loading="lazy"><span>Colourful</span></button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Bold pattern"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="" loading="lazy"><span>Bold Pattern</span></button>
+          </div>
+        </fieldset>
+<fieldset class="rug-finder__panel" id="rug-finder-panel-need" role="tabpanel" aria-labelledby="rug-finder-path-need" data-finder-step="need" hidden>
+          <legend class="rug-finder__sr-only">Everyday Need</legend>
+          <div class="rug-finder__options">
+            <button class="rug-finder__option is-active" type="button" aria-pressed="true" data-value="Everyday easy"><img src="assets/fiore-jute-rug.webp" alt="" loading="lazy"><span>Everyday Easy</span></button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Soft luxury"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="" loading="lazy"><span>Soft Luxury</span></button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Natural texture"><img src="assets/nuvara-handloom-rug.webp" alt="" loading="lazy"><span>Natural Texture</span></button>
+            <button class="rug-finder__option" type="button" aria-pressed="false" data-value="Heirloom craft"><img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="" loading="lazy"><span>Heirloom Craft</span></button>
+          </div>
+        </fieldset>
         </div>
         <div class="rug-finder__result">
-                  <div><small>Your Rug Edit</small><strong data-finder-result>Calm and neutral rugs for the living room</strong></div>
-                  <a href="https://fableroom.com/search?q=living+room+calm+neutral+everyday+rug&amp;type=product" data-finder-link>Explore This Edit →</a>
-                </div>
+          <div><small>Your Rug Edit</small><strong data-finder-result>Calm and neutral rugs for the living room</strong></div>
+          <a href="https://fableroom.com/search?q=living+room+calm+neutral+everyday+rug&amp;type=product" data-finder-link>Explore This Edit →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -4067,31 +4133,43 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
   render();
 })();
 
-/* ---------- Three-step rug finder ---------- */
+/* ---------- Two-layer rug finder ---------- */
 (function(){
   const finder = document.querySelector('[data-rug-finder]');
   if(!finder) return;
   const result = finder.querySelector('[data-finder-result]');
   const link = finder.querySelector('[data-finder-link]');
+  const paths = [...finder.querySelectorAll('[data-finder-path]')];
+  const panels = [...finder.querySelectorAll('[data-finder-step]')];
   const state = {room:'Living room',mood:'Calm and neutral',need:'Everyday easy'};
   const update = ()=>{
     result.textContent = `${state.mood} rugs for the ${state.room.toLowerCase()}`;
     const query = encodeURIComponent(`${state.room} ${state.mood} ${state.need} rug`);
     link.href = `https://fableroom.com/search?q=${query}&type=product`;
   };
-  finder.querySelectorAll('[data-finder-step]').forEach(step=>{
-    step.addEventListener('click',event=>{
+  const openPath = path=>{
+    paths.forEach(button=>{
+      const active = button.dataset.finderPath === path;
+      button.classList.toggle('is-active',active);
+      button.setAttribute('aria-selected',String(active));
+    });
+    panels.forEach(panel=>{panel.hidden = panel.dataset.finderStep !== path;});
+  };
+  paths.forEach(button=>button.addEventListener('click',()=>openPath(button.dataset.finderPath)));
+  panels.forEach(panel=>{
+    panel.addEventListener('click',event=>{
       const button = event.target.closest('[data-value]');
       if(!button) return;
-      step.querySelectorAll('[data-value]').forEach(item=>{
+      panel.querySelectorAll('[data-value]').forEach(item=>{
         const active = item === button;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-pressed', String(active));
+        item.classList.toggle('is-active',active);
+        item.setAttribute('aria-pressed',String(active));
       });
-      state[step.dataset.finderStep] = button.dataset.value;
+      state[panel.dataset.finderStep] = button.dataset.value;
       update();
     });
   });
+  openPath('room');
   update();
 })();
 
