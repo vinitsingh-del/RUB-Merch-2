@@ -1034,7 +1034,7 @@ body > section + section{margin-top:10px;}
 .room-discovery__intro h2 em{display:block; color:var(--clay); font-weight:400;}
 .room-discovery__intro h2,
 .room-discovery__intro h2 em{text-align:left;margin-left:0;padding-left:0;}
-.room-discovery__copy{max-width:39ch; color:var(--ink-soft); font-size:14px; margin:0 0 4px;}
+.room-discovery__copy{max-width:39ch; color:var(--ink-soft); font-size:14px; margin:8px 0 4px;}
 .room-discovery__grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; align-items:start;}
 .room-discovery__card{position:relative; display:block; overflow:hidden; aspect-ratio:4/5; background:#d8d0c6;}
 .room-discovery__card:nth-child(2),.room-discovery__card:nth-child(3){margin-top:0;}
@@ -2454,7 +2454,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .budget-edit{background:var(--paper);}
 .budget-edit__intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.65fr);gap:36px;align-items:start;padding-bottom:23px;border-bottom:1px solid var(--line);}
 .budget-edit__intro h2{margin:7px 0 0;font-size:clamp(32px,3.6vw,48px);line-height:1.02;letter-spacing:-.035em;}
-.budget-edit__intro p{max-width:31ch;margin:0 0 2px;color:var(--ink-soft);font-size:15px;line-height:1.45;}
+.budget-edit__intro p{max-width:31ch;margin:20px 0 2px;color:var(--ink-soft);font-size:15px;line-height:1.45;}
 .budget-edit__scale{padding-top:17px;}
 .budget-edit__scale-label{margin-bottom:12px;font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft);}
 .budget-edit__scale ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0;padding:0;gap:18px;}
@@ -3104,19 +3104,6 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
         height: 18px !important;
       }
     }
-
-
-    /* Requested Budget and Washable heading refinements */
-    @media (max-width:760px) {
-      .budget-edit__intro h2 {
-        max-width: none;
-      }
-
-      .washable-edit .edit__head {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0;
-      }
-    }
 </style>
 </head>
 <body>
@@ -3612,25 +3599,25 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
         <li>
           <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.lte=200">
             <div class="budget-edit__thumb"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="" loading="lazy"></div>
-            <strong>Under £200</strong><small>Large-rug introductions</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+            <span class="budget-edit__index">01</span><strong>Under £200</strong><small>Large-rug introductions</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
           </a>
         </li>
         <li>
           <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=200&amp;filter.v.price.lte=350">
             <div class="budget-edit__thumb"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="" loading="lazy"></div>
-            <strong>£200–£350</strong><small>Large everyday favourites</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+            <span class="budget-edit__index">02</span><strong>£200–£350</strong><small>Large everyday favourites</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
           </a>
         </li>
         <li>
           <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=350&amp;filter.v.price.lte=500">
             <div class="budget-edit__thumb"><img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="" loading="lazy"></div>
-            <strong>£350–£500</strong><small>More room for detail</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+            <span class="budget-edit__index">03</span><strong>£350–£500</strong><small>More room for detail</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
           </a>
         </li>
         <li>
           <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=500">
             <div class="budget-edit__thumb"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="" loading="lazy"></div>
-            <strong>£500+</strong><small>Large statement pieces</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+            <span class="budget-edit__index">04</span><strong>£500+</strong><small>Large statement pieces</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
           </a>
         </li>
       </ol>
@@ -3642,7 +3629,9 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 <section class="edit section washable-edit" id="washable">
   <div class="container">
     <div class="edit__head reveal">
+      <div class="edit__number">04</div>
       <div>
+        <div class="eyebrow">Washable &amp; Easy-Care Rugs</div>
         <h2>The Washable Rug Edit</h2>
         <p>Easy-care washable rugs for busy living rooms and family spaces, without losing the handmade look.</p>
       </div>
