@@ -2418,16 +2418,19 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .budget-edit__intro p{max-width:31ch;margin:0 0 2px;color:var(--ink-soft);font-size:15px;line-height:1.45;}
 .budget-edit__scale{padding-top:17px;}
 .budget-edit__scale-label{margin-bottom:12px;font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft);}
-.budget-edit__scale ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0;padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.budget-edit__scale li{min-width:0;border-right:1px solid var(--line);}
-.budget-edit__scale li:last-child{border-right:0;}
-.budget-edit__scale a{position:relative;display:grid;grid-template-columns:1fr auto;grid-template-areas:"index arrow" "price arrow" "note arrow";align-items:end;gap:5px 14px;min-height:138px;padding:18px 18px 17px;color:var(--ink);text-decoration:none;transition:background .22s ease,color .22s ease;}
-.budget-edit__scale a:hover,.budget-edit__scale a:focus-visible{background:var(--white);outline:0;}
+.budget-edit__scale ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0;padding:0;gap:18px;}
+.budget-edit__scale li{min-width:0;}
+.budget-edit__scale a{position:relative;display:flex;flex-direction:column;height:100%;color:var(--ink);text-decoration:none;background:var(--white);border:1px solid var(--line);transition:box-shadow .22s ease,border-color .22s ease,transform .22s ease;}
+.budget-edit__scale a:hover,.budget-edit__scale a:focus-visible{border-color:var(--ink);box-shadow:0 14px 30px rgba(0,0,0,.08);transform:translateY(-2px);outline:0;}
 .budget-edit__scale a:focus-visible{box-shadow:inset 0 0 0 2px var(--ink);}
-.budget-edit__index{grid-area:index;font-size:10px;line-height:1;letter-spacing:.11em;color:var(--ink-soft);}
-.budget-edit__scale strong{grid-area:price;font-family:var(--serif);font-size:clamp(23px,2.1vw,31px);font-weight:400;line-height:1.02;letter-spacing:-.03em;}
-.budget-edit__scale small{grid-area:note;color:var(--ink-soft);font-size:11px;line-height:1.25;}
-.budget-edit__arrow{grid-area:arrow;display:grid;place-items:center;width:29px;height:29px;border:1px solid currentColor;border-radius:50%;font-style:normal;font-size:15px;line-height:1;transition:transform .22s ease;}
+.budget-edit__thumb{aspect-ratio:4/3;overflow:hidden;background:var(--paper);}
+.budget-edit__thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-slow);}
+.budget-edit__scale a:hover .budget-edit__thumb img{transform:scale(1.05);}
+.budget-edit__scale a{padding:0;}
+.budget-edit__index{display:block;order:1;margin:16px 18px 0;font-size:10px;line-height:1;letter-spacing:.11em;color:var(--ink-soft);}
+.budget-edit__scale strong{display:block;order:2;margin:5px 18px 0;font-family:var(--serif);font-size:clamp(22px,2vw,28px);font-weight:400;line-height:1.05;letter-spacing:-.03em;}
+.budget-edit__scale small{display:block;order:3;margin:6px 18px 18px;color:var(--ink-soft);font-size:11px;line-height:1.25;flex:1;}
+.budget-edit__arrow{order:4;position:absolute;right:14px;bottom:14px;display:grid;place-items:center;width:29px;height:29px;border:1px solid currentColor;border-radius:50%;font-style:normal;font-size:15px;line-height:1;transition:transform .22s ease;}
 .budget-edit__scale a:hover .budget-edit__arrow{transform:translate(2px,-2px);}
 @media(max-width:760px){
   .budget-edit__intro{display:block;padding-bottom:17px;}
@@ -2435,13 +2438,11 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .budget-edit__intro p{margin-top:9px;font-size:13px;}
   .budget-edit__scale{padding-top:14px;}
   .budget-edit__scale-label{margin-bottom:10px;font-size:9px;}
-  .budget-edit__scale ol{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .budget-edit__scale li:nth-child(2){border-right:0;}
-  .budget-edit__scale li:nth-child(-n+2){border-bottom:1px solid var(--line);}
-  .budget-edit__scale a{min-height:112px;padding:14px 11px 13px;gap:4px 7px;}
-  .budget-edit__scale strong{font-size:21px;}
-  .budget-edit__scale small{font-size:10px;max-width:12ch;}
-  .budget-edit__arrow{width:25px;height:25px;font-size:13px;}
+  .budget-edit__scale ol{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;}
+  .budget-edit__index{margin:12px 13px 0;}
+  .budget-edit__scale strong{font-size:21px;margin:4px 13px 0;}
+  .budget-edit__scale small{font-size:10px;margin:5px 13px 14px;}
+  .budget-edit__arrow{width:25px;height:25px;font-size:13px;right:11px;bottom:11px;}
 }
 
 /* Requested section updates: customer stories, mobile techniques rail and large-rug budget edit. */
@@ -3362,7 +3363,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 
 
 <!-- ================= BUDGET EDIT ================= -->
-<section class="budget-edit section budget-edit--large" aria-labelledby="budget-edit-title">
+<section class="budget-edit section" aria-labelledby="budget-edit-title">
   <div class="container">
     <div class="budget-edit__intro reveal">
       <div>
@@ -3374,10 +3375,30 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
     <nav class="budget-edit__scale reveal-stagger" aria-label="Shop large rugs by budget">
       <div class="budget-edit__scale-label">Shop large rugs by price</div>
       <ol>
-        <li><a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.lte=200"><span class="budget-edit__index">01</span><strong>Under £200</strong><small>Large-rug introductions</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
-        <li><a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=200&amp;filter.v.price.lte=350"><span class="budget-edit__index">02</span><strong>£200–£350</strong><small>Large everyday favourites</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
-        <li><a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=350&amp;filter.v.price.lte=500"><span class="budget-edit__index">03</span><strong>£350–£500</strong><small>More room for detail</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
-        <li><a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=500"><span class="budget-edit__index">04</span><strong>£500+</strong><small>Large statement pieces</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
+        <li>
+          <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.lte=200">
+            <div class="budget-edit__thumb"><img src="assets/zahana-hand-tufted-wool-rug.webp" alt="" loading="lazy"></div>
+            <span class="budget-edit__index">01</span><strong>Under £200</strong><small>Large-rug introductions</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+          </a>
+        </li>
+        <li>
+          <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=200&amp;filter.v.price.lte=350">
+            <div class="budget-edit__thumb"><img src="assets/savana-hand-tufted-wool-rug.webp" alt="" loading="lazy"></div>
+            <span class="budget-edit__index">02</span><strong>£200–£350</strong><small>Large everyday favourites</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+          </a>
+        </li>
+        <li>
+          <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=350&amp;filter.v.price.lte=500">
+            <div class="budget-edit__thumb"><img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="" loading="lazy"></div>
+            <span class="budget-edit__index">03</span><strong>£350–£500</strong><small>More room for detail</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+          </a>
+        </li>
+        <li>
+          <a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=500">
+            <div class="budget-edit__thumb"><img src="assets/rewa-hand-tufted-wool-rug.webp" alt="" loading="lazy"></div>
+            <span class="budget-edit__index">04</span><strong>£500+</strong><small>Large statement pieces</small><i class="budget-edit__arrow" aria-hidden="true">↗</i>
+          </a>
+        </li>
       </ol>
     </nav>
   </div>
