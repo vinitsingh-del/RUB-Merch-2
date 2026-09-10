@@ -2708,6 +2708,44 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .rug-finder__result a{min-height:42px;padding:10px 12px;font-size:8.5px;white-space:nowrap;}
 }
 
+
+/* Why Choose FableRoom: simple comparison columns with rows, not benefit cards. */
+.why-fableroom__shell{
+  grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);
+  gap:clamp(24px,4vw,64px);
+  border:0!important;
+  background:transparent!important;
+}
+.why-fableroom__story{min-height:460px;}
+.why-fableroom__list{display:block;padding:0!important;align-self:center;}
+.why-fableroom__comparison{width:100%;table-layout:fixed;border-collapse:collapse;border:0;background:transparent;}
+.why-fableroom__comparison th,
+.why-fableroom__comparison td{border:0;text-align:left;vertical-align:middle;}
+.why-fableroom__comparison thead th{padding:0 12px 11px;color:var(--ink-faint);font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.1em;line-height:1.2;text-transform:uppercase;}
+.why-fableroom__comparison thead th:first-child{padding-left:0;width:25%;}
+.why-fableroom__comparison thead th:nth-child(2){width:33%;}
+.why-fableroom__comparison thead th:last-child{padding-right:0;width:42%;}
+.why-fableroom__comparison tbody tr{border-top:1px solid var(--line);}
+.why-fableroom__comparison tbody th{padding:15px 12px 15px 0;color:var(--ink);font-family:var(--sans);font-size:11px;font-weight:700;line-height:1.3;}
+.why-fableroom__comparison tbody td{padding:15px 12px;color:var(--ink-soft);font-family:var(--sans);font-size:12px;line-height:1.35;}
+.why-fableroom__comparison tbody td:last-child{padding-right:0;}
+.why-fableroom__comparison td.is-fableroom{color:var(--sage);font-weight:700;}
+.why-fableroom__comparison sup{font-size:.65em;vertical-align:super;}
+.why-fableroom__footnote{margin:15px 0 0!important;padding:0!important;border:0!important;}
+@media(max-width:760px){
+  .why-fableroom__shell{display:grid;grid-template-columns:1fr;gap:17px;border:0!important;}
+  .why-fableroom__story{min-height:290px;}
+  .why-fableroom__list{padding:0!important;}
+  .why-fableroom__comparison thead th{padding:0 7px 9px;font-size:7.5px;letter-spacing:.055em;}
+  .why-fableroom__comparison thead th:first-child{width:24%;padding-left:0;}
+  .why-fableroom__comparison thead th:nth-child(2){width:31%;}
+  .why-fableroom__comparison thead th:last-child{width:45%;padding-right:0;}
+  .why-fableroom__comparison tbody th{padding:11px 7px 11px 0;font-size:9.5px;line-height:1.25;}
+  .why-fableroom__comparison tbody td{padding:11px 7px;font-size:9.5px;line-height:1.25;overflow-wrap:anywhere;}
+  .why-fableroom__comparison tbody td:last-child{padding-right:0;}
+  .why-fableroom__footnote{margin-top:11px!important;font-size:8px;line-height:1.35;}
+}
+
 </style>
 </head>
 <body>
@@ -3520,13 +3558,18 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
         <div class="why-fableroom__copy"><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
       </div>
       <div class="why-fableroom__list">
-        <div class="why-fableroom__benefits" role="list" aria-label="FableRoom value">
-          <article class="why-fableroom__benefit" role="listitem"><span>01</span><div><strong>0 middlemen</strong><p>Other retailers: Multiple middlemen</p></div></article>
-          <article class="why-fableroom__benefit" role="listitem"><span>02</span><div><strong>Free delivery<sup>1</sup></strong><p>Other retailers: Often charged separately</p></div></article>
-          <article class="why-fableroom__benefit" role="listitem"><span>03</span><div><strong>365-Day Guarantee<sup>*</sup></strong><p>Other retailers: Typically shorter windows</p></div></article>
-          <article class="why-fableroom__benefit" role="listitem"><span>04</span><div><strong>40–50% you save</strong><p>Other retailers: 0% savings</p></div></article>
-          <article class="why-fableroom__benefit" role="listitem"><span>05</span><div><strong>4.6 rating</strong><p>Other retailers: 4.0 &amp; below</p></div></article>
-        </div>
+        <table class="why-fableroom__comparison">
+          <thead>
+            <tr><th scope="col">Detail</th><th scope="col">FableRoom</th><th scope="col">Other Retailers</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Middlemen</th><td class="is-fableroom">0</td><td>Multiple middlemen</td></tr>
+            <tr><th scope="row">Delivery</th><td class="is-fableroom">Free<sup>1</sup></td><td>Often charged separately</td></tr>
+            <tr><th scope="row">Returns</th><td class="is-fableroom">365-Day Guarantee<sup>*</sup></td><td>Typically shorter windows</td></tr>
+            <tr><th scope="row">Savings</th><td class="is-fableroom">40–50% you save</td><td>0% savings</td></tr>
+            <tr><th scope="row">Ratings</th><td class="is-fableroom">4.6 rating</td><td>4.0 &amp; below</td></tr>
+          </tbody>
+        </table>
         <p class="why-fableroom__footnote">¹On orders over £500. *Eligible quality defects or deterioration are covered through repair, replacement or refund within the stated guarantee period.</p>
       </div>
     </div>
