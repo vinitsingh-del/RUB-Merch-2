@@ -2259,7 +2259,10 @@ body > section:not(.hero){
 /* The visual guide uses room photography behind one shared Persian rug product. */
 .size-guide-modal__scene picture{position:absolute;inset:0;display:block;}
 /* Precision discovery and washable-rug cleanup */
-.shop-paths.section{padding-block:calc(var(--section-space) * .8);}
+.shop-paths.section{padding-block:calc(var(--section-space) * .8);padding-top:31px !important;}
+@media (max-width:760px){
+  .shop-paths.section{padding-top:35px !important;}
+}
 .shop-paths__directory{grid-template-columns:1fr;min-height:392px;}
 .shop-paths__tabs{flex-direction:row;border-right:0;border-bottom:1px solid var(--line-strong);}
 .shop-paths__tab{flex:1;justify-content:center;min-height:62px;border-right:0!important;border-bottom:0!important;}
