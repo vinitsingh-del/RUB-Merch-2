@@ -2852,6 +2852,21 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .shop-paths__size-visual{height:62px;}
   .shop-paths__imperial{font-size:7.5px;letter-spacing:.04em;}
 }
+
+/* Shop selector compact grid: exact rows with no empty tile column or excess beige space. */
+.shop-paths__directory{min-height:0;}
+.shop-paths__body{min-height:0;padding:24px clamp(18px,3vw,32px) 20px;}
+.shop-paths__links{gap:12px;}
+.shop-paths__links[data-view="standard"][data-option-count="8"]{grid-template-columns:repeat(4,minmax(0,1fr));}
+.shop-paths__links[data-view="standard"][data-option-count="9"],
+.shop-paths__links[data-view="standard"][data-option-count="6"]{grid-template-columns:repeat(3,minmax(0,1fr));}
+@media(max-width:760px){
+  .shop-paths__body{min-height:0;padding:16px 0!important;}
+  .shop-paths__links{gap:10px 8px!important;}
+  .shop-paths__links[data-view="standard"][data-option-count="8"]{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .shop-paths__links[data-view="standard"][data-option-count="9"],
+  .shop-paths__links[data-view="standard"][data-option-count="6"]{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
 </style>
 </head>
 <body>
