@@ -2443,6 +2443,63 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .budget-edit__scale small{font-size:10px;max-width:12ch;}
   .budget-edit__arrow{width:25px;height:25px;font-size:13px;}
 }
+
+/* Requested section updates: customer stories, mobile techniques rail and large-rug budget edit. */
+.trust--stories{padding:56px 0;background:var(--paper);}
+.trust--stories .trust__stories-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding-bottom:26px;border-bottom:1px solid var(--line);}
+.trust--stories .eyebrow{margin:0 0 10px;}
+.trust--stories h2{margin:0;font-size:clamp(32px,3.7vw,52px);line-height:.98;letter-spacing:-.04em;}
+.trust--stories .trust__summary{flex:0 0 230px;padding-left:24px;border-left:1px solid var(--line);}
+.trust--stories .trust__summary > div{display:flex;align-items:center;gap:11px;}
+.trust--stories .trust__summary b{font-family:var(--serif);font-size:36px;font-weight:400;line-height:1;}
+.trust--stories .trust__summary .trust__stars{margin:0;font-size:12px;}
+.trust--stories .trust__summary p{margin:8px 0 0;color:var(--ink-soft);font-size:10px;font-weight:700;letter-spacing:.075em;line-height:1.35;text-transform:uppercase;}
+.trust--stories .trust__summary a{display:inline-block;margin-top:11px;padding-bottom:2px;border-bottom:1px solid currentColor;color:var(--ink);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;}
+.trust--stories .trust__stories-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:21px;}
+.trust--stories .trust__quote{display:flex;flex-direction:column;align-items:flex-start;width:auto;min-height:174px;padding:17px;border:1px solid var(--line);border-radius:0;background:var(--white);}
+.trust--stories .trust__quote .trust__stars{margin:0 0 15px;font-size:10px;}
+.trust--stories .trust__quote p{margin:0;color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.08;letter-spacing:-.025em;}
+.trust--stories .trust__quote cite{margin-top:auto;padding-top:19px;color:var(--ink-soft);font-size:9px;font-style:normal;font-weight:700;letter-spacing:.09em;text-transform:uppercase;}
+.trust--stories .trust__badges{margin:18px 0 0;padding-top:15px;border-top:1px solid var(--line);}
+@media(max-width:760px){
+  .trust--stories{padding:34px 0;}
+  .trust--stories .trust__stories-head{display:block;padding-bottom:20px;}
+  .trust--stories h2{font-size:32px;}
+  .trust--stories .trust__summary{margin-top:19px;padding:0;border-left:0;}
+  .trust--stories .trust__summary b{font-size:31px;}
+  .trust--stories .trust__stories-grid{display:flex;gap:12px;margin-top:16px;overflow-x:auto;overflow-y:hidden;padding:0 1px 7px;scroll-snap-type:x mandatory;scrollbar-width:none;}
+  .trust--stories .trust__stories-grid::-webkit-scrollbar{display:none;}
+  .trust--stories .trust__quote{flex:0 0 84%;min-height:154px;padding:15px;scroll-snap-align:start;}
+  .trust--stories .trust__quote p{font-size:18px;}
+  .trust--stories .trust__badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin-top:14px;padding-top:12px;}
+  .trust--stories .trust__badge{justify-content:center;gap:4px;min-width:0;min-height:35px;padding:5px 4px;font-size:6.75px;line-height:1.1;letter-spacing:.025em;text-align:center;white-space:normal;}
+  .trust--stories .trust__badge svg{width:11px;height:11px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .trust--stories .trust__stories-grid{scroll-behavior:auto;}
+}
+
+@media(max-width:760px){
+  body > section:has(.proof__carousel) .section-head{margin:0 0 18px;}
+  .proof__carousel{padding:0!important;}
+  .proof__grid{gap:12px!important;overflow-x:auto!important;overflow-y:hidden!important;padding:0 1px 8px!important;scroll-snap-type:x mandatory;scrollbar-width:none;}
+  .proof__grid::-webkit-scrollbar{display:none;}
+  .proof__card{flex:0 0 84%!important;width:auto!important;max-width:none!important;scroll-snap-align:start;}
+}
+
+.budget-edit--large{background:var(--ink);color:var(--white);}
+.budget-edit--large .budget-edit__intro{border-color:rgba(255,255,255,.3);}
+.budget-edit--large .eyebrow,.budget-edit--large .budget-edit__intro p,.budget-edit--large .budget-edit__scale-label,.budget-edit--large .budget-edit__index,.budget-edit--large .budget-edit__scale small{color:rgba(255,255,255,.67);}
+.budget-edit--large .budget-edit__scale ol{border-color:rgba(255,255,255,.32);}
+.budget-edit--large .budget-edit__scale li{border-color:rgba(255,255,255,.22);}
+.budget-edit--large .budget-edit__scale a{color:var(--white);}
+.budget-edit--large .budget-edit__scale a:hover,.budget-edit--large .budget-edit__scale a:focus-visible{background:var(--paper);color:var(--ink);}
+.budget-edit--large .budget-edit__scale a:hover .budget-edit__index,.budget-edit--large .budget-edit__scale a:hover small,.budget-edit--large .budget-edit__scale a:focus-visible .budget-edit__index,.budget-edit--large .budget-edit__scale a:focus-visible small{color:var(--ink-soft);}
+.budget-edit--large .budget-edit__scale a:focus-visible{box-shadow:inset 0 0 0 2px var(--white);}
+@media(max-width:760px){
+  .budget-edit--large .budget-edit__intro h2{max-width:14ch;}
+}
+
 </style>
 </head>
 <body>
@@ -2575,131 +2632,61 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 </section>
 
 <!-- ================= TRUSTPILOT STRIP ================= -->
-<section class="trust">
+<section class="trust trust--stories" aria-labelledby="customer-stories-title">
   <div class="container trust__experience">
     <div class="trust__content">
-        <div class="trust__row">
-          <div class="trust__score">
-            <div class="eyebrow">Customer Reviews</div>
-            <b>4.6</b>
-            <div class="trust__stars">★★★★★</div>
-            <span>EXCELLENT · 1,260 TRUSTPILOT REVIEWS</span>
-            <a href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">Read Verified Reviews</a>
-          </div>
-          <div class="trust__marquee" aria-label="Customer reviews">
-            <div class="trust__track">
-        <div class="trust__quote">
-          <div class="trust__stars">★★★★★</div>
+      <div class="trust__stories-head">
+        <div>
+          <div class="eyebrow">Fableroom customer stories</div>
+          <h2 id="customer-stories-title">Loved for value,<br>delivery and service.</h2>
+        </div>
+        <div class="trust__summary">
+          <div><b>4.6</b><span class="trust__stars" aria-label="Five-star customer rating">★★★★★</span></div>
+          <p>Excellent · 1,260 Trustpilot reviews</p>
+          <a href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">Read verified reviews</a>
+        </div>
+      </div>
+      <div class="trust__stories-grid" aria-label="Customer reviews">
+        <article class="trust__quote">
+          <div class="trust__stars" aria-hidden="true">★★★★★</div>
           <p>&ldquo;Luxury quality, with great service.&rdquo;</p>
           <cite>Elle · Verified Buyer</cite>
-        </div>
-        <div class="trust__quote">
-          <div class="trust__stars">★★★★★</div>
+        </article>
+        <article class="trust__quote">
+          <div class="trust__stars" aria-hidden="true">★★★★★</div>
           <p>&ldquo;Super quick delivery, with great updates. Very happy with the whole experience.&rdquo;</p>
           <cite>Sam · Verified Buyer</cite>
-        </div>
-        <div class="trust__quote">
-          <div class="trust__stars">★★★★★</div>
+        </article>
+        <article class="trust__quote">
+          <div class="trust__stars" aria-hidden="true">★★★★★</div>
           <p>&ldquo;Everything about my experience with FableRoom has been excellent!&rdquo;</p>
           <cite>Ruth · Verified Buyer</cite>
-        </div>
-        <div class="trust__quote">
-          <div class="trust__stars">★★★★★</div>
+        </article>
+        <article class="trust__quote">
+          <div class="trust__stars" aria-hidden="true">★★★★★</div>
           <p>&ldquo;First time ordering and I wasn't disappointed. I'll definitely be returning.&rdquo;</p>
           <cite>Yvonne · Verified Buyer</cite>
+        </article>
+      </div>
+      <div class="trust__badges">
+        <div class="trust__badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" aria-hidden="true"><path d="M12 3c3 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-7 6-10z"/></svg>
+          <span>B Corp&trade; Certified</span>
         </div>
-        <div class="trust__quote" aria-hidden="true">
-          <div class="trust__stars">★★★★★</div>
-          <p>&ldquo;Luxury quality, with great service.&rdquo;</p>
-          <cite>Elle · Verified Buyer</cite>
+        <div class="trust__badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" aria-hidden="true"><path d="M12 3l2.4 5.5 6 .6-4.5 4 1.3 6-5.2-3.2-5.2 3.2 1.3-6-4.5-4 6-.6z"/></svg>
+          <span>4.6 Excellent on Trustpilot</span>
         </div>
-        <div class="trust__quote" aria-hidden="true">
-          <div class="trust__stars">★★★★★</div>
-          <p>&ldquo;Super quick delivery, with great updates. Very happy with the whole experience.&rdquo;</p>
-          <cite>Sam · Verified Buyer</cite>
+        <div class="trust__badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
+          <span>30-Day Returns</span>
         </div>
-        <div class="trust__quote" aria-hidden="true">
-          <div class="trust__stars">★★★★★</div>
-          <p>&ldquo;Everything about my experience with FableRoom has been excellent!&rdquo;</p>
-          <cite>Ruth · Verified Buyer</cite>
-        </div>
-        <div class="trust__quote" aria-hidden="true">
-          <div class="trust__stars">★★★★★</div>
-          <p>&ldquo;First time ordering and I wasn't disappointed. I'll definitely be returning.&rdquo;</p>
-          <cite>Yvonne · Verified Buyer</cite>
-        </div>
-            </div>
-          </div>
-        </div>
-        <div class="trust__badges">
-          <div class="trust__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3c3 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-7 6-10z"/></svg>
-            <span>B Corp&trade; Certified</span>
-          </div>
-          <div class="trust__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M12 3l2.4 5.5 6 .6-4.5 4 1.3 6-5.2-3.2-5.2 3.2 1.3-6-4.5-4 6-.6z"/></svg>
-            <span>4.6 Excellent on Trustpilot</span>
-          </div>
-          <div class="trust__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
-            <span>30-Day Returns</span>
-          </div>
-        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= RUG STYLE DISCOVERY ================= -->
-<section class="style-hub section" aria-labelledby="style-hub-title">
-  <div class="container">
-    <div class="style-hub__shell reveal">
-      <div class="style-hub__media">
-        <img src="assets/ai-rug-style-discovery-v1.webp" alt="A woman comparing three handmade rug styles in a warm living room" loading="lazy">
-      </div>
-      <div class="style-hub__panel">
-        <div class="style-hub__intro">
-          <h2 id="style-hub-title">One rug discovery hub.<em>Find the style that feels like home.</em></h2>
-          <p>Filter the edit by the look you love. Every result opens the matching FableRoom rug.</p>
-        </div>
-        <div class="style-hub__filters" role="tablist" aria-label="Filter rugs by style" data-style-filters>
-          <button class="style-hub__filter is-active" type="button" role="tab" aria-selected="true" data-style-filter="all">All Styles</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="persian">Persian</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="modern">Modern</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="botanical">Botanical</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="bohemian">Bohemian</button>
-          <button class="style-hub__filter" type="button" role="tab" aria-selected="false" data-style-filter="natural">Natural</button>
-        </div>
-        <div class="style-hub__products" data-style-products>
-          <a class="style-hub__card" href="https://fableroom.com/products/zahana-hand-tufted-wool-rug" data-styles="persian botanical">
-            <img src="assets/zahana-hand-tufted-wool-rug.webp" alt="Zahana Hand-tufted Wool Rug" loading="lazy">
-            <div><span>Persian · Botanical</span><h3>Zahana Hand-tufted Wool Rug</h3><small>From £149</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/products/savana-hand-tufted-wool-rug" data-styles="persian botanical">
-            <img src="assets/savana-hand-tufted-wool-rug.webp" alt="Savana Botanical Hand-tufted Wool Rug" loading="lazy">
-            <div><span>Botanical · Traditional</span><h3>Savana Botanical Wool Rug</h3><small>From £118</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/products/rewa-hand-tufted-wool-rug" data-styles="modern">
-            <img src="assets/rewa-hand-tufted-wool-rug.webp" alt="Rewa Hand-tufted Wool Rug" loading="lazy">
-            <div><span>Modern · Abstract</span><h3>Rewa Hand-tufted Wool Rug</h3><small>From £185</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/products/amber-oasis-hand-knotted-wool-rug" data-styles="persian bohemian">
-            <img src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="Amber Oasis Hand-knotted Wool Rug" loading="lazy">
-            <div><span>Bohemian · Persian</span><h3>Amber Oasis Hand-knotted Rug</h3><small>From £312</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/search?q=jute+rug&amp;type=product" data-styles="natural">
-            <img src="assets/fiore-jute-rug.webp" alt="Fiore Jute Rug" loading="lazy">
-            <div><span>Natural · Textured</span><h3>Fiore Jute Rug</h3><small>Shop natural rugs</small></div>
-          </a>
-          <a class="style-hub__card" href="https://fableroom.com/products/zaya-round-hand-knotted-wool-rug" data-styles="persian">
-            <img src="assets/zaya-round-hand-knotted-wool-rug.webp" alt="Zaya Round Hand-knotted Wool Rug" loading="lazy">
-            <div><span>Persian · Traditional</span><h3>Zaya Round Hand-knotted Rug</h3><small>From £755</small></div>
-          </a>
-        </div>
-        <div class="style-hub__footer"><a href="https://fableroom.com/collections/all-rugs-collection">View all rugs →</a></div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ================= PROOF / TECHNIQUE CARDS ================= -->
 <section class="section">
@@ -2710,9 +2697,6 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
       </div>
     </div>
     <div class="proof__carousel">
-      <button class="proof__arrow proof__arrow--prev" type="button" data-proof-prev aria-label="Previous rug technique" disabled>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
-      </button>
       <div class="proof__grid reveal-stagger">
       <div class="proof__card">
         <div class="proof__frame"><video autoplay muted loop playsinline preload="metadata" poster="assets/craft-hand-knotted-v2.webp" aria-label="Artisan hands tying dense wool knots on a traditional rug loom"><source src="assets/hand-knotted-rug-video.mp4" type="video/mp4"></video></div>
@@ -2740,9 +2724,6 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
         <p>Handloom rugs are woven on traditional looms in natural fibres, creating tactile texture with durable everyday structure.</p>
       </div>
       </div>
-      <button class="proof__arrow proof__arrow--next" type="button" data-proof-next aria-label="Next rug technique">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
-      </button>
     </div>
   </div>
 </section>
@@ -2960,22 +2941,22 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 
 
 <!-- ================= BUDGET EDIT ================= -->
-<section class="budget-edit section" aria-labelledby="budget-edit-title">
+<section class="budget-edit section budget-edit--large" aria-labelledby="budget-edit-title">
   <div class="container">
     <div class="budget-edit__intro reveal">
       <div>
-        <div class="eyebrow">Shop by budget</div>
-        <h2 id="budget-edit-title">Find the right rug.<br>At the right price.</h2>
+        <div class="eyebrow">Large rugs, by budget</div>
+        <h2 id="budget-edit-title">Large rugs.<br>Right by your budget.</h2>
       </div>
-      <p>Explore the full handmade collection through one clear price point.</p>
+      <p>Choose a price point, then explore large handmade rugs made to anchor the room.</p>
     </div>
-    <nav class="budget-edit__scale reveal-stagger" aria-label="Shop rugs by budget">
-      <div class="budget-edit__scale-label">Choose your price point</div>
+    <nav class="budget-edit__scale reveal-stagger" aria-label="Shop large rugs by budget">
+      <div class="budget-edit__scale-label">Shop large rugs by price</div>
       <ol>
-        <li><a href="https://fableroom.com/collections/all-rugs-collection?filter.v.price.lte=200"><span class="budget-edit__index">01</span><strong>Under £200</strong><small>Easy introductions</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
-        <li><a href="https://fableroom.com/collections/all-rugs-collection?filter.v.price.gte=200&amp;filter.v.price.lte=350"><span class="budget-edit__index">02</span><strong>£200–£350</strong><small>Everyday favourites</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
-        <li><a href="https://fableroom.com/collections/all-rugs-collection?filter.v.price.gte=350&amp;filter.v.price.lte=500"><span class="budget-edit__index">03</span><strong>£350–£500</strong><small>Made with more detail</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
-        <li><a href="https://fableroom.com/collections/all-rugs-collection?filter.v.price.gte=500"><span class="budget-edit__index">04</span><strong>£500+</strong><small>Collector pieces</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
+        <li><a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.lte=200"><span class="budget-edit__index">01</span><strong>Under £200</strong><small>Large-rug introductions</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
+        <li><a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=200&amp;filter.v.price.lte=350"><span class="budget-edit__index">02</span><strong>£200–£350</strong><small>Large everyday favourites</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
+        <li><a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=350&amp;filter.v.price.lte=500"><span class="budget-edit__index">03</span><strong>£350–£500</strong><small>More room for detail</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
+        <li><a href="https://fableroom.com/search?q=large+rug&amp;type=product&amp;filter.v.price.gte=500"><span class="budget-edit__index">04</span><strong>£500+</strong><small>Large statement pieces</small><i class="budget-edit__arrow" aria-hidden="true">↗</i></a></li>
       </ol>
     </nav>
   </div>
@@ -3689,38 +3670,6 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
     });
     if(count) count.textContent = `${visible} ${visible === 1 ? 'rug' : 'rugs'} in this edit`;
     products.scrollTo({left:0,behavior:'smooth'});
-  });
-})();
-
-/* ---------- Product-card comparison ---------- */
-(function(){
-  document.querySelectorAll('.proof__carousel').forEach(carousel=>{
-    const grid = carousel.querySelector('.proof__grid');
-    const cards = [...carousel.querySelectorAll('.proof__card')];
-    const previous = carousel.querySelector('[data-proof-prev]');
-    const next = carousel.querySelector('[data-proof-next]');
-    if(!grid || !cards.length || !previous || !next) return;
-    let index = 0;
-    const update = ()=>{
-      const mobile = matchMedia('(max-width: 760px)').matches;
-      previous.disabled = !mobile || index <= 0;
-      next.disabled = !mobile || index >= cards.length - 1;
-    };
-    const move = direction=>{
-      if(!matchMedia('(max-width: 760px)').matches) return;
-      index = Math.max(0, Math.min(cards.length - 1, index + direction));
-      grid.scrollTo({left:index * (grid.clientWidth + 12), behavior:'smooth'});
-      update();
-    };
-    previous.addEventListener('click',()=>move(-1));
-    next.addEventListener('click',()=>move(1));
-    grid.addEventListener('scroll',()=>{
-      if(!grid.clientWidth) return;
-      index = Math.max(0, Math.min(cards.length - 1, Math.round(grid.scrollLeft / (grid.clientWidth + 12))));
-      update();
-    },{passive:true});
-    addEventListener('resize',update);
-    update();
   });
 })();
 
