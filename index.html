@@ -2808,6 +2808,77 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .rug-finder__path::after,.rug-finder__option img{transition:none;}
 }
 
+
+/* Shop-by selector: fixed centred option grid and metric size labels. */
+.shop-paths__directory{min-height:0;}
+.shop-paths__tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible!important;}
+.shop-paths__tab{min-width:0;}
+.shop-paths__panel{min-height:0;}
+.shop-paths__body{
+  display:block;
+  height:auto;
+  min-height:328px;
+  padding:32px clamp(22px,4vw,48px);
+}
+.shop-paths__rail-wrap{position:static;width:min(100%,540px);min-width:0;margin:0 auto;}
+.shop-paths__links{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(12px,2vw,20px);
+  overflow:visible!important;
+  padding:0!important;
+}
+.shop-paths__links.is-centered{justify-content:initial;}
+.shop-paths__links a{
+  width:auto!important;
+  min-width:0;
+  flex:initial!important;
+  justify-self:stretch;
+  gap:8px;
+}
+.shop-paths__links a::before{
+  width:min(84px,100%);
+  height:auto;
+  aspect-ratio:1/1;
+}
+.shop-paths__label{display:block;min-width:0;}
+.shop-paths__metric{
+  min-height:112px;
+  justify-content:center!important;
+  gap:5px!important;
+  padding:14px 8px!important;
+  border:1px solid var(--line)!important;
+  background:var(--cream)!important;
+  text-align:center;
+}
+.shop-paths__metric::before{display:none!important;}
+.shop-paths__metric .shop-paths__label{
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.shop-paths__measure{
+  display:block;
+  font-family:var(--serif);
+  font-size:clamp(15px,1.7vw,21px);
+  font-weight:400;
+  line-height:1.05;
+  white-space:nowrap;
+}
+.shop-paths__fade,.shop-paths__arrow{display:none!important;}
+@media(max-width:760px){
+  .shop-paths__tabs{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .shop-paths__tab{min-height:52px!important;padding:9px 3px!important;font-size:8.5px!important;}
+  .shop-paths__body{min-height:0;padding:22px 0!important;}
+  .shop-paths__rail-wrap{width:100%;}
+  .shop-paths__links{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 10px!important;}
+  .shop-paths__links a{font-size:9.5px!important;}
+  .shop-paths__links a::before{width:min(78px,100%)!important;}
+  .shop-paths__metric{min-height:92px;padding:10px 4px!important;}
+  .shop-paths__metric .shop-paths__label{font-size:8px;}
+  .shop-paths__measure{font-size:13px;}
+}
 </style>
 </head>
 <body>
@@ -2902,36 +2973,29 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   <div class="container">
     <div class="shop-paths__intro reveal">
       <h2 id="shop-paths-title">Shop by room, style or craft.</h2>
-      <p>Explore area rugs by size, colour, material, technique and budget.</p>
+      <p>Explore rugs by style, size, colour and material.</p>
     </div>
     <div class="shop-paths__directory reveal" data-shop-paths>
       <div class="shop-paths__tabs" role="tablist" aria-label="Ways to shop rugs">
         <button class="shop-paths__tab is-active" type="button" role="tab" aria-selected="true" data-path="style">Style</button>
-        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="technique">Technique</button>
+        <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="size">Size</button>
         <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="colour">Colour</button>
         <button class="shop-paths__tab" type="button" role="tab" aria-selected="false" data-path="material">Material</button>
       </div>
       <div class="shop-paths__panel" role="tabpanel">
         <div class="shop-paths__image"><img src="assets/ai-story-08-room-meadow.webp" alt="Rug styled in a living room" data-path-image></div>
         <div class="shop-paths__body">
-          <span class="shop-paths__count" data-path-count>01</span>
-          <h3 data-path-title>Choose a rug style.</h3>
-          <p data-path-copy>Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.</p>
           <div class="shop-paths__rail-wrap">
             <div class="shop-paths__links" data-path-links>
-            <a href="https://fableroom.com/collections/persian-rugs" style="--path-icon:url('assets/style-persian-emblem.webp')">Persian</a>
-            <a href="https://fableroom.com/collections/modern-rugs" style="--path-icon:url('assets/style-modern-emblem.webp')">Modern</a>
-            <a href="https://fableroom.com/collections/minimal-rugs" style="--path-icon:url('assets/style-minimal-emblem.webp')">Minimal</a>
-            <a href="https://fableroom.com/collections/bohemian-rugs" style="--path-icon:url('assets/style-bohemian-emblem.webp')">Bohemian</a>
-            <a href="https://fableroom.com/collections/traditional-rugs" style="--path-icon:url('assets/style-traditional-emblem.webp')">Traditional</a>
-            <a href="https://fableroom.com/collections/botanical-floral-rugs" style="--path-icon:url('assets/style-floral-emblem.webp')">Floral</a>
-            <a href="https://fableroom.com/collections/checkerboard-rugs" style="--path-icon:url('assets/style-checkered-emblem.webp')">Checkered</a>
-            <a href="https://fableroom.com/search?q=geometric+rug&amp;type=product" style="--path-icon:url('assets/style-geometric-emblem.webp')">Geometric</a>
-          </div>
-            <div class="shop-paths__fade shop-paths__fade--left" data-rail-fade-left aria-hidden="true"></div>
-            <div class="shop-paths__fade shop-paths__fade--right" data-rail-fade-right aria-hidden="true"></div>
-            <button class="shop-paths__arrow shop-paths__arrow--prev" type="button" data-rail-prev aria-label="Scroll options left">&#8592;</button>
-            <button class="shop-paths__arrow shop-paths__arrow--next" type="button" data-rail-next aria-label="Scroll options right">&#8594;</button>
+              <a href="https://fableroom.com/collections/persian-rugs" style="--path-icon:url('assets/style-persian-emblem.webp')"><span class="shop-paths__label">Persian</span></a>
+              <a href="https://fableroom.com/collections/modern-rugs" style="--path-icon:url('assets/style-modern-emblem.webp')"><span class="shop-paths__label">Modern</span></a>
+              <a href="https://fableroom.com/collections/minimal-rugs" style="--path-icon:url('assets/style-minimal-emblem.webp')"><span class="shop-paths__label">Minimal</span></a>
+              <a href="https://fableroom.com/collections/bohemian-rugs" style="--path-icon:url('assets/style-bohemian-emblem.webp')"><span class="shop-paths__label">Bohemian</span></a>
+              <a href="https://fableroom.com/collections/traditional-rugs" style="--path-icon:url('assets/style-traditional-emblem.webp')"><span class="shop-paths__label">Traditional</span></a>
+              <a href="https://fableroom.com/collections/botanical-floral-rugs" style="--path-icon:url('assets/style-floral-emblem.webp')"><span class="shop-paths__label">Floral</span></a>
+              <a href="https://fableroom.com/collections/checkerboard-rugs" style="--path-icon:url('assets/style-checkered-emblem.webp')"><span class="shop-paths__label">Checkered</span></a>
+              <a href="https://fableroom.com/search?q=geometric+rug&amp;type=product" style="--path-icon:url('assets/style-geometric-emblem.webp')"><span class="shop-paths__label">Geometric</span></a>
+            </div>
           </div>
         </div>
       </div>
@@ -3859,128 +3923,92 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
   });
 });
 
-/* ---------- Original shop-by directory ---------- */
+/* ---------- Shop-by directory ---------- */
 (function(){
   const directory = document.querySelector('[data-shop-paths]');
   if(!directory) return;
   const panel = directory.querySelector('.shop-paths__panel');
   const image = directory.querySelector('[data-path-image]');
-  const count = directory.querySelector('[data-path-count]');
-  const title = directory.querySelector('[data-path-title]');
-  const copy = directory.querySelector('[data-path-copy]');
   const links = directory.querySelector('[data-path-links]');
-  const railWrap = directory.querySelector('.shop-paths__rail-wrap');
-  const arrowPrev = directory.querySelector('[data-rail-prev]');
-  const arrowNext = directory.querySelector('[data-rail-next]');
-  const updateRailEdges = ()=>{
-    if(!railWrap) return;
-    const max = links.scrollWidth - links.clientWidth;
-    railWrap.classList.toggle('has-scroll-left', links.scrollLeft > 4);
-    railWrap.classList.toggle('has-scroll-right', links.scrollLeft < max - 4);
-  };
-  const updateRailState = ()=>{
-    if(!railWrap) return;
-    const overflowing = links.scrollWidth > links.clientWidth + 1;
-    links.classList.toggle('is-centered', !overflowing);
-    if(!overflowing){
-      railWrap.classList.remove('has-scroll-left','has-scroll-right');
-      links.scrollLeft = 0;
-    } else {
-      updateRailEdges();
-    }
-  };
-  if(arrowPrev) arrowPrev.addEventListener('click', ()=> links.scrollBy({left:-(links.clientWidth*0.8), behavior:'smooth'}));
-  if(arrowNext) arrowNext.addEventListener('click', ()=> links.scrollBy({left: links.clientWidth*0.8, behavior:'smooth'}));
-  links.addEventListener('scroll', updateRailEdges, {passive:true});
+
   const paths = {
-    style:{count:'01',title:'Choose a rug style.',copy:'Explore Persian rugs, modern rugs, minimal carpets and relaxed bohemian patterns.',image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[
-      ['Persian','https://fableroom.com/collections/persian-rugs','assets/style-persian-emblem.webp'],
-      ['Modern','https://fableroom.com/collections/modern-rugs','assets/style-modern-emblem.webp'],
-      ['Minimal','https://fableroom.com/collections/minimal-rugs','assets/style-minimal-emblem.webp'],
-      ['Bohemian','https://fableroom.com/collections/bohemian-rugs','assets/style-bohemian-emblem.webp'],
-      ['Traditional','https://fableroom.com/collections/traditional-rugs','assets/style-traditional-emblem.webp'],
-      ['Floral','https://fableroom.com/collections/botanical-floral-rugs','assets/style-floral-emblem.webp'],
-      ['Checkered','https://fableroom.com/collections/checkerboard-rugs','assets/style-checkered-emblem.webp'],
-      ['Geometric','https://fableroom.com/search?q=geometric+rug&type=product','assets/style-geometric-emblem.webp']
+    style:{image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[
+      {label:'Persian',href:'https://fableroom.com/collections/persian-rugs',icon:'assets/style-persian-emblem.webp'},
+      {label:'Modern',href:'https://fableroom.com/collections/modern-rugs',icon:'assets/style-modern-emblem.webp'},
+      {label:'Minimal',href:'https://fableroom.com/collections/minimal-rugs',icon:'assets/style-minimal-emblem.webp'},
+      {label:'Bohemian',href:'https://fableroom.com/collections/bohemian-rugs',icon:'assets/style-bohemian-emblem.webp'},
+      {label:'Traditional',href:'https://fableroom.com/collections/traditional-rugs',icon:'assets/style-traditional-emblem.webp'},
+      {label:'Floral',href:'https://fableroom.com/collections/botanical-floral-rugs',icon:'assets/style-floral-emblem.webp'},
+      {label:'Checkered',href:'https://fableroom.com/collections/checkerboard-rugs',icon:'assets/style-checkered-emblem.webp'},
+      {label:'Geometric',href:'https://fableroom.com/search?q=geometric+rug&type=product',icon:'assets/style-geometric-emblem.webp'}
     ]},
-    technique:{count:'02',title:'Compare rug techniques.',copy:'Choose hand-knotted, hand-tufted, hand-woven, flatweave or handloom rugs by pile and feel.',image:'assets/rug-craft-poster.jpg',alt:'Close view of rug craftsmanship',links:[
-      ['Hand-Knotted','https://fableroom.com/collections/hand-knotted-rugs','assets/technique-hand-knotted-emblem.webp'],
-      ['Hand-Tufted','https://fableroom.com/collections/hand-tufted-rugs','assets/technique-hand-tufted-emblem.webp'],
-      ['Hand-Woven','https://fableroom.com/collections/all-hand-woven-rugs-collection','assets/technique-hand-woven-emblem.webp'],
-      ['Flatweave','https://fableroom.com/collections/flatweave-rugs','assets/technique-flatweave-emblem.webp'],
-      ['Handloom','https://fableroom.com/collections/handloom-rugs/Handloom','assets/technique-handloom-emblem.webp']
+    size:{image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[
+      {label:'Small',detail:'160 × 230 cm',href:'https://fableroom.com/search?q=160cm+x+230cm+rug&type=product'},
+      {label:'Medium',detail:'200 × 290 cm',href:'https://fableroom.com/search?q=200cm+x+290cm+rug&type=product'},
+      {label:'Large',detail:'240 × 330 cm',href:'https://fableroom.com/search?q=240cm+x+330cm+rug&type=product'},
+      {label:'Extra Large',detail:'280 × 380 cm',href:'https://fableroom.com/search?q=280cm+x+380cm+rug&type=product'}
     ]},
-    colour:{count:'03',title:'Shop rugs by colour.',copy:'Find beige, grey, ivory, blue, brown, cream, white, red and multicolour rugs for your palette.',image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[
-      ['Beige','https://fableroom.com/collections/beige-rugs','assets/colour-beige-emblem.webp'],
-      ['Grey','https://fableroom.com/collections/grey-rugs','assets/colour-grey-emblem.webp'],
-      ['Ivory','https://fableroom.com/collections/ivory-rugs','assets/colour-ivory-emblem.webp'],
-      ['Blue','https://fableroom.com/collections/blue-rugs','assets/colour-blue-emblem.webp'],
-      ['Brown','https://fableroom.com/collections/brown-rugs','assets/colour-brown-emblem.webp'],
-      ['Cream','https://fableroom.com/collections/cream-rugs','assets/colour-cream-emblem.webp'],
-      ['White','https://fableroom.com/collections/white-rugs','assets/colour-white-emblem.webp'],
-      ['Red','https://fableroom.com/search?q=red+rug&type=product','assets/colour-red-emblem.webp'],
-      ['Multicolour','https://fableroom.com/collections/multicolour-rugs','assets/colour-multicolour-emblem.webp']
+    colour:{image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[
+      {label:'Beige',href:'https://fableroom.com/collections/beige-rugs',icon:'assets/colour-beige-emblem.webp'},
+      {label:'Grey',href:'https://fableroom.com/collections/grey-rugs',icon:'assets/colour-grey-emblem.webp'},
+      {label:'Ivory',href:'https://fableroom.com/collections/ivory-rugs',icon:'assets/colour-ivory-emblem.webp'},
+      {label:'Blue',href:'https://fableroom.com/collections/blue-rugs',icon:'assets/colour-blue-emblem.webp'},
+      {label:'Brown',href:'https://fableroom.com/collections/brown-rugs',icon:'assets/colour-brown-emblem.webp'},
+      {label:'Cream',href:'https://fableroom.com/collections/cream-rugs',icon:'assets/colour-cream-emblem.webp'},
+      {label:'White',href:'https://fableroom.com/collections/white-rugs',icon:'assets/colour-white-emblem.webp'},
+      {label:'Red',href:'https://fableroom.com/search?q=red+rug&type=product',icon:'assets/colour-red-emblem.webp'},
+      {label:'Multicolour',href:'https://fableroom.com/collections/multicolour-rugs',icon:'assets/colour-multicolour-emblem.webp'}
     ]},
-    material:{count:'04',title:'Choose a rug material.',copy:'Compare wool, jute, silk, recycled fibre, New Zealand wool and viscose rugs.',image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[
-      ['Wool','https://fableroom.com/search?q=wool+rug&type=product','assets/material-wool-emblem.webp'],
-      ['Jute','https://fableroom.com/collections/jute-rugs-collection','assets/material-jute-emblem.webp'],
-      ['Silk','https://fableroom.com/collections/silk-rugs','assets/material-silk-emblem.webp'],
-      ['Recycled Fibre','https://fableroom.com/collections/pet-rugs','assets/material-recycled-fibre-emblem.webp'],
-      ['New Zealand Wool','https://fableroom.com/collections/new-zealand-wool-rugs','assets/material-new-zealand-wool-emblem.webp'],
-      ['Viscose','https://fableroom.com/collections/viscose-rugs','assets/material-viscose-emblem.webp']
+    material:{image:'assets/fiore-jute-rug.webp',alt:'Natural jute rug texture',links:[
+      {label:'Wool',href:'https://fableroom.com/search?q=wool+rug&type=product',icon:'assets/material-wool-emblem.webp'},
+      {label:'Jute',href:'https://fableroom.com/collections/jute-rugs-collection',icon:'assets/material-jute-emblem.webp'},
+      {label:'Silk',href:'https://fableroom.com/collections/silk-rugs',icon:'assets/material-silk-emblem.webp'},
+      {label:'Recycled Fibre',href:'https://fableroom.com/collections/pet-rugs',icon:'assets/material-recycled-fibre-emblem.webp'},
+      {label:'New Zealand Wool',href:'https://fableroom.com/collections/new-zealand-wool-rugs',icon:'assets/material-new-zealand-wool-emblem.webp'},
+      {label:'Viscose',href:'https://fableroom.com/collections/viscose-rugs',icon:'assets/material-viscose-emblem.webp'}
     ]}
   };
-  directory.querySelectorAll('.shop-paths__tab').forEach(tab=>{
-    tab.addEventListener('click',()=>{
-      const data = paths[tab.dataset.path];
-      if(!data || tab.classList.contains('is-active')) return;
-      directory.querySelectorAll('.shop-paths__tab').forEach(item=>{
-        const active = item === tab;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-selected', String(active));
-      });
-      panel.classList.add('is-changing');
-      setTimeout(()=>{
-        image.src=data.image; image.alt=data.alt; count.textContent=data.count;
-        title.textContent=data.title; copy.textContent=data.copy;
-        links.replaceChildren(...data.links.map(([label,href,icon])=>{
-          const a=document.createElement('a'); a.href=href; a.textContent=label; a.style.setProperty('--path-icon',`url('${icon}')`); return a;
-        }));
-        links.dataset.optionCount = String(data.links.length);
-        updateRailState();
-        panel.classList.remove('is-changing');
-      },160);
-    });
-  });
-  const initialPath = paths[directory.querySelector('.shop-paths__tab.is-active')?.dataset.path || 'style'];
-  if(initialPath) links.dataset.optionCount = String(initialPath.links.length);
 
-  /* Normalise panel height across all categories so switching tabs never jumps or crops. */
-  const normaliseHeight = ()=>{
-    const activeTab = directory.querySelector('.shop-paths__tab.is-active');
-    const activeKey = activeTab ? activeTab.dataset.path : 'style';
-    const originalCount = count.textContent, originalTitle = title.textContent, originalCopy = copy.textContent;
-    const originalLinksHTML = links.innerHTML;
-    let maxHeight = 0;
-    Object.entries(paths).forEach(([key, data])=>{
-      count.textContent = data.count; title.textContent = data.title; copy.textContent = data.copy;
-      links.replaceChildren(...data.links.map(([label])=>{
-        const a=document.createElement('a'); a.textContent=label; return a;
-      }));
-      const h = panel.getBoundingClientRect().height;
-      if(h > maxHeight) maxHeight = h;
-    });
-    count.textContent = originalCount; title.textContent = originalTitle; copy.textContent = originalCopy;
-    links.innerHTML = originalLinksHTML;
-    if(maxHeight > 0){ panel.style.minHeight = maxHeight + 'px'; }
+  const renderLinks = (data) => {
+    links.replaceChildren(...data.links.map(({label,detail,href,icon}) => {
+      const anchor = document.createElement('a');
+      anchor.href = href;
+      if(detail) anchor.className = 'shop-paths__metric';
+      if(icon) anchor.style.setProperty('--path-icon', "url('" + icon + "')");
+      const name = document.createElement('span');
+      name.className = 'shop-paths__label';
+      name.textContent = label;
+      anchor.append(name);
+      if(detail){
+        const measure = document.createElement('span');
+        measure.className = 'shop-paths__measure';
+        measure.textContent = detail;
+        anchor.append(measure);
+      }
+      return anchor;
+    }));
+    links.dataset.optionCount = String(data.links.length);
   };
-  normaliseHeight();
-  updateRailState();
-  let resizeTimer;
-  window.addEventListener('resize', ()=>{
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(()=>{ normaliseHeight(); updateRailState(); }, 150);
-  });
+
+  const activate = (tab) => {
+    const data = paths[tab.dataset.path];
+    if(!data || tab.classList.contains('is-active')) return;
+    directory.querySelectorAll('.shop-paths__tab').forEach(item => {
+      const isActive = item === tab;
+      item.classList.toggle('is-active', isActive);
+      item.setAttribute('aria-selected', String(isActive));
+    });
+    panel.classList.add('is-changing');
+    window.setTimeout(() => {
+      image.src = data.image;
+      image.alt = data.alt;
+      renderLinks(data);
+      panel.classList.remove('is-changing');
+    }, 160);
+  };
+
+  directory.querySelectorAll('.shop-paths__tab').forEach(tab => tab.addEventListener('click', () => activate(tab)));
+  renderLinks(paths.style);
 })();
 
 /* ---------- Take a Look Around filters ---------- */
