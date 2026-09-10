@@ -2867,6 +2867,21 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .shop-paths__links[data-view="standard"][data-option-count="9"],
   .shop-paths__links[data-view="standard"][data-option-count="6"]{grid-template-columns:repeat(3,minmax(0,1fr));}
 }
+
+/* Why Choose FableRoom: make the FableRoom column pulse from within. */
+@keyframes whyFableRoomColumnPulse{
+  0%,100%{opacity:.34;color:var(--sage);text-shadow:0 0 0 rgba(125,139,99,0);}
+  48%{opacity:1;color:var(--sage);text-shadow:0 0 12px rgba(125,139,99,.5);}
+}
+.why-fableroom__comparison thead th:nth-child(2),
+.why-fableroom__comparison td.is-fableroom{
+  animation:whyFableRoomColumnPulse 1.65s ease-in-out infinite;
+}
+.why-fableroom__comparison td.is-fableroom sup{color:inherit;}
+@media(prefers-reduced-motion:reduce){
+  .why-fableroom__comparison thead th:nth-child(2),
+  .why-fableroom__comparison td.is-fableroom{animation:none;opacity:1;}
+}
 </style>
 </head>
 <body>
@@ -3678,7 +3693,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
       <div class="why-fableroom__list">
         <table class="why-fableroom__comparison">
           <thead>
-            <tr><th scope="col">Detail</th><th scope="col">FableRoom</th><th scope="col">Other Retailers</th></tr>
+            <tr><th scope="col" aria-label="Comparison detail"></th><th scope="col">FableRoom</th><th scope="col">Other Retailers</th></tr>
           </thead>
           <tbody>
             <tr><th scope="row">Middlemen</th><td class="is-fableroom">0</td><td>Multiple middlemen</td></tr>
