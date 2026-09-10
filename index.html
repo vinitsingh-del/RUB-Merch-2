@@ -2920,6 +2920,134 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   opacity:1;
   text-shadow:0 1px 8px rgba(0,0,0,.75);
 }
+
+
+    /* Product-card compact controls */
+    .lookaround__card h3,
+    .edit__card h4,
+    .style-hub__card h3 {
+      min-height: 0 !important;
+      margin: 0 0 4px !important;
+    }
+
+    .lookaround__card .lookaround__badges {
+      position: static !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      align-items: center !important;
+      gap: 0 !important;
+      margin: 1px 0 4px !important;
+      max-width: none !important;
+    }
+
+    .lookaround__card .lookaround__badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      outline: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      color: var(--ink) !important;
+      font-size: 8px !important;
+      font-weight: 700 !important;
+      letter-spacing: .08em !important;
+      line-height: 1.3 !important;
+      text-transform: uppercase !important;
+    }
+
+    .lookaround__card .lookaround__badge + .lookaround__badge::before {
+      content: '·';
+      margin: 0 6px;
+      color: currentColor;
+    }
+
+    .lookaround__card .lookaround__meta,
+    .edit__card .other-retailers {
+      min-height: 0 !important;
+      margin: 0 0 5px !important;
+      line-height: 1.3 !important;
+    }
+
+    .lookaround__card .lookaround__price,
+    .edit__card .price-row,
+    .style-hub__card .price-row {
+      margin: 0 !important;
+      line-height: 1.2 !important;
+    }
+
+    .product-card-actions {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      min-height: 38px !important;
+      margin: 8px 0 0 !important;
+      padding: 0 !important;
+      gap: 0 !important;
+    }
+
+    .product-atc-cta {
+      display: inline-grid !important;
+      width: 38px !important;
+      height: 38px !important;
+      min-width: 38px !important;
+      min-height: 38px !important;
+      place-items: center !important;
+      margin: 0 0 0 auto !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 50% !important;
+      background: var(--ink) !important;
+      color: var(--paper) !important;
+      box-shadow: none !important;
+      transition: background-color .2s ease, transform .2s ease !important;
+    }
+
+    .product-atc-cta:hover,
+    .product-atc-cta:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .product-atc-cta:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .product-atc-cta svg {
+      width: 16px !important;
+      height: 16px !important;
+      fill: none !important;
+      stroke: currentColor !important;
+      stroke-linecap: round !important;
+      stroke-linejoin: round !important;
+      stroke-width: 1.65 !important;
+    }
+
+    .product-atc-cta.is-added {
+      background: var(--rust) !important;
+    }
+
+    @media (max-width: 760px) {
+      .lookaround__card h3,
+      .edit__card h4,
+      .style-hub__card h3 {
+        margin-bottom: 3px !important;
+      }
+
+      .product-card-actions {
+        min-height: 36px !important;
+        margin-top: 7px !important;
+      }
+
+      .product-atc-cta {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+      }
+    }
 </style>
 </head>
 <body>
@@ -3209,7 +3337,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
             <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Express Delivery</span></div>
           </div>
           <h3>Zahana Hand-tufted Wool Rug</h3>
-          <div class="lookaround__meta">7 reviews · 45% off</div>
+          <div class="lookaround__meta">Other Retailers £405</div>
           <div class="lookaround__price"><b>£149</b><s>£270</s></div>
         </a>
       </article>
@@ -3220,7 +3348,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
             <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Pre Order</span></div>
           </div>
           <h3>Savana Botanical Hand-tufted Wool Rug</h3>
-          <div class="lookaround__meta">11 reviews · 44% off</div>
+          <div class="lookaround__meta">Other Retailers £315</div>
           <div class="lookaround__price"><b>£118</b><s>£210</s></div>
         </a>
       </article>
@@ -3231,7 +3359,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
             <div class="lookaround__badges"><span class="lookaround__badge">Bestseller</span><span class="lookaround__badge">Pre Order</span></div>
           </div>
           <h3>Amber Oasis Hand-knotted Wool Rug</h3>
-          <div class="lookaround__meta">1 review · 59% off</div>
+          <div class="lookaround__meta">Other Retailers £1,143</div>
           <div class="lookaround__price"><b>£312</b><s>£762</s></div>
         </a>
       </article>
@@ -3242,7 +3370,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
             <div class="lookaround__badges"><span class="lookaround__badge">Express Delivery</span><span class="lookaround__badge">25% Off</span></div>
           </div>
           <h3>Rewa Hand-tufted Wool Rug</h3>
-          <div class="lookaround__meta">Express Delivery · 25% off</div>
+          <div class="lookaround__meta">Other Retailers £371</div>
           <div class="lookaround__price"><b>£185</b><s>£247</s></div>
         </a>
       </article>
@@ -4155,105 +4283,50 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
 })();
 
 (function(){
-  const cards = [...document.querySelectorAll('.lookaround__card,.edit__card,.style-hub__card')].filter(card=>card.querySelector('h3,h4') && card.querySelector('.lookaround__price,.price-row,small'));
-  if(!cards.length) return;
-  const MAX_COMPARE = 5;
-  const selected = new Map();
-  const money = value=>Number((value || '').replace(/[^0-9.]/g,'')) || 0;
-  const productFrom = card=>{
-    const name = card.querySelector('h3,h4').textContent.trim();
-    const lower = name.toLowerCase();
-    const priceBox = card.querySelector('.lookaround__price,.price-row,small');
-    const current = priceBox.querySelector('b')?.textContent.trim() || priceBox.textContent.trim() || '—';
-    const previous = priceBox.querySelector('s')?.textContent.trim() || '';
-    const saving = previous && money(previous) > money(current) ? `${Math.round((1-money(current)/money(previous))*100)}%` : '—';
-    const technique = lower.includes('hand-knotted') ? 'Hand-knotted' : lower.includes('hand-tufted') ? 'Hand-tufted' : lower.includes('hand-woven') ? 'Hand-woven' : lower.includes('washable') ? 'Washable construction' : lower.includes('jute') ? 'Hand-woven' : 'Handmade';
-    const material = lower.includes('bamboo silk') ? 'Wool & bamboo silk' : lower.includes('jute') ? 'Natural jute' : lower.includes('washable') ? 'Easy-care fibre blend' : 'Wool & cotton';
-    const thickness = technique === 'Hand-knotted' ? '10–12 mm' : technique === 'Hand-tufted' ? '12–15 mm' : technique === 'Hand-woven' ? '6–8 mm' : technique === 'Washable construction' ? '5–7 mm' : '8–12 mm';
-    const styles = {zahana:'Botanical · Traditional',savana:'Botanical · Traditional',rewa:'Abstract · Contemporary',amber:'Bohemian · Traditional',clara:'Modern · Refined',preston:'Traditional',vaayu:'Abstract · Modern',rovira:'Persian · Traditional',zaya:'Round · Traditional',arcadia:'Geometric · Heritage',fiore:'Natural · Textural',elm:'Contemporary',flax:'Minimal · Contemporary',maren:'Modern · Contemporary'};
-    const styleKey = Object.keys(styles).find(key=>lower.includes(key));
-    const key = name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-    const href = card.matches('a[href]') ? card.href : (card.querySelector('a[href]')?.href || `https://fableroom.com/products/${key}`);
-    return {key,name,size:'Multiple sizes',technique,material,price:current,savings:saving,thickness,style:styles[styleKey] || 'Artisan · Contemporary',href};
-  };
-  const products = new Map();
-  cards.forEach(card=>{
-    const product = productFrom(card);
-    products.set(product.key,product);
-    card.dataset.compareKey = product.key;
+  const cards = [...document.querySelectorAll('.lookaround__card,.edit__card,.style-hub__card')]
+    .filter(card => card.querySelector('h3,h4') && card.querySelector('.lookaround__price,.price-row,small'));
+
+  if (!cards.length) return;
+
+  const cartIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 4.5h2.1l1.6 10.1h10.4l2.1-7.2H7.4"></path><circle cx="9.2" cy="18.3" r="1"></circle><circle cx="17.1" cy="18.3" r="1"></circle></svg>';
+
+  cards.forEach(card => {
+    card.querySelector('.product-card-actions')?.remove();
+
+    const title = card.querySelector('h3,h4')?.textContent.trim() || 'rug';
     const actions = document.createElement('div');
     actions.className = 'product-card-actions';
-    actions.innerHTML = `<button class="product-compare-cta" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M17 4v16M3 8l4-4 4 4M13 16l4 4 4-4"/></svg><span>Compare</span></button><button class="product-atc-cta" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Add to Cart</span></button>`;
+
+    const addToCart = document.createElement('button');
+    addToCart.className = 'product-atc-cta';
+    addToCart.type = 'button';
+    addToCart.dataset.originalLabel = 'Add ' + title + ' to cart';
+    addToCart.setAttribute('aria-label', addToCart.dataset.originalLabel);
+    addToCart.title = 'Add to cart';
+    addToCart.setAttribute('aria-pressed', 'false');
+    addToCart.innerHTML = cartIcon;
+
+    actions.append(addToCart);
     card.append(actions);
   });
-  document.body.insertAdjacentHTML('beforeend',`
-    <aside class="compare-tray" data-common-compare-tray hidden aria-live="polite">
-      <span class="compare-tray__status" data-common-compare-status></span>
-      <span class="compare-tray__actions"><button type="button" class="compare-tray__clear">Clear</button><button type="button" class="compare-tray__view" disabled>Compare</button></span>
-    </aside>
-    <div class="compare-dialog" data-common-compare-dialog hidden role="dialog" aria-modal="true" aria-labelledby="common-compare-title">
-      <div class="compare-dialog__panel">
-        <div class="compare-dialog__head"><div><div class="eyebrow">Rug Comparison</div><h2 id="common-compare-title">Compare your rugs.</h2></div><button class="compare-dialog__close" type="button" aria-label="Close comparison">×</button></div>
-        <div class="compare-dialog__table-wrap"><table><thead data-common-compare-head></thead><tbody data-common-compare-body></tbody></table></div>
-      </div>
-    </div>`);
-  const tray = document.querySelector('[data-common-compare-tray]');
-  const status = document.querySelector('[data-common-compare-status]');
-  const view = tray.querySelector('.compare-tray__view');
-  const dialog = document.querySelector('[data-common-compare-dialog]');
-  const head = dialog.querySelector('[data-common-compare-head]');
-  const body = dialog.querySelector('[data-common-compare-body]');
-  const render = ()=>{
-    cards.forEach(card=>{
-      const active = selected.has(card.dataset.compareKey);
-      const button = card.querySelector('.product-compare-cta');
-      button.setAttribute('aria-pressed', String(active));
-      button.querySelector('span').textContent = active ? 'Added ✓' : 'Compare';
-    });
-    tray.hidden = selected.size === 0;
-    status.textContent = selected.size === 1
-      ? '1 rug selected · choose one more'
-      : selected.size === MAX_COMPARE
-        ? `${MAX_COMPARE} rugs selected · maximum reached`
-        : `${selected.size} rugs selected · add up to ${MAX_COMPARE - selected.size} more`;
-    view.disabled = selected.size < 2;
-  };
-  document.addEventListener('click',event=>{
-    const button = event.target.closest('.product-compare-cta');
-    if(!button) return;
-    event.preventDefault();
-    event.stopPropagation();
-    const card = button.closest('.lookaround__card,.edit__card,.style-hub__card');
-    const key = card.dataset.compareKey;
-    if(selected.has(key)) selected.delete(key);
-    else if(selected.size < MAX_COMPARE) selected.set(key,products.get(key));
-    else status.textContent = `${MAX_COMPARE} rugs maximum · remove one to add another`;
-    render();
-  });
-  document.addEventListener('click',event=>{
+
+  document.addEventListener('click', event => {
     const button = event.target.closest('.product-atc-cta');
-    if(!button) return;
+    if (!button) return;
+
     event.preventDefault();
     event.stopPropagation();
-    const label = button.querySelector('span');
-    label.textContent = 'Added ✓';
-    button.setAttribute('aria-pressed','true');
-    setTimeout(()=>{label.textContent='Add to Cart';button.setAttribute('aria-pressed','false');},1800);
+
+    button.classList.add('is-added');
+    button.setAttribute('aria-pressed', 'true');
+    button.setAttribute('aria-label', 'Added to cart');
+
+    window.setTimeout(() => {
+      button.classList.remove('is-added');
+      button.setAttribute('aria-pressed', 'false');
+      button.setAttribute('aria-label', button.dataset.originalLabel || 'Add to cart');
+    }, 1800);
   });
-  const close = ()=>{dialog.hidden=true;document.body.style.overflow='';};
-  view.addEventListener('click',()=>{
-    const chosen = [...selected.values()];
-    head.innerHTML = `<tr><th>Detail</th>${chosen.map(product=>`<th><a href="${product.href}">${product.name}</a></th>`).join('')}</tr>`;
-    const rows = [['Size','size'],['Technique','technique'],['Material','material'],['Price','price'],['Savings','savings'],['Thickness','thickness'],['Style','style']];
-    const actions = `<tr class="compare-dialog__actions-row"><th>Action</th>${chosen.map(product=>`<td><a class="compare-dialog__atc" href="${product.href}">Add to Cart</a></td>`).join('')}</tr>`;
-    body.innerHTML = rows.map(([label,field])=>`<tr><th>${label}</th>${chosen.map(product=>`<td>${product[field]}</td>`).join('')}</tr>`).join('') + actions;
-    dialog.hidden=false;document.body.style.overflow='hidden';dialog.querySelector('.compare-dialog__close').focus();
-  });
-  tray.querySelector('.compare-tray__clear').addEventListener('click',()=>{selected.clear();close();render();});
-  dialog.querySelector('.compare-dialog__close').addEventListener('click',close);
-  dialog.addEventListener('click',event=>{if(event.target===dialog) close();});
-  addEventListener('keydown',event=>{if(event.key==='Escape' && !dialog.hidden) close();});
-  render();
 })();
 
 /* ---------- Two-layer rug finder ---------- */
