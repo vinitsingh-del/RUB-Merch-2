@@ -2809,63 +2809,31 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 }
 
 
-/* Shop-by selector: fixed centred option grid and metric size labels. */
+/* Shop-by selector: fixed centred option grid and centimetre / imperial size labels. */
 .shop-paths__directory{min-height:0;}
 .shop-paths__tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible!important;}
 .shop-paths__tab{min-width:0;}
 .shop-paths__panel{min-height:0;}
-.shop-paths__body{
-  display:block;
-  height:auto;
-  min-height:328px;
-  padding:32px clamp(22px,4vw,48px);
-}
+.shop-paths__body{display:block;height:auto;min-height:328px;padding:32px clamp(22px,4vw,48px);}
 .shop-paths__rail-wrap{position:static;width:min(100%,540px);min-width:0;margin:0 auto;}
-.shop-paths__links{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:clamp(12px,2vw,20px);
-  overflow:visible!important;
-  padding:0!important;
-}
+.shop-paths__links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,20px);overflow:visible!important;padding:0!important;}
 .shop-paths__links.is-centered{justify-content:initial;}
-.shop-paths__links a{
-  width:auto!important;
-  min-width:0;
-  flex:initial!important;
-  justify-self:stretch;
-  gap:8px;
-}
-.shop-paths__links a::before{
-  width:min(84px,100%);
-  height:auto;
-  aspect-ratio:1/1;
-}
+.shop-paths__links a{width:auto!important;min-width:0;flex:initial!important;justify-self:stretch;gap:8px;}
+.shop-paths__links a::before{width:min(84px,100%);height:auto;aspect-ratio:1/1;}
 .shop-paths__label{display:block;min-width:0;}
-.shop-paths__metric{
-  min-height:112px;
-  justify-content:center!important;
-  gap:5px!important;
-  padding:14px 8px!important;
-  border:1px solid var(--line)!important;
-  background:var(--cream)!important;
-  text-align:center;
-}
+.shop-paths__metric{min-height:112px;justify-content:center!important;gap:5px!important;padding:14px 8px!important;border:1px solid var(--line)!important;background:var(--cream)!important;text-align:center;}
 .shop-paths__metric::before{display:none!important;}
-.shop-paths__metric .shop-paths__label{
-  font-size:9.5px;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-}
-.shop-paths__measure{
-  display:block;
-  font-family:var(--serif);
-  font-size:clamp(15px,1.7vw,21px);
-  font-weight:400;
-  line-height:1.05;
-  white-space:nowrap;
-}
+.shop-paths__metric .shop-paths__label{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.shop-paths__measure{display:block;font-family:var(--serif);font-size:clamp(15px,1.7vw,21px);font-weight:400;line-height:1.05;white-space:nowrap;}
+.shop-paths__imperial{display:block;color:var(--ink-soft);font-size:9px;font-weight:700;letter-spacing:.06em;line-height:1.1;white-space:nowrap;}
+.shop-paths__links[data-view="size"]{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;width:100%;max-width:none;}
+.shop-paths__links[data-view="size"] .shop-paths__metric{min-height:184px;gap:4px!important;padding:12px 5px!important;background:var(--white)!important;}
+.shop-paths__size-visual{display:block;width:100%;height:76px;margin:0 0 4px;}
+.shop-paths__size-visual svg{display:block;width:100%;height:100%;overflow:visible;}
+.shop-paths__size-rug{fill:#e7ded5;stroke:var(--ink);stroke-width:1.3;}
+.shop-paths__size-sofa,.shop-paths__size-cushion,.shop-paths__size-table{fill:var(--white);stroke:var(--ink);stroke-width:1.6;}
+.shop-paths__size-cushion{stroke-width:1.05;}
+.shop-paths__size-lamp{fill:var(--white);stroke:var(--ink);stroke-width:1.2;}
 .shop-paths__fade,.shop-paths__arrow{display:none!important;}
 @media(max-width:760px){
   .shop-paths__tabs{grid-template-columns:repeat(4,minmax(0,1fr));}
@@ -2878,6 +2846,11 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .shop-paths__metric{min-height:92px;padding:10px 4px!important;}
   .shop-paths__metric .shop-paths__label{font-size:8px;}
   .shop-paths__measure{font-size:13px;}
+  .shop-paths__links[data-view="size"]{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px!important;}
+  .shop-paths__links[data-view="size"] .shop-paths__metric{grid-column:span 2;min-height:158px;padding:10px 4px!important;}
+  .shop-paths__links[data-view="size"] .shop-paths__metric:nth-child(4){grid-column:2 / span 2;}
+  .shop-paths__size-visual{height:62px;}
+  .shop-paths__imperial{font-size:7.5px;letter-spacing:.04em;}
 }
 </style>
 </head>
@@ -3942,11 +3915,12 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
       {label:'Checkered',href:'https://fableroom.com/collections/checkerboard-rugs',icon:'assets/style-checkered-emblem.webp'},
       {label:'Geometric',href:'https://fableroom.com/search?q=geometric+rug&type=product',icon:'assets/style-geometric-emblem.webp'}
     ]},
-    size:{image:'assets/ai-story-08-room-meadow.webp',alt:'Rug styled in a living room',links:[
-      {label:'Small',detail:'160 × 230 cm',href:'https://fableroom.com/search?q=160cm+x+230cm+rug&type=product'},
-      {label:'Medium',detail:'200 × 290 cm',href:'https://fableroom.com/search?q=200cm+x+290cm+rug&type=product'},
-      {label:'Large',detail:'240 × 330 cm',href:'https://fableroom.com/search?q=240cm+x+330cm+rug&type=product'},
-      {label:'Extra Large',detail:'280 × 380 cm',href:'https://fableroom.com/search?q=280cm+x+380cm+rug&type=product'}
+    size:{image:'assets/ai-story-08-room-meadow.webp',alt:'Top view rug size guide',links:[
+      {label:'Extra Large',detail:'280 × 380 cm',imperial:"9' 2\" × 12' 6\"",href:'https://fableroom.com/search?q=280cm+x+380cm+rug&type=product',visual:{x:8,y:4,w:164,h:92}},
+      {label:'Large',detail:'240 × 330 cm',imperial:"7' 10\" × 10' 10\"",href:'https://fableroom.com/search?q=240cm+x+330cm+rug&type=product',visual:{x:20,y:11,w:140,h:78}},
+      {label:'Medium',detail:'200 × 290 cm',imperial:"6' 7\" × 9' 6\"",href:'https://fableroom.com/search?q=200cm+x+290cm+rug&type=product',visual:{x:32,y:18,w:116,h:64}},
+      {label:'Small',detail:'160 × 230 cm',imperial:"5' 3\" × 7' 7\"",href:'https://fableroom.com/search?q=160cm+x+230cm+rug&type=product',visual:{x:43,y:25,w:94,h:50}},
+      {label:'Coffee Table',detail:'120 × 170 cm',imperial:"3' 11\" × 5' 7\"",href:'https://fableroom.com/search?q=120cm+x+170cm+rug&type=product',visual:{x:52,y:31,w:76,h:38}}
     ]},
     colour:{image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[
       {label:'Beige',href:'https://fableroom.com/collections/beige-rugs',icon:'assets/colour-beige-emblem.webp'},
@@ -3969,12 +3943,38 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
     ]}
   };
 
+  const svgElement = (name, attributes) => {
+    const node = document.createElementNS('http://www.w3.org/2000/svg', name);
+    Object.entries(attributes).forEach(([key,value]) => node.setAttribute(key, String(value)));
+    return node;
+  };
+
+  const createSizeVisual = ({x,y,w,h}) => {
+    const visual = document.createElement('span');
+    visual.className = 'shop-paths__size-visual';
+    visual.setAttribute('aria-hidden','true');
+    const svg = svgElement('svg',{viewBox:'0 0 180 100',focusable:'false'});
+    svg.append(
+      svgElement('rect',{class:'shop-paths__size-rug',x,y,width:w,height:h,rx:2}),
+      svgElement('circle',{class:'shop-paths__size-lamp',cx:38,cy:37,r:5}),
+      svgElement('circle',{class:'shop-paths__size-lamp',cx:142,cy:37,r:5}),
+      svgElement('rect',{class:'shop-paths__size-sofa',x:49,y:18,width:82,height:25,rx:7}),
+      svgElement('rect',{class:'shop-paths__size-cushion',x:58,y:22,width:19,height:15,rx:3}),
+      svgElement('rect',{class:'shop-paths__size-cushion',x:79,y:22,width:19,height:15,rx:3}),
+      svgElement('rect',{class:'shop-paths__size-cushion',x:100,y:22,width:22,height:15,rx:3}),
+      svgElement('rect',{class:'shop-paths__size-table',x:72,y:57,width:36,height:14,rx:5})
+    );
+    visual.append(svg);
+    return visual;
+  };
+
   const renderLinks = (data) => {
-    links.replaceChildren(...data.links.map(({label,detail,href,icon}) => {
+    links.replaceChildren(...data.links.map(({label,detail,imperial,href,icon,visual}) => {
       const anchor = document.createElement('a');
       anchor.href = href;
       if(detail) anchor.className = 'shop-paths__metric';
       if(icon) anchor.style.setProperty('--path-icon', "url('" + icon + "')");
+      if(visual) anchor.append(createSizeVisual(visual));
       const name = document.createElement('span');
       name.className = 'shop-paths__label';
       name.textContent = label;
@@ -3985,9 +3985,16 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
         measure.textContent = detail;
         anchor.append(measure);
       }
+      if(imperial){
+        const feet = document.createElement('span');
+        feet.className = 'shop-paths__imperial';
+        feet.textContent = imperial;
+        anchor.append(feet);
+      }
       return anchor;
     }));
     links.dataset.optionCount = String(data.links.length);
+    links.dataset.view = data.links.some(item => item.visual) ? 'size' : 'standard';
   };
 
   const activate = (tab) => {
