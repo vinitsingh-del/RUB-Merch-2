@@ -2500,6 +2500,104 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .budget-edit--large .budget-edit__intro h2{max-width:14ch;}
 }
 
+
+/* Requested refinement: shorter hero, flowing customer reviews and box-free value tools. */
+.hero,
+.hero__stage{
+  height:64svh;
+  min-height:410px;
+}
+@supports not (height:100svh){
+  .hero,
+  .hero__stage{height:64vh;min-height:410px;}
+}
+
+.trust--stories{padding:42px 0;background:var(--paper);}
+.trust--stories .trust__stories-head{display:flex;align-items:flex-end;justify-content:space-between;gap:36px;padding:0 0 22px;border:0;}
+.trust--stories .eyebrow{margin:0 0 9px;}
+.trust--stories h2{margin:0;font-size:clamp(32px,3.7vw,52px);line-height:.98;letter-spacing:-.04em;}
+.trust--stories .trust__summary{flex:0 0 230px;padding:0;border:0;}
+.trust--stories .trust__summary > div{display:flex;align-items:center;gap:10px;}
+.trust--stories .trust__summary b{font-family:var(--serif);font-size:36px;font-weight:400;line-height:1;}
+.trust--stories .trust__summary .trust__stars{margin:0;font-size:12px;}
+.trust--stories .trust__summary p{margin:8px 0 0;color:var(--ink-soft);font-size:10px;font-weight:700;letter-spacing:.075em;line-height:1.35;text-transform:uppercase;}
+.trust--stories .trust__summary a{display:inline-block;margin-top:10px;padding-bottom:2px;border-bottom:1px solid currentColor;color:var(--ink);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;}
+.trust--stories .trust__marquee{margin:0 calc(var(--gutter) * -1);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent);mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent);}
+.trust--stories .trust__track{display:flex;align-items:center;gap:28px;width:max-content;padding:4px var(--gutter);animation:trustReviewsRightToLeft 40s linear infinite;will-change:transform;}
+@keyframes trustReviewsRightToLeft{to{transform:translateX(calc(-50% - 14px));}}
+.trust--stories .trust__quote{display:flex;align-items:flex-start;gap:11px;flex:0 0 330px;width:330px;min-height:0;padding:0;border:0!important;border-radius:0;background:transparent!important;box-shadow:none!important;}
+.trust--stories .trust__rug{display:block;flex:0 0 44px;width:44px;height:44px;border-radius:50%;object-fit:cover;}
+.trust--stories .trust__quote .trust__stars{margin:1px 0 5px;font-size:9px;line-height:1;}
+.trust--stories .trust__quote p{margin:0;color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.08;letter-spacing:-.02em;}
+.trust--stories .trust__quote cite{display:block;margin-top:7px;color:var(--ink-faint);font-size:8.5px;font-style:normal;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.trust--stories .trust__marquee:hover .trust__track{animation-play-state:paused;}
+.trust--stories .trust__badges{margin:19px 0 0;padding-top:14px;border-top:1px solid var(--line);}
+@media(max-width:760px){
+  .trust--stories{padding:31px 0;}
+  .trust--stories .trust__stories-head{display:block;padding-bottom:17px;}
+  .trust--stories h2{font-size:31px;}
+  .trust--stories .trust__summary{margin-top:17px;}
+  .trust--stories .trust__summary b{font-size:30px;}
+  .trust--stories .trust__marquee{margin:0 calc(var(--gutter) * -1);-webkit-mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);}
+  .trust--stories .trust__track{gap:22px;padding:4px var(--gutter);animation-duration:34s;}
+  .trust--stories .trust__quote{flex-basis:270px;width:270px;gap:9px;}
+  .trust--stories .trust__rug{flex-basis:36px;width:36px;height:36px;}
+  .trust--stories .trust__quote p{font-size:15px;}
+  .trust--stories .trust__quote cite{margin-top:6px;font-size:8px;}
+  .trust--stories .trust__badges{margin-top:14px;padding-top:11px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .trust--stories .trust__marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none;scrollbar-width:none;}
+  .trust--stories .trust__marquee::-webkit-scrollbar{display:none;}
+  .trust--stories .trust__track{animation:none;transform:none;}
+}
+
+.why-fableroom__shell{grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);gap:clamp(24px,4vw,64px);border:0!important;background:transparent!important;}
+.why-fableroom__story{min-height:460px;}
+.why-fableroom__list{padding:0!important;align-self:center;}
+.why-fableroom__benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(17px,2.4vw,30px) clamp(20px,3vw,40px);}
+.why-fableroom__benefit{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;min-width:0;padding:0;border:0;background:transparent;}
+.why-fableroom__benefit > span{padding-top:3px;color:var(--clay);font-size:9px;font-weight:700;letter-spacing:.1em;}
+.why-fableroom__benefit strong{display:block;color:var(--ink);font-family:var(--serif);font-size:clamp(20px,2vw,28px);font-weight:400;line-height:1.02;letter-spacing:-.025em;}
+.why-fableroom__benefit sup{font-family:var(--sans);font-size:.48em;vertical-align:super;}
+.why-fableroom__benefit p{margin:5px 0 0;color:var(--ink-soft);font-size:11px;line-height:1.4;}
+.why-fableroom__footnote{margin:22px 0 0!important;padding-top:13px;border-top:1px solid var(--line);}
+@media(max-width:760px){
+  .why-fableroom__shell{display:grid;grid-template-columns:1fr;gap:17px;border:0!important;}
+  .why-fableroom__story{min-height:290px;}
+  .why-fableroom__list{padding:0!important;}
+  .why-fableroom__benefits{gap:18px 14px;}
+  .why-fableroom__benefit{grid-template-columns:17px minmax(0,1fr);gap:7px;}
+  .why-fableroom__benefit strong{font-size:20px;}
+  .why-fableroom__benefit p{font-size:10px;}
+  .why-fableroom__footnote{margin-top:17px!important;padding-top:10px;}
+}
+
+.rug-finder__shell{grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);gap:clamp(24px,4vw,64px);border:0!important;background:transparent!important;}
+.rug-finder__media{min-height:500px;background:transparent;}
+.rug-finder__media img{display:block;width:100%;height:100%;object-fit:cover;}
+.rug-finder__body{padding:0!important;align-self:center;}
+.rug-finder__step{margin:0;padding:13px 0 0;border:0;}
+.rug-finder__step legend{padding:0;color:var(--clay);font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
+.rug-finder__options{display:flex;flex-wrap:wrap;gap:3px 17px;margin-top:3px;}
+.rug-finder__option{min-height:36px;padding:4px 0;border:0;border-bottom:1px solid transparent;border-radius:0;background:transparent!important;color:var(--ink-soft);font-size:11px;text-align:left;transition:color .2s ease,border-color .2s ease;}
+.rug-finder__option.is-active{border-color:var(--ink);color:var(--ink);font-weight:700;}
+.rug-finder__option:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+.rug-finder__result{margin-top:20px;padding:15px 0 0;border:0;border-top:1px solid var(--line);background:transparent!important;}
+.rug-finder__result small{color:var(--clay);}
+.rug-finder__result strong{font-size:clamp(18px,2vw,24px);}
+.rug-finder__result a{padding:11px 15px;}
+@media(max-width:760px){
+  .rug-finder__shell{grid-template-columns:1fr;gap:17px;border:0!important;}
+  .rug-finder__media{min-height:215px;}
+  .rug-finder__body{padding:0!important;}
+  .rug-finder__step{padding-top:11px;}
+  .rug-finder__options{gap:1px 14px;margin-top:2px;}
+  .rug-finder__option{min-height:32px;padding:3px 0;font-size:10px;}
+  .rug-finder__result{gap:12px;margin-top:14px;padding-top:12px;}
+  .rug-finder__result strong{font-size:17px;}
+}
+
 </style>
 </head>
 <body>
@@ -2646,27 +2744,73 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
           <a href="https://www.trustpilot.com/review/fableroom.com" target="_blank" rel="noopener">Read verified reviews</a>
         </div>
       </div>
-      <div class="trust__stories-grid" aria-label="Customer reviews">
+      <div class="trust__marquee" aria-label="Customer reviews">
+        <div class="trust__track">
         <article class="trust__quote">
-          <div class="trust__stars" aria-hidden="true">★★★★★</div>
-          <p>&ldquo;Luxury quality, with great service.&rdquo;</p>
-          <cite>Elle · Verified Buyer</cite>
+          <img class="trust__rug" src="assets/zahana-hand-tufted-wool-rug.webp" alt="" loading="lazy">
+          <div>
+            <div class="trust__stars" aria-hidden="true">★★★★★</div>
+            <p>&ldquo;Luxury quality, with great service.&rdquo;</p>
+            <cite>Elle · Verified Buyer</cite>
+          </div>
         </article>
         <article class="trust__quote">
-          <div class="trust__stars" aria-hidden="true">★★★★★</div>
-          <p>&ldquo;Super quick delivery, with great updates. Very happy with the whole experience.&rdquo;</p>
-          <cite>Sam · Verified Buyer</cite>
+          <img class="trust__rug" src="assets/savana-hand-tufted-wool-rug.webp" alt="" loading="lazy">
+          <div>
+            <div class="trust__stars" aria-hidden="true">★★★★★</div>
+            <p>&ldquo;Super quick delivery, with great updates. Very happy with the whole experience.&rdquo;</p>
+            <cite>Sam · Verified Buyer</cite>
+          </div>
         </article>
         <article class="trust__quote">
-          <div class="trust__stars" aria-hidden="true">★★★★★</div>
-          <p>&ldquo;Everything about my experience with FableRoom has been excellent!&rdquo;</p>
-          <cite>Ruth · Verified Buyer</cite>
+          <img class="trust__rug" src="assets/rewa-hand-tufted-wool-rug.webp" alt="" loading="lazy">
+          <div>
+            <div class="trust__stars" aria-hidden="true">★★★★★</div>
+            <p>&ldquo;Everything about my experience with FableRoom has been excellent!&rdquo;</p>
+            <cite>Ruth · Verified Buyer</cite>
+          </div>
         </article>
         <article class="trust__quote">
-          <div class="trust__stars" aria-hidden="true">★★★★★</div>
-          <p>&ldquo;First time ordering and I wasn't disappointed. I'll definitely be returning.&rdquo;</p>
-          <cite>Yvonne · Verified Buyer</cite>
+          <img class="trust__rug" src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="" loading="lazy">
+          <div>
+            <div class="trust__stars" aria-hidden="true">★★★★★</div>
+            <p>&ldquo;First time ordering and I wasn't disappointed. I'll definitely be returning.&rdquo;</p>
+            <cite>Yvonne · Verified Buyer</cite>
+          </div>
         </article>
+        <article class="trust__quote" aria-hidden="true">
+          <img class="trust__rug" src="assets/zahana-hand-tufted-wool-rug.webp" alt="" loading="lazy">
+          <div>
+            <div class="trust__stars" aria-hidden="true">★★★★★</div>
+            <p>&ldquo;Luxury quality, with great service.&rdquo;</p>
+            <cite>Elle · Verified Buyer</cite>
+          </div>
+        </article>
+        <article class="trust__quote" aria-hidden="true">
+          <img class="trust__rug" src="assets/savana-hand-tufted-wool-rug.webp" alt="" loading="lazy">
+          <div>
+            <div class="trust__stars" aria-hidden="true">★★★★★</div>
+            <p>&ldquo;Super quick delivery, with great updates. Very happy with the whole experience.&rdquo;</p>
+            <cite>Sam · Verified Buyer</cite>
+          </div>
+        </article>
+        <article class="trust__quote" aria-hidden="true">
+          <img class="trust__rug" src="assets/rewa-hand-tufted-wool-rug.webp" alt="" loading="lazy">
+          <div>
+            <div class="trust__stars" aria-hidden="true">★★★★★</div>
+            <p>&ldquo;Everything about my experience with FableRoom has been excellent!&rdquo;</p>
+            <cite>Ruth · Verified Buyer</cite>
+          </div>
+        </article>
+        <article class="trust__quote" aria-hidden="true">
+          <img class="trust__rug" src="assets/amber-oasis-hand-knotted-wool-rug.webp" alt="" loading="lazy">
+          <div>
+            <div class="trust__stars" aria-hidden="true">★★★★★</div>
+            <p>&ldquo;First time ordering and I wasn't disappointed. I'll definitely be returning.&rdquo;</p>
+            <cite>Yvonne · Verified Buyer</cite>
+          </div>
+        </article>
+        </div>
       </div>
       <div class="trust__badges">
         <div class="trust__badge">
@@ -2976,7 +3120,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
     <a href="https://fableroom.com/collections/washable-rugs" class="edit__banner reveal">
       <img src="assets/ai-story-07-washable-banner.webp" alt="A washable rug styled beneath a living room sofa and coffee table" loading="lazy">
       <div class="edit__banner__scrim"></div>
-      <div class="washable-edit__badges" aria-label="Washable rug features"><span class="washable-edit__badge">All washable</span><span class="washable-edit__badge">Kitchen</span><span class="washable-edit__badge">Pet-friendly</span><span class="washable-edit__badge">Living room</span></div>
+      <div class="washable-edit__badges" aria-label="Washable rug features"><span class="washable-edit__badge">Living room</span></div>
       <span class="edit__banner__cta">Explore Now</span>
     </a>
     <div class="edit__row reveal-stagger">
@@ -3262,22 +3406,13 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
         <div class="why-fableroom__copy"><div class="eyebrow">Why Choose FableRoom</div><h2 id="why-fableroom-title">Made thoughtfully.<br>Priced honestly.</h2></div>
       </div>
       <div class="why-fableroom__list">
-        <table class="why-fableroom__table">
-          <thead>
-            <tr>
-              <th>Detail</th>
-              <th>FableRoom</th>
-              <th>Other Retailers</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Middlemen</td><td class="is-fableroom">0</td><td>Multiple Middlemen</td></tr>
-            <tr><td>Delivery</td><td class="is-fableroom">Free¹</td><td>Often Charged Separately</td></tr>
-            <tr><td>Returns</td><td class="is-fableroom">365-Day Guarantee*</td><td>Typically Shorter Windows</td></tr>
-            <tr><td>Savings</td><td class="is-fableroom">40–50% You Save</td><td>0% Savings</td></tr>
-            <tr><td>Ratings</td><td class="is-fableroom">4.6 Rating</td><td>4.0 &amp; Below</td></tr>
-          </tbody>
-        </table>
+        <div class="why-fableroom__benefits" role="list" aria-label="FableRoom value">
+          <article class="why-fableroom__benefit" role="listitem"><span>01</span><div><strong>0 middlemen</strong><p>Other retailers: Multiple middlemen</p></div></article>
+          <article class="why-fableroom__benefit" role="listitem"><span>02</span><div><strong>Free delivery<sup>1</sup></strong><p>Other retailers: Often charged separately</p></div></article>
+          <article class="why-fableroom__benefit" role="listitem"><span>03</span><div><strong>365-Day Guarantee<sup>*</sup></strong><p>Other retailers: Typically shorter windows</p></div></article>
+          <article class="why-fableroom__benefit" role="listitem"><span>04</span><div><strong>40–50% you save</strong><p>Other retailers: 0% savings</p></div></article>
+          <article class="why-fableroom__benefit" role="listitem"><span>05</span><div><strong>4.6 rating</strong><p>Other retailers: 4.0 &amp; below</p></div></article>
+        </div>
         <p class="why-fableroom__footnote">¹On orders over £500. *Eligible quality defects or deterioration are covered through repair, replacement or refund within the stated guarantee period.</p>
       </div>
     </div>
