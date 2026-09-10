@@ -3109,6 +3109,22 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 @media (max-width:760px){
   .washable-edit .edit__head{grid-template-columns:minmax(0,1fr);gap:0;}
 }
+
+/* Product rails: preserve existing card geometry while enabling horizontal browse at every viewport. */
+.lookaround__grid,
+.washable-edit .edit__row{
+  display:flex;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  overscroll-behavior-inline:contain;
+  scrollbar-width:none;
+}
+.lookaround__grid::-webkit-scrollbar,
+.washable-edit .edit__row::-webkit-scrollbar{display:none;}
+.lookaround__card,
+.washable-edit .edit__row .edit__card{flex-shrink:0;scroll-snap-align:start;}
 </style>
 </head>
 <body>
