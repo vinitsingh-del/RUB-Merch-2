@@ -2883,6 +2883,41 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .why-fableroom__comparison thead th:nth-child(2),
   .why-fableroom__comparison td.is-fableroom{animation:none;opacity:1;}
 }
+
+/* Stat bar: existing Bidjar rug artwork with a quiet textile frame and protected type contrast. */
+.stat-bar{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background-color:#2e1d16;
+  background-image:
+    linear-gradient(90deg,rgba(20,15,12,.88) 0%,rgba(20,15,12,.72) 22%,rgba(20,15,12,.62) 50%,rgba(20,15,12,.72) 78%,rgba(20,15,12,.88) 100%),
+    linear-gradient(0deg,rgba(15,11,8,.3),rgba(15,11,8,.3)),
+    url('assets/hero-bidjar-red.webp');
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+.stat-bar::before{
+  content:'';
+  position:absolute;
+  z-index:0;
+  inset:9px 14px;
+  border-top:1px solid rgba(255,247,234,.42);
+  border-bottom:1px solid rgba(255,247,234,.42);
+  background:linear-gradient(90deg,transparent,rgba(255,247,234,.10) 50%,transparent);
+  pointer-events:none;
+}
+.stat-bar__row{position:relative;z-index:1;}
+.stat-bar__row div b{
+  color:var(--white);
+  text-shadow:0 2px 12px rgba(0,0,0,.72);
+}
+.stat-bar__row div span{
+  color:rgba(255,247,234,.92);
+  opacity:1;
+  text-shadow:0 1px 8px rgba(0,0,0,.75);
+}
 </style>
 </head>
 <body>
