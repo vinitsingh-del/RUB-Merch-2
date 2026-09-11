@@ -2133,7 +2133,7 @@ body > section:not(.hero){
 .size-guide__visual-trigger{margin-left:auto;}
 
 /* Fixed furniture sits over one independently resizing Persian rug. */
-.size-guide-modal__panel{width:min(608px,100%);color:var(--ink);}
+.size-guide-modal__panel{width:min(608px,100%);max-height:min(720px,calc(100vh - 36px));color:var(--ink);}
 .size-guide-modal__panel,
 .size-guide-modal__content{background:#fff;}
 .size-guide-modal__head{padding:21px 24px 14px;}
@@ -2373,6 +2373,10 @@ body > section:not(.hero){
 body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .proof__grid{align-items:stretch;}
 .proof__card{display:flex;flex-direction:column;min-width:0;}
+@media(max-width:760px){
+  .proof__grid{align-items:start;}
+  .proof__card p{min-height:0 !important;}
+}
 .proof__card h3{min-height:46px;margin:0 0 7px;line-height:1.16;}
 .proof__card p{min-height:82px;margin:0;}
 /* Slim shared product actions: two equal controls, no bleed. */
@@ -4513,7 +4517,7 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
 
 /* ---------- Not sure about size: units, room guide and rug scale ---------- */
 (function(){
-  const guide = document.querySelector('.size-guide');
+  const guide = document.querySelector('.reassure');
   const modal = document.querySelector('[data-size-guide-modal]');
   if(!guide || !modal) return;
 
