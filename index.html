@@ -2789,6 +2789,36 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .why-fableroom__comparison td.is-fableroom{color:var(--sage);font-weight:700;}
 .why-fableroom__comparison sup{font-size:.65em;vertical-align:super;}
 .why-fableroom__footnote{margin:15px 0 0!important;padding:0!important;border:0!important;}
+
+/* ---------- UGC / Creator showcase ---------- */
+.ugc{background:var(--paper);}
+.ugc__head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:26px;}
+.ugc__head h2{margin:7px 0 0;font-size:clamp(28px,3vw,40px);letter-spacing:-.03em;}
+.ugc__head p{max-width:32ch;margin:0 0 2px;color:var(--ink-soft);font-size:15px;line-height:1.45;}
+.ugc__rail-wrap{position:relative;}
+.ugc__rail{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x proximity;scrollbar-width:none;padding:2px 2px 6px;}
+.ugc__rail::-webkit-scrollbar{display:none;}
+.ugc__card{position:relative;flex:0 0 210px;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:var(--ink);box-shadow:0 8px 22px rgba(0,0,0,.1);scroll-snap-align:start;isolation:isolate;}
+.ugc__media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.ugc__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.08) 58%,rgba(0,0,0,.6) 100%);}
+.ugc__logo{position:absolute;left:12px;top:12px;z-index:2;padding:5px 9px;border-radius:20px;background:rgba(255,255,255,.92);color:var(--ink);font:700 8px/1 var(--sans);letter-spacing:.08em;}
+.ugc__play{position:absolute;right:10px;top:10px;z-index:2;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.35);color:#fff;backdrop-filter:blur(2px);}
+.ugc__play svg{width:13px;height:13px;}
+.ugc__caption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px 12px;color:#fff;}
+.ugc__caption b{display:block;font:700 12px/1.2 var(--sans);margin-bottom:4px;}
+.ugc__caption span{display:block;font-size:11.5px;line-height:1.35;color:rgba(255,255,255,.9);}
+.ugc__next{position:absolute;top:50%;right:-18px;transform:translateY(-50%);z-index:3;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-strong);background:var(--white);color:var(--ink);box-shadow:0 6px 16px rgba(0,0,0,.12);cursor:pointer;}
+.ugc__next svg{width:16px;height:16px;}
+@media(max-width:760px){
+  .ugc__head{display:block;padding-bottom:16px;margin-bottom:16px;}
+  .ugc__head p{margin-top:8px;font-size:13px;}
+  .ugc__card{flex:0 0 148px;}
+  .ugc__logo{font-size:7px;padding:4px 7px;}
+  .ugc__caption{padding:10px 9px;}
+  .ugc__caption b{font-size:10.5px;}
+  .ugc__caption span{font-size:9.5px;}
+  .ugc__next{display:none;}
+}
 @media(max-width:760px){
   .why-fableroom__shell{display:grid;grid-template-columns:1fr;gap:17px;border:0!important;}
   .why-fableroom__story{min-height:290px;}
@@ -4044,6 +4074,74 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   </div>
 </section>
 
+<!-- ================= UGC / CREATOR SHOWCASE ================= -->
+<section class="ugc section">
+  <div class="container">
+    <div class="ugc__head reveal">
+      <div>
+        <div class="eyebrow">From our community</div>
+        <h2>Real rooms, real rugs.</h2>
+      </div>
+      <p>See how people are styling FableRoom rugs at home.</p>
+    </div>
+    <div class="ugc__rail-wrap">
+      <div class="ugc__rail reveal-stagger" data-ugc-rail>
+        <article class="ugc__card">
+          <video class="ugc__media" src="assets/hand-knotted-rug-video.mp4" poster="assets/craft-hand-knotted-v2.webp" muted loop playsinline preload="metadata" aria-label="Hand-knotting a wool rug, row by row"></video>
+          <div class="ugc__scrim"></div>
+          <span class="ugc__logo">FABLEROOM</span>
+          <span class="ugc__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <div class="ugc__caption">
+            <b>@rugsandritual</b>
+            <span>How a hand-knotted rug is actually made</span>
+          </div>
+        </article>
+        <article class="ugc__card">
+          <img class="ugc__media" src="assets/ai-story-08-room-meadow.webp" alt="" loading="lazy">
+          <div class="ugc__scrim"></div>
+          <span class="ugc__logo">FABLEROOM</span>
+          <span class="ugc__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <div class="ugc__caption">
+            <b>@homewithella</b>
+            <span>Styling my new living room rug</span>
+          </div>
+        </article>
+        <article class="ugc__card">
+          <video class="ugc__media" src="assets/hand-woven-rug-video.mp4" poster="assets/craft-hand-woven-v2.webp" muted loop playsinline preload="metadata" aria-label="Weaving a flatweave rug on a traditional loom"></video>
+          <div class="ugc__scrim"></div>
+          <span class="ugc__logo">FABLEROOM</span>
+          <span class="ugc__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <div class="ugc__caption">
+            <b>@thefloorstudio</b>
+            <span>Why we only buy hand-woven now</span>
+          </div>
+        </article>
+        <article class="ugc__card">
+          <img class="ugc__media" src="assets/ai-story-07-washable-banner.webp" alt="" loading="lazy">
+          <div class="ugc__scrim"></div>
+          <span class="ugc__logo">FABLEROOM</span>
+          <span class="ugc__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <div class="ugc__caption">
+            <b>@twokidsandarug</b>
+            <span>Testing the washable rug on real mess</span>
+          </div>
+        </article>
+        <article class="ugc__card">
+          <img class="ugc__media" src="assets/ai-story-09-room-ruby.webp" alt="" loading="lazy">
+          <div class="ugc__scrim"></div>
+          <span class="ugc__logo">FABLEROOM</span>
+          <span class="ugc__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <div class="ugc__caption">
+            <b>@snugbyria</b>
+            <span>Room tour: the rug that tied it together</span>
+          </div>
+        </article>
+      </div>
+      <button class="ugc__next" type="button" data-ugc-next aria-label="Show next creator video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+</section>
+
 <!-- ================= FAQ ================= -->
 <section class="section">
   <div class="container">
@@ -4675,4 +4773,22 @@ document.querySelectorAll('.lookaround__card .lookaround__badges').forEach(badge
 (()=>{const budget=document.querySelector('.budget-edit');const washable=document.getElementById('washable');if(budget&&washable)washable.insertAdjacentElement('beforebegin',budget);})();
 </script>
 </body>
+<script>
+/* UGC creator rail: next-arrow scroll + play videos on hover (desktop). */
+(()=>{
+  const rail = document.querySelector('[data-ugc-rail]');
+  const next = document.querySelector('[data-ugc-next]');
+  if(!rail || !next) return;
+  next.addEventListener('click',()=>{
+    const card = rail.querySelector('.ugc__card');
+    const step = card ? card.getBoundingClientRect().width + 16 : 220;
+    rail.scrollBy({left:step, behavior:'smooth'});
+  });
+  rail.querySelectorAll('video.ugc__media').forEach(video=>{
+    const card = video.closest('.ugc__card');
+    card.addEventListener('mouseenter',()=>{ video.play().catch(()=>{}); });
+    card.addEventListener('mouseleave',()=>{ video.pause(); video.currentTime = 0; });
+  });
+})();
+</script>
 </html>
