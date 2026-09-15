@@ -2879,7 +2879,8 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .rug-finder__result{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-top:19px;border-top:1px solid var(--line);background:transparent!important;}
 .rug-finder__result small{display:block;margin-bottom:5px;color:var(--clay);font-size:9px;letter-spacing:.13em;text-transform:uppercase;}
 .rug-finder__result strong{display:block;max-width:25ch;font-family:var(--serif);font-size:clamp(20px,2.2vw,29px);font-weight:400;line-height:1.02;letter-spacing:-.025em;}
-.rug-finder__result a{flex:none;min-height:43px;padding:11px 15px;border:1px solid var(--ink);background:var(--ink);color:var(--white);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.rug-finder__result a{flex:none;min-height:43px;padding:11px 15px;border:1px solid var(--ink);background:var(--ink);color:var(--white);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:opacity .25s ease;}
+.rug-finder__result a.is-disabled{opacity:.35;pointer-events:none;cursor:not-allowed;}
 @media(max-width:760px){
   .rug-finder__finder{display:block;padding:26px 0 24px;}
   .rug-finder__intro{max-width:34ch;}
@@ -3344,7 +3345,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .rug-techniques{padding-top:24px!important;padding-bottom:24px!important;}
   .rug-techniques .section-head{margin-bottom:14px!important;}
   .rug-techniques .section-head h2{font-size:27px!important;}
-  .rug-techniques .proof__carousel{width:85%;margin-inline:auto;}
+  .rug-techniques .proof__carousel{width:100%;margin-inline:0;}
   .rug-techniques .proof__grid{
     display:flex!important;
     gap:10px!important;
@@ -3813,6 +3814,35 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .trust--stories .trust__badge svg{width:16px!important;height:16px!important;padding:0!important;border:0!important;border-radius:0!important;flex:none!important;}
 .trust--stories .trust__badge:nth-child(1) svg,
 .trust--stories .trust__badge:nth-child(2) svg{display:none!important;}
+@media(max-width:760px){
+  /* Requested: badges cycle one-at-a-time automatically, no border, bigger icon/text, same pill footprint. */
+  .trust--stories .trust__badges[data-badge-carousel]{
+    display:block!important;
+    position:relative!important;
+    overflow:visible!important;
+    height:44px!important;
+  }
+  .trust--stories .trust__badges[data-badge-carousel] .trust__badge{
+    position:absolute!important;
+    inset:0!important;
+    flex:none!important;
+    width:100%!important;
+    height:44px!important;
+    min-height:44px!important;
+    border:0!important;
+    background:transparent!important;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .5s ease;
+  }
+  .trust--stories .trust__badges[data-badge-carousel] .trust__badge.is-badge-active{
+    opacity:1;
+  }
+  .trust--stories .trust__badge svg{display:block!important;width:20px!important;height:20px!important;}
+  .trust--stories .trust__badge:nth-child(1) svg,
+  .trust--stories .trust__badge:nth-child(2) svg{display:block!important;width:20px!important;height:20px!important;}
+  .trust--stories .trust__badge span{font-size:12.5px!important;font-weight:700!important;letter-spacing:.03em!important;}
+}
 .trust--stories .trust__badge:nth-child(1)::before,
 .trust--stories .trust__badge:nth-child(2)::before{
   content:"";
@@ -3864,7 +3894,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .shop-paths__links[data-view="standard"],
   .shop-paths__links[data-view="size"]{
     display:grid!important;
-    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    grid-template-columns:none!important;
     grid-template-rows:repeat(2,minmax(0,auto))!important;
     grid-auto-flow:column!important;
     grid-auto-columns:calc((100% - 20px) / 3)!important;
@@ -3887,7 +3917,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .shop-paths__links[data-path="size"] .shop-paths__size-visual{
   border-radius:50%!important;
   overflow:hidden!important;
-  background-color:var(--white)!important;
+  background:var(--white)!important;
 }
 .shop-paths__links[data-path="size"] .shop-paths__size-visual svg{border-radius:50%!important;}
 </style>
@@ -4097,7 +4127,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
         </article>
         </div>
       </div>
-      <div class="trust__badges">
+      <div class="trust__badges" data-badge-carousel>
         <div class="trust__badge">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" aria-hidden="true"><path d="M12 3c3 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 3-7 6-10z"/></svg>
           <span>B Corp&trade; Certified</span>
@@ -5318,10 +5348,18 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
   const paths = [...finder.querySelectorAll('[data-finder-path]')];
   const panels = [...finder.querySelectorAll('[data-finder-step]')];
   const state = {room:'Living room',mood:'Calm and neutral',need:'Everyday easy'};
+  let hasInteracted = false;
   const update = ()=>{
     result.textContent = `${state.mood} rugs for the ${state.room.toLowerCase()}`;
     const query = encodeURIComponent(`${state.room} ${state.mood} ${state.need} rug`);
     link.href = `https://fableroom.com/search?q=${query}&type=product`;
+  };
+  const activateLink = ()=>{
+    if(hasInteracted) return;
+    hasInteracted = true;
+    link.classList.remove('is-disabled');
+    link.removeAttribute('aria-disabled');
+    link.removeAttribute('tabindex');
   };
   const openPath = path=>{
     paths.forEach(button=>{
@@ -5343,8 +5381,13 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
       });
       state[panel.dataset.finderStep] = button.dataset.value;
       update();
+      activateLink();
     });
   });
+  link.classList.add('is-disabled');
+  link.setAttribute('aria-disabled','true');
+  link.setAttribute('tabindex','-1');
+  link.addEventListener('click',event=>{ if(!hasInteracted) event.preventDefault(); });
   openPath('room');
   update();
 })();
@@ -5522,6 +5565,36 @@ document.querySelectorAll('.lookaround__card .lookaround__badges').forEach(badge
   setup();
   let resizeTimer;
   window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(setup, 200); });
+})();
+</script>
+<script>
+/* Mobile: auto-cycle the trust badges (B Corp / Trustpilot / Returns) one at a time. */
+(()=>{
+  const carousel = document.querySelector('[data-badge-carousel]');
+  if(!carousel) return;
+  const badges = [...carousel.querySelectorAll('.trust__badge')];
+  if(badges.length < 2) return;
+  let index = 0;
+  let timer = null;
+  const show = i => {
+    badges.forEach((b,n)=>b.classList.toggle('is-badge-active', n===i));
+  };
+  const start = () => {
+    if(timer) return;
+    show(index);
+    timer = setInterval(()=>{
+      index = (index+1) % badges.length;
+      show(index);
+    }, 2600);
+  };
+  const stop = () => { clearInterval(timer); timer = null; };
+  const apply = () => {
+    if(window.matchMedia('(max-width:760px)').matches){ start(); }
+    else { stop(); badges.forEach(b=>b.classList.remove('is-badge-active')); }
+  };
+  apply();
+  let resizeTimer;
+  window.addEventListener('resize', ()=>{ clearTimeout(resizeTimer); resizeTimer = setTimeout(apply, 200); });
 })();
 </script>
 </body>
