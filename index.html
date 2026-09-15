@@ -3456,6 +3456,138 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .rug-finder__result strong{max-width:15ch!important;font-size:22px!important;}
   .rug-finder__result a{font-size:8px!important;white-space:nowrap!important;}
 }
+
+/* September 15: exact selector and mobile stat-bar corrections. */
+
+/* Mobile stat bar: retain the existing two-by-two orientation at twenty per cent less scale. */
+@media (max-width:760px){
+  .stat-bar{padding:11px var(--gutter) 18px!important;}
+  .stat-bar::before{inset:8px 10px!important;}
+  .stat-bar__row{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:16px!important;
+    row-gap:18px!important;
+  }
+  .stat-bar__row div b{font-size:clamp(19px,6.2vw,24px)!important;}
+  .stat-bar__row div span{margin-top:6px!important;font-size:8.8px!important;}
+}
+
+/* Shop by room, style or craft: compact, symmetric selector with Size as the only card treatment. */
+.shop-paths__directory{min-height:0!important;}
+.shop-paths__body{padding:18px 0 0!important;}
+.shop-paths__links > a::before{
+  border-radius:4px!important;
+}
+
+/* Style, colour and material remain unboxed horizontal rails. */
+.shop-paths__links[data-view="standard"]{
+  display:flex!important;
+  grid-template-columns:none!important;
+  grid-auto-rows:auto!important;
+  flex-wrap:nowrap!important;
+  gap:18px!important;
+  width:100%!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scroll-snap-type:x mandatory!important;
+  overscroll-behavior-inline:contain!important;
+  padding:0 0 3px!important;
+  scrollbar-width:none!important;
+}
+.shop-paths__links[data-view="standard"]::-webkit-scrollbar{display:none!important;}
+.shop-paths__links[data-view="standard"] > a{
+  display:grid!important;
+  flex:0 0 128px!important;
+  width:128px!important;
+  min-width:128px!important;
+  scroll-snap-align:start!important;
+}
+.shop-paths__links[data-view="standard"] > a::before{
+  width:88px!important;
+  height:88px!important;
+  border-radius:4px!important;
+}
+
+/* Size alone uses a compact three-column set of rectangular metric cards. */
+.shop-paths__links[data-view="size"]{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-auto-rows:auto!important;
+  gap:12px!important;
+  width:100%!important;
+  overflow:visible!important;
+  padding:0!important;
+}
+.shop-paths__links[data-view="size"] .shop-paths__metric{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:6px!important;
+  min-height:132px!important;
+  padding:15px 10px!important;
+  border:1px solid var(--line)!important;
+  border-radius:0!important;
+  background:var(--white)!important;
+  box-shadow:none!important;
+  text-align:center!important;
+}
+.shop-paths__links[data-view="size"] .shop-paths__metric:last-child{grid-column:2!important;}
+.shop-paths__links[data-view="size"] .shop-paths__label{font-size:12px!important;}
+.shop-paths__links[data-view="size"] .shop-paths__measure{font-size:16px!important;line-height:1.1!important;}
+.shop-paths__links[data-view="size"] .shop-paths__imperial{font-size:9px!important;line-height:1.1!important;}
+
+@media (max-width:760px){
+  .shop-paths__directory{min-height:0!important;}
+  .shop-paths__body{padding-top:14px!important;}
+
+  /* Mobile Style: exactly the first six options, arranged symmetrically in three columns. */
+  .shop-paths__links[data-view="standard"][data-option-count="8"]{
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:14px 10px!important;
+    overflow:visible!important;
+    padding:0!important;
+  }
+  .shop-paths__links[data-view="standard"][data-option-count="8"] > a{
+    flex:auto!important;
+    width:auto!important;
+    min-width:0!important;
+  }
+  .shop-paths__links[data-view="standard"][data-option-count="8"] > a:nth-child(n+7){display:none!important;}
+
+  /* Colour and material remain horizontally browsable with three compact options in view. */
+  .shop-paths__links[data-view="standard"][data-option-count="9"],
+  .shop-paths__links[data-view="standard"][data-option-count="6"]{
+    display:flex!important;
+    gap:10px!important;
+    overflow-x:auto!important;
+    padding-bottom:3px!important;
+  }
+  .shop-paths__links[data-view="standard"][data-option-count="9"] > a,
+  .shop-paths__links[data-view="standard"][data-option-count="6"] > a{
+    flex:0 0 calc((100% - 20px) / 3)!important;
+    width:calc((100% - 20px) / 3)!important;
+    min-width:0!important;
+  }
+  .shop-paths__links[data-view="standard"] > a::before{
+    width:68px!important;
+    height:68px!important;
+    border-radius:3px!important;
+  }
+  .shop-paths__links .shop-paths__label{font-size:11.5px!important;}
+
+  .shop-paths__links[data-view="size"]{gap:9px!important;}
+  .shop-paths__links[data-view="size"] .shop-paths__metric{
+    min-height:104px!important;
+    padding:11px 6px!important;
+    gap:4px!important;
+  }
+  .shop-paths__links[data-view="size"] .shop-paths__label{font-size:9px!important;}
+  .shop-paths__links[data-view="size"] .shop-paths__measure{font-size:12px!important;}
+  .shop-paths__links[data-view="size"] .shop-paths__imperial{font-size:7.5px!important;}
+}
+
 </style>
 </head>
 <body>
