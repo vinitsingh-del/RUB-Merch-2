@@ -3663,6 +3663,156 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .rug-finder__option span{font-size:11px!important;}
 }
 
+/* September 15 follow-up: compact, unboxed selector and trust-pill cleanup. */
+
+/* Mobile stat bar: reduce the existing 2x2 treatment by a further 10%. */
+@media (max-width:760px){
+  .stat-bar{padding:10px var(--gutter) 16px!important;}
+  .stat-bar__row{column-gap:14px!important;row-gap:16px!important;}
+  .stat-bar__row div b{font-size:clamp(17px,5.6vw,22px)!important;}
+  .stat-bar__row div span{font-size:7.9px!important;min-height:2.4em!important;}
+}
+
+/* All four shop tabs use the same three-row grid; later options continue horizontally. */
+.shop-paths__links[data-view="standard"],
+.shop-paths__links[data-view="size"]{
+  display:grid!important;
+  grid-template-columns:none!important;
+  grid-template-rows:repeat(3,minmax(0,auto))!important;
+  grid-auto-flow:column!important;
+  grid-auto-columns:calc((100% - 20px)/3)!important;
+  gap:14px 10px!important;
+  width:100%!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  padding:0 0 3px!important;
+  scrollbar-width:none!important;
+  overscroll-behavior-inline:contain!important;
+}
+.shop-paths__links[data-view="standard"]::-webkit-scrollbar,
+.shop-paths__links[data-view="size"]::-webkit-scrollbar{display:none!important;}
+.shop-paths__links[data-view="standard"]>a,
+.shop-paths__links[data-view="size"] .shop-paths__metric{
+  width:auto!important;
+  min-width:0!important;
+  flex:none!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.shop-paths__links[data-view="standard"]>a{
+  display:grid!important;
+  justify-items:center!important;
+  align-content:start!important;
+  gap:8px!important;
+  padding:0!important;
+  scroll-snap-align:start!important;
+}
+.shop-paths__links[data-view="standard"]>a::before{
+  width:min(88px,100%)!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  border:0!important;
+  border-radius:4px!important;
+  background-color:transparent!important;
+  box-shadow:none!important;
+}
+
+/* Size keeps its useful room visual, but without the former beige metric cards. */
+.shop-paths__links[data-view="size"] .shop-paths__metric{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:5px!important;
+  min-height:0!important;
+  padding:0!important;
+  text-align:center!important;
+}
+.shop-paths__links[data-view="size"] .shop-paths__metric::before{display:none!important;}
+.shop-paths__size-visual{
+  display:block!important;
+  width:min(88px,100%)!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  margin:0!important;
+}
+.shop-paths__size-visual svg{width:100%!important;height:100%!important;}
+.shop-paths__links[data-view="size"] .shop-paths__label{font-size:12px!important;}
+.shop-paths__links[data-view="size"] .shop-paths__measure{font-size:15px!important;}
+.shop-paths__links[data-view="size"] .shop-paths__imperial{font-size:8.5px!important;}
+
+/* Remove all selector backgrounds/boxes at both viewport sizes. */
+.shop-paths__directory,
+.shop-paths__panel,
+.shop-paths__body,
+.shop-paths__rail-wrap,
+.shop-paths__links{background:transparent!important;}
+
+@media (max-width:760px){
+  .shop-paths__links[data-view="standard"],
+  .shop-paths__links[data-view="size"]{grid-auto-columns:calc((100% - 20px)/3)!important;gap:13px 10px!important;}
+  .shop-paths__links[data-view="standard"]>a::before,
+  .shop-paths__size-visual{width:min(76px,100%)!important;}
+  .shop-paths__links[data-view="standard"] .shop-paths__label{font-size:11px!important;}
+  .shop-paths__links[data-view="size"] .shop-paths__label{font-size:10px!important;}
+  .shop-paths__links[data-view="size"] .shop-paths__measure{font-size:13px!important;}
+  .shop-paths__links[data-view="size"] .shop-paths__imperial{font-size:7.5px!important;}
+}
+
+/* Trust badges: one equal-height pill row with matching AI-created icon artwork. */
+.trust--stories .trust__badges{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  gap:8px!important;
+  margin-top:16px!important;
+  padding-top:13px!important;
+  border-top:1px solid var(--line)!important;
+  overflow-x:auto!important;
+  scrollbar-width:none!important;
+}
+.trust--stories .trust__badges::-webkit-scrollbar{display:none!important;}
+.trust--stories .trust__badge{
+  display:flex!important;
+  flex:1 1 0!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:7px!important;
+  height:36px!important;
+  min-height:36px!important;
+  min-width:max-content!important;
+  padding:0 12px!important;
+  border:1px solid var(--line)!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+}
+.trust--stories .trust__badge svg{width:16px!important;height:16px!important;padding:0!important;border:0!important;border-radius:0!important;flex:none!important;}
+.trust--stories .trust__badge:nth-child(1) svg,
+.trust--stories .trust__badge:nth-child(2) svg{display:none!important;}
+.trust--stories .trust__badge:nth-child(1)::before,
+.trust--stories .trust__badge:nth-child(2)::before{
+  content:"";
+  display:block;
+  width:16px;
+  height:16px;
+  flex:none;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+.trust--stories .trust__badge:nth-child(1)::before{background-image:url('assets/trust-bcorp-ai.webp');}
+.trust--stories .trust__badge:nth-child(2)::before{background-image:url('assets/trust-rating-ai.webp');}
+@media (max-width:760px){
+  .trust--stories .trust__badges{gap:6px!important;margin-top:12px!important;padding-top:10px!important;}
+  .trust--stories .trust__badge{flex:0 0 auto!important;height:31px!important;min-height:31px!important;padding:0 9px!important;font-size:8px!important;}
+  .trust--stories .trust__badge svg,
+  .trust--stories .trust__badge:nth-child(1)::before,
+  .trust--stories .trust__badge:nth-child(2)::before{width:14px!important;height:14px!important;}
+}
 </style>
 </head>
 <body>
