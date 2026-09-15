@@ -3617,6 +3617,52 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .shop-paths__links[data-view="size"] .shop-paths__imperial{font-size:7.5px!important;}
 }
 
+/* Requested redesign: Find Your Rug room/mood/need tiles — clean rounded-rectangle images
+   (replacing the distorted oval crop), with an unmistakable selected state and consistent
+   sizing on both breakpoints, in the site's existing ink/cream language. */
+.rug-finder__option{
+  border-radius:0!important;
+}
+.rug-finder__option img{
+  width:100%!important;
+  aspect-ratio:1/1!important;
+  border-radius:12px!important;
+  border:2px solid transparent!important;
+  outline:0!important;
+  object-fit:cover!important;
+  filter:saturate(.88)!important;
+  transition:border-color .2s ease,filter .2s ease,transform .2s ease!important;
+}
+.rug-finder__option:hover img{filter:saturate(1)!important;}
+.rug-finder__option span{
+  position:relative!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:5px!important;
+}
+.rug-finder__option.is-active img{
+  border-color:var(--ink)!important;
+  outline:0!important;
+  filter:saturate(1)!important;
+}
+.rug-finder__option.is-active span{color:var(--ink)!important;font-weight:700!important;}
+.rug-finder__option.is-active span::before{
+  content:'';
+  display:inline-block;
+  width:15px;height:15px;flex:none;
+  border-radius:50%;
+  background:var(--ink);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:9px 9px;
+}
+@media(max-width:760px){
+  .rug-finder__options{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;}
+  .rug-finder__option img{aspect-ratio:1/1!important;margin-bottom:8px!important;}
+  .rug-finder__option span{font-size:11px!important;}
+}
+
 </style>
 </head>
 <body>
