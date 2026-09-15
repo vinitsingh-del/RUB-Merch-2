@@ -2394,6 +2394,14 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .product-card-actions svg{width:10px;height:10px;}
 /* Product badges are a compact information row beneath each product title. */
 .lookaround__badges{position:static!important;display:flex;flex-wrap:wrap;gap:4px;max-width:none;margin:6px 0 7px;}
+.lookaround__badges-track{display:none;}
+@media(max-width:760px){
+  .lookaround__badges{flex-wrap:nowrap!important;overflow:hidden!important;position:relative!important;mask-image:linear-gradient(90deg,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);}
+  .lookaround__badges[data-marquee-ready] > .lookaround__badge{display:none!important;}
+  .lookaround__badges-track{display:flex;flex-wrap:nowrap;gap:4px;animation:lookaroundBadgeMarquee 7s linear infinite;}
+  .lookaround__card:hover .lookaround__badges-track{animation-play-state:paused;}
+  @keyframes lookaroundBadgeMarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+}
 .lookaround__badge{display:inline-flex;align-items:center;min-height:20px;padding:3px 6px;border:1px solid var(--ink);border-radius:0;background:transparent!important;color:var(--ink)!important;font-size:7px;line-height:1;letter-spacing:.07em;white-space:nowrap;animation:none!important;}
 /* One Rug Discovery Hub: remove its enclosing border only. */
 .style-hub__shell{border:0!important;}
@@ -5410,6 +5418,41 @@ document.querySelectorAll('.lookaround__card .lookaround__badges').forEach(badge
 <script>
 /* Keep the Budget Edit directly before the Washable Rug Edit after page ordering scripts run. */
 (()=>{const budget=document.querySelector('.budget-edit');const washable=document.getElementById('washable');if(budget&&washable)washable.insertAdjacentElement('beforebegin',budget);})();
+</script>
+
+<script>
+/* Mobile: when a card's badge pills don't fit on one line, turn them into a seamless right-to-left auto-scrolling strip instead of wrapping to a second line. */
+(()=>{
+  const setup = () => {
+    document.querySelectorAll('.lookaround__badges').forEach(container => {
+      const isMobile = window.matchMedia('(max-width:760px)').matches;
+      const track = container.querySelector('.lookaround__badges-track');
+
+      if (!isMobile) {
+        if (track) { track.remove(); container.removeAttribute('data-marquee-ready'); }
+        return;
+      }
+      if (container.dataset.marqueeReady) return;
+
+      const badges = [...container.querySelectorAll(':scope > .lookaround__badge')];
+      if (badges.length < 2) return;
+
+      let totalWidth = 0;
+      badges.forEach(b => { totalWidth += b.getBoundingClientRect().width + 4; });
+      if (totalWidth <= container.clientWidth) return;
+
+      const newTrack = document.createElement('div');
+      newTrack.className = 'lookaround__badges-track';
+      badges.forEach(b => newTrack.appendChild(b.cloneNode(true)));
+      badges.forEach(b => newTrack.appendChild(b.cloneNode(true)));
+      container.appendChild(newTrack);
+      container.dataset.marqueeReady = 'true';
+    });
+  };
+  setup();
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(setup, 200); });
+})();
 </script>
 </body>
 <script>
