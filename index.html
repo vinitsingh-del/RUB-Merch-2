@@ -3864,7 +3864,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .shop-paths__links[data-view="standard"],
   .shop-paths__links[data-view="size"]{
     display:grid!important;
-    grid-template-columns:none!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
     grid-template-rows:repeat(2,minmax(0,auto))!important;
     grid-auto-flow:column!important;
     grid-auto-columns:calc((100% - 20px) / 3)!important;
@@ -3887,7 +3887,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .shop-paths__links[data-path="size"] .shop-paths__size-visual{
   border-radius:50%!important;
   overflow:hidden!important;
-  background:var(--white)!important;
+  background-color:var(--white)!important;
 }
 .shop-paths__links[data-path="size"] .shop-paths__size-visual svg{border-radius:50%!important;}
 </style>
