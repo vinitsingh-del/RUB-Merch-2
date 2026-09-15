@@ -3099,15 +3099,27 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 
     .product-card-price-actions {
       display: grid !important;
-      grid-template-columns: minmax(0, 1fr) auto !important;
+      grid-template-columns: minmax(0, 1fr) 32px !important;
+      grid-template-areas: "price actions" "meta meta" !important;
       align-items: center !important;
-      gap: 8px !important;
+      gap: 4px 8px !important;
       margin: 0 !important;
       padding: 0 !important;
     }
+    .product-card-price-actions .lookaround__price,
+    .product-card-price-actions .price-row,
+    .product-card-price-actions > small {
+      grid-area: price !important;
+    }
+    .product-card-price-actions .product-card-actions {
+      grid-area: actions !important;
+      display: flex !important;
+      width: 32px !important;
+      justify-content: flex-end !important;
+    }
     .product-card-price-actions .lookaround__meta {
-      grid-column: 1 / -1 !important;
-      margin: 0 0 3px !important;
+      grid-area: meta !important;
+      margin: 0 !important;
     }
 
     .product-card-price-actions .lookaround__price,
@@ -3675,10 +3687,10 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 
 /* Mobile stat bar: reduce the existing 2x2 treatment by a further 10%. */
 @media (max-width:760px){
-  .stat-bar{padding:10px var(--gutter) 16px!important;}
-  .stat-bar__row{column-gap:14px!important;row-gap:16px!important;}
-  .stat-bar__row div b{font-size:clamp(17px,5.6vw,22px)!important;}
-  .stat-bar__row div span{font-size:7.9px!important;min-height:2.4em!important;}
+  .stat-bar{padding:7px var(--gutter) 12px!important;}
+  .stat-bar__row{column-gap:12px!important;row-gap:12px!important;}
+  .stat-bar__row div b{font-size:clamp(14px,4.8vw,19px)!important;}
+  .stat-bar__row div span{font-size:6.7px!important;min-height:2.4em!important;}
 }
 
 /* All four shop tabs use the same three-row grid; later options continue horizontally. */
@@ -3820,40 +3832,6 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .trust--stories .trust__badge svg,
   .trust--stories .trust__badge:nth-child(1)::before,
   .trust--stories .trust__badge:nth-child(2)::before{width:14px!important;height:14px!important;}
-}
-
-/* Selector correction: the 3 × 3 grid is mobile-only and applies to every tab. */
-@media (max-width:760px){
-  .shop-paths__links[data-view="standard"],
-  .shop-paths__links[data-view="size"]{
-    grid-template-columns:none!important;
-    grid-template-rows:repeat(3,minmax(0,auto))!important;
-    grid-auto-flow:column!important;
-    grid-auto-columns:calc((100% - 20px)/3)!important;
-    overflow-x:auto!important;
-    overflow-y:hidden!important;
-  }
-  .shop-paths__links[data-view="standard"][data-option-count="8"]{overflow-x:auto!important;}
-  .shop-paths__links[data-view="standard"][data-option-count="8"]>a:nth-child(n+7){display:grid!important;}
-  .shop-paths__links[data-view="size"] .shop-paths__metric:last-child{grid-column:auto!important;}
-}
-
-/* Desktop remains one single selector row. */
-@media (min-width:761px){
-  .shop-paths__links[data-view="standard"],
-  .shop-paths__links[data-view="size"]{
-    display:flex!important;
-    flex-wrap:nowrap!important;
-    align-items:flex-start!important;
-    gap:18px!important;
-    overflow:visible!important;
-  }
-  .shop-paths__links[data-view="standard"]>a,
-  .shop-paths__links[data-view="size"] .shop-paths__metric{
-    flex:1 1 0!important;
-    width:auto!important;
-    min-width:0!important;
-  }
 }
 </style>
 </head>
