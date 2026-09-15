@@ -3022,6 +3022,10 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
       min-height: 0 !important;
       margin: 0 0 4px !important;
     }
+    /* Requested fix: keep title box a consistent height so badges/price/retailer line up across every card, regardless of 1-line vs 2-line titles. */
+    .lookaround__card h3 {
+      min-height: 36px !important;
+    }
 
     .lookaround__card .lookaround__badges {
       position: static !important;
@@ -3613,74 +3617,6 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .shop-paths__links[data-view="size"] .shop-paths__imperial{font-size:7.5px!important;}
 }
 
-/* Final requested selector and stat-bar behavior. */
-@media (max-width:760px){
-  /* Keep the existing 2x2 stat orientation while reducing the mobile scale by 20%. */
-  .stat-bar{padding:9px var(--gutter) 14px!important;}
-  .stat-bar__row{
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    column-gap:13px!important;
-    row-gap:14px!important;
-    align-items:start!important;
-  }
-  .stat-bar__row div b{font-size:clamp(18px,5vw,19px)!important;line-height:1!important;}
-  .stat-bar__row div span{
-    min-height:2.4em!important;
-    margin-top:5px!important;
-    font-size:7px!important;
-    line-height:1.2!important;
-  }
-
-  /* Style shows six options in a symmetric 3-column grid on mobile. */
-  .shop-paths__links[data-view="standard"][data-option-count="8"]{
-    display:grid!important;
-    grid-template-columns:repeat(3,minmax(0,1fr))!important;
-    gap:13px 10px!important;
-    overflow:visible!important;
-    padding:0!important;
-  }
-  .shop-paths__links[data-view="standard"][data-option-count="8"]>a:nth-child(n+7){display:none!important;}
-  .shop-paths__links[data-view="standard"][data-option-count="8"]>a{
-    width:auto!important;
-    min-width:0!important;
-    flex:initial!important;
-  }
-
-  /* Colour and Material stay horizontal scrolling rails. */
-  .shop-paths__links[data-view="standard"][data-option-count="9"],
-  .shop-paths__links[data-view="standard"][data-option-count="6"]{
-    display:flex!important;
-    flex-wrap:nowrap!important;
-    gap:10px!important;
-    overflow-x:auto!important;
-    overflow-y:hidden!important;
-    padding:0 0 3px!important;
-  }
-  .shop-paths__links[data-view="standard"][data-option-count="9"]>a,
-  .shop-paths__links[data-view="standard"][data-option-count="6"]>a{
-    flex:0 0 calc((100% - 20px)/3)!important;
-    width:calc((100% - 20px)/3)!important;
-    min-width:0!important;
-  }
-}
-
-/* Size is the only tab with rectangular metric boxes; all other icons are square. */
-.shop-paths__links[data-view="standard"]>a::before{
-  border-radius:4px!important;
-}
-.shop-paths__links[data-view="size"] .shop-paths__metric{
-  border:1px solid var(--line)!important;
-  border-radius:0!important;
-  background:var(--white)!important;
-  box-shadow:none!important;
-}
-
-/* Remove the desktop-only trailing blank space while keeping the selector compact. */
-@media (min-width:761px){
-  .shop-paths.section{padding-bottom:0!important;}
-  .shop-paths__directory,.shop-paths__body{min-height:0!important;}
-  .shop-paths__body{padding-bottom:0!important;}
-}
 </style>
 </head>
 <body>
