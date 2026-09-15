@@ -3945,6 +3945,9 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   justify-content:flex-start!important;
   gap:8px!important;
   scroll-snap-align:start!important;
+  width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
 }
 .shop-paths__links[data-view="standard"] > a::before{
   width:100%!important;
@@ -4018,6 +4021,14 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   }
   .shop-paths__links[data-view="standard"] > a{display:flex!important;}
   .shop-paths__links[data-view="standard"] > a:nth-child(n+1){display:flex!important;}
+  .shop-paths__links[data-view="standard"][data-option-count="5"] > a,
+  .shop-paths__links[data-view="standard"][data-option-count="6"] > a,
+  .shop-paths__links[data-view="standard"][data-option-count="8"] > a,
+  .shop-paths__links[data-view="standard"][data-option-count="9"] > a{
+    width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+  }
   .shop-paths__links[data-view="standard"] > a::before,
   .shop-paths__links[data-view="standard"][data-option-count="8"] > a::before,
   .shop-paths__links[data-view="standard"][data-option-count="9"] > a::before,
@@ -4027,6 +4038,8 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
     max-width:82px!important;
     min-width:56px!important;
     height:auto!important;
+    background-color:transparent!important;
+    box-shadow:none!important;
     aspect-ratio:1/1!important;
     border-radius:50%!important;
   }
