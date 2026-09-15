@@ -3033,7 +3033,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
     }
     /* Requested fix: keep title box a consistent height so badges/price/retailer line up across every card, regardless of 1-line vs 2-line titles. */
     .lookaround__card h3 {
-      min-height: 36px !important;
+      min-height: 20px !important;
     }
 
     .lookaround__card .lookaround__badges {
@@ -3930,6 +3930,53 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 }
 .shop-paths__links[data-path="size"] .shop-paths__size-visual{border-radius:50%!important;overflow:hidden!important;background-color:var(--white)!important;}
 .shop-paths__links[data-path="size"] .shop-paths__size-visual svg{border-radius:50%!important;}
+
+/* Requested: Shop by Room/Style/Craft icon grids — all circular icons, uniform 2x3 visible grid
+   (6 items), any remainder reachable via horizontal scroll. Applies equally to every tab
+   (Style/Colour/Material/Technique) so none of them fall back to squares or a different count. */
+.shop-paths__links[data-view="standard"]{
+  display:grid!important;
+  grid-auto-flow:column!important;
+  grid-template-rows:repeat(2,auto)!important;
+  grid-auto-columns:calc((100% - 28px) / 3)!important;
+  grid-template-columns:none!important;
+  gap:14px!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scroll-snap-type:x proximity!important;
+  scrollbar-width:none!important;
+  width:100%!important;
+}
+.shop-paths__links[data-view="standard"]::-webkit-scrollbar{display:none!important;}
+.shop-paths__links[data-view="standard"][data-option-count="5"],
+.shop-paths__links[data-view="standard"][data-option-count="6"],
+.shop-paths__links[data-view="standard"][data-option-count="8"],
+.shop-paths__links[data-view="standard"][data-option-count="9"]{
+  grid-template-columns:none!important;
+  grid-auto-flow:column!important;
+  grid-template-rows:repeat(2,auto)!important;
+  grid-auto-columns:calc((100% - 28px) / 3)!important;
+}
+.shop-paths__links[data-view="standard"] > a{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:8px!important;
+  scroll-snap-align:start!important;
+}
+.shop-paths__links[data-view="standard"] > a::before{
+  width:100%!important;
+  max-width:96px!important;
+  height:auto!important;
+  aspect-ratio:1/1!important;
+  border-radius:50%!important;
+}
+.shop-paths__links[data-view="standard"] .shop-paths__label{text-align:center!important;}
+@media(max-width:760px){
+  .shop-paths__links[data-view="standard"]{grid-auto-columns:calc((100% - 28px) / 3)!important;}
+  .shop-paths__links[data-view="standard"] > a::before{max-width:82px!important;}
+}
 </style>
 </head>
 <body>
