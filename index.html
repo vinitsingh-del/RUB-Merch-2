@@ -3057,6 +3057,27 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
       color: currentColor;
     }
 
+    /* Requested redesign: pill-shaped badges matching reference layout, no dot separator, gap between pills. */
+    .lookaround__card .lookaround__badges {
+      gap: 6px !important;
+      margin: 8px 0 9px !important;
+    }
+    .lookaround__card .lookaround__badge {
+      padding: 5px 10px !important;
+      border: 1px solid var(--line-strong) !important;
+      border-radius: 999px !important;
+      background: var(--white) !important;
+      font-weight: 700 !important;
+      font-size: 8.5px !important;
+      letter-spacing: .06em !important;
+    }
+    .lookaround__card .lookaround__badge + .lookaround__badge::before {
+      content: '' !important;
+      margin: 0 !important;
+    }
+    /* Requested order: title, price, then "Other Retailers" text (matches reference). */
+    .lookaround__card .lookaround__price { order: -1 !important; margin-bottom: 3px !important; }
+
     .lookaround__card .lookaround__meta,
     .edit__card .other-retailers {
       min-height: 0 !important;
@@ -3071,6 +3092,10 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
       gap: 8px !important;
       margin: 0 !important;
       padding: 0 !important;
+    }
+    .product-card-price-actions .lookaround__meta {
+      grid-column: 1 / -1 !important;
+      margin: 0 0 3px !important;
     }
 
     .product-card-price-actions .lookaround__price,
@@ -4979,7 +5004,12 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
       price.insertAdjacentElement('beforebegin', priceActions);
     }
 
-    priceActions.append(price, actions);
+    const meta = productLink ? productLink.querySelector('.lookaround__meta') : null;
+    if (meta) {
+      priceActions.append(price, meta, actions);
+    } else {
+      priceActions.append(price, actions);
+    }
   });
 
   document.addEventListener('click', event => {
