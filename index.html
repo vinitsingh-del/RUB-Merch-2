@@ -3906,9 +3906,9 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
     padding:0 0 3px!important;
   }
   /* First mobile page is always 3 columns × 2 rows. Further items form the next horizontal page. */
-  .shop-paths__links > :nth-child(7){grid-column:4!important;grid-row:1!important;}
-  .shop-paths__links > :nth-child(8){grid-column:4!important;grid-row:2!important;}
-  .shop-paths__links > :nth-child(9){grid-column:5!important;grid-row:1!important;}
+  .shop-paths__links > :nth-child(7){grid-column:auto!important;grid-row:auto!important;}
+  .shop-paths__links > :nth-child(8){grid-column:auto!important;grid-row:auto!important;}
+  .shop-paths__links > :nth-child(9){grid-column:auto!important;grid-row:auto!important;}
   .shop-paths__links[data-view="standard"]{min-height:211px!important;}
   .shop-paths__links[data-view="size"]{min-height:293px!important;}
   .shop-paths__links[data-view="standard"][data-option-count="8"]{overflow-x:auto!important;}
@@ -4034,10 +4034,13 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   .shop-paths__links[data-view="standard"][data-option-count="9"] > a::before,
   .shop-paths__links[data-view="standard"][data-option-count="6"] > a::before,
   .shop-paths__links[data-view="standard"][data-option-count="5"] > a::before{
-    width:100%!important;
+    width:82px!important;
     max-width:82px!important;
-    min-width:56px!important;
-    height:auto!important;
+    min-width:82px!important;
+    height:82px!important;
+    min-height:82px!important;
+    max-height:82px!important;
+    flex:none!important;
     background-color:transparent!important;
     box-shadow:none!important;
     background-size:135%!important;
