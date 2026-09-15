@@ -3931,32 +3931,13 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
 .shop-paths__links[data-path="size"] .shop-paths__size-visual{border-radius:50%!important;overflow:hidden!important;background-color:var(--white)!important;}
 .shop-paths__links[data-path="size"] .shop-paths__size-visual svg{border-radius:50%!important;}
 
-/* Requested: Shop by Room/Style/Craft icon grids — all circular icons, uniform 2x3 visible grid
-   (6 items), any remainder reachable via horizontal scroll. Applies equally to every tab
-   (Style/Colour/Material/Technique) so none of them fall back to squares or a different count. */
-.shop-paths__links[data-view="standard"]{
-  display:grid!important;
-  grid-auto-flow:column!important;
-  grid-template-rows:repeat(2,auto)!important;
-  grid-auto-columns:calc((100% - 28px) / 3)!important;
-  grid-template-columns:none!important;
-  gap:14px!important;
-  overflow-x:auto!important;
-  overflow-y:hidden!important;
-  scroll-snap-type:x proximity!important;
-  scrollbar-width:none!important;
-  width:100%!important;
-}
-.shop-paths__links[data-view="standard"]::-webkit-scrollbar{display:none!important;}
-.shop-paths__links[data-view="standard"][data-option-count="5"],
-.shop-paths__links[data-view="standard"][data-option-count="6"],
-.shop-paths__links[data-view="standard"][data-option-count="8"],
-.shop-paths__links[data-view="standard"][data-option-count="9"]{
-  grid-template-columns:none!important;
-  grid-auto-flow:column!important;
-  grid-template-rows:repeat(2,auto)!important;
-  grid-auto-columns:calc((100% - 28px) / 3)!important;
-}
+/* Requested (final): Shop by Room/Style/Craft icon behaviour.
+   DESKTOP: every tab (Style/Size/Colour/Material) lays out as ONE centred row (1xN).
+   MOBILE:  every standard tab is a strict 2-row x 3-column window (6 visible), remainder
+            via horizontal scroll. Count-specific + media-scoped selectors below exist to
+            out-compete legacy per-count mobile rules that forced display:flex.
+   ICONS:   circular everywhere, including the Size tab illustrations. */
+
 .shop-paths__links[data-view="standard"] > a{
   display:flex!important;
   flex-direction:column!important;
@@ -3973,10 +3954,85 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   border-radius:50%!important;
 }
 .shop-paths__links[data-view="standard"] .shop-paths__label{text-align:center!important;}
-@media(max-width:760px){
-  .shop-paths__links[data-view="standard"]{grid-auto-columns:calc((100% - 28px) / 3)!important;}
-  .shop-paths__links[data-view="standard"] > a::before{max-width:82px!important;}
+.shop-paths__links[data-view="size"] .shop-paths__size-visual{
+  border-radius:50%!important;
+  overflow:hidden!important;
+  aspect-ratio:1/1!important;
+  width:min(96px,100%)!important;
+  height:auto!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
 }
+
+@media(min-width:761px){
+  .shop-paths__links[data-view="standard"],
+  .shop-paths__links[data-view="standard"][data-option-count="5"],
+  .shop-paths__links[data-view="standard"][data-option-count="6"],
+  .shop-paths__links[data-view="standard"][data-option-count="8"],
+  .shop-paths__links[data-view="standard"][data-option-count="9"]{
+    display:grid!important;
+    grid-auto-flow:column!important;
+    grid-template-rows:none!important;
+    grid-template-columns:none!important;
+    grid-auto-columns:minmax(88px,116px)!important;
+    justify-content:center!important;
+    gap:18px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scrollbar-width:none!important;
+    width:100%!important;
+  }
+  .shop-paths__links[data-view="size"]{
+    display:grid!important;
+    grid-auto-flow:column!important;
+    grid-template-rows:none!important;
+    grid-template-columns:none!important;
+    grid-auto-columns:minmax(110px,150px)!important;
+    justify-content:center!important;
+    gap:18px!important;
+    overflow-x:auto!important;
+    scrollbar-width:none!important;
+    width:100%!important;
+  }
+}
+
+@media(max-width:760px){
+  .shop-paths__links[data-view="standard"],
+  .shop-paths__links[data-view="standard"][data-option-count="5"],
+  .shop-paths__links[data-view="standard"][data-option-count="6"],
+  .shop-paths__links[data-view="standard"][data-option-count="8"],
+  .shop-paths__links[data-view="standard"][data-option-count="9"]{
+    display:grid!important;
+    grid-auto-flow:column!important;
+    grid-template-rows:repeat(2,auto)!important;
+    grid-template-columns:none!important;
+    grid-auto-columns:calc((100% - 24px) / 3)!important;
+    justify-content:start!important;
+    gap:12px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x proximity!important;
+    scrollbar-width:none!important;
+    width:100%!important;
+    min-height:0!important;
+  }
+  .shop-paths__links[data-view="standard"] > a{display:flex!important;}
+  .shop-paths__links[data-view="standard"] > a:nth-child(n+1){display:flex!important;}
+  .shop-paths__links[data-view="standard"] > a::before,
+  .shop-paths__links[data-view="standard"][data-option-count="8"] > a::before,
+  .shop-paths__links[data-view="standard"][data-option-count="9"] > a::before,
+  .shop-paths__links[data-view="standard"][data-option-count="6"] > a::before,
+  .shop-paths__links[data-view="standard"][data-option-count="5"] > a::before{
+    width:100%!important;
+    max-width:82px!important;
+    min-width:56px!important;
+    height:auto!important;
+    aspect-ratio:1/1!important;
+    border-radius:50%!important;
+  }
+}
+.shop-paths__links[data-view="standard"]::-webkit-scrollbar,
+.shop-paths__links[data-view="size"]::-webkit-scrollbar{display:none!important;}
 </style>
 </head>
 <body>
