@@ -3583,6 +3583,7 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   text-align:center!important;
 }
 .shop-paths__links[data-view="size"] .shop-paths__metric:last-child{grid-column:2!important;}
+.shop-paths__links[data-view="size"][data-option-count="6"] .shop-paths__metric:last-child{grid-column:auto!important;}
 .shop-paths__links[data-view="size"] .shop-paths__label{font-size:12px!important;}
 .shop-paths__links[data-view="size"] .shop-paths__measure{font-size:16px!important;line-height:1.1!important;}
 .shop-paths__links[data-view="size"] .shop-paths__imperial{font-size:9px!important;line-height:1.1!important;}
@@ -3990,15 +3991,17 @@ body > section:has(.proof__carousel) .section-head{margin-bottom:22px;}
   }
   .shop-paths__links[data-view="size"]{
     display:grid!important;
-    grid-auto-flow:column!important;
-    grid-template-rows:none!important;
-    grid-template-columns:none!important;
-    grid-auto-columns:minmax(110px,150px)!important;
+    grid-auto-flow:row!important;
+    grid-template-rows:1fr!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
     justify-content:center!important;
     gap:18px!important;
     overflow-x:auto!important;
     scrollbar-width:none!important;
     width:100%!important;
+  }
+  .shop-paths__links[data-view="size"][data-option-count="6"]{
+    grid-template-columns:repeat(6,minmax(0,1fr))!important;
   }
 }
 
@@ -5254,11 +5257,12 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
       {label:'Geometric',href:'https://fableroom.com/search?q=geometric+rug&type=product',icon:'assets/style-geometric-emblem.webp'}
     ]},
     size:{image:'assets/ai-story-08-room-meadow.webp',alt:'Top view rug size guide',links:[
-      {label:'Extra Large',detail:'280 × 380 cm',imperial:"9' 2\" × 12' 6\"",href:'https://fableroom.com/search?q=280cm+x+380cm+rug&type=product',visual:{x:8,y:4,w:164,h:92}},
-      {label:'Large',detail:'240 × 330 cm',imperial:"7' 10\" × 10' 10\"",href:'https://fableroom.com/search?q=240cm+x+330cm+rug&type=product',visual:{x:20,y:11,w:140,h:78}},
-      {label:'Medium',detail:'200 × 290 cm',imperial:"6' 7\" × 9' 6\"",href:'https://fableroom.com/search?q=200cm+x+290cm+rug&type=product',visual:{x:32,y:18,w:116,h:64}},
-      {label:'Small',detail:'160 × 230 cm',imperial:"5' 3\" × 7' 7\"",href:'https://fableroom.com/search?q=160cm+x+230cm+rug&type=product',visual:{x:43,y:25,w:94,h:50}},
-      {label:'Coffee Table',detail:'120 × 170 cm',imperial:"3' 11\" × 5' 7\"",href:'https://fableroom.com/search?q=120cm+x+170cm+rug&type=product',visual:{x:52,y:31,w:76,h:38}}
+      {label:'',detail:'244 × 305 cm',imperial:"8' 0\" × 10' 0\"",href:'https://fableroom.com/search?q=244cm+x+305cm+rug&type=product',visual:{x:18,y:13,w:143,h:74}},
+      {label:'',detail:'200 × 290 cm',imperial:"6' 7\" × 9' 6\"",href:'https://fableroom.com/search?q=200cm+x+290cm+rug&type=product',visual:{x:32,y:15,w:117,h:70}},
+      {label:'',detail:'170 × 240 cm',imperial:"5' 7\" × 7' 10\"",href:'https://fableroom.com/search?q=170cm+x+240cm+rug&type=product',visual:{x:40,y:21,w:100,h:58}},
+      {label:'',detail:'152 × 244 cm',imperial:"5' 0\" × 8' 0\"",href:'https://fableroom.com/search?q=152cm+x+244cm+rug&type=product',visual:{x:46,y:20,w:89,h:59}},
+      {label:'',detail:'160 × 230 cm',imperial:"5' 3\" × 7' 7\"",href:'https://fableroom.com/search?q=160cm+x+230cm+rug&type=product',visual:{x:43,y:22,w:94,h:56}},
+      {label:'',detail:'140 × 200 cm',imperial:"4' 7\" × 6' 7\"",href:'https://fableroom.com/search?q=140cm+x+200cm+rug&type=product',visual:{x:49,y:26,w:82,h:48}}
     ]},
     colour:{image:'assets/hero-meadow-blue.webp',alt:'Blue patterned rug shown flat',links:[
       {label:'Beige',href:'https://fableroom.com/collections/beige-rugs',icon:'assets/colour-beige-emblem.webp'},
@@ -5313,10 +5317,12 @@ document.querySelectorAll('.room__slide[data-room]').forEach(slide=>{
       if(detail) anchor.className = 'shop-paths__metric';
       if(icon) anchor.style.setProperty('--path-icon', "url('" + icon + "')");
       if(visual) anchor.append(createSizeVisual(visual));
-      const name = document.createElement('span');
-      name.className = 'shop-paths__label';
-      name.textContent = label;
-      anchor.append(name);
+      if(label){
+        const name = document.createElement('span');
+        name.className = 'shop-paths__label';
+        name.textContent = label;
+        anchor.append(name);
+      }
       if(detail){
         const measure = document.createElement('span');
         measure.className = 'shop-paths__measure';
